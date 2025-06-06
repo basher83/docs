@@ -1,5 +1,3 @@
-# docs
-Personal knowledge management and documentation for my projects and homelab
 <div align="center">
   
 # 🚀 Mission Control: Personal Documentation Hub 📚
@@ -21,6 +19,25 @@ Personal knowledge management and documentation for my projects and homelab
 This repository serves as my personal knowledge management system, containing documentation, guides, standards, and reference materials for all my technical projects. It follows my [space-themed organization](./mission-control/repo-naming-conventions.md) pattern.
 
 ## 📚 Documentation Structure
+```plaintext
+basher83/docs/
+├── README.md                          # Main documentation hub
+├── mission-control/                   # Overall guidelines and standards
+│   ├── repo-naming-conventions.md     # Your space-themed naming convention
+│   ├── coding-standards.md            # Personal coding standards
+│   └── project-templates/             # Templates for new projects
+├── star-charts/                       # Architecture diagrams
+│   ├── homelab-topology.md            # Network and server diagrams
+│   └── service-maps.md                # How services connect
+├── flight-manuals/                    # How-to guides
+│   ├── proxmox-guides/                # Proxmox-specific documentation
+│   ├── network-security/              # Security procedures
+│   └── automation-scripts/            # Documentation for your scripts
+├── maintenance-logs/                  # Project journals and notes
+│   └── learning-paths.md              # Personal learning roadmap
+└── space-dictionary/                  # Glossary and reference
+    └── tech-acronyms.md               # Quick reference for terminology
+```
 
 | Category | Description | Contents |
 |----------|-------------|----------|
