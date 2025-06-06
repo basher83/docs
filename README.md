@@ -2,7 +2,7 @@
   
 # 🚀 Mission Control: Personal Documentation Hub 📚
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--06-success)
+![Last Updated](https://img.shields.io/badge/Last%20Updated-2025-06-06-success)
 [![Profile](https://img.shields.io/badge/GitHub-basher83-181717?style=flat&logo=github)](https://github.com/basher83)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
