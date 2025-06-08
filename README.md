@@ -19,6 +19,7 @@
 This repository serves as my personal knowledge management system, containing documentation, guides, standards, and reference materials for all my technical projects. It follows my [space-themed organization](./mission-control/repo-naming-conventions.md) pattern.
 
 ## 📚 Documentation Structure
+
 ```plaintext
 basher83/docs/
 ├── README.md                          # Main documentation hub
@@ -39,22 +40,24 @@ basher83/docs/
     └── tech-acronyms.md               # Quick reference for terminology
 ```
 
-| Category | Description | Contents |
-|----------|-------------|----------|
-| [📏 Mission Control](./mission-control/) | Standards & guidelines | Naming conventions, coding standards, templates |
-| [🗺️ Star Charts](./star-charts/) | Architecture & diagrams | Network topology, service maps, infrastructure |
-| [📖 Flight Manuals](./flight-manuals/) | How-to guides | Setup procedures, troubleshooting, configurations |
-| [📝 Maintenance Logs](./maintenance-logs/) | Project journals | Learning paths, project notes, decision records |
-| [🔤 Space Dictionary](./space-dictionary/) | Reference materials | Terminology, acronyms, quick references |
+| Category                                   | Description             | Contents                                                      |
+| ------------------------------------------ | ----------------------- | ------------------------------------------------------------- |
+| [📏 Mission Control](./mission-control/)   | Standards & guidelines  | Naming conventions, coding practices, project templates       |
+| [🗺️ Star Charts](./star-charts/)           | Architecture & diagrams | Network topology, service maps, infrastructure layouts        |
+| [📖 Flight Manuals](./flight-manuals/)     | How-to guides           | Setup procedures, automation tips, Git usage, troubleshooting |
+| [📝 Maintenance Logs](./maintenance-logs/) | Project journals        | Learning paths, project notes, decisions made                 |
+| [🔤 Space Dictionary](./space-dictionary/) | Reference materials     | Glossaries, acronyms, quick references                        |
 
 ## 🔍 Quick Navigation
 
 ### Recently Updated
+
 - [Space-Themed Repo Naming Conventions](./mission-control/repo-naming-conventions.md) - `2025-06-06`
 - [Proxmox HA Cluster Setup](./flight-manuals/proxmox-guides/ha-cluster-setup.md) - `2025-05-28`
 - [Homelab Network Topology](./star-charts/homelab-topology.md) - `2025-05-15`
 
 ### Popular Guides
+
 - [Terraform Best Practices](./mission-control/coding-standards.md#terraform)
 - [Wireless Penetration Testing Checklist](./flight-manuals/network-security/wireless-pentesting.md)
 - [Ansible Playbook Templates](./mission-control/project-templates/ansible/)
