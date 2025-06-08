@@ -62,10 +62,33 @@ To utilize assets in your projects, follow these steps:
 <img src="https://raw.githubusercontent.com/basher83/assets/main/octocats/main-profile-octocat.png" width="200" alt="My Custom Octocat">
 ```
 
-### 3. Benefits of This Approach:
+### 3. Best Practices:
+
+- Include a README in your assets repo explaining usage rights
+- Use consistent naming conventions for easy reference
+- Consider adding lightweight image optimization to your workflow
+- Update your Last Updated badges automatically using GitHub Actions
+
+### 4. Benefits of This Approach:
 
 - Centralized Asset Management: All your visual assets in one place
 - Consistent URLs: Links won't break when you update assets
 - Version Control: Track changes to your visual assets
 - Reusability: Reference the same assets across multiple repositories
 - Personalization: Your custom Octocat becomes part of your brand identity
+
+### 5. Additional Tips
+
+- Consider adding a LICENSE file to clarify how others can use your assets
+- Set up GitHub Actions to automatically update the Last Updated badge in your README
+- Use consistent naming conventions for all your assets to make them easy to reference
+- Consider image optimization for larger files to keep repository size manageable
+
+## References
+
+- [GitHub Assets](https://docs.github.com/en/assets)
+- [GitHub Octocats](https://octodex.github.com/)
+- [My Octocat](https://myoctocat.com/)
+- [GitHub Banners](https://github.com/logos)
+- [GitHub Icons](https://github.com/logos)
+- [GitHub Screenshots](https://github.com/logos)
