@@ -23,6 +23,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- proxmox-virtual-environment
 |   |       `-- README.md
 |   |-- gitops
+|   |   |-- README.md
 |   |   |-- actions.md
 |   |   |-- assets.md
 |   |   |-- commit-conventions.md
@@ -67,6 +68,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- readme-templates
 |   |       |-- documentation-readme.md
 |   |       `-- project-readme.md
+|   |-- boilerplate.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- github-configs
@@ -76,9 +78,11 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |   `-- shields-badges.md
 |   |   |-- label-definitions.yml
 |   |   `-- milestone-templates.md
+|   |-- github-configs.md
 |   |-- github-templates
 |   |   |-- CONTRIBUTING.md
 |   |   `-- SECURITY.md
+|   |-- github-templates.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
@@ -95,7 +99,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-23 directories, 63 files
+23 directories, 67 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -118,6 +122,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- proxmox-virtual-environment
 |   |       `-- README.md
 |   |-- gitops
+|   |   |-- README.md
 |   |   |-- actions.md
 |   |   |-- assets.md
 |   |   |-- commit-conventions.md
@@ -162,6 +167,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- readme-templates
 |   |       |-- documentation-readme.md
 |   |       `-- project-readme.md
+|   |-- boilerplate.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- github-configs
@@ -171,9 +177,11 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |   `-- shields-badges.md
 |   |   |-- label-definitions.yml
 |   |   `-- milestone-templates.md
+|   |-- github-configs.md
 |   |-- github-templates
 |   |   |-- CONTRIBUTING.md
 |   |   `-- SECURITY.md
+|   |-- github-templates.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
@@ -190,7 +198,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-23 directories, 63 files
+23 directories, 67 files
 ```
 <!-- DOCS-TREE-END -->
 
