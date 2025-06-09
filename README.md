@@ -16,7 +16,7 @@
 
 ## 🔭 Overview
 
-This repository serves as my personal knowledge management system, containing documentation, guides, standards, and reference materials for all my technical projects. It follows my [space-themed organization](./mission-control/repo-naming-conventions.md) pattern.
+This repository serves as my personal knowledge management system, containing documentation, guides, standards, and reference materials for all my technical projects. It follows my [space-themed organization](./mission-control/repo-naming-conventions.md) pattern based on the principles defined in the [Information Architecture Philosophy](./mission-control/information-architecture.md).
 
 ## 📚 Documentation Structure
 
@@ -71,6 +71,10 @@ This documentation is designed to be:
 - **Practical** - Focused on real-world applications
 - **Personal** - Tailored to my workflows and preferences
 - **Organized** - Following a consistent space-themed structure
+
+### 📐 Organization Philosophy
+
+All content follows the [Information Architecture Philosophy](./mission-control/information-architecture.md), which defines clear purposes for each directory and provides a framework for consistent organization across all documentation.
 
 Feel free to reference, fork, or adapt any of these documents for your own use!
 
