@@ -6,7 +6,7 @@ This directory contains scripts for maintaining and automating documentation tas
 
 ## 📄 Available Scripts
 
-### update-trees.sh
+### [update-trees.sh](https://github.com/basher83/automation-scripts/blob/main/documentation/update-trees.sh)
 
 **Purpose**: Automatically updates directory tree structures in documentation files.
 
