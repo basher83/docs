@@ -26,7 +26,7 @@ This documentation follows a separation of concerns pattern:
 ### Templates
 - **[Docker Workflow Template](./templates/docker-workflow.yml)** - Container-based applications
 - **[Terraform Workflow Template](./templates/terraform-workflow.yml)** - Infrastructure as Code
-- **[Documentation Workflow Template](./templates/docs-workflow.yml)** - Documentation automation
+- **[Documentation Workflow Template](./templates/terraform-workflow.yml)** - Documentation automation
 
 ## 🎯 Quick Start
 

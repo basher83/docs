@@ -19,7 +19,7 @@ Before contributing, familiarize yourself with:
 - Project documentation and README
 - Existing issues and discussions
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Commit conventions](docs/flight-manuals/gitops/commit-conventions.md)
+- [Commit conventions](../../flight-manuals/gitops/commit-conventions.md)
 
 ### 2. Setting Up Your Mission Control
 ```bash
@@ -72,7 +72,7 @@ Look for issues labeled with:
    npm run coverage
    ```
 
-4. **Commit your changes** using our [commit conventions](docs/flight-manuals/gitops/commit-conventions.md):
+4. **Commit your changes** using our [commit conventions](../../flight-manuals/gitops/commit-conventions.md):
    ```bash
    git commit -m "🎯 feat(auth): add OAuth 2.0 integration
    
@@ -235,15 +235,11 @@ For significant features:
 ## 📚 Resources
 
 ### Documentation
-- [Project Architecture](docs/star-charts/)
-- [Development Setup](docs/flight-manuals/)
-- [API Documentation](docs/api/)
-- [Troubleshooting Guide](docs/troubleshooting/)
+- [Project Architecture](../../star-charts/)
+- [Development Setup](../../flight-manuals/)
 
 ### Tools
-- [Code Style Guide](docs/mission-control/coding-standards.md)
-- [Testing Framework Documentation](docs/testing/)
-- [Deployment Guide](docs/deployment/)
+- [Code Style Guide](../coding-standards.md)
 
 ### Community
 - [Discord Server](https://discord.gg/yourproject)
