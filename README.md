@@ -20,25 +20,26 @@ This repository serves as my personal knowledge management system, containing do
 
 ## 📚 Documentation Structure
 
+<!-- TREE-START -->
 ```plaintext
-basher83/docs/
-├── README.md                          # Main documentation hub
-├── mission-control/                   # Overall guidelines and standards
-│   ├── repo-naming-conventions.md     # Your space-themed naming convention
-│   ├── coding-standards.md            # Personal coding standards
-│   └── project-templates/             # Templates for new projects
-├── star-charts/                       # Architecture diagrams
-│   ├── homelab-topology.md            # Network and server diagrams
-│   └── service-maps.md                # How services connect
-├── flight-manuals/                    # How-to guides
-│   ├── proxmox-guides/                # Proxmox-specific documentation
-│   ├── network-security/              # Security procedures
-│   └── automation-scripts/            # Documentation for your scripts
-├── maintenance-logs/                  # Project journals and notes
-│   └── learning-paths.md              # Personal learning roadmap
-└── space-dictionary/                  # Glossary and reference
-    └── tech-acronyms.md               # Quick reference for terminology
+.
+|-- flight-manuals
+|   |-- automation-scripts
+|   |   |-- proxmox-backup-server
+|   |   `-- proxmox-virtual-environment
+|   |-- gitops
+|   |-- network-security
+|   `-- proxmox-guides
+|-- maintenance-logs
+|-- mission-control
+|   `-- project-templates
+|-- scripts
+|-- space-dictionary
+`-- star-charts
+
+14 directories
 ```
+<!-- TREE-END -->
 
 | Category                                   | Description             | Contents                                                      |
 | ------------------------------------------ | ----------------------- | ------------------------------------------------------------- |

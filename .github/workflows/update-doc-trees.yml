@@ -21,39 +21,85 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update tree in core-github-repos.md
+      - name: Install tree command
         run: |
-          # Generate tree for mission-control directory
-          TREE_OUTPUT=$(tree mission-control/ -a -I '.git|node_modules' --charset ascii)
+          sudo apt-get update
+          sudo apt-get install -y tree
 
-          # Update the file between markers
-          python3 << 'EOF'
+      - name: Update documentation trees
+        run: |
+          # Function to update tree in a file
+          update_tree() {
+            local file=$1
+            local directory=$2
+            local tree_flags=$3
+            local marker_prefix=${4:-"TREE"}  # Default to TREE, can be DOCS-TREE, etc.
+            
+            if [[ ! -f "$file" ]]; then
+              echo "Warning: File $file not found, skipping..."
+              return
+            fi
+            
+            # Check if file has tree markers
+            if ! grep -q "<!-- ${marker_prefix}-START -->" "$file" || ! grep -q "<!-- ${marker_prefix}-END -->" "$file"; then
+              echo "Warning: ${marker_prefix} markers not found in $file, skipping..."
+              return
+            fi
+            
+            echo "Updating ${marker_prefix} in: $file"
+            
+            # Generate tree and save to temporary file
+            tree $directory $tree_flags > /tmp/tree_output.txt
+            
+            # Update the file between markers using Python
+            python3 << EOF
           import re
-
-          with open('mission-control/core-github-repos.md', 'r') as f:
+          
+          # Read the tree output
+          with open('/tmp/tree_output.txt', 'r') as f:
+              tree_output = f.read()
+          
+          # Read the target file
+          with open('$file', 'r') as f:
               content = f.read()
-
-          # Replace content between <!-- TREE-START --> and <!-- TREE-END -->
-          tree_content = """```plaintext
-          $TREE_OUTPUT
-          ```"""
-
+          
+          # Create the new tree content
+          tree_content = f"\`\`\`plaintext\n{tree_output}\`\`\`"
+          
+          # Replace content between markers
+          marker_prefix = "${marker_prefix}"
+          pattern = f'<!-- {marker_prefix}-START -->.*?<!-- {marker_prefix}-END -->'
+          replacement = f'<!-- {marker_prefix}-START -->\n{tree_content}\n<!-- {marker_prefix}-END -->'
+          
           updated_content = re.sub(
-              r'<!-- TREE-START -->.*?<!-- TREE-END -->',
-              f'<!-- TREE-START -->\n{tree_content}\n<!-- TREE-END -->',
+              pattern,
+              replacement,
               content,
               flags=re.DOTALL
           )
-
-          with open('mission-control/core-github-repos.md', 'w') as f:
+          
+          # Write back to file
+          with open('$file', 'w') as f:
               f.write(updated_content)
           EOF
+          }
+          
+          # Update core-github-repos.md - main tree
+          update_tree "mission-control/core-github-repos.md" "." "-L 2 -d -I '.git|node_modules|.DS_Store|.github|.cursor' --charset ascii" "TREE"
+          
+          # Update core-github-repos.md - docs tree
+          update_tree "mission-control/core-github-repos.md" "." "-I '.git|node_modules|.DS_Store|.github|.cursor' --charset ascii" "DOCS-TREE"
+          
+          # Update README.md if it has markers
+          update_tree "README.md" "." "-L 3 -d -I '.git|node_modules|.DS_Store|.github|.cursor' --charset ascii" "TREE"
+          
+          # Add more files as needed
 
       - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add mission-control/core-github-repos.md
+          git add -A
           if [[ -n $(git status -s) ]]; then
             git commit -m "🤖 Auto-update documentation trees"
             git push
