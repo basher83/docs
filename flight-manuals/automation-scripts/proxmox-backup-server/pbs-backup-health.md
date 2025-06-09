@@ -6,27 +6,16 @@ Automated health check script for verifying recent VM backups in Proxmox Backup 
 
 ## 📋 The Script
 
-```bash
-#!/bin/bash
-# /usr/local/sbin/pbs-backup-health.sh
+**Script Location:** [`automation-scripts/proxmox-backup-server/pbs-backup-health.sh`](https://github.com/basher83/automation-scripts/blob/main/proxmox-backup-server/pbs-backup-health.sh)
 
-PBS_HOST="https://pbs.local:8007"
-TOKEN="root@pam!ci-backup-token=your-token-value"
-VMID_LIST=("100" "101" "105")
-
-for vmid in "${VMID_LIST[@]}"; do
-    curl -s --header "Authorization: PVEAPIToken=${TOKEN}" \
-        "${PBS_HOST}/api2/json/datastore/your-datastore-name/snapshots?type=vm&vmid=${vmid}" |
-    jq '.[0]' | grep -q '"backup-type":"vm"' || echo "⚠️ No recent backup for VM ${vmid}"
-done
-```
+This script checks for recent VM backups in Proxmox Backup Server via REST API. It queries your PBS datastore for the latest snapshots of specified VMs and alerts if no recent backup is found.
 
 ## 🚀 Quick Deploy
 
 ```bash
 # Download and install
 sudo curl -o /usr/local/sbin/pbs-backup-health.sh \
-    https://raw.githubusercontent.com/basher83/automation-scripts/main/proxmox/pbs-backup-health.sh
+    https://raw.githubusercontent.com/basher83/automation-scripts/main/proxmox-backup-server/pbs-backup-health.sh
 sudo chmod +x /usr/local/sbin/pbs-backup-health.sh
 
 # Configure your settings

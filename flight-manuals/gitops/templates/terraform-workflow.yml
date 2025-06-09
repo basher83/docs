@@ -1,0 +1,129 @@
+# Terraform Infrastructure Workflow Template
+# Copy this template to .github/workflows/ in your project
+# Customize the sections marked with # TODO comments
+
+name: Terraform Infrastructure
+
+on:
+  push:
+    branches: [main]
+    paths: 
+      - 'terraform/**'
+      - '**.tf'
+  pull_request:
+    branches: [main]
+    paths: 
+      - 'terraform/**'
+      - '**.tf'
+
+env:
+  # TODO: Update Terraform version as needed
+  TERRAFORM_VERSION: 1.6.0
+  # TODO: Update working directory if different
+  WORKING_DIRECTORY: terraform
+
+jobs:
+  terraform-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          # TODO: Add if using Terraform Cloud
+          # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init
+        env:
+          # TODO: Add backend configuration secrets if needed
+          # TF_VAR_backend_key: ${{ secrets.BACKEND_KEY }}
+          
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -no-color
+        env:
+          # TODO: Add your Terraform variables
+          # TF_VAR_environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+          # TF_VAR_api_token: ${{ secrets.API_TOKEN }}
+
+      - name: Comment PR with plan
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const output = `#### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+
+            <details><summary>Show Plan</summary>
+
+            \`\`\`terraform
+            ${{ steps.plan.outputs.stdout }}
+            \`\`\`
+
+            </details>
+
+            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.WORKING_DIRECTORY }}\`, Workflow: \`${{ github.workflow }}\`*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: output
+            })
+
+  terraform-apply:
+    needs: terraform-check
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # TODO: Add environment protection for production
+    # environment: production
+    defaults:
+      run:
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TERRAFORM_VERSION }}
+          # TODO: Add if using Terraform Cloud
+          # cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Terraform Init
+        run: terraform init
+        env:
+          # TODO: Add backend configuration secrets if needed
+          # TF_VAR_backend_key: ${{ secrets.BACKEND_KEY }}
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        env:
+          # TODO: Add your Terraform variables
+          # TF_VAR_environment: production
+          # TF_VAR_api_token: ${{ secrets.API_TOKEN }}
+
+      # TODO: Add post-deployment verification
+      - name: Verify deployment
+        run: |
+          # TODO: Add commands to verify your infrastructure
+          # Examples:
+          # - Test connectivity to created resources
+          # - Verify DNS records
+          # - Check load balancer health
+          echo "Add verification commands here"
