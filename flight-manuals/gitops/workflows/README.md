@@ -1,4 +1,4 @@
-# 🔄 GitHub Actions Workflows
+# Workflows
 
 ## Overview
 
@@ -6,18 +6,18 @@ This directory contains comprehensive documentation for GitHub Actions workflows
 
 ## Structure
 
-| Document | Description |
-|----------|-------------|
-| [Reusable Workflows](./reusable-workflows.md) | Documentation for centralized, reusable workflow components |
-| [Deployment Patterns](./deployment-patterns.md) | Common deployment workflow patterns and best practices |
-| [Security Workflows](./security-workflows.md) | Security-focused workflows for code scanning, vulnerability checks |
-| [Maintenance Workflows](./maintenance-workflows.md) | Automated maintenance tasks, dependency updates, cleanup |
+| Document                                          | Description                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------ |
+| [Reusable Workflows](reusable-workflows.md)       | Documentation for centralized, reusable workflow components        |
+| [Deployment Patterns](deployment-patterns.md)     | Common deployment workflow patterns and best practices             |
+| [Security Workflows](security-workflows.md)       | Security-focused workflows for code scanning, vulnerability checks |
+| [Maintenance Workflows](maintenance-workflows.md) | Automated maintenance tasks, dependency updates, cleanup           |
 
 ## Quick Links
 
-- **Implementation Repository**: [`basher83/github-actions`](https://github.com/basher83/github-actions)
-- **Workflow Templates**: [`../templates/`](../templates/)
-- **Current Project Workflows**: Individual project `.github/workflows/` directories
+* **Implementation Repository**: [`basher83/github-actions`](https://github.com/basher83/github-actions)
+* **Workflow Templates**: [`../templates/`](../templates/)
+* **Current Project Workflows**: Individual project `.github/workflows/` directories
 
 ## Usage Pattern
 
@@ -39,6 +39,6 @@ jobs:
 
 ## Related Documentation
 
-- [GitHub Actions Overview](../actions.md)
-- [Repository Setup Guide](../repo-setup-guide.md)
-- [Project Management](../project-management.md)
+* [GitHub Actions Overview](../actions.md)
+* [Repository Setup Guide](../repo-setup-guide.md)
+* [Project Management](../project-management.md)

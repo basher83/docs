@@ -1,4 +1,4 @@
-# Table of Contents
+# Table of contents
 
 * [Introduction](README.md)
 
@@ -9,9 +9,9 @@
 * [Coding Standards](mission-control/coding-standards.md)
 * [Core GitHub Repos](mission-control/core-github-repos.md)
 * [Repository Naming Conventions](mission-control/repo-naming-conventions.md)
-* [Boilerplate](mission-control/boilerplate/README.md)
-* [GitHub Configs](mission-control/github-configs/README.md)
-* [GitHub Templates](mission-control/github-templates/README.md)
+* [Boilerplate](mission-control/boilerplate.md)
+* [GitHub Configs](mission-control/github-configs.md)
+* [GitHub Templates](mission-control/github-templates.md)
 * [Project Templates](mission-control/project-templates/README.md)
 
 ## Flight Manuals
