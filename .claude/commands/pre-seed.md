@@ -1,0 +1,1 @@
+Reference @CLAUDE for specific instructions on how to interact with this project. See @README for project overview and @mission-control/information-architecture.md for the guiding principles. Advise me when you are ready to begin working on a task.
