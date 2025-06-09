@@ -31,7 +31,14 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |-- gitmessage.md
 |   |   |-- project-management.md
 |   |   |-- repo-setup-guide.md
-|   |   `-- repository-maintenance.md
+|   |   |-- repository-maintenance.md
+|   |   |-- templates
+|   |   |   |-- docker-workflow.yml
+|   |   |   `-- terraform-workflow.yml
+|   |   `-- workflows
+|   |       |-- README.md
+|   |       |-- deployment-patterns.md
+|   |       `-- reusable-workflows.md
 |   |-- network-security
 |   |   `-- README.md
 |   `-- proxmox-guides
@@ -85,7 +92,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-21 directories, 55 files
+23 directories, 60 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -116,7 +123,14 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |-- gitmessage.md
 |   |   |-- project-management.md
 |   |   |-- repo-setup-guide.md
-|   |   `-- repository-maintenance.md
+|   |   |-- repository-maintenance.md
+|   |   |-- templates
+|   |   |   |-- docker-workflow.yml
+|   |   |   `-- terraform-workflow.yml
+|   |   `-- workflows
+|   |       |-- README.md
+|   |       |-- deployment-patterns.md
+|   |       `-- reusable-workflows.md
 |   |-- network-security
 |   |   `-- README.md
 |   `-- proxmox-guides
@@ -170,7 +184,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-21 directories, 55 files
+23 directories, 60 files
 ```
 <!-- DOCS-TREE-END -->
 

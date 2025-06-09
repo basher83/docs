@@ -28,6 +28,8 @@ This repository serves as my personal knowledge management system, containing do
 |   |   |-- proxmox-backup-server
 |   |   `-- proxmox-virtual-environment
 |   |-- gitops
+|   |   |-- templates
+|   |   `-- workflows
 |   |-- network-security
 |   `-- proxmox-guides
 |-- maintenance-logs
@@ -44,7 +46,7 @@ This repository serves as my personal knowledge management system, containing do
 |-- space-dictionary
 `-- star-charts
 
-21 directories
+23 directories
 ```
 <!-- TREE-END -->
 
