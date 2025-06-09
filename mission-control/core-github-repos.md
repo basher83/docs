@@ -12,6 +12,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |-- CLAUDE.md
 |-- LICENSE
 |-- README.md
+|-- SUMMARY.md
 |-- flight-manuals
 |   |-- README.md
 |   |-- automation-scripts
@@ -38,7 +39,9 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- workflows
 |   |       |-- README.md
 |   |       |-- deployment-patterns.md
-|   |       `-- reusable-workflows.md
+|   |       |-- maintenance-workflows.md
+|   |       |-- reusable-workflows.md
+|   |       `-- security-workflows.md
 |   |-- network-security
 |   |   `-- README.md
 |   `-- proxmox-guides
@@ -92,7 +95,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-23 directories, 60 files
+23 directories, 63 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -104,6 +107,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |-- CLAUDE.md
 |-- LICENSE
 |-- README.md
+|-- SUMMARY.md
 |-- flight-manuals
 |   |-- README.md
 |   |-- automation-scripts
@@ -130,7 +134,9 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- workflows
 |   |       |-- README.md
 |   |       |-- deployment-patterns.md
-|   |       `-- reusable-workflows.md
+|   |       |-- maintenance-workflows.md
+|   |       |-- reusable-workflows.md
+|   |       `-- security-workflows.md
 |   |-- network-security
 |   |   `-- README.md
 |   `-- proxmox-guides
@@ -184,7 +190,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-23 directories, 60 files
+23 directories, 63 files
 ```
 <!-- DOCS-TREE-END -->
 
