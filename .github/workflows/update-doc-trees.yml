@@ -1,0 +1,60 @@
+name: Update Documentation Trees
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "mission-control/**"
+      - "flight-manuals/**"
+      - "star-charts/**"
+      - "maintenance-logs/**"
+      - "space-dictionary/**"
+  workflow_dispatch:
+
+jobs:
+  update-trees:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update tree in core-github-repos.md
+        run: |
+          # Generate tree for mission-control directory
+          TREE_OUTPUT=$(tree mission-control/ -a -I '.git|node_modules' --charset ascii)
+
+          # Update the file between markers
+          python3 << 'EOF'
+          import re
+
+          with open('mission-control/core-github-repos.md', 'r') as f:
+              content = f.read()
+
+          # Replace content between <!-- TREE-START --> and <!-- TREE-END -->
+          tree_content = """```plaintext
+          $TREE_OUTPUT
+          ```"""
+
+          updated_content = re.sub(
+              r'<!-- TREE-START -->.*?<!-- TREE-END -->',
+              f'<!-- TREE-START -->\n{tree_content}\n<!-- TREE-END -->',
+              content,
+              flags=re.DOTALL
+          )
+
+          with open('mission-control/core-github-repos.md', 'w') as f:
+              f.write(updated_content)
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add mission-control/core-github-repos.md
+          if [[ -n $(git status -s) ]]; then
+            git commit -m "🤖 Auto-update documentation trees"
+            git push
+          fi
