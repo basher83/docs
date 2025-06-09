@@ -32,12 +32,19 @@ This repository serves as my personal knowledge management system, containing do
 |   `-- proxmox-guides
 |-- maintenance-logs
 |-- mission-control
+|   |-- boilerplate
+|   |   |-- gitignore-templates
+|   |   |-- license-templates
+|   |   `-- readme-templates
+|   |-- github-configs
+|   |   `-- integration-configs
+|   |-- github-templates
 |   `-- project-templates
 |-- scripts
 |-- space-dictionary
 `-- star-charts
 
-14 directories
+21 directories
 ```
 <!-- TREE-END -->
 

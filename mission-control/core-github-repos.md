@@ -24,9 +24,14 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- gitops
 |   |   |-- actions.md
 |   |   |-- assets.md
+|   |   |-- commit-conventions.md
+|   |   |-- github-integrations.md
 |   |   |-- gitignore.md
 |   |   |-- gitkeep.md
-|   |   `-- gitmessage.md
+|   |   |-- gitmessage.md
+|   |   |-- project-management.md
+|   |   |-- repo-setup-guide.md
+|   |   `-- repository-maintenance.md
 |   |-- network-security
 |   |   `-- README.md
 |   `-- proxmox-guides
@@ -39,8 +44,31 @@ This document outlines the core GitHub repositories that are essential for my te
 |   `-- learning-paths.md
 |-- mission-control
 |   |-- README.md
+|   |-- boilerplate
+|   |   |-- gitignore-templates
+|   |   |   |-- docker.gitignore
+|   |   |   |-- nodejs.gitignore
+|   |   |   |-- python.gitignore
+|   |   |   `-- terraform.gitignore
+|   |   |-- gitmessage-template
+|   |   |-- license-templates
+|   |   |   |-- APACHE-2.0.LICENSE
+|   |   |   `-- MIT.LICENSE
+|   |   `-- readme-templates
+|   |       |-- documentation-readme.md
+|   |       `-- project-readme.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
+|   |-- github-configs
+|   |   |-- integration-configs
+|   |   |   |-- dependabot.yml
+|   |   |   |-- renovate-config.json
+|   |   |   `-- shields-badges.md
+|   |   |-- label-definitions.yml
+|   |   `-- milestone-templates.md
+|   |-- github-templates
+|   |   |-- CONTRIBUTING.md
+|   |   `-- SECURITY.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
@@ -57,7 +85,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-14 directories, 34 files
+21 directories, 55 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -81,9 +109,14 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- gitops
 |   |   |-- actions.md
 |   |   |-- assets.md
+|   |   |-- commit-conventions.md
+|   |   |-- github-integrations.md
 |   |   |-- gitignore.md
 |   |   |-- gitkeep.md
-|   |   `-- gitmessage.md
+|   |   |-- gitmessage.md
+|   |   |-- project-management.md
+|   |   |-- repo-setup-guide.md
+|   |   `-- repository-maintenance.md
 |   |-- network-security
 |   |   `-- README.md
 |   `-- proxmox-guides
@@ -96,8 +129,31 @@ This document outlines the core GitHub repositories that are essential for my te
 |   `-- learning-paths.md
 |-- mission-control
 |   |-- README.md
+|   |-- boilerplate
+|   |   |-- gitignore-templates
+|   |   |   |-- docker.gitignore
+|   |   |   |-- nodejs.gitignore
+|   |   |   |-- python.gitignore
+|   |   |   `-- terraform.gitignore
+|   |   |-- gitmessage-template
+|   |   |-- license-templates
+|   |   |   |-- APACHE-2.0.LICENSE
+|   |   |   `-- MIT.LICENSE
+|   |   `-- readme-templates
+|   |       |-- documentation-readme.md
+|   |       `-- project-readme.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
+|   |-- github-configs
+|   |   |-- integration-configs
+|   |   |   |-- dependabot.yml
+|   |   |   |-- renovate-config.json
+|   |   |   `-- shields-badges.md
+|   |   |-- label-definitions.yml
+|   |   `-- milestone-templates.md
+|   |-- github-templates
+|   |   |-- CONTRIBUTING.md
+|   |   `-- SECURITY.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
@@ -114,7 +170,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-14 directories, 34 files
+21 directories, 55 files
 ```
 <!-- DOCS-TREE-END -->
 
