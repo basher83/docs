@@ -9,12 +9,18 @@ This document outlines the core GitHub repositories that are essential for my te
 <!-- DOCS-TREE-START -->
 ```plaintext
 .
+|-- CLAUDE.md
+|-- LICENSE
+|-- README.md
 |-- flight-manuals
+|   |-- README.md
 |   |-- automation-scripts
+|   |   |-- README.md
 |   |   |-- proxmox-backup-server
-|   |   |   `-- pbs-backup-health.sh
-|   |   |-- proxmox-virtual-environment
-|   |   `-- README.md
+|   |   |   |-- README.md
+|   |   |   `-- pbs-backup-health.md
+|   |   `-- proxmox-virtual-environment
+|   |       `-- README.md
 |   |-- gitops
 |   |   |-- actions.md
 |   |   |-- assets.md
@@ -23,25 +29,22 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- gitmessage.md
 |   |-- network-security
 |   |   `-- README.md
-|   |-- proxmox-guides
-|   |   |-- backup-strategy.md
-|   |   |-- proxmox-backup-server.md
-|   |   |-- proxmox-backup-server-troubleshooting.md
-|   |   `-- README.md
-|   `-- README.md
-|-- LICENSE
+|   `-- proxmox-guides
+|       |-- README.md
+|       |-- backup-strategy.md
+|       |-- proxmox-backup-server-troubleshooting.md
+|       `-- proxmox-backup-server.md
 |-- maintenance-logs
-|   |-- learning-paths.md
-|   `-- README.md
+|   |-- README.md
+|   `-- learning-paths.md
 |-- mission-control
+|   |-- README.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
-|   |-- README.md
 |   `-- repo-naming-conventions.md
-|-- README.md
 |-- renovate.json
 |-- scripts
 |   |-- README.md
@@ -50,11 +53,11 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- README.md
 |   `-- tech-acronyms.md
 `-- star-charts
-    |-- homelab-topology.md
     |-- README.md
+    |-- homelab-topology.md
     `-- service-maps.md
 
-14 directories, 31 files
+14 directories, 34 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -63,12 +66,18 @@ This document outlines the core GitHub repositories that are essential for my te
 <!-- DOCS-TREE-START -->
 ```plaintext
 .
+|-- CLAUDE.md
+|-- LICENSE
+|-- README.md
 |-- flight-manuals
+|   |-- README.md
 |   |-- automation-scripts
+|   |   |-- README.md
 |   |   |-- proxmox-backup-server
-|   |   |   `-- pbs-backup-health.sh
-|   |   |-- proxmox-virtual-environment
-|   |   `-- README.md
+|   |   |   |-- README.md
+|   |   |   `-- pbs-backup-health.md
+|   |   `-- proxmox-virtual-environment
+|   |       `-- README.md
 |   |-- gitops
 |   |   |-- actions.md
 |   |   |-- assets.md
@@ -77,25 +86,22 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- gitmessage.md
 |   |-- network-security
 |   |   `-- README.md
-|   |-- proxmox-guides
-|   |   |-- backup-strategy.md
-|   |   |-- proxmox-backup-server.md
-|   |   |-- proxmox-backup-server-troubleshooting.md
-|   |   `-- README.md
-|   `-- README.md
-|-- LICENSE
+|   `-- proxmox-guides
+|       |-- README.md
+|       |-- backup-strategy.md
+|       |-- proxmox-backup-server-troubleshooting.md
+|       `-- proxmox-backup-server.md
 |-- maintenance-logs
-|   |-- learning-paths.md
-|   `-- README.md
+|   |-- README.md
+|   `-- learning-paths.md
 |-- mission-control
+|   |-- README.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
-|   |-- README.md
 |   `-- repo-naming-conventions.md
-|-- README.md
 |-- renovate.json
 |-- scripts
 |   |-- README.md
@@ -104,11 +110,11 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- README.md
 |   `-- tech-acronyms.md
 `-- star-charts
-    |-- homelab-topology.md
     |-- README.md
+    |-- homelab-topology.md
     `-- service-maps.md
 
-14 directories, 31 files
+14 directories, 34 files
 ```
 <!-- DOCS-TREE-END -->
 
