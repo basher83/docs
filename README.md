@@ -25,6 +25,7 @@ This repository serves as my personal knowledge management system, containing do
 .
 |-- flight-manuals
 |   |-- automation-scripts
+|   |   |-- documentation
 |   |   |-- proxmox-backup-server
 |   |   `-- proxmox-virtual-environment
 |   |-- gitops
@@ -46,7 +47,7 @@ This repository serves as my personal knowledge management system, containing do
 |-- space-dictionary
 `-- star-charts
 
-23 directories
+24 directories
 ```
 <!-- TREE-END -->
 

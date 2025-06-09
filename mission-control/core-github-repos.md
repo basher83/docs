@@ -17,6 +17,8 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- README.md
 |   |-- automation-scripts
 |   |   |-- README.md
+|   |   |-- documentation
+|   |   |   `-- update-trees.md
 |   |   |-- proxmox-backup-server
 |   |   |   |-- README.md
 |   |   |   `-- pbs-backup-health.md
@@ -89,7 +91,6 @@ This document outlines the core GitHub repositories that are essential for my te
 |   `-- repo-naming-conventions.md
 |-- renovate.json
 |-- scripts
-|   |-- README.md
 |   `-- update-trees.sh
 |-- space-dictionary
 |   |-- README.md
@@ -99,7 +100,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-23 directories, 67 files
+24 directories, 67 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -116,6 +117,8 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- README.md
 |   |-- automation-scripts
 |   |   |-- README.md
+|   |   |-- documentation
+|   |   |   `-- update-trees.md
 |   |   |-- proxmox-backup-server
 |   |   |   |-- README.md
 |   |   |   `-- pbs-backup-health.md
@@ -188,7 +191,6 @@ This document outlines the core GitHub repositories that are essential for my te
 |   `-- repo-naming-conventions.md
 |-- renovate.json
 |-- scripts
-|   |-- README.md
 |   `-- update-trees.sh
 |-- space-dictionary
 |   |-- README.md
@@ -198,7 +200,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-23 directories, 67 files
+24 directories, 67 files
 ```
 <!-- DOCS-TREE-END -->
 
