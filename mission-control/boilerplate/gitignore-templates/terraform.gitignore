@@ -1,0 +1,169 @@
+# 🚀 Terraform Mission Gitignore
+# Space-themed infrastructure as code exclusions
+
+# === TERRAFORM STATE FILES ===
+# Never commit state files - they contain sensitive information
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# === TERRAFORM PLAN FILES ===
+# Plan files may contain sensitive data
+*.tfplan
+*.tfplan.*
+
+# === TERRAFORM VARIABLE FILES ===
+# Exclude files with sensitive variables
+*.tfvars
+*.tfvars.json
+!example.tfvars
+!*.tfvars.example
+
+# === TERRAFORM LOCK FILES ===
+# Keep dependency lock file but exclude temporary lock files
+!.terraform.lock.hcl
+.terraform.lock.hcl.*
+
+# === TERRAFORM DIRECTORIES ===
+# Terraform working directories
+.terraform/
+.terraform.d/
+terraform.d/
+
+# === TERRAFORM LOGS ===
+# Log files
+*.log
+terraform.log
+crash.log
+crash.*.log
+
+# === PROVIDER CREDENTIALS ===
+# Cloud provider credentials
+.aws/
+.azure/
+.gcp/
+credentials.json
+service-account-key.json
+*.pem
+*.key
+
+# === ENVIRONMENT FILES ===
+# Environment configuration
+.env
+.env.local
+.env.*.local
+secrets/
+config/secrets/
+
+# === BACKUP FILES ===
+# Backup files created by text editors
+*~
+*.bak
+*.swp
+*.swo
+*#
+
+# === IDE AND EDITOR FILES ===
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+Session.vim
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# === MACOS FILES ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# === TEMPORARY FILES ===
+# Temporary files and directories
+tmp/
+temp/
+*.tmp
+*.temp
+
+# === KUBERNETES SECRETS ===
+# Kubernetes configuration with sensitive data
+kubeconfig
+*.kubeconfig
+k8s-secrets/
+
+# === ANSIBLE VAULT ===
+# Ansible encrypted files (keep .example versions)
+vault.yml
+secrets.yml
+!vault.yml.example
+!secrets.yml.example
+
+# === HELM CHARTS ===
+# Helm dependencies
+charts/*.tgz
+
+# === PACKER FILES ===
+# Packer build artifacts
+packer_cache/
+*.box
+
+# === VAGRANT FILES ===
+# Vagrant files
+.vagrant/
+
+# === SSL/TLS CERTIFICATES ===
+# Certificate files
+*.crt
+*.cert
+*.ca-bundle
+*.p12
+*.pfx
+*.cer
+*.der
+
+# === PROJECT SPECIFIC ===
+# Add your mission-specific exclusions here
+# mission-control/
+# flight-data/
+# orbital-configs/
+
+# === DOCUMENTATION BUILD ===
+# Generated documentation
+docs/_build/
+site/
+_site/
+
+# === NOTES ===
+# Personal notes and TODO files
+TODO.md
+NOTES.md
+.notes/
+
+# === MISSION LOGS ===
+# Deployment and operational logs
+deployment.log
+ops.log
+mission-*.log

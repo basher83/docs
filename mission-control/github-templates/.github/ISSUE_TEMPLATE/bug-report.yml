@@ -1,0 +1,142 @@
+name: 🐛 Mission Anomaly Report
+description: Report a bug or unexpected behavior in the system
+title: "🐛 [Brief description of the anomaly]"
+labels: ["🐛 bug", "🔍 needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Mission Control Bug Report
+        
+        Thanks for taking the time to report this anomaly! Your report helps us maintain mission integrity.
+        
+        **Before reporting:** Please search existing issues to avoid duplicates.
+
+  - type: input
+    id: mission-context
+    attributes:
+      label: 🎯 Mission Context
+      description: What were you trying to accomplish when this occurred?
+      placeholder: "I was attempting to deploy the application to production..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: 🚨 Current Behavior
+      description: What actually happened? Be as specific as possible.
+      placeholder: |
+        1. I clicked the deploy button
+        2. The system showed a loading spinner
+        3. After 30 seconds, I received an error message: "Connection timeout"
+        4. The deployment failed
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 🛰️ Expected Behavior
+      description: What should have happened instead?
+      placeholder: "The deployment should have completed successfully and shown a confirmation message."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 🔍 Steps to Reproduce
+      description: How can we recreate this issue?
+      placeholder: |
+        1. Navigate to the deployment page
+        2. Select production environment
+        3. Click "Deploy Now" button
+        4. Wait for response
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 🌍 Mission Environment
+      description: Which environment did this occur in?
+      options:
+        - Production
+        - Staging
+        - Development
+        - Local
+        - Testing
+    validations:
+      required: true
+
+  - type: input
+    id: browser-os
+    attributes:
+      label: 🖥️ System Configuration
+      description: Browser, OS, device type (if applicable)
+      placeholder: "Chrome 120, macOS 14.2, MacBook Pro"
+
+  - type: input
+    id: version
+    attributes:
+      label: 📦 Version Information
+      description: Application version, commit hash, or build number
+      placeholder: "v2.1.3, commit abc123, build #456"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📊 Mission Data (Logs/Screenshots)
+      description: |
+        Include relevant logs, error messages, or screenshots.
+        Tip: You can attach images by clicking this area to highlight it and then dragging files in.
+      placeholder: |
+        Error logs:
+        ```
+        [2025-06-09 10:30:15] ERROR: Connection timeout after 30s
+        [2025-06-09 10:30:15] DEBUG: Retrying connection...
+        ```
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: 🚨 Mission Impact Level
+      description: How severely does this affect your work?
+      options:
+        - 🔴 Critical - Mission failure, system down
+        - 🟡 High - Major feature broken, significant impact
+        - 🟢 Medium - Minor inconvenience, workaround available
+        - 🔵 Low - Cosmetic issue, no functional impact
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 🛠️ Additional Mission Intel
+      description: |
+        Any other context, workarounds you've tried, or related issues?
+        - Have you seen this before?
+        - Does it happen consistently?
+        - Any related configuration changes?
+
+  - type: checkboxes
+    id: investigation
+    attributes:
+      label: 🔍 Pre-Flight Investigation
+      description: Help us understand what you've already checked
+      options:
+        - label: I have searched existing issues for duplicates
+        - label: I have provided sufficient detail to reproduce the issue
+        - label: I have included relevant logs or screenshots
+        - label: I have tested this in multiple environments (if applicable)
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: 🛰️ Proposed Solution (Optional)
+      description: If you have ideas for how to fix this, let us know!
+      placeholder: "Perhaps we could add better error handling and retry logic..."

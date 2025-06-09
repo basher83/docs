@@ -1,0 +1,231 @@
+name: 📚 Mission Documentation Request
+description: Request documentation improvements, additions, or corrections
+title: "📚 [Brief description of documentation need]"
+labels: ["📚 documentation", "🔍 needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 📚 Mission Documentation Enhancement
+        
+        Help us improve our mission documentation! Clear, accurate documentation is essential for mission success.
+        
+        **Documentation Types:**
+        - User guides and tutorials
+        - API documentation
+        - Developer documentation
+        - Process documentation
+        - Troubleshooting guides
+
+  - type: dropdown
+    id: documentation-type
+    attributes:
+      label: 📖 Documentation Category
+      description: What type of documentation needs attention?
+      options:
+        - User Guide / Tutorial
+        - API Documentation
+        - Developer Documentation
+        - Installation / Setup Guide
+        - Troubleshooting Guide
+        - Process / Workflow Documentation
+        - Architecture Documentation
+        - FAQ / Common Questions
+        - Release Notes
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: 🎯 Mission Type
+      description: What kind of documentation work is needed?
+      options:
+        - 📝 Create new documentation
+        - 🔄 Update existing documentation
+        - 🐛 Fix error or inaccuracy
+        - 🎨 Improve formatting or structure
+        - 🔗 Add missing links or references
+        - 🧹 Remove outdated content
+        - 🌟 Enhance with examples or details
+    validations:
+      required: true
+
+  - type: input
+    id: affected-content
+    attributes:
+      label: 📍 Content Location
+      description: |
+        Where is the documentation located? (URL, file path, or page title)
+        If requesting new documentation, specify where it should be added.
+      placeholder: "https://docs.example.com/api/authentication or docs/user-guide.md"
+
+  - type: textarea
+    id: current-issue
+    attributes:
+      label: 🚨 Current Documentation Status
+      description: |
+        What's wrong with the current documentation, or what's missing?
+        Be specific about what needs to be addressed.
+      placeholder: |
+        Current issues:
+        - The authentication guide doesn't mention the new OAuth 2.0 flow
+        - Code examples use deprecated API endpoints
+        - Missing information about rate limiting
+        - Screenshots are outdated (showing old UI)
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-content
+    attributes:
+      label: 🚀 Proposed Documentation Content
+      description: |
+        What should the documentation say? Include specific content, examples, or structure.
+        For corrections, provide the accurate information.
+      placeholder: |
+        Proposed content structure:
+        
+        ## OAuth 2.0 Authentication
+        1. Register your application
+        2. Redirect users to authorization endpoint
+        3. Handle the callback with authorization code
+        4. Exchange code for access token
+        
+        Example code:
+        ```javascript
+        const response = await fetch('/oauth/token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            grant_type: 'authorization_code',
+            code: authCode,
+            client_id: 'your-client-id'
+          })
+        });
+        ```
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-audience
+    attributes:
+      label: 👥 Target Mission Crew
+      description: Who is the primary audience for this documentation?
+      options:
+        - New Users / Beginners
+        - Experienced Users
+        - Developers / Technical Users
+        - Administrators
+        - API Integrators
+        - Content Creators
+        - Support Team
+        - All Users
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🚨 Mission Priority
+      description: How important is this documentation update?
+      options:
+        - 🔴 Critical - Blocking users or causing confusion
+        - 🟡 High - Important for user success
+        - 🟢 Medium - Helpful improvement
+        - 🔵 Low - Nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-impact
+    attributes:
+      label: 📊 User Impact Assessment
+      description: |
+        How does the current documentation issue affect users?
+        What problems does it cause?
+      placeholder: |
+        Impact on users:
+        - New developers can't successfully integrate with our API
+        - Support team receives 5-10 tickets daily about authentication
+        - Users abandon integration attempts due to confusion
+        - Existing integrations may break when following outdated examples
+
+  - type: textarea
+    id: examples-references
+    attributes:
+      label: 📋 Examples and References
+      description: |
+        Provide examples, screenshots, or references that would help improve the documentation.
+        Include any external resources or similar documentation you've seen done well.
+      placeholder: |
+        Good examples:
+        - Stripe's API documentation for authentication flow
+        - GitHub's OAuth documentation with clear examples
+        - Include screenshots of the current OAuth consent screen
+        
+        [Attach any helpful screenshots or diagrams]
+
+  - type: input
+    id: related-issues
+    attributes:
+      label: 🔗 Related Issues or PRs
+      description: Link any related issues, pull requests, or discussions
+      placeholder: "#123, #456, or links to related GitHub discussions"
+
+  - type: checkboxes
+    id: content-requirements
+    attributes:
+      label: 📚 Content Requirements
+      description: What should be included in this documentation?
+      options:
+        - label: Step-by-step instructions
+        - label: Code examples or snippets
+        - label: Screenshots or diagrams
+        - label: Common troubleshooting tips
+        - label: Links to related documentation
+        - label: Prerequisites or requirements
+        - label: API reference information
+        - label: Best practices or recommendations
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: 🎯 Success Criteria
+      description: |
+        How will we know this documentation is successful?
+        What should users be able to accomplish after reading it?
+      placeholder: |
+        Success criteria:
+        - New developers can complete OAuth integration in under 30 minutes
+        - Support tickets about authentication reduce by 80%
+        - Documentation receives positive feedback (4.5/5 rating)
+        - Code examples work without modification
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 🚀 Pre-Mission Checklist
+      description: Confirm you've completed these preparation steps
+      options:
+        - label: I have searched existing issues for similar documentation requests
+        - label: I have checked if this documentation already exists elsewhere
+        - label: I have provided specific, actionable information for improvement
+        - label: I understand the target audience for this documentation
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 🌟 Additional Mission Context
+      description: |
+        Any additional context that would help create or improve this documentation?
+        Include feedback from users, common questions, or specific use cases.
+      placeholder: |
+        Additional context:
+        - This was the #1 requested documentation improvement in our last survey
+        - Common user questions: "Why am I getting 401 errors?" and "Which scopes do I need?"
+        - Our competitor's documentation is clearer in this area
+        - This affects our enterprise onboarding process

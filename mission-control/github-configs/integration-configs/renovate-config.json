@@ -1,0 +1,279 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "🔧 Renovate configuration for space-themed dependency management",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":separatePatchReleases",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "timezone": "America/New_York",
+  "schedule": [
+    "before 4am on Monday"
+  ],
+  "labels": [
+    "🤖 renovate",
+    "📦 dependencies"
+  ],
+  "reviewers": [
+    "basher83"
+  ],
+  "assignees": [
+    "basher83"
+  ],
+  "commitMessagePrefix": "🔧 ",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "🛰️ Mission Control Dependency Dashboard",
+  "dependencyDashboardHeader": "This dashboard provides an overview of all dependency updates for our space mission. Click on a checkbox to create an update PR immediately.",
+  "dependencyDashboardFooter": "🚀 Automated by Mission Control Renovate Bot",
+  "prTitle": "🔧 {{semanticPrefix}}{{#if isPin}}📌 Pin{{else}}⬆️ Update{{/if}} {{depName}} {{#if isMajor}}(Major){{else if isMinor}}(Minor){{else}}(Patch){{/if}}",
+  "prBodyTemplate": "## 🛰️ Dependency Update Mission\n\n**Mission Type:** {{#if isPin}}📌 Pin Dependencies{{else if isMajor}}🚀 Major Update{{else if isMinor}}🛰️ Minor Update{{else}}🔧 Patch Update{{/if}}\n\n**Package:** `{{depName}}`\n**Update:** {{currentVersion}} → {{newVersion}}\n\n### 📊 Mission Details\n{{{body}}}\n\n### 🔍 Change Log\n{{{changelog}}}\n\n### ⚠️ Mission Notes\n{{#if isMajor}}⚠️ **Major Version Update** - Review breaking changes carefully{{/if}}\n{{#if hasReleaseNotes}}📋 **Release Notes Available** - Check the changelog above{{/if}}\n\n---\n**🤖 This mission update was prepared by Renovate Bot**",
+  "packageRules": [
+    {
+      "description": "🟢 Low risk updates - auto-merge patches",
+      "matchUpdateTypes": ["patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true,
+      "platformAutomerge": true,
+      "labels": ["🟢 auto-merge", "🔧 patch"]
+    },
+    {
+      "description": "🟡 Medium risk - minor updates require review",
+      "matchUpdateTypes": ["minor"],
+      "labels": ["🟡 needs-review", "📦 minor"],
+      "reviewers": ["basher83"],
+      "automerge": false
+    },
+    {
+      "description": "🔴 High risk - major updates require careful review",
+      "matchUpdateTypes": ["major"],
+      "labels": ["🔴 major-update", "👥 needs-review"],
+      "reviewers": ["basher83"],
+      "automerge": false,
+      "stabilityDays": 7
+    },
+    {
+      "description": "📦 NPM packages configuration",
+      "matchManagers": ["npm"],
+      "labels": ["📦 npm"],
+      "commitMessagePrefix": "📦 npm: ",
+      "prBodyNotes": [
+        "This update affects Node.js dependencies.",
+        "Please ensure compatibility with current Node.js version.",
+        "Check for any breaking changes in package documentation."
+      ]
+    },
+    {
+      "description": "🐳 Docker image updates",
+      "matchManagers": ["docker-compose", "dockerfile"],
+      "labels": ["🐳 docker"],
+      "commitMessagePrefix": "🐳 docker: ",
+      "prBodyNotes": [
+        "This update affects Docker images.",
+        "Verify compatibility with current Docker setup.",
+        "Test locally before merging."
+      ]
+    },
+    {
+      "description": "⚙️ GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "labels": ["⚙️ github-actions"],
+      "commitMessagePrefix": "⚙️ ci: ",
+      "prBodyNotes": [
+        "This update affects GitHub Actions workflows.",
+        "Review workflow changes and permissions.",
+        "Test CI/CD pipeline after merge."
+      ],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "🐍 Python dependencies",
+      "matchManagers": ["pip_requirements", "pip_setup", "pipenv", "poetry"],
+      "labels": ["🐍 python"],
+      "commitMessagePrefix": "🐍 python: ",
+      "prBodyNotes": [
+        "This update affects Python dependencies.",
+        "Ensure compatibility with current Python version.",
+        "Run tests to verify functionality."
+      ]
+    },
+    {
+      "description": "🦀 Rust dependencies",
+      "matchManagers": ["cargo"],
+      "labels": ["🦀 rust"],
+      "commitMessagePrefix": "🦀 rust: ",
+      "prBodyNotes": [
+        "This update affects Rust dependencies.",
+        "Check for compilation compatibility.",
+        "Review performance implications."
+      ]
+    },
+    {
+      "description": "☕ Java dependencies",
+      "matchManagers": ["maven", "gradle"],
+      "labels": ["☕ java"],
+      "commitMessagePrefix": "☕ java: ",
+      "prBodyNotes": [
+        "This update affects Java dependencies.",
+        "Verify compatibility with current JVM version.",
+        "Check for any breaking API changes."
+      ]
+    },
+    {
+      "description": "🔒 Security updates - high priority auto-merge",
+      "matchDepTypes": ["security"],
+      "labels": ["🔒 security", "🚨 urgent"],
+      "commitMessagePrefix": "🔒 security: ",
+      "automerge": true,
+      "platformAutomerge": true,
+      "assignees": ["basher83"],
+      "reviewers": ["basher83"],
+      "prBodyNotes": [
+        "🚨 **SECURITY UPDATE** - This addresses known vulnerabilities.",
+        "Priority: Immediate review and merge recommended.",
+        "Review security advisory details above."
+      ]
+    },
+    {
+      "description": "🧪 Test and development dependencies",
+      "matchDepTypes": ["devDependencies", "test"],
+      "labels": ["🧪 dev-deps"],
+      "commitMessagePrefix": "🧪 dev: ",
+      "automerge": true,
+      "platformAutomerge": true,
+      "prBodyNotes": [
+        "This update affects development/test dependencies only.",
+        "Should not impact production functionality.",
+        "Auto-merge enabled for low risk."
+      ]
+    },
+    {
+      "description": "📋 Documentation tools",
+      "matchPackageNames": [
+        "/@docusaurus/",
+        "/gitbook/",
+        "/markdown/",
+        "/mdx/",
+        "/remark/",
+        "/rehype/"
+      ],
+      "labels": ["📚 docs"],
+      "commitMessagePrefix": "📚 docs: ",
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "🎨 Styling and UI dependencies",
+      "matchPackageNames": [
+        "/sass/",
+        "/css/",
+        "/style/",
+        "/theme/",
+        "/ui/",
+        "/design/"
+      ],
+      "labels": ["🎨 styling"],
+      "commitMessagePrefix": "🎨 style: ",
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "⚡ Performance and build tools",
+      "matchPackageNames": [
+        "webpack",
+        "vite",
+        "rollup",
+        "esbuild",
+        "swc",
+        "babel"
+      ],
+      "labels": ["⚡ build-tools"],
+      "commitMessagePrefix": "⚡ build: ",
+      "automerge": false,
+      "reviewers": ["basher83"],
+      "prBodyNotes": [
+        "This affects build tools and performance.",
+        "Test build process after merge.",
+        "Verify bundle size and performance metrics."
+      ]
+    },
+    {
+      "description": "🏷️ Pin development dependencies",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["pin"],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "🔄 Weekly digest for grouped updates",
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "groupName": "🔄 Weekly Maintenance Updates",
+      "schedule": ["before 4am on Monday"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["🚨 vulnerability", "🔒 security"],
+    "assignees": ["basher83"],
+    "reviewers": ["basher83"],
+    "commitMessagePrefix": "🚨 security: ",
+    "prTitle": "🚨 Security: Fix {{depName}} vulnerability",
+    "prBodyTemplate": "## 🚨 SECURITY ALERT\n\n**Vulnerability:** {{depName}} has known security vulnerabilities\n**Severity:** {{#if severity}}{{severity}}{{else}}Unknown{{/if}}\n\n### 📋 Mission Critical Security Update\n{{{body}}}\n\n### 🔒 Security Advisory\n{{#if vulnerabilities}}\n{{#each vulnerabilities}}\n- **{{title}}** ({{severity}})\n  - CVSS Score: {{cvssScore}}\n  - {{description}}\n{{/each}}\n{{/if}}\n\n### ⚡ Immediate Action Required\n- [ ] Review security implications\n- [ ] Test affected functionality\n- [ ] Deploy to production ASAP\n- [ ] Monitor for any issues\n\n---\n**🤖 This critical security update was prepared by Renovate Bot**\n**🚨 Priority: IMMEDIATE REVIEW AND MERGE**"
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 4am on Monday"],
+    "commitMessagePrefix": "🔒 lockfile: ",
+    "prTitle": "🔒 Lock file maintenance",
+    "labels": ["🔒 lockfile", "🧹 maintenance"],
+    "prBodyTemplate": "## 🔒 Lock File Maintenance Mission\n\nThis PR maintains and updates lock files to ensure dependency consistency.\n\n### 📋 Mission Objectives\n- Update lock files with latest compatible versions\n- Ensure dependency tree consistency\n- Remove unused or orphaned dependencies\n\n### 🔍 Changes\n{{{body}}}\n\n---\n**🤖 This maintenance was automated by Renovate Bot**"
+  },
+  "onboarding": false,
+  "requireConfig": false,
+  "gitAuthor": "Renovate Bot <renovate@basher83.dev>",
+  "platform": "github",
+  "includeForks": false,
+  "forkProcessing": "disabled",
+  "rangeStrategy": "bump",
+  "bumpVersion": "patch",
+  "semanticPrefix": "fix",
+  "semanticPrefixChore": "chore",
+  "separateMinorPatch": true,
+  "separateMajorMinor": true,
+  "separateMultipleMajor": true,
+  "pinDigests": true,
+  "rollbackPrs": true,
+  "recreateClosed": true,
+  "rebaseWhen": "conflicted",
+  "rebaseLabel": "🔄 rebase",
+  "stopUpdatingLabel": "🛑 stop-updates",
+  "dependencyDashboardLabels": ["🛰️ dependency-dashboard"],
+  "configMigration": true,
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "branchConcurrentLimit": 10,
+  "minimumReleaseAge": "3 days",
+  "stabilityDays": 3,
+  "respectLatest": true,
+  "followTag": true,
+  "ignorePresets": [
+    ":prHourlyLimit2",
+    ":prConcurrentLimit10"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "🚀 Update space-themed version references",
+      "fileMatch": ["^README\\.md$", "^docs/.*\\.md$"],
+      "matchStrings": [
+        "version-(?<currentValue>\\d+\\.\\d+\\.\\d+)-"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "basher83/{{packageName}}"
+    }
+  ]
+}

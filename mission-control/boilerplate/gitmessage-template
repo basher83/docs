@@ -1,0 +1,56 @@
+# 🚀 Mission Commit Template
+# 
+# <emoji> <type>(<scope>): <description>
+# 
+# <body>
+# 
+# <footer>
+#
+# === COMMIT TYPES ===
+# 🎯 feat     - New feature or capability
+# 🐛 fix      - Bug fix
+# 📚 docs     - Documentation changes
+# 🎨 style    - Code style changes (formatting, etc.)
+# 🔧 refactor - Code refactoring
+# ⚡ perf     - Performance improvement
+# ✅ test     - Tests
+# 🔨 build    - Build system changes
+# 👷 ci       - CI/CD changes
+# 🧹 chore    - Maintenance
+#
+# === MISSION EMOJIS ===
+# 🚀 deploy   - Deployment related
+# 🛰️ config   - Configuration
+# 🌟 enhance  - Enhancement
+# 🔒 security - Security
+# 🎨 design   - UI/UX
+# 📊 analytics- Analytics
+#
+# === EXAMPLES ===
+# 🎯 feat(auth): add OAuth 2.0 authentication
+# 🐛 fix(api): resolve timeout in user endpoints
+# 📚 docs(readme): update installation guide
+# 🔧 refactor(utils): extract validation logic
+#
+# === GUIDELINES ===
+# - Use imperative mood ("add" not "added")
+# - First line 50 chars or less
+# - Reference issues in footer (Closes: #123)
+# - Explain WHY, not just WHAT
+# - Break long descriptions into body paragraphs
+#
+# === COMMIT BODY FORMAT ===
+# Explain the problem this commit solves and why this
+# approach was chosen. Include any trade-offs made.
+#
+# - Bullet points are okay
+# - Use present tense
+# - Include context for reviewers
+#
+# === FOOTER EXAMPLES ===
+# Closes: #123
+# Fixes: #456
+# Resolves: #789
+# Related: #101112
+# Breaking-change: Describe the breaking change
+# Co-authored-by: Name <email@example.com>

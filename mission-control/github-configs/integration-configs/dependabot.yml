@@ -1,0 +1,315 @@
+# 🤖 Dependabot Configuration
+# Space-themed automated dependency management
+
+version: 2
+updates:
+  # === NPM DEPENDENCIES ===
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "📦 dependencies"
+      - "📦 npm"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🔧"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 5
+    allow:
+      # Allow production dependencies
+      - dependency-type: "direct"
+      # Allow development dependencies with limited scope
+      - dependency-type: "indirect"
+        dependency-name: "@types/*"
+      - dependency-type: "indirect"
+        dependency-name: "eslint*"
+      - dependency-type: "indirect"
+        dependency-name: "prettier*"
+    ignore:
+      # Ignore major version updates for critical packages
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      # Ignore specific packages with known issues
+      - dependency-name: "node-sass"
+        versions: [">= 5.0.0"]
+
+  # === GITHUB ACTIONS ===
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:30"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "⚙️ github-actions"
+      - "🔧 ci-cd"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "👷"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === DOCKER DEPENDENCIES ===
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "04:00"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "🐳 docker"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🐳"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+    ignore:
+      # Ignore alpha/beta versions
+      - dependency-name: "*"
+        versions: ["*-alpha*", "*-beta*", "*-rc*"]
+
+  # === PIP DEPENDENCIES (Python) ===
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "tuesday"
+      time: "04:30"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "🐍 python"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🐍"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === COMPOSER DEPENDENCIES (PHP) ===
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "04:00"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "🐘 php"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🐘"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === CARGO DEPENDENCIES (Rust) ===
+  - package-ecosystem: "cargo"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "wednesday"
+      time: "04:30"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "🦀 rust"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🦀"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === MAVEN DEPENDENCIES (Java) ===
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "04:00"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "☕ java"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "☕"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === GRADLE DEPENDENCIES (Java/Kotlin) ===
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "thursday"
+      time: "04:30"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "☕ java"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "☕"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === GO MODULES ===
+  - package-ecosystem: "gomod"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "04:00"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "🐹 golang"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🐹"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === TERRAFORM DEPENDENCIES ===
+  - package-ecosystem: "terraform"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+      time: "04:30"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "🏗️ terraform"
+      - "📦 dependencies"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "🏗️"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 3
+
+  # === SUBMODULES ===
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      time: "04:00"
+      timezone: "America/New_York"
+    labels:
+      - "🤖 dependabot"
+      - "📂 submodules"
+      - "🔗 git"
+    reviewers:
+      - "basher83"
+    assignees:
+      - "basher83"
+    commit-message:
+      prefix: "📂"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+    open-pull-requests-limit: 2
+
+# === DEPENDABOT CONFIGURATION NOTES ===
+# 
+# 🚀 Mission Schedule:
+# - Monday:    NPM packages and GitHub Actions
+# - Tuesday:   Docker and Python dependencies
+# - Wednesday: PHP and Rust dependencies  
+# - Thursday:  Java/Maven and Gradle dependencies
+# - Friday:    Go modules and Terraform
+# - Saturday:  Git submodules
+#
+# 🔧 Configuration Details:
+# - All updates scheduled for early morning (4:00-4:30 AM ET)
+# - Maximum 3-5 open PRs per ecosystem to avoid spam
+# - Space-themed emoji prefixes for easy identification
+# - Automatic reviewer and assignee assignment
+# - Custom labels for filtering and organization
+#
+# 🛡️ Security Features:
+# - Automatic security updates enabled by default
+# - Vulnerable dependency alerts
+# - Major version updates require manual review
+# - Beta/alpha versions ignored unless explicitly allowed
+#
+# 📋 Customization Options:
+# - Adjust schedules based on team availability
+# - Modify open PR limits based on review capacity
+# - Add/remove ignored packages as needed
+# - Update reviewer lists for different ecosystems
+#
+# 🔗 Related Configuration:
+# - Combine with Renovate for comprehensive dependency management
+# - Integrate with GitHub Actions for automated testing
+# - Use security scanning tools for vulnerability assessment
+# - Monitor with dependency tracking dashboards

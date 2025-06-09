@@ -1,0 +1,244 @@
+# 🐳 Docker Mission Gitignore
+# Space-themed containerization exclusions
+
+# === DOCKER BUILD CONTEXT ===
+# Don't include these in Docker build context
+.dockerignore
+Dockerfile.local
+Dockerfile.dev
+Dockerfile.debug
+docker-compose.override.yml
+docker-compose.local.yml
+
+# === DOCKER VOLUMES ===
+# Local volume mount points
+volumes/
+data/
+logs/
+tmp/
+
+# === DOCKER SECRETS ===
+# Never commit sensitive Docker configurations
+secrets/
+.env
+.env.local
+.env.*.local
+docker.env
+compose.env
+
+# === DOCKER BUILD ARTIFACTS ===
+# Build cache and temporary files
+.buildx-cache/
+build-cache/
+*.tar
+*.tar.gz
+*.tar.bz2
+
+# === DOCKER REGISTRY ===
+# Local registry data
+registry-data/
+.registry/
+
+# === CONTAINER LOGS ===
+# Container runtime logs
+*.log
+container-*.log
+docker-*.log
+
+# === KUBERNETES ===
+# Kubernetes local configurations
+kubeconfig
+*.kubeconfig
+k8s-local/
+kustomization.local.yml
+
+# === HELM ===
+# Helm local values and charts
+values.local.yaml
+values.override.yaml
+charts/*.tgz
+.helm/
+
+# === DOCKER COMPOSE ===
+# Local override files
+docker-compose.override.yaml
+docker-compose.local.yaml
+docker-compose.dev.yaml
+docker-compose.debug.yaml
+
+# === DEVELOPMENT TOOLS ===
+# Local development utilities
+dev-tools/
+debug/
+.devcontainer/local/
+
+# === BIND MOUNTS ===
+# Local directories used for bind mounts
+app-data/
+db-data/
+cache-data/
+upload-data/
+backup-data/
+
+# === SSL/TLS CERTIFICATES ===
+# Certificate files for local HTTPS
+certs/
+ssl/
+tls/
+*.crt
+*.key
+*.pem
+*.pfx
+*.p12
+
+# === DATABASE PERSISTENCE ===
+# Local database files
+postgres-data/
+mysql-data/
+mongodb-data/
+redis-data/
+elasticsearch-data/
+
+# === MONITORING & OBSERVABILITY ===
+# Local monitoring data
+prometheus-data/
+grafana-data/
+jaeger-data/
+zipkin-data/
+
+# === CACHE DIRECTORIES ===
+# Application and service caches
+cache/
+.cache/
+redis-cache/
+memcached-data/
+
+# === CONFIGURATION OVERRIDES ===
+# Local configuration overrides
+config.local.json
+config.local.yaml
+config.local.toml
+local.properties
+override.conf
+
+# === IDE AND EDITOR ===
+# Development environment files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === OPERATING SYSTEM ===
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === BACKUP AND TEMPORARY ===
+# Backup and temporary files
+*.bak
+*.backup
+*.tmp
+*.temp
+*~
+
+# === RUNTIME ARTIFACTS ===
+# Application runtime artifacts
+pid/
+*.pid
+*.sock
+core
+core.*
+
+# === UPLOADS AND MEDIA ===
+# User uploaded content
+uploads/
+media/
+static/uploads/
+public/uploads/
+
+# === TESTING ===
+# Test artifacts and coverage
+coverage/
+.coverage
+.nyc_output/
+test-results/
+*.lcov
+
+# === SECURITY SCANNING ===
+# Security scan results
+.trivyignore
+.snyk
+security-scan-results/
+
+# === DOCKER MACHINE ===
+# Docker Machine files
+.docker/
+
+# === DOCKER BUILDX ===
+# Buildx builder cache
+.buildx-cache/
+
+# === MULTI-ARCHITECTURE ===
+# Multi-arch build artifacts
+linux/
+windows/
+darwin/
+
+# === DOCKER LAYER CACHING ===
+# Layer cache directories
+.docker-cache/
+layer-cache/
+
+# === DOCKER REGISTRY MIRROR ===
+# Local registry mirror data
+mirror-data/
+registry-mirror/
+
+# === CONTAINER SCANNING ===
+# Container vulnerability scan results
+scan-results/
+.trivy/
+.anchore/
+
+# === DOCKER SWARM ===
+# Docker Swarm secrets and configs
+swarm-secrets/
+swarm-configs/
+
+# === PORTAINER ===
+# Portainer data
+portainer-data/
+
+# === DOCKER BENCH ===
+# Docker security benchmark results
+docker-bench-security/
+
+# === MISSION SPECIFIC ===
+# Add your space mission specific Docker exclusions here
+# mission-control-data/
+# flight-telemetry/
+# orbital-simulator/
+# spacecraft-logs/
+
+# === DOCUMENTATION ===
+# Generated documentation
+docs/_build/
+site/
+
+# === PACKAGE MANAGERS ===
+# Language specific package files that shouldn't be in containers
+node_modules/
+vendor/
+.bundle/
+.gems/
+
+# === LOCAL SCRIPTS ===
+# Local utility scripts
+scripts/local/
+bin/local/
+tools/local/

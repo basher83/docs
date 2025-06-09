@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🤝 Community Discussions
+    url: https://github.com/basher83/docs/discussions
+    about: Join the community discussion for questions, ideas, and general chat
+  - name: 🔒 Security Issues
+    url: https://github.com/basher83/docs/security/advisories
+    about: Report security vulnerabilities privately through GitHub Security Advisories
+  - name: 💬 Support & Help
+    url: https://github.com/basher83/docs/discussions/categories/q-a
+    about: Get help from the community with questions and troubleshooting
