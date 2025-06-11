@@ -58,6 +58,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |-- mission-control
 |   |-- README.md
 |   |-- boilerplate
+|   |   |-- README.md
 |   |   |-- gitignore-templates
 |   |   |   |-- docker.gitignore
 |   |   |   |-- nodejs.gitignore
@@ -74,6 +75,8 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- github-configs
+|   |   |-- CODEOWNERS-template
+|   |   |-- README.md
 |   |   |-- integration-configs
 |   |   |   |-- dependabot.yml
 |   |   |   |-- renovate-config.json
@@ -84,7 +87,14 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- github-templates
 |   |   |-- CODE_OF_CONDUCT.md
 |   |   |-- CONTRIBUTING.md
-|   |   `-- SECURITY.md
+|   |   |-- ISSUE_TEMPLATE
+|   |   |   |-- bug-report.yml
+|   |   |   |-- config.yml
+|   |   |   |-- documentation.yml
+|   |   |   `-- feature-request.yml
+|   |   |-- README.md
+|   |   |-- SECURITY.md
+|   |   `-- pull_request_template.md
 |   |-- github-templates.md
 |   |-- information-architecture.md
 |   |-- project-templates
@@ -101,7 +111,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-24 directories, 68 files
+25 directories, 77 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -159,6 +169,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |-- mission-control
 |   |-- README.md
 |   |-- boilerplate
+|   |   |-- README.md
 |   |   |-- gitignore-templates
 |   |   |   |-- docker.gitignore
 |   |   |   |-- nodejs.gitignore
@@ -175,6 +186,8 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- github-configs
+|   |   |-- CODEOWNERS-template
+|   |   |-- README.md
 |   |   |-- integration-configs
 |   |   |   |-- dependabot.yml
 |   |   |   |-- renovate-config.json
@@ -185,7 +198,14 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |-- github-templates
 |   |   |-- CODE_OF_CONDUCT.md
 |   |   |-- CONTRIBUTING.md
-|   |   `-- SECURITY.md
+|   |   |-- ISSUE_TEMPLATE
+|   |   |   |-- bug-report.yml
+|   |   |   |-- config.yml
+|   |   |   |-- documentation.yml
+|   |   |   `-- feature-request.yml
+|   |   |-- README.md
+|   |   |-- SECURITY.md
+|   |   `-- pull_request_template.md
 |   |-- github-templates.md
 |   |-- information-architecture.md
 |   |-- project-templates
@@ -202,7 +222,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-24 directories, 68 files
+25 directories, 77 files
 ```
 <!-- DOCS-TREE-END -->
 
