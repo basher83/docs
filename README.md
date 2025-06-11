@@ -64,14 +64,14 @@ This repository serves as my personal knowledge management system, containing do
 ### Recently Updated
 
 - [Space-Themed Repo Naming Conventions](./mission-control/repo-naming-conventions.md) - `2025-06-06`
-- [Proxmox HA Cluster Setup](./flight-manuals/proxmox-guides/ha-cluster-setup.md) - `2025-05-28`
+- [Proxmox Backup Server Setup](./flight-manuals/proxmox-guides/proxmox-backup-server.md) - `2025-05-28`
 - [Homelab Network Topology](./star-charts/homelab-topology.md) - `2025-05-15`
 
 ### Popular Guides
 
 - [Terraform Best Practices](./mission-control/coding-standards.md#terraform)
-- [Wireless Penetration Testing Checklist](./flight-manuals/network-security/wireless-pentesting.md)
-- [Ansible Playbook Templates](./mission-control/project-templates/ansible/)
+- [Network Security Procedures](./flight-manuals/network-security/README.md)
+- [Automation Scripts](./flight-manuals/automation-scripts/)
 
 ## 🛠️ Using This Documentation
 

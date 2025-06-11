@@ -80,7 +80,7 @@ WantedBy=timers.target
 
 - [PBS Backup Strategy](../../proxmox-guides/backup-strategy.md)
 - [Proxmox Backup Server Setup](../../proxmox-guides/proxmox-backup-server.md)
-- [API Token Creation Guide](../../proxmox-guides/api-tokens.md)
+- [API Token Creation Guide](../../proxmox-guides/api-token-creation.md)
 
 ## 🚨 Troubleshooting
 

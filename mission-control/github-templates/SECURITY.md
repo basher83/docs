@@ -198,20 +198,20 @@ The following are generally out of scope for security reports:
 ## 📚 Security Resources
 
 ### Documentation
-- [Security Architecture Overview](docs/security/architecture.md)
-- [Secure Configuration Guide](docs/security/configuration.md)
-- [Incident Response Playbook](docs/security/incident-response.md)
-- [Security Audit Checklists](docs/security/audits.md)
+- [Security Architecture Overview](../../flight-manuals/network-security/README.md)
+- [Secure Configuration Guide](../../flight-manuals/network-security/README.md)
+- [Incident Response Playbook](../../flight-manuals/network-security/README.md)
+- [Security Audit Checklists](../../flight-manuals/network-security/README.md)
 
 ### Training & Awareness
 - [Secure Development Training](https://training.yourproject.com/security)
-- [Security Champions Program](docs/security/champions.md)
+- [Security Champions Program](../../flight-manuals/gitops/workflows/security-workflows.md)
 - [Security Newsletter](https://newsletter.yourproject.com/security)
 
 ### Tools & Resources
-- [Security Testing Tools](docs/security/tools.md)
-- [Vulnerability Databases](docs/security/databases.md)
-- [Security Communities](docs/security/communities.md)
+- [Security Testing Tools](../../flight-manuals/gitops/workflows/security-workflows.md)
+- [Vulnerability Databases](../../flight-manuals/gitops/workflows/security-workflows.md)
+- [Security Communities](../../flight-manuals/gitops/workflows/security-workflows.md)
 
 ## 🏆 Hall of Fame
 

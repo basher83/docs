@@ -111,5 +111,5 @@ Proxmox Backup Server (PBS) is an enterprise-grade, open-source solution for bac
 ## 🧪 Related Guides
 
 - [Troubleshooting UEFI Boot & RAM Issues](./proxmox-backup-server-troubleshooting.md)
-- [Proxmox VE Setup & Integration](./proxmox-ve.md)
+- [Backup Strategy](./backup-strategy.md)
 - [Backup Strategy Recommendations](./backup-strategy.md)
