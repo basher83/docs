@@ -28,14 +28,17 @@ Boilerplate Files serves as Mission Control's foundation depot - containing univ
 ## 📋 File Categories
 
 ### **Version Control Foundations**
+
 - **Git Message Template** - Standardized commit message format and structure
 - **Gitignore Templates** - Technology-specific file exclusion patterns for clean repositories
 
 ### **Legal & Licensing**
+
 - **MIT License** - Permissive open source license template
 - **Apache 2.0 License** - Enterprise-friendly open source license template
 
 ### **Documentation Foundations**
+
 - **Project README** - Standard repository documentation structure
 - **Documentation README** - Specialized template for documentation repositories
 
@@ -58,16 +61,19 @@ Each boilerplate file includes:
 ## 🔧 Technology Coverage
 
 ### **Gitignore Templates**
+
 - **Docker** - Container builds, volumes, and runtime artifacts
 - **Node.js** - NPM packages, build outputs, and environment files
 - **Python** - Virtual environments, compiled bytecode, and distribution files
 - **Terraform** - State files, variable files, and provider caches
 
 ### **License Templates**
+
 - **MIT** - Simple, permissive license for open source projects
 - **Apache 2.0** - Patent-protective license for enterprise and commercial use
 
 ### **README Templates**
+
 - **Project** - Application and library repository documentation
 - **Documentation** - Knowledge base and wiki repository structure
 
