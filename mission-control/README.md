@@ -14,8 +14,8 @@ This directory contains standards, conventions, templates, and governance docume
 ## 📁 Templates & Standards
 
 - **[Project Templates](./project-templates/)** - Starting points for new projects
-- **GitHub Templates** (coming soon) - Issue templates, PR templates, contributing guidelines
-- **Boilerplate Files** (coming soon) - Copy-paste ready configuration files
+- **[GitHub Templates](./github-templates/)** - Issue templates, PR templates, contributing guidelines
+- **[Boilerplate Files](./boilerplate/)** - Copy-paste ready configuration files
 
 ## 🎯 Purpose
 
