@@ -10,7 +10,6 @@ This document outlines the core GitHub repositories that are essential for my te
 ```plaintext
 .
 |-- CLAUDE.md
-|-- CODEOWNERS.txt
 |-- LICENSE
 |-- README.md
 |-- SUMMARY.md
@@ -102,7 +101,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-24 directories, 69 files
+24 directories, 68 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -112,7 +111,6 @@ This document outlines the core GitHub repositories that are essential for my te
 ```plaintext
 .
 |-- CLAUDE.md
-|-- CODEOWNERS.txt
 |-- LICENSE
 |-- README.md
 |-- SUMMARY.md
@@ -204,7 +202,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-24 directories, 69 files
+24 directories, 68 files
 ```
 <!-- DOCS-TREE-END -->
 
