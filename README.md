@@ -42,12 +42,13 @@ This repository serves as my personal knowledge management system, containing do
 |   |-- github-configs
 |   |   `-- integration-configs
 |   |-- github-templates
+|   |   `-- ISSUE_TEMPLATE
 |   `-- project-templates
 |-- scripts
 |-- space-dictionary
 `-- star-charts
 
-24 directories
+25 directories
 ```
 <!-- TREE-END -->
 
