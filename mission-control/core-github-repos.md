@@ -10,6 +10,7 @@ This document outlines the core GitHub repositories that are essential for my te
 ```plaintext
 .
 |-- CLAUDE.md
+|-- CODEOWNERS.txt
 |-- LICENSE
 |-- README.md
 |-- SUMMARY.md
@@ -82,6 +83,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- milestone-templates.md
 |   |-- github-configs.md
 |   |-- github-templates
+|   |   |-- CODE_OF_CONDUCT.md
 |   |   |-- CONTRIBUTING.md
 |   |   `-- SECURITY.md
 |   |-- github-templates.md
@@ -100,7 +102,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-24 directories, 67 files
+24 directories, 69 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -110,6 +112,7 @@ This document outlines the core GitHub repositories that are essential for my te
 ```plaintext
 .
 |-- CLAUDE.md
+|-- CODEOWNERS.txt
 |-- LICENSE
 |-- README.md
 |-- SUMMARY.md
@@ -182,6 +185,7 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   `-- milestone-templates.md
 |   |-- github-configs.md
 |   |-- github-templates
+|   |   |-- CODE_OF_CONDUCT.md
 |   |   |-- CONTRIBUTING.md
 |   |   `-- SECURITY.md
 |   |-- github-templates.md
@@ -200,7 +204,7 @@ This document outlines the core GitHub repositories that are essential for my te
     |-- homelab-topology.md
     `-- service-maps.md
 
-24 directories, 67 files
+24 directories, 69 files
 ```
 <!-- DOCS-TREE-END -->
 
