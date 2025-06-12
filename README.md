@@ -109,6 +109,15 @@ For more details, see my [Terraform standards](https://github.com/basher83/docs/
 - [👨‍💻 Profile README](https://github.com/basher83/basher83)
 - [🏠 ProxmoxMCP Project](https://github.com/basher83/ProxmoxMCP)
 
+## 🧹 Local Markdown Linting
+
+Install [markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli) to lint all Markdown files:
+
+```bash
+npm install -g markdownlint-cli
+markdownlint '**/*.md' --fix
+```
+
 ---
 
 <div align="center">
