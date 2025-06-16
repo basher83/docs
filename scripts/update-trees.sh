@@ -41,14 +41,14 @@ update_tree_in_file() {
     echo -e "📄 Updating tree in: $file"
     
     # Generate tree
-    local tree_output=$(tree "$directory" $tree_flags)
+    local tree_output=$(tree "$directory" "$tree_flags")
     
     # Create a temporary file
     local temp_file=$(mktemp)
     
     # Process file line by line
     local in_tree_section=false
-    local tree_written=false
+    # local tree_written=false  # Variable not currently used
     
     while IFS= read -r line; do
         if [[ "$line" == *"<!-- TREE-START -->"* ]]; then
