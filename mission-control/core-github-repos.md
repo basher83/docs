@@ -10,22 +10,18 @@ This document outlines the core GitHub repositories that are essential for my te
 ```plaintext
 .
 |-- CLAUDE.md
-|-- LICENSE
-|-- README.md
-|-- SUMMARY.md
+|-- docs.code-workspace
 |-- flight-manuals
-|   |-- README.md
 |   |-- automation-scripts
-|   |   |-- README.md
 |   |   |-- documentation
 |   |   |   `-- update-trees.md
 |   |   |-- proxmox-backup-server
-|   |   |   |-- README.md
-|   |   |   `-- pbs-backup-health.md
-|   |   `-- proxmox-virtual-environment
-|   |       `-- README.md
+|   |   |   |-- pbs-backup-health.md
+|   |   |   `-- README.md
+|   |   |-- proxmox-virtual-environment
+|   |   |   `-- README.md
+|   |   `-- README.md
 |   |-- gitops
-|   |   |-- README.md
 |   |   |-- actions.md
 |   |   |-- assets.md
 |   |   |-- commit-conventions.md
@@ -34,31 +30,32 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |-- gitkeep.md
 |   |   |-- gitmessage.md
 |   |   |-- project-management.md
+|   |   |-- README.md
 |   |   |-- repo-setup-guide.md
 |   |   |-- repository-maintenance.md
 |   |   |-- templates
 |   |   |   |-- docker-workflow.yml
 |   |   |   `-- terraform-workflow.yml
 |   |   `-- workflows
-|   |       |-- README.md
 |   |       |-- deployment-patterns.md
 |   |       |-- maintenance-workflows.md
+|   |       |-- README.md
 |   |       |-- reusable-workflows.md
 |   |       `-- security-workflows.md
 |   |-- network-security
 |   |   `-- README.md
-|   `-- proxmox-guides
-|       |-- README.md
-|       |-- backup-strategy.md
-|       |-- proxmox-backup-server-troubleshooting.md
-|       `-- proxmox-backup-server.md
+|   |-- proxmox-guides
+|   |   |-- backup-strategy.md
+|   |   |-- proxmox-backup-server-troubleshooting.md
+|   |   |-- proxmox-backup-server.md
+|   |   `-- README.md
+|   `-- README.md
+|-- LICENSE
 |-- maintenance-logs
-|   |-- README.md
-|   `-- learning-paths.md
+|   |-- learning-paths.md
+|   `-- README.md
 |-- mission-control
-|   |-- README.md
 |   |-- boilerplate
-|   |   |-- README.md
 |   |   |-- gitignore-templates
 |   |   |   |-- docker.gitignore
 |   |   |   |-- nodejs.gitignore
@@ -68,21 +65,22 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |-- license-templates
 |   |   |   |-- APACHE-2.0.LICENSE
 |   |   |   `-- MIT.LICENSE
-|   |   `-- readme-templates
-|   |       |-- documentation-readme.md
-|   |       `-- project-readme.md
+|   |   |-- readme-templates
+|   |   |   |-- documentation-readme.md
+|   |   |   `-- project-readme.md
+|   |   `-- README.md
 |   |-- boilerplate.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- github-configs
 |   |   |-- CODEOWNERS-template
-|   |   |-- README.md
 |   |   |-- integration-configs
 |   |   |   |-- dependabot.yml
 |   |   |   |-- renovate-config.json
 |   |   |   `-- shields-badges.md
 |   |   |-- label-definitions.yml
-|   |   `-- milestone-templates.md
+|   |   |-- milestone-templates.md
+|   |   `-- README.md
 |   |-- github-configs.md
 |   |-- github-templates
 |   |   |-- CODE_OF_CONDUCT.md
@@ -92,26 +90,30 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |   |-- config.yml
 |   |   |   |-- documentation.yml
 |   |   |   `-- feature-request.yml
+|   |   |-- pull_request_template.md
 |   |   |-- README.md
-|   |   |-- SECURITY.md
-|   |   `-- pull_request_template.md
+|   |   `-- SECURITY.md
 |   |-- github-templates.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
+|   |-- README.md
 |   `-- repo-naming-conventions.md
+|-- README.md
 |-- renovate.json
 |-- scripts
 |   `-- update-trees.sh
 |-- space-dictionary
 |   |-- README.md
 |   `-- tech-acronyms.md
-`-- star-charts
-    |-- README.md
-    |-- homelab-topology.md
-    `-- service-maps.md
+|-- star-charts
+|   |-- homelab-topology.md
+|   |-- README.md
+|   `-- service-maps.md
+|-- SUMMARY.md
+`-- Taskfile.yml
 
-25 directories, 77 files
+25 directories, 79 files
 ```
 <!-- DOCS-TREE-END -->
 
@@ -121,22 +123,18 @@ This document outlines the core GitHub repositories that are essential for my te
 ```plaintext
 .
 |-- CLAUDE.md
-|-- LICENSE
-|-- README.md
-|-- SUMMARY.md
+|-- docs.code-workspace
 |-- flight-manuals
-|   |-- README.md
 |   |-- automation-scripts
-|   |   |-- README.md
 |   |   |-- documentation
 |   |   |   `-- update-trees.md
 |   |   |-- proxmox-backup-server
-|   |   |   |-- README.md
-|   |   |   `-- pbs-backup-health.md
-|   |   `-- proxmox-virtual-environment
-|   |       `-- README.md
+|   |   |   |-- pbs-backup-health.md
+|   |   |   `-- README.md
+|   |   |-- proxmox-virtual-environment
+|   |   |   `-- README.md
+|   |   `-- README.md
 |   |-- gitops
-|   |   |-- README.md
 |   |   |-- actions.md
 |   |   |-- assets.md
 |   |   |-- commit-conventions.md
@@ -145,31 +143,32 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |-- gitkeep.md
 |   |   |-- gitmessage.md
 |   |   |-- project-management.md
+|   |   |-- README.md
 |   |   |-- repo-setup-guide.md
 |   |   |-- repository-maintenance.md
 |   |   |-- templates
 |   |   |   |-- docker-workflow.yml
 |   |   |   `-- terraform-workflow.yml
 |   |   `-- workflows
-|   |       |-- README.md
 |   |       |-- deployment-patterns.md
 |   |       |-- maintenance-workflows.md
+|   |       |-- README.md
 |   |       |-- reusable-workflows.md
 |   |       `-- security-workflows.md
 |   |-- network-security
 |   |   `-- README.md
-|   `-- proxmox-guides
-|       |-- README.md
-|       |-- backup-strategy.md
-|       |-- proxmox-backup-server-troubleshooting.md
-|       `-- proxmox-backup-server.md
+|   |-- proxmox-guides
+|   |   |-- backup-strategy.md
+|   |   |-- proxmox-backup-server-troubleshooting.md
+|   |   |-- proxmox-backup-server.md
+|   |   `-- README.md
+|   `-- README.md
+|-- LICENSE
 |-- maintenance-logs
-|   |-- README.md
-|   `-- learning-paths.md
+|   |-- learning-paths.md
+|   `-- README.md
 |-- mission-control
-|   |-- README.md
 |   |-- boilerplate
-|   |   |-- README.md
 |   |   |-- gitignore-templates
 |   |   |   |-- docker.gitignore
 |   |   |   |-- nodejs.gitignore
@@ -179,21 +178,22 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |-- license-templates
 |   |   |   |-- APACHE-2.0.LICENSE
 |   |   |   `-- MIT.LICENSE
-|   |   `-- readme-templates
-|   |       |-- documentation-readme.md
-|   |       `-- project-readme.md
+|   |   |-- readme-templates
+|   |   |   |-- documentation-readme.md
+|   |   |   `-- project-readme.md
+|   |   `-- README.md
 |   |-- boilerplate.md
 |   |-- coding-standards.md
 |   |-- core-github-repos.md
 |   |-- github-configs
 |   |   |-- CODEOWNERS-template
-|   |   |-- README.md
 |   |   |-- integration-configs
 |   |   |   |-- dependabot.yml
 |   |   |   |-- renovate-config.json
 |   |   |   `-- shields-badges.md
 |   |   |-- label-definitions.yml
-|   |   `-- milestone-templates.md
+|   |   |-- milestone-templates.md
+|   |   `-- README.md
 |   |-- github-configs.md
 |   |-- github-templates
 |   |   |-- CODE_OF_CONDUCT.md
@@ -203,26 +203,30 @@ This document outlines the core GitHub repositories that are essential for my te
 |   |   |   |-- config.yml
 |   |   |   |-- documentation.yml
 |   |   |   `-- feature-request.yml
+|   |   |-- pull_request_template.md
 |   |   |-- README.md
-|   |   |-- SECURITY.md
-|   |   `-- pull_request_template.md
+|   |   `-- SECURITY.md
 |   |-- github-templates.md
 |   |-- information-architecture.md
 |   |-- project-templates
 |   |   `-- README.md
+|   |-- README.md
 |   `-- repo-naming-conventions.md
+|-- README.md
 |-- renovate.json
 |-- scripts
 |   `-- update-trees.sh
 |-- space-dictionary
 |   |-- README.md
 |   `-- tech-acronyms.md
-`-- star-charts
-    |-- README.md
-    |-- homelab-topology.md
-    `-- service-maps.md
+|-- star-charts
+|   |-- homelab-topology.md
+|   |-- README.md
+|   `-- service-maps.md
+|-- SUMMARY.md
+`-- Taskfile.yml
 
-25 directories, 77 files
+25 directories, 79 files
 ```
 <!-- DOCS-TREE-END -->
 
