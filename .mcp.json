@@ -7,7 +7,7 @@
         "@codacy/codacy-mcp@latest"
       ],
       "env": {
-        "CODACY_ACCOUNT_TOKEN": "GYlfLbMAt0IUoOZ07Mof"
+        "CODACY_ACCOUNT_TOKEN": ""
       }
     }
   }
