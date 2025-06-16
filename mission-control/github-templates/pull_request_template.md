@@ -128,25 +128,31 @@ Test results here
 ## 🚨 Mission Risks & Considerations
 <!-- Potential risks, side effects, or considerations -->
 
-**Potential Risks:**
+### Potential Risks
+
 -
 
-**Mitigation Strategies:**
+### Mitigation Strategies
+
 -
 
-**Rollback Plan:**
+### Rollback Plan
+
 -
 
 ## 🔗 Mission References
 <!-- Links to related resources -->
 
-**Related Issues/PRs:**
+### Related Issues/PRs
+
 -
 
-**Documentation:**
+### Documentation
+
 -
 
-**External References:**
+### External References
+
 -
 
 ## 📋 Mission Deployment Checklist
