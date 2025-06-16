@@ -194,18 +194,21 @@ staging:
 ## Best Practices
 
 ### 🎯 Deployment Strategy
+
 - **Fail Fast**: Run tests before any deployment
 - **Progressive**: Deploy to staging before production
 - **Reversible**: Always plan for rollback scenarios
 - **Monitored**: Include health checks and notifications
 
 ### 🔒 Security
+
 - Use environment protection rules for production
 - Rotate secrets regularly
 - Audit deployment logs
 - Limit deployment permissions
 
 ### 📊 Observability
+
 - Log all deployment steps
 - Track deployment metrics
 - Monitor application health post-deployment

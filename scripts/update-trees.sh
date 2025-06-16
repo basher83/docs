@@ -41,7 +41,7 @@ update_tree_in_file() {
     echo -e "📄 Updating tree in: $file"
     
     # Generate tree
-    local tree_output=$(tree $directory $tree_flags)
+    local tree_output=$(tree "$directory" $tree_flags)
     
     # Create a temporary file
     local temp_file=$(mktemp)
@@ -57,7 +57,7 @@ update_tree_in_file() {
             echo "$tree_output" >> "$temp_file"
             echo '```' >> "$temp_file"
             in_tree_section=true
-            tree_written=true
+            # tree_written=true  # Variable used for tracking completion
         elif [[ "$line" == *"<!-- TREE-END -->"* ]]; then
             echo "$line" >> "$temp_file"
             in_tree_section=false

@@ -19,12 +19,14 @@ The repository follows a strict five-directory space exploration philosophy:
 ## File Organization Rules
 
 ### Naming Conventions
+
 - Use kebab-case for all files: `my-file-name.md`
 - Use descriptive, action-oriented names: `setup-proxmox-cluster.md` not `proxmox.md`
 - Every directory must have a `README.md` providing overview and navigation
 - Include creation/update dates in document headers
 
 ### Content Guidelines
+
 - **One concept per file** - separate procedural and reference content
 - **Clear hierarchy** - use subdirectories when categories emerge
 - **Cross-references** - link related content across directories
@@ -33,22 +35,27 @@ The repository follows a strict five-directory space exploration philosophy:
 ## Automation & Workflows
 
 ### GitHub Actions
+
 - `update-timestamp.yml` - Automatically updates "Last Updated" badges in README.md
 - `update-doc-trees.yml` - Maintains directory tree structures in documentation
 
 ### Dependency Management
+
 - Uses Renovate for automated dependency updates (basic configuration)
 
 ## Documentation Standards
 
 Every document must be:
+
 - **Actionable** - Reader knows exactly what to do next
 - **Current** - Information reflects actual state/procedures
 - **Discoverable** - Easy to find through clear navigation
 - **Maintainable** - Updates are straightforward and obvious
 
 ### Document Headers
+
 Use this format for consistency:
+
 ```markdown
 # 📐 Document Title
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
@@ -57,6 +64,7 @@ Use this format for consistency:
 ## Cross-Repository References
 
 When referencing other repositories in the basher83 ecosystem, use:
+
 ```markdown
 For more details, see my [Topic Name](https://github.com/basher83/repo-name/blob/main/path/to/file.md).
 ```

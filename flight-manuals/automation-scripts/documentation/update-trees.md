@@ -11,11 +11,13 @@ This directory contains scripts for maintaining and automating documentation tas
 **Purpose**: Automatically updates directory tree structures in documentation files.
 
 **Usage**:
+
 ```bash
 ./scripts/update-trees.sh
 ```
 
 **Features**:
+
 - Scans for tree markers (`<!-- TREE-START -->` and `<!-- TREE-END -->`) in documentation files
 - Generates fresh directory trees using the `tree` command
 - Updates content between markers while preserving surrounding content
@@ -23,15 +25,18 @@ This directory contains scripts for maintaining and automating documentation tas
 - Provides colored output for better readability
 
 **Currently Updates**:
+
 - `mission-control/core-github-repos.md` - Repository overview trees
 - `README.md` - Main documentation structure
 
 **Requirements**:
+
 - `tree` command must be installed
   - Ubuntu/Debian: `sudo apt-get install tree`
   - MacOS: `brew install tree`
 
 **How It Works**:
+
 1. Checks for the `tree` command availability
 2. Looks for files with tree markers
 3. Generates new tree output with specified filters
@@ -39,6 +44,7 @@ This directory contains scripts for maintaining and automating documentation tas
 5. Preserves all other file content
 
 **Example Tree Markers**:
+
 ```markdown
 <!-- TREE-START -->
 ```plaintext

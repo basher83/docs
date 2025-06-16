@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "codacy": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "@codacy/codacy-mcp@latest"
+      ],
+      "env": {
+        "CODACY_ACCOUNT_TOKEN": "GYlfLbMAt0IUoOZ07Mof"
+      }
+    }
+  }
+}

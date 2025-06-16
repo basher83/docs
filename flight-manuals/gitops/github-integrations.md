@@ -1,4 +1,5 @@
 # 🔗 GitHub Integrations Guide
+
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--09-success)
 
 Complete guide for setting up external integrations with GitHub repositories.
@@ -10,6 +11,7 @@ This guide covers integration setup for external services that enhance repositor
 ## Shields.io Badges
 
 ### Standard Badge Set
+
 Add these badges to README.md headers for consistent project presentation:
 
 ```markdown
@@ -20,6 +22,7 @@ Add these badges to README.md headers for consistent project presentation:
 ```
 
 ### Dynamic Badges
+
 For active projects, include status badges:
 
 ```markdown
@@ -29,6 +32,7 @@ For active projects, include status badges:
 ```
 
 ### Custom Badges
+
 Space-themed custom badges:
 
 ```markdown
@@ -40,6 +44,7 @@ Space-themed custom badges:
 ## GitBook Integration
 
 ### Setup Process
+
 1. **GitBook Account Setup**
    - Create/login to GitBook account
    - Connect GitHub organization
@@ -72,6 +77,7 @@ variables:
 ```
 
 ### Documentation Structure
+
 Organize docs for GitBook compatibility:
 
 ```plaintext
@@ -86,6 +92,7 @@ docs/
 ```
 
 ### GitHub Actions for GitBook
+
 Add workflow for automatic GitBook updates:
 
 ```yaml
@@ -109,6 +116,7 @@ jobs:
 ## GitHub Pages
 
 ### Setup for Documentation Sites
+
 1. **Enable GitHub Pages**
    - Go to repository Settings → Pages
    - Select source: GitHub Actions
@@ -139,6 +147,7 @@ navigation:
 ```
 
 3. **GitHub Actions for Pages**
+
 ```yaml
 name: Deploy Documentation
 on:
@@ -166,6 +175,7 @@ jobs:
 ## Renovate Integration
 
 ### Configuration Setup
+
 Add `renovate.json` to repository root:
 
 ```json
@@ -183,6 +193,7 @@ Add `renovate.json` to repository root:
 ```
 
 ### Advanced Configuration
+
 For specific package managers:
 
 ```json
@@ -205,12 +216,14 @@ For specific package managers:
 ## CodeCov Integration
 
 ### Setup Process
+
 1. **CodeCov Account**
    - Connect CodeCov with GitHub
    - Add repository to CodeCov dashboard
    - Get upload token
 
 2. **GitHub Actions Integration**
+
 ```yaml
 name: Test Coverage
 on: [push, pull_request]
@@ -249,6 +262,7 @@ comment:
 ## Dependabot Configuration
 
 ### Security Updates
+
 Create `.github/dependabot.yml`:
 
 ```yaml
@@ -279,6 +293,7 @@ updates:
 ## All Contributors Integration
 
 ### Setup Process
+
 1. **Install All Contributors Bot**
    - Install from GitHub Marketplace
    - Grant repository access
@@ -305,6 +320,7 @@ Add `.all-contributorsrc`:
 ## Integration Monitoring
 
 ### Health Checks
+
 Regular monitoring of integrations:
 
 - [ ] Shields.io badges display correctly
@@ -317,16 +333,19 @@ Regular monitoring of integrations:
 ### Troubleshooting Common Issues
 
 **Badge Display Issues:**
+
 - Check URL syntax in markdown
 - Verify repository visibility settings
 - Test badge URLs independently
 
 **GitBook Sync Failures:**
+
 - Verify `.gitbook.yaml` syntax
 - Check GitHub webhook status
 - Review GitBook integration logs
 
 **GitHub Actions Failures:**
+
 - Check workflow file syntax
 - Verify secrets configuration
 - Review action logs for errors
@@ -334,12 +353,14 @@ Regular monitoring of integrations:
 ## Security Considerations
 
 ### Token Management
+
 - Store all tokens in GitHub Secrets
 - Use least-privilege access
 - Rotate tokens regularly
 - Monitor token usage
 
 ### Webhook Security
+
 - Verify webhook sources
 - Use secret tokens for validation
 - Monitor webhook activity
@@ -348,6 +369,7 @@ Regular monitoring of integrations:
 ## Next Steps
 
 After setting up integrations:
+
 1. Configure [project management](project-management.md) workflows
 2. Establish [commit conventions](commit-conventions.md)
 3. Set up [repository maintenance](repository-maintenance.md) schedules

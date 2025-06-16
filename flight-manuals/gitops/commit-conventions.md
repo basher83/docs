@@ -1,4 +1,5 @@
 # 📝 Commit Conventions Guide
+
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--09-success)
 
 Comprehensive guide for git commit message standards and automation using space-themed conventions.
@@ -10,6 +11,7 @@ Standardized commit messages improve project tracking, automation, and team coll
 ## Commit Message Structure
 
 ### Standard Format
+
 ```
 <emoji> <type>(<scope>): <description>
 
@@ -32,51 +34,61 @@ Standardized commit messages improve project tracking, automation, and team coll
 ### Primary Types with Space Emojis
 
 **🎯 feat**: New features and capabilities
+
 ```bash
 git commit -m "🎯 feat(auth): add multi-factor authentication system"
 ```
 
 **🐛 fix**: Bug fixes and corrections
+
 ```bash
 git commit -m "🐛 fix(api): resolve timeout issues in user endpoints"
 ```
 
 **📚 docs**: Documentation changes only
+
 ```bash
 git commit -m "📚 docs(readme): update installation instructions"
 ```
 
 **🎨 style**: Code style changes (formatting, etc.)
+
 ```bash
 git commit -m "🎨 style(components): apply consistent indentation"
 ```
 
 **🔧 refactor**: Code refactoring without feature/bug changes
+
 ```bash
 git commit -m "🔧 refactor(utils): extract common validation logic"
 ```
 
 **⚡ perf**: Performance improvements
+
 ```bash
 git commit -m "⚡ perf(db): optimize query performance for user lookup"
 ```
 
 **✅ test**: Adding or modifying tests
+
 ```bash
 git commit -m "✅ test(auth): add unit tests for login flow"
 ```
 
 **🔨 build**: Build system or external dependencies
+
 ```bash
 git commit -m "🔨 build(deps): upgrade React to version 18.2"
 ```
 
 **👷 ci**: CI/CD configuration changes
+
 ```bash
 git commit -m "👷 ci(actions): add automated testing workflow"
 ```
 
 **🧹 chore**: Maintenance tasks, no production code change
+
 ```bash
 git commit -m "🧹 chore(deps): update development dependencies"
 ```
@@ -84,31 +96,37 @@ git commit -m "🧹 chore(deps): update development dependencies"
 ### Mission-Specific Emojis
 
 **🚀 deploy**: Deployment and release related
+
 ```bash
 git commit -m "🚀 deploy: prepare version 2.1.0 for launch"
 ```
 
 **🛰️ config**: Configuration updates
+
 ```bash
 git commit -m "🛰️ config(env): update production environment variables"
 ```
 
 **🌟 enhance**: Improvements to existing features
+
 ```bash
 git commit -m "🌟 enhance(ui): improve navigation accessibility"
 ```
 
 **🔒 security**: Security-related changes
+
 ```bash
 git commit -m "🔒 security(auth): implement rate limiting for login attempts"
 ```
 
 **🎨 design**: UI/UX specific changes
+
 ```bash
 git commit -m "🎨 design(landing): update hero section layout"
 ```
 
 **📊 analytics**: Tracking and analytics changes
+
 ```bash
 git commit -m "📊 analytics(events): add user interaction tracking"
 ```
@@ -118,6 +136,7 @@ git commit -m "📊 analytics(events): add user interaction tracking"
 ### Common Scopes by Project Type
 
 **Web Applications:**
+
 - `auth` - Authentication system
 - `api` - API endpoints
 - `ui` - User interface components
@@ -126,6 +145,7 @@ git commit -m "📊 analytics(events): add user interaction tracking"
 - `utils` - Utility functions
 
 **Infrastructure Projects:**
+
 - `k8s` - Kubernetes configurations
 - `docker` - Docker related
 - `terraform` - Infrastructure as code
@@ -134,6 +154,7 @@ git commit -m "📊 analytics(events): add user interaction tracking"
 - `security` - Security hardening
 
 **Documentation Projects:**
+
 - `guides` - How-to guides
 - `reference` - Reference documentation
 - `templates` - Template files
@@ -143,6 +164,7 @@ git commit -m "📊 analytics(events): add user interaction tracking"
 ## Detailed Examples
 
 ### Feature Addition
+
 ```bash
 🎯 feat(dashboard): add real-time mission status monitoring
 
@@ -155,6 +177,7 @@ Implements: RFC-456
 ```
 
 ### Bug Fix with Investigation
+
 ```bash
 🐛 fix(navigation): resolve menu collapse on mobile devices
 
@@ -170,6 +193,7 @@ Tested-on: iOS Safari, Android Chrome, mobile Firefox
 ```
 
 ### Documentation Update
+
 ```bash
 📚 docs(api): add comprehensive endpoint documentation
 
@@ -182,6 +206,7 @@ Co-authored-by: Jane Doe <jane@example.com>
 ```
 
 ### Refactoring with Rationale
+
 ```bash
 🔧 refactor(auth): extract token validation to middleware
 
@@ -203,6 +228,7 @@ Breaking-change: None (internal refactoring only)
 ### Git Message Template Setup
 
 Create `.gitmessage` template file:
+
 ```bash
 # 🚀 Mission Commit Template
 # 
@@ -240,6 +266,7 @@ Create `.gitmessage` template file:
 ```
 
 Configure git to use template:
+
 ```bash
 git config commit.template .gitmessage
 ```
@@ -247,6 +274,7 @@ git config commit.template .gitmessage
 ### VS Code Integration
 
 Add to `.vscode/settings.json`:
+
 ```json
 {
   "git.inputValidationLength": 50,
@@ -263,6 +291,7 @@ Add to `.vscode/settings.json`:
 ## Automated Workflows
 
 ### Commit Validation
+
 Create `.github/workflows/commit-validation.yml`:
 
 ```yaml
@@ -293,6 +322,7 @@ jobs:
 ```
 
 ### Changelog Generation
+
 Automate changelog generation from commit messages:
 
 ```yaml
@@ -329,6 +359,7 @@ jobs:
 ```
 
 ### Release Notes Automation
+
 Generate release notes from commits:
 
 ```yaml
@@ -392,6 +423,7 @@ jobs:
 ### Code Review Integration
 
 **PR Title Format:**
+
 ```
 🎯 feat(scope): Brief description of changes
 
@@ -404,6 +436,7 @@ Related: #456
 
 **Review Comments:**
 Use space-themed language in reviews:
+
 - "🚀 Ready for launch!" (Approved)
 - "🔍 Navigation check needed" (Needs changes)
 - "🛰️ Orbital adjustment suggested" (Minor suggestion)
@@ -412,12 +445,14 @@ Use space-themed language in reviews:
 ### Commit Frequency Guidelines
 
 **Development Flow:**
+
 - Make small, logical commits
 - Each commit should be a complete thought
 - Avoid "WIP" or "tmp" commits in main branch
 - Use interactive rebase to clean up history before PR
 
 **Commit Timing:**
+
 - Commit working code frequently
 - Don't commit broken code to main branch
 - Use feature branches for experimental work
@@ -428,6 +463,7 @@ Use space-themed language in reviews:
 ### Common Issues
 
 **Commit Message Too Long:**
+
 ```bash
 # Instead of:
 🎯 feat(auth): implement comprehensive multi-factor authentication with SMS, email, and app-based verification
@@ -442,6 +478,7 @@ Implement comprehensive MFA with multiple verification methods:
 ```
 
 **Missing Emoji or Type:**
+
 ```bash
 # Incorrect:
 fix login bug
@@ -451,6 +488,7 @@ fix login bug
 ```
 
 **Scope Too Broad:**
+
 ```bash
 # Too broad:
 🎯 feat(app): add new features
@@ -463,6 +501,7 @@ fix login bug
 ### Git Hooks for Validation
 
 Create `.git/hooks/commit-msg`:
+
 ```bash
 #!/bin/sh
 # Space-themed commit message validation
@@ -485,6 +524,7 @@ fi
 ```
 
 Make hook executable:
+
 ```bash
 chmod +x .git/hooks/commit-msg
 ```

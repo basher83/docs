@@ -42,7 +42,7 @@ Development projects are modeled after famous space missions that represent expl
 
 ---
 
-## 🌍 Staging Projects 
+## 🌍 Staging Projects
 
 ![Staging](https://img.shields.io/badge/Staging-Planets_&_Stars-yellow?style=for-the-badge&logo=star&logoColor=white)
 

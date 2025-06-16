@@ -109,6 +109,65 @@ For more details, see my [Terraform standards](https://github.com/basher83/docs/
 - [👨‍💻 Profile README](https://github.com/basher83/basher83)
 - [🏠 ProxmoxMCP Project](https://github.com/basher83/ProxmoxMCP)
 
+## 🛠️ Development
+
+This repository includes a [Taskfile](https://taskfile.dev/) for common development and maintenance tasks:
+
+```bash
+# Show all available tasks
+task
+
+# Run pre-commit checks (linting, formatting, security)
+task pre-commit
+
+# Run all tests
+task test
+
+# Auto-fix formatting issues
+task format
+
+# Update documentation trees
+task update-trees
+
+# Install git hooks for automatic pre-commit checks
+task git:hooks
+```
+
+**Key tasks:**
+
+- `task pre-commit` - Run before committing changes
+- `task ci` - Verify your changes match CI requirements
+- `task docs` - Update and validate documentation
+- `task install` - Install required development tools
+
+**Quality & Formatting:**
+
+- `task quality` - Run comprehensive quality analysis
+- `task format:bulk` - Auto-fix formatting issues across all files
+- `task format:markdown-aggressive` - Advanced markdown auto-fixing
+- `task quality:metrics` - Generate detailed quality metrics
+
+**Git Workflow:**
+
+- `task git:hooks` - Install enhanced pre-commit hooks with auto-fixing
+- `task git:hooks:simple` - Install basic pre-commit hooks
+
+**Code Quality Analysis:**
+
+For comprehensive code quality and security analysis, use Claude Code with Codacy MCP integration:
+
+```bash
+# In Claude Code session
+use codacy mcp to check for issues
+```
+
+**Automated Quality Features:**
+
+- ⬆️ **Renovate Bot** - Automated dependency updates with security focus
+- 🔧 **Auto-fix Workflows** - Automatic markdown formatting on PRs
+- 🛡️ **Security Scanning** - GitHub Actions pinning and secret detection
+- 📊 **Quality Metrics** - Continuous quality monitoring and reporting
+
 ---
 
 <div align="center">

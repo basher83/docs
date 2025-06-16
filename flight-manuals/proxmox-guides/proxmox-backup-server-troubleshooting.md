@@ -80,6 +80,7 @@ Two main problems were identified:
    ```
 
 6. **Silenced the ESP sync warning** (optional):
+
    ```bash
    touch /etc/kernel/proxmox-boot-uuids
    ```

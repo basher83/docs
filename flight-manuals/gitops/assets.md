@@ -21,7 +21,7 @@ basher83/assets/
 └── screenshots/           # Project screenshots
 ```
 
-### GitHub-Compatible External Services:
+### GitHub-Compatible External Services
 
 - [Imgur](https://imgur.com/): Very reliable and widely used in GitHub docs
 - [ImgBB](https://imgbb.com/): Offers permanent hosting options
@@ -62,14 +62,14 @@ To utilize assets in your projects, follow these steps:
 <img src="https://raw.githubusercontent.com/basher83/assets/main/octocats/main-profile-octocat.png" width="200" alt="My Custom Octocat">
 ```
 
-### 3. Best Practices:
+### 3. Best Practices
 
 - Include a README in your assets repo explaining usage rights
 - Use consistent naming conventions for easy reference
 - Consider adding lightweight image optimization to your workflow
 - Update your Last Updated badges automatically using GitHub Actions
 
-### 4. Benefits of This Approach:
+### 4. Benefits of This Approach
 
 - Centralized Asset Management: All your visual assets in one place
 - Consistent URLs: Links won't break when you update assets

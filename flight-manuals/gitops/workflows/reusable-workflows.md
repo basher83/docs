@@ -9,15 +9,18 @@ Centralized, reusable GitHub Actions workflows for common operations across mult
 ### 🐳 Docker Workflows
 
 #### `deploy-docker.yml`
+
 **Purpose**: Build and deploy Docker containers to various environments
 
 **Inputs**:
+
 - `environment` - Target environment (development, staging, production)
 - `registry` - Container registry URL
 - `image_name` - Docker image name
 - `dockerfile_path` - Path to Dockerfile (default: ./Dockerfile)
 
 **Usage**:
+
 ```yaml
 jobs:
   deploy:
@@ -33,26 +36,32 @@ jobs:
 ### 🏗️ Terraform Workflows
 
 #### `terraform-plan.yml`
+
 **Purpose**: Plan Terraform changes across environments
 
 **Inputs**:
+
 - `working_directory` - Terraform working directory
 - `terraform_version` - Terraform version to use
 - `environment` - Target environment
 
 #### `terraform-apply.yml`
+
 **Purpose**: Apply Terraform changes with proper approvals
 
 ### 📚 Documentation Workflows
 
 #### `update-docs.yml`
+
 **Purpose**: Automatically update documentation trees and timestamps
 
-**Triggers**: 
+**Triggers**:
+
 - Push to documentation directories
 - Manual dispatch
 
 **Features**:
+
 - Updates directory trees in markdown files
 - Updates timestamp badges
 - Auto-commits changes
@@ -60,9 +69,11 @@ jobs:
 ### 🔒 Security Workflows
 
 #### `security-scan.yml`
+
 **Purpose**: Comprehensive security scanning
 
 **Features**:
+
 - Container image vulnerability scanning
 - Code quality checks
 - Dependency vulnerability scanning
@@ -75,17 +86,20 @@ All reusable workflows are stored in: [`basher83/github-actions`](https://github
 ## Best Practices
 
 ### Workflow Design
+
 - **Modular**: Each workflow handles one specific concern
 - **Parameterized**: Use inputs for customization
 - **Secure**: Handle secrets properly
 - **Documented**: Clear descriptions and examples
 
 ### Version Management
+
 - Use semantic versioning tags for releases
 - Reference specific versions in production workflows
 - Use `@main` for development/testing
 
 ### Input Validation
+
 - Provide sensible defaults
 - Validate required inputs
 - Document input constraints

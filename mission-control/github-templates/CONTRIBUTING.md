@@ -15,13 +15,16 @@ Our space-themed project operates under these core principles:
 ## 🛰️ Getting Started
 
 ### 1. Mission Briefing
+
 Before contributing, familiarize yourself with:
+
 - Project documentation and README
 - Existing issues and discussions
 - [Code of Conduct](CODE_OF_CONDUCT.md)
 - [Commit conventions](../../flight-manuals/gitops/commit-conventions.md)
 
 ### 2. Setting Up Your Mission Control
+
 ```bash
 # Fork and clone the repository
 git clone https://github.com/YOUR_USERNAME/PROJECT_NAME.git
@@ -38,7 +41,9 @@ npm test
 ```
 
 ### 3. Choosing Your Mission
+
 Look for issues labeled with:
+
 - 🟢 `good-first-issue` - Perfect for new contributors
 - 🤝 `help-wanted` - We need assistance with these
 - 📚 `documentation` - Help improve our mission manuals
@@ -47,12 +52,15 @@ Look for issues labeled with:
 ## 🚀 Contribution Workflow
 
 ### Step 1: Mission Planning
+
 1. **Find or create an issue** describing what you want to work on
 2. **Comment on the issue** to let others know you're working on it
 3. **Get confirmation** from maintainers for larger changes
 
 ### Step 2: Development Phase
+
 1. **Create a feature branch** from the main branch:
+
    ```bash
    git checkout -b feature/mission-name
    ```
@@ -64,6 +72,7 @@ Look for issues labeled with:
    - Follow existing architectural patterns
 
 3. **Write tests** for new functionality:
+
    ```bash
    # Run tests frequently during development
    npm test
@@ -73,6 +82,7 @@ Look for issues labeled with:
    ```
 
 4. **Commit your changes** using our [commit conventions](../../flight-manuals/gitops/commit-conventions.md):
+
    ```bash
    git commit -m "🎯 feat(auth): add OAuth 2.0 integration
    
@@ -84,8 +94,10 @@ Look for issues labeled with:
    ```
 
 ### Step 3: Mission Review
+
 1. **Update documentation** if needed
 2. **Run the full test suite:**
+
    ```bash
    npm run test:full
    npm run lint
@@ -98,12 +110,14 @@ Look for issues labeled with:
 ## 📋 Contribution Types
 
 ### 🐛 Bug Fixes
+
 - Reference the issue number in your PR
 - Include steps to reproduce the bug
 - Add tests to prevent regression
 - Update documentation if the fix changes behavior
 
 ### ✨ New Features
+
 - Discuss the feature in an issue first
 - Follow existing patterns and conventions
 - Include comprehensive tests
@@ -111,6 +125,7 @@ Look for issues labeled with:
 - Consider backward compatibility
 
 ### 📚 Documentation
+
 - Check for typos and grammar
 - Ensure accuracy of technical information
 - Add examples where helpful
@@ -118,6 +133,7 @@ Look for issues labeled with:
 - Test any code examples provided
 
 ### 🎨 Design & UI
+
 - Follow existing design patterns
 - Ensure accessibility compliance
 - Test across different screen sizes
@@ -127,6 +143,7 @@ Look for issues labeled with:
 ## 🔍 Code Review Process
 
 ### What We Look For
+
 - **Functionality** - Does it work as intended?
 - **Code Quality** - Is it readable and maintainable?
 - **Testing** - Are there adequate tests?
@@ -135,12 +152,15 @@ Look for issues labeled with:
 - **Security** - Are there security implications?
 
 ### Review Timeline
+
 - **Initial response:** Within 2 business days
 - **Full review:** Within 1 week for standard PRs
 - **Complex changes:** May require additional time and multiple reviewers
 
 ### Review Responses
+
 We use space-themed review language:
+
 - 🚀 "Ready for launch!" - Approved
 - 🔍 "Navigation check needed" - Changes requested
 - 🛰️ "Orbital adjustment suggested" - Minor suggestions
@@ -149,6 +169,7 @@ We use space-themed review language:
 ## 🛡️ Quality Standards
 
 ### Code Standards
+
 - **Linting:** Code must pass all linting rules
 - **Testing:** Minimum 80% test coverage for new code
 - **Documentation:** All public APIs must be documented
@@ -156,6 +177,7 @@ We use space-themed review language:
 - **Security:** No introduction of security vulnerabilities
 
 ### Git Standards
+
 - **Commit Messages:** Follow our commit conventions
 - **Branch Names:** Use descriptive names (e.g., `feat/user-auth`, `fix/login-bug`)
 - **History:** Keep git history clean (squash small commits)
@@ -164,7 +186,9 @@ We use space-themed review language:
 ## 🚨 Reporting Issues
 
 ### Bug Reports
+
 Use our [bug report template](.github/ISSUE_TEMPLATE/bug-report.yml):
+
 - Clear, descriptive title
 - Steps to reproduce
 - Expected vs. actual behavior
@@ -172,14 +196,18 @@ Use our [bug report template](.github/ISSUE_TEMPLATE/bug-report.yml):
 - Screenshots if applicable
 
 ### Feature Requests
+
 Use our [feature request template](.github/ISSUE_TEMPLATE/feature-request.yml):
+
 - Problem description
 - Proposed solution
 - Use cases and user stories
 - Success criteria
 
 ### Security Issues
+
 **Never report security issues publicly.** Instead:
+
 1. Use GitHub Security Advisories
 2. Email security@yourproject.com
 3. Provide detailed description and steps to reproduce
@@ -188,19 +216,23 @@ Use our [feature request template](.github/ISSUE_TEMPLATE/feature-request.yml):
 ## 🤝 Community Guidelines
 
 ### Communication
+
 - **Be respectful** and inclusive in all interactions
 - **Ask questions** if something is unclear
 - **Provide constructive feedback** during reviews
 - **Celebrate successes** and learn from mistakes
 
 ### Getting Help
+
 - **GitHub Discussions** - General questions and community chat
 - **Issue Comments** - Specific questions about issues
 - **Discord/Slack** - Real-time community support
 - **Documentation** - Check our comprehensive guides first
 
 ### Recognition
+
 We recognize contributors through:
+
 - **All Contributors** bot for various contribution types
 - **Release notes** mentioning significant contributions
 - **Contributors page** on our website
@@ -209,6 +241,7 @@ We recognize contributors through:
 ## 📊 Contribution Metrics
 
 We track and celebrate:
+
 - Code contributions (commits, PRs)
 - Documentation improvements
 - Bug reports and testing
@@ -218,14 +251,18 @@ We track and celebrate:
 ## 🚀 Advanced Contributions
 
 ### Becoming a Maintainer
+
 Regular contributors may be invited to become maintainers:
+
 - Consistent high-quality contributions
 - Strong understanding of project architecture
 - Positive community involvement
 - Commitment to project goals
 
 ### Major Feature Development
+
 For significant features:
+
 1. Create an RFC (Request for Comments) issue
 2. Gather community feedback
 3. Create detailed implementation plan
@@ -235,13 +272,16 @@ For significant features:
 ## 📚 Resources
 
 ### Documentation
+
 - [Project Architecture](../../star-charts/)
 - [Development Setup](../../flight-manuals/)
 
 ### Tools
+
 - [Code Style Guide](../coding-standards.md)
 
 ### Community
+
 - [Discord Server](https://discord.gg/yourproject)
 - [GitHub Discussions](https://github.com/basher83/PROJECT_NAME/discussions)
 - [Weekly Community Calls](https://calendar.google.com/calendar/yourproject)

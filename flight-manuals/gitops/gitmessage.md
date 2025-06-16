@@ -6,7 +6,7 @@ This document outlines the git message format.
 
 ## Git Message
 
-### 1.
+### 1
 
 ```
 
