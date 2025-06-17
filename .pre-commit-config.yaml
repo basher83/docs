@@ -49,8 +49,27 @@ repos:
       - id: detect-private-key
       - id: forbid-new-submodules
 
-  # Note: Taskfile integration temporarily disabled for initial commit
-  # Will be re-enabled after setup is complete
+  # Additional security validation
+  - repo: local
+    hooks:
+      - id: validate-no-secrets-in-commits
+        name: Validate no secrets in staged files
+        description: Final check for any secrets in files being committed
+        entry: bash
+        language: system
+        args:
+          - -c
+          - |
+            echo "🔍 Final security validation..."
+            # The main secret detection is handled by gitleaks and detect-secrets above
+            # This is just a final validation that our .mcp.json is correct
+            if [ -f .mcp.json ] && git diff --cached --name-only | grep -q ".mcp.json"; then
+              if grep -E '"[A-Z_]+":\s*"[^$]' .mcp.json; then
+                echo "❌ Found hardcoded values in .mcp.json - use environment variables instead"
+                exit 1
+              fi
+            fi
+            echo "✅ Final security validation passed"
 
 # Global Configuration
 fail_fast: true
