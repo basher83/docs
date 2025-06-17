@@ -1,0 +1,57 @@
+repos:
+  # Security: Secret Detection
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.27.2
+    hooks:
+      - id: gitleaks
+        name: Detect secrets with gitleaks
+        description: Scan for secrets using gitleaks
+        stages: [pre-commit, pre-push]
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        name: Detect secrets with detect-secrets
+        description: Scan for secrets using detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        stages: [pre-commit]
+
+  # Configuration Validation
+  - repo: local
+    hooks:
+      - id: validate-mcp-config
+        name: Validate .mcp.json configuration
+        description: Ensure .mcp.json only contains environment variable references
+        entry: bash
+        language: system
+        files: '^\.mcp\.json$'
+        args:
+          - -c
+          - |
+            if grep -E '"[A-Z_]+":\s*"[^$]' .mcp.json; then
+              echo "❌ Found hardcoded values in .mcp.json - use environment variables instead"
+              exit 1
+            fi
+            echo "✅ .mcp.json validation passed"
+
+  # File Security Checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: check-json
+      - id: detect-private-key
+      - id: forbid-new-submodules
+
+  # Note: Taskfile integration temporarily disabled for initial commit
+  # Will be re-enabled after setup is complete
+
+# Global Configuration
+fail_fast: true
+default_stages: [pre-commit]
