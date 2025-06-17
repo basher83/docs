@@ -142,6 +142,13 @@ task git:hooks
 - `task docs` - Update and validate documentation
 - `task install` - Install required development tools
 
+**Security & Protection:**
+
+- `task security` - **🛡️ Comprehensive security validation** (secrets, config, actions)
+- `task security:secrets` - Run gitleaks + detect-secrets scanning
+- `task security:config` - Validate .mcp.json and sensitive file patterns
+- `task setup:pre-commit` - **🔧 One-command setup** for pre-commit hooks
+
 **Quality & Formatting:**
 
 - `task quality` - Run comprehensive quality analysis
@@ -167,8 +174,22 @@ use codacy mcp to check for issues
 
 - ⬆️ **Renovate Bot** - Automated dependency updates with security focus
 - 🔧 **Auto-fix Workflows** - Automatic markdown formatting on PRs
-- 🛡️ **Security Scanning** - GitHub Actions pinning and secret detection
+- 🛡️ **Multi-Layer Security** - Pre-commit hooks with gitleaks, detect-secrets, and config validation
+- 🚫 **Secret Prevention** - Blocks API keys and sensitive data at commit time
 - 📊 **Quality Metrics** - Continuous quality monitoring and reporting
+
+**Security Setup for New Machines:**
+
+```bash
+# One-command security setup
+task setup:pre-commit
+
+# Verify everything works
+task security
+
+# Test with all checks
+task pre-commit
+```
 
 ---
 

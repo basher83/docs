@@ -101,6 +101,7 @@ tasks:
     cmds:
       - task: security:actions
       - task: security:secrets
+      - task: security:config
       - echo "✅ Security checks passed!"
 
   security:actions:
@@ -122,10 +123,45 @@ tasks:
     cmds:
       - |
         if command -v gitleaks >/dev/null 2>&1; then
+          echo "🔍 Running gitleaks secret detection..."
           gitleaks detect --source . --verbose
         else
           echo "⚠️  gitleaks not installed, skipping secret detection"
           echo "   Install with: brew install gitleaks"
+        fi
+      - |
+        if command -v detect-secrets >/dev/null 2>&1; then
+          echo "🔍 Running detect-secrets scan..."
+          if [ ! -f .secrets.baseline ]; then
+            echo "📝 Creating secrets baseline..."
+            detect-secrets scan --baseline .secrets.baseline
+          else
+            detect-secrets scan --baseline .secrets.baseline
+          fi
+        else
+          echo "⚠️  detect-secrets not installed, install with: pip install detect-secrets"
+        fi
+
+  security:config:
+    desc: Validate configuration files for security issues
+    cmds:
+      - |
+        echo "🔍 Validating .mcp.json configuration..."
+        if [ -f .mcp.json ]; then
+          if grep -E '"[A-Z_]+":\s*"[^$]' .mcp.json; then
+            echo "❌ Found hardcoded values in .mcp.json - use environment variables instead"
+            exit 1
+          else
+            echo "✅ .mcp.json validation passed"
+          fi
+        fi
+      - |
+        echo "🔍 Checking for exposed secrets in tracked files..."
+        if git diff --cached --name-only | grep -E '\.(env|key|pem|p12|pfx)$'; then
+          echo "❌ Attempting to commit sensitive file types"
+          exit 1
+        else
+          echo "✅ No sensitive file types in commit"
         fi
 
   # Code Quality Analysis
@@ -267,6 +303,10 @@ tasks:
           echo "⚠️  gitleaks not found. Install with: brew install gitleaks"
         fi
         
+        if ! command -v detect-secrets >/dev/null 2>&1; then
+          echo "⚠️  detect-secrets not found. Install with: pip install detect-secrets"
+        fi
+        
         if ! command -v markdown-link-check >/dev/null 2>&1; then
           tools_to_install="$tools_to_install markdown-link-check"
         fi
@@ -277,6 +317,25 @@ tasks:
         else
           echo "✅ All npm tools already installed"
         fi
+
+  setup:pre-commit:
+    desc: Setup and install pre-commit hooks
+    cmds:
+      - |
+        echo "🔧 Setting up pre-commit hooks..."
+        if ! command -v pre-commit >/dev/null 2>&1; then
+          echo "⚠️  pre-commit not found. Install with: pip install pre-commit"
+          exit 1
+        fi
+      - |
+        echo "📦 Installing pre-commit hooks..."
+        pre-commit install
+        pre-commit install --hook-type commit-msg
+        pre-commit install --hook-type pre-push
+      - |
+        echo "🔍 Running initial pre-commit check..."
+        pre-commit run --all-files || echo "⚠️  Some checks failed - this is normal for first setup"
+        echo "✅ Pre-commit hooks installed successfully!"
 
   # Git helpers
   git:hooks:
