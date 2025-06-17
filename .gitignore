@@ -20,8 +20,37 @@ docs.code-workspace
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
 
-# Environment and config files with sensitive data
-.env
-.env.local
-.env.*.local
+# === MISSION CRITICAL SECRETS ===
+# Never commit these files or patterns
+
+# API Keys and Tokens
+*.key
+*.pem
+*.p12
+*.pfx
+api-keys.*
+*-token.*
+*-secret.*
+
+# Configuration with secrets
+.env*
+!.env.example
+secrets/
+config/secrets/
+*.secrets.*
+
+# SSH and certificates
+*_rsa
+*_rsa.pub
+*.ssh/
+ssh-keys/
+
+# === SENSITIVE PATTERNS ===
+# Files with common secret patterns
+*password*
+*passwd*
+*secret*
+*private*
+*confidential*
+
 .mcp.json
