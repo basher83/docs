@@ -19,3 +19,9 @@ docs.code-workspace
 
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
+
+# Environment and config files with sensitive data
+.env
+.env.local
+.env.*.local
+.mcp.json
