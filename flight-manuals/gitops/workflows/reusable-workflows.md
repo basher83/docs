@@ -24,7 +24,7 @@ Centralized, reusable GitHub Actions workflows for common operations across mult
 ```yaml
 jobs:
   deploy:
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
+    uses: basher83/.github/.github/workflows/deploy-docker.yml@main
     with:
       environment: production
       registry: ghcr.io
@@ -81,7 +81,7 @@ jobs:
 
 ## Implementation Repository
 
-All reusable workflows are stored in: [`basher83/github-actions`](https://github.com/basher83/github-actions)
+All reusable workflows are stored in: [`basher83/.github`](https://github.com/basher83/.github)
 
 ## Best Practices
 

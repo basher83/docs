@@ -42,7 +42,7 @@ jobs:
   build-and-deploy:
     needs: test
     if: github.ref == 'refs/heads/main'
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
+    uses: basher83/.github/.github/workflows/deploy-docker.yml@main
     with:
       environment: production
       registry: ghcr.io
@@ -67,7 +67,7 @@ on:
 
 jobs:
   terraform-plan:
-    uses: basher83/github-actions/.github/workflows/terraform-plan.yml@main
+    uses: basher83/.github/.github/workflows/terraform-plan.yml@main
     with:
       working_directory: terraform
       environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
@@ -77,7 +77,7 @@ jobs:
   terraform-apply:
     needs: terraform-plan
     if: github.ref == 'refs/heads/main'
-    uses: basher83/github-actions/.github/workflows/terraform-apply.yml@main
+    uses: basher83/.github/.github/workflows/terraform-apply.yml@main
     environment: production
     with:
       working_directory: terraform
@@ -101,7 +101,7 @@ on:
 
 jobs:
   update-docs:
-    uses: basher83/github-actions/.github/workflows/update-docs.yml@main
+    uses: basher83/.github/.github/workflows/update-docs.yml@main
     with:
       update_trees: true
       update_timestamps: true
@@ -121,14 +121,14 @@ on:
 jobs:
   deploy-development:
     if: github.ref == 'refs/heads/develop'
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
+    uses: basher83/.github/.github/workflows/deploy-docker.yml@main
     with:
       environment: development
       image_tag: dev-${{ github.sha }}
 
   deploy-staging:
     if: github.ref == 'refs/heads/main'
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
+    uses: basher83/.github/.github/workflows/deploy-docker.yml@main
     with:
       environment: staging
       image_tag: staging-${{ github.sha }}
@@ -136,7 +136,7 @@ jobs:
   deploy-production:
     needs: deploy-staging
     if: github.ref == 'refs/heads/main'
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
+    uses: basher83/.github/.github/workflows/deploy-docker.yml@main
     environment: production  # Requires manual approval
     with:
       environment: production

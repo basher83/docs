@@ -41,8 +41,9 @@ GitHub Templates serves as Mission Control's communication hub - containing all 
 
 1. **Copy** the appropriate template files to your repository's `.github/` directory
 2. **Customize** the content to match your project's specific community needs
-3. **Activate** the templates by committing them to your repository
-4. **Monitor** community interactions and refine templates based on usage patterns
+3. **Replace** the [REPO] and [PROJECT_NAME] with current repo/project name
+4. **Activate** the templates by committing them to your repository
+5. **Monitor** community interactions and refine templates based on usage patterns
 
 ## 🔗 Related Documentation
 

@@ -15,13 +15,13 @@ This directory contains comprehensive documentation for GitHub Actions workflows
 
 ## Quick Links
 
-* **Implementation Repository**: [`basher83/github-actions`](https://github.com/basher83/github-actions)
+* **Implementation Repository**: [`basher83/.github`](https://github.com/basher83/.github)
 * **Workflow Templates**: [`../templates/`](../templates/)
 * **Current Project Workflows**: Individual project `.github/workflows/` directories
 
 ## Usage Pattern
 
-1. **Reusable workflows** stored in `basher83/github-actions` repository
+1. **Reusable workflows** stored in `basher83/.github` repository
 2. **Project-specific workflows** reference reusable components
 3. **Documentation** in this directory explains usage and patterns
 4. **Templates** provide starting points for new workflows
@@ -32,7 +32,7 @@ This directory contains comprehensive documentation for GitHub Actions workflows
 # In project workflow
 jobs:
   deploy:
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
+    uses: basher83/.github/.github/workflows/deploy-docker.yml@main
     with:
       environment: production
 ```

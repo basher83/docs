@@ -75,7 +75,21 @@ pre-commit install
 
 - All checks must be enforced in CI for pull requests and main branches.
 
-## 7. References
+## 7. Comment Tagging Conventions
+
+Use the following tags in code and documentation comments to highlight important items:
+
+- `[TODO]`: Task to be completed
+- `[FIXME]`: Needs fixing
+- `[NOTE]`: Important information
+- `[HACK]`: Temporary workaround
+- `[REVIEW]`: Needs review
+- `[OPTIMIZE]`: Can be improved
+- `[BUG]`: Known issue
+
+These tags should be used in comments and are easily searchable for future maintenance.
+
+## 8. References
 
 - [PEP 8 — Style Guide for Python Code](https://peps.python.org/pep-0008/)
 - [PEP 484 — Type Hints](https://peps.python.org/pep-0484/)

@@ -12,7 +12,7 @@ This documentation follows a separation of concerns pattern:
 |-----------|----------|---------|
 | **Documentation** | [`workflows/`](./workflows/) | Comprehensive guides and patterns |
 | **Templates** | [`templates/`](./templates/) | Starting points for new workflows |
-| **Implementation** | [`basher83/github-actions`](https://github.com/basher83/github-actions) | Reusable workflow repository |
+| **Implementation** | [`basher83/.github`](https://github.com/basher83/.github) | Reusable workflow repository |
 | **Project Workflows** | Individual `.github/workflows/` | Project-specific implementations |
 
 ## 🔄 Workflow Categories
@@ -48,16 +48,23 @@ cp flight-manuals/gitops/templates/docker-workflow.yml .github/workflows/deploy.
 
 ### 3. Customize Template
 
-Update TODO sections in the copied workflow file
+Update [TODO] sections in the copied workflow file
 
 ### 4. Reference Reusable Workflows
 
 ```yaml
+name: Use Sync Labels Workflow
+
+on:
+  workflow_dispatch: # Allows manual triggering
+  # You could also add 'schedule', 'push', etc. triggers if needed
+
 jobs:
-  deploy:
-    uses: basher83/github-actions/.github/workflows/deploy-docker.yml@main
-    with:
-      environment: production
+  sync-labels:
+    uses: basher83/.github/.github/workflows/sync-labels.yml@main
+    permissions:
+      contents: read
+      issues: write
 ```
 
 ## 🏗️ Architecture Principles

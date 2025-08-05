@@ -91,7 +91,7 @@ All organization follows space exploration metaphors:
 ```plaintext
 basher83/docs/           # Knowledge hub - procedures and standards
 basher83/automation-scripts/  # Implementation - actual scripts
-basher83/github-actions/      # Implementation - actual workflows
+basher83/.github/      # Implementation - actual workflows
 basher83/assets/             # Resources - visual assets
 ```
 
