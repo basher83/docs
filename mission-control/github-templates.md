@@ -8,6 +8,7 @@ All templates use tags that should be searched and replaced in each new reposito
 
 - [REPO]: Repository name (e.g., my-awesome-project)
 - [PROJECT_NAME]: Human-friendly project name (e.g., My Awesome Project)
+- [EMAIL_ADDRESS]: Contact email for the project (e.g., iamawesome@awesome.com)
 
 ### How to Use
 

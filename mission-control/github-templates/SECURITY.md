@@ -27,14 +27,14 @@ Instead, please report security vulnerabilities through one of these secure chan
 
 #### GitHub Security Advisories (Preferred)
 
-1. Go to the [Security tab](https://github.com/basher83/PROJECT_NAME/security/advisories)
+1. Go to the [Security tab](https://github.com/basher83/[REPO]/security/advisories)
 2. Click "Report a vulnerability"
 3. Fill out the security advisory form
 4. Submit your report
 
 #### Direct Contact
 
-- **Email:** security@yourproject.com
+- **Email:** [EMAIL_ADDRESS]
 - **PGP Key:** [Download our PGP key](https://keybase.io/yourproject/pgp_keys.asc)
 - **Response Time:** Within 48 hours
 
@@ -164,8 +164,8 @@ We publish quarterly security reports including:
 
 All security advisories are published at:
 
-- [GitHub Security Advisories](https://github.com/basher83/PROJECT_NAME/security/advisories)
-- [Project Security Page](https://yourproject.com/security)
+- [GitHub Security Advisories](https://github.com/basher83/[REPO]/security/advisories)
+- [Project Security Page](https://[REPO]/security)
 - Security mailing list (subscribe at security-updates@yourproject.com)
 
 ## 🎯 Responsible Disclosure
