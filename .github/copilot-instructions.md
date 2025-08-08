@@ -5,102 +5,244 @@
 **Build System**: Task-based automation (Taskfile.yml)  
 **Organization**: Space-themed directory structure with strict architectural principles
 
-## Repository Overview
+## 🚀 Quick Start
 
-This is a living documentation system containing 61+ markdown files organized in a space-themed hierarchy. The repository follows the [Information Architecture Philosophy](./mission-control/information-architecture.md) with five core directories:
-
-- **`mission-control/`** - Standards, templates, conventions (prescriptive, copy-paste ready)
-- **`flight-manuals/`** - Step-by-step procedures, troubleshooting guides (instructional)
-- **`star-charts/`** - Architecture diagrams, network topology, service maps (visual)
-- **`maintenance-logs/`** - Project journals, learning paths, decision records (chronological)
-- **`space-dictionary/`** - Glossaries, acronyms, quick references (alphabetical)
-
-## Build & Validation System
-
-### Primary Tool: Task (Taskfile.yml)
-
-**ALWAYS install Task first**: `curl -sL https://taskfile.dev/install.sh | sh && sudo mv bin/task /usr/local/bin/`
-
-**Core Commands (run in order)**:
+**New to this repo?** Run these commands to get productive immediately:
 
 ```bash
-# 1. Install required tools
+# 1. Install build tool
+curl -sL https://taskfile.dev/install.sh | sh && sudo mv bin/task /usr/local/bin/
+
+# 2. Install dependencies  
+npm install -g markdownlint-cli2 markdown-link-check
+
+# 3. Set up security baseline (first time only)
+pip install detect-secrets && detect-secrets scan . > .secrets.baseline
+
+# 4. See what you can do
+task
+
+# 5. Before any changes: auto-fix formatting
+task format:markdown
+
+# 6. Ready to work!
+```
+
+**Daily workflow**: `task format:markdown` → make changes → `task pre-commit` → commit
+
+## 📁 Repository Overview
+
+This is a living documentation system with 61+ markdown files organized in a **space-themed hierarchy**. The repository follows the [Information Architecture Philosophy](./mission-control/information-architecture.md) with five core directories:
+
+| Directory | Purpose | Content Type | When to Use |
+|-----------|---------|--------------|-------------|
+| **`mission-control/`** | Standards, templates, conventions | Prescriptive, copy-paste ready | Setting up new projects, defining standards |
+| **`flight-manuals/`** | Step-by-step procedures, troubleshooting | Instructional, procedural | Need to accomplish a specific task |
+| **`star-charts/`** | Architecture diagrams, network topology | Visual, reference | Understanding system relationships |
+| **`maintenance-logs/`** | Project journals, learning paths | Chronological, experiential | Documenting progress, decisions, lessons |
+| **`space-dictionary/`** | Glossaries, acronyms, quick references | Alphabetical, definitional | Looking up terms, quick reference |
+
+## ⚡ Essential Commands
+
+### First-Time Setup
+
+```bash
+# Install Task build system
+curl -sL https://taskfile.dev/install.sh | sh && sudo mv bin/task /usr/local/bin/
+
+# Install required tools
 npm install -g markdownlint-cli2 markdown-link-check
 pip install detect-secrets
 
-# 2. Setup detect-secrets baseline (first time only)
+# Setup security baseline
 detect-secrets scan . > .secrets.baseline
-
-# 3. Show all available tasks
-task
-
-# 4. Auto-fix formatting issues
-task format:markdown
-
-# 5. Run pre-commit checks (main validation pipeline)
-task pre-commit
-
-# 6. Update documentation trees
-task update-trees
-
-# 7. Run full CI checks (requires clean git state)
-task ci
 ```
 
-### Essential Tasks Reference
+### Daily Development Workflow
 
-| Command | Purpose | Notes |
-|---------|---------|--------|
-| `task pre-commit` | **Main validation pipeline** | Runs lint, format-check, security, update-trees |
-| `task lint:markdown` | Markdown linting | Uses .markdownlint.json config |
-| `task format:markdown` | Auto-fix markdown issues | **Always run before committing** |
-| `task test:structure` | Validate directory structure | Ensures all 5 directories exist |
-| `task security:actions` | Validate GitHub Actions | Ensures actions pinned to commit SHAs |
-| `task update-trees` | Update directory trees | Auto-updates tree blocks in documentation |
-| `task ci` | Run CI checks locally | Full validation before pushing |
+```bash
+# Before making changes
+task format:markdown        # Auto-fix formatting issues
 
-### Known Issues & Workarounds
+# During development  
+task lint:markdown          # Check for issues
+task update-trees          # Update directory trees (if structure changed)
 
-1. **Markdown Linting Errors**: Run `task format:markdown` first, may need manual fixes for heading styles (setext → ATX headers)
-2. **Tree Update Flags**: Script has argument parsing issues with -I/-L flags (cosmetic, doesn't break functionality)
-3. **Missing Tools**: Some tools (gitleaks) are optional but recommended for security
-4. **CI Format Check**: `task ci` requires clean git state - commit changes before running
-5. **Detect-secrets Setup**: First run requires: `detect-secrets scan . > .secrets.baseline`
+# Before committing
+task pre-commit            # Full validation pipeline
 
-## GitHub Workflows (Auto-triggered)
+# Local CI verification (requires clean git state)
+task ci                    # Run full CI checks locally
+```
 
-1. **markdownlint.yml** - Validates markdown on PRs/pushes
-2. **update-doc-trees.yml** - Auto-updates tree structures on main branch
-3. **markdown-autofix.yml** - Auto-fixes markdown formatting on PRs
-4. **update-timestamp.yml** - Updates "Last Updated" badges
+### When Things Go Wrong
 
-**All GitHub Actions are pinned to commit SHAs for security**
+```bash
+# Quick recovery
+task format:markdown       # Fix most formatting issues
+task clean                 # Clean temporary files
 
-## File Organization Rules
+# Emergency reset
+git checkout -- .markdownlint.json Taskfile.yml
+task format:markdown
+```
 
-### Naming Conventions
+## 📋 Task Reference
 
-- Use kebab-case: `my-file-name.md`
-- Action-oriented names: `setup-proxmox-cluster.md` not `proxmox.md`
-- Every directory MUST have `README.md`
+| Command | Purpose | When to Use |
+|---------|---------|-------------|
+| `task pre-commit` | **Main validation pipeline** | Before every commit |
+| `task format:markdown` | Auto-fix markdown issues | Before making changes, when linting fails |
+| `task lint:markdown` | Check markdown quality | During development |
+| `task update-trees` | Update directory trees | When adding/removing files or directories |
+| `task ci` | Full CI validation | Before pushing (requires clean git state) |
+| `task test:structure` | Validate directory structure | When reorganizing repository |
+| `task security:actions` | Check pinned GitHub Actions | When modifying workflows |
 
-### Content Principles
+### Decision Tree: Which Command When?
+
+```
+New to repo? → Quick Start commands
+Making changes? → task format:markdown first
+Changed file structure? → task update-trees  
+Before commit? → task pre-commit
+Before push? → task ci
+Build failing? → Emergency commands
+```
+
+## 🔧 Troubleshooting Guide
+
+### Common Issues and Solutions
+
+#### Markdown Linting Failures
+
+```bash
+# Most issues auto-fixable
+task format:markdown
+
+# Manual fixes may be needed for:
+# - MD003: Change setext headers (===) to ATX headers (#)  
+# - MD047: Add single trailing newline to files
+```
+
+#### Security Check Failures  
+
+```bash
+# Install missing tools
+pip install detect-secrets
+# Optional: brew install gitleaks (macOS) / apt install gitleaks (Ubuntu)
+
+# Reset security baseline
+detect-secrets scan . > .secrets.baseline
+```
+
+#### Tree Update Issues
+
+```bash
+# Update all documentation trees
+task update-trees
+
+# Trees auto-update between these markers:
+<!-- TREE-START -->
+<!-- TREE-END -->
+```
+
+#### CI Format Check Failures
+
+- **Problem**: `task ci` fails with "working tree not clean"
+- **Solution**: Commit changes first, then run `task ci`
+
+#### Missing Dependencies
+
+```bash
+# Reinstall everything
+task clean
+task install:tools
+```
+
+### Error Message Quick Reference
+
+| Error Contains | Likely Cause | Solution |
+|----------------|--------------|----------|
+| "markdownlint" | Formatting issues | `task format:markdown` |
+| "working tree not clean" | Uncommitted changes | Commit changes first |
+| "command not found: task" | Task not installed | Run installation command |
+| "detect-secrets" | Missing security baseline | `detect-secrets scan . > .secrets.baseline` |
+
+### Cross-Repository References
+
+This documentation hub references implementation repositories:
+
+- `basher83/automation-scripts` - Actual script implementations
+- `basher83/.github` - Shared workflows and templates
+- `basher83/assets` - Visual assets and banners
+
+---
+
+## 💡 Pro Tips
+
+- **Start simple**: Use the Quick Start commands, then dive deeper as needed
+- **Format first**: Always run `task format:markdown` before making changes - it prevents most issues
+- **Check as you go**: Run `task lint:markdown` frequently during development
+- **When in doubt**: The [Information Architecture Philosophy](./mission-control/information-architecture.md) explains the "why" behind the organization
+- **Emergency escape**: If something breaks, the troubleshooting guide has you covered
+
+This repository is designed to be self-documenting and self-maintaining. These instructions should be sufficient for productive work without extensive exploration.
+
+## 📝 Content Creation Guide
+
+### Where to Put New Content
+
+**Decision flowchart for new content:**
+
+```
+Standards/templates? → mission-control/
+Step-by-step guide? → flight-manuals/  
+Diagram/architecture? → star-charts/
+Project journal/log? → maintenance-logs/
+Reference/glossary? → space-dictionary/
+```
+
+### File Organization Rules
+
+**Naming Conventions:**
+
+- Use kebab-case: `my-file-name.md` ✅
+- Action-oriented names: `setup-proxmox-cluster.md` not `proxmox.md` ✅
+- Every directory MUST have `README.md` ✅
+
+**Content Principles:**
 
 - **One concept per file** - separate procedural and reference content
-- **Clear hierarchy** - use subdirectories when categories emerge
+- **Clear hierarchy** - use subdirectories when categories emerge  
 - **Cross-references** - link related content across directories
-- Include creation/update dates in headers: `![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)`
+- **Date badges** - include in headers: `![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)`
 
-## Architecture & Dependencies
+### Content Creation Workflow
+
+```bash
+# 1. Choose directory based on content type (see decision flowchart above)
+# 2. Create file with kebab-case naming
+# 3. Add required headers with date badge
+# 4. Write content
+# 5. Run validation
+task format:markdown
+task lint:markdown
+task update-trees    # if you added new files/directories
+task pre-commit      # full validation
+# 6. Commit changes
+```
+
+## 🏗️ Architecture Reference
 
 ### Key Configuration Files
 
-- **`Taskfile.yml`** - Build automation (44 tasks defined)
+- **`Taskfile.yml`** - Build automation (44+ tasks defined)
 - **`.markdownlint.json`** - Markdown linting rules
 - **`.pre-commit-config.yaml`** - Pre-commit hooks with security focus
 - **`.github/workflows/`** - 4 automated workflows
 
-### Directory Structure (Required)
+### Required Directory Structure
 
 ```
 .
@@ -113,79 +255,19 @@ task ci
 └── .github/          # Workflows & templates
 ```
 
+### GitHub Workflows (Auto-triggered)
+
+1. **markdownlint.yml** - Validates markdown on PRs/pushes
+2. **update-doc-trees.yml** - Auto-updates tree structures on main branch
+3. **markdown-autofix.yml** - Auto-fixes markdown formatting on PRs
+4. **update-timestamp.yml** - Updates "Last Updated" badges
+
+> **Security Note**: All GitHub Actions are pinned to commit SHAs for security
+
 ### Cross-Repository References
 
-This is a documentation hub that references implementation repositories:
+This documentation hub references implementation repositories:
 
 - `basher83/automation-scripts` - Actual script implementations
 - `basher83/.github` - Shared workflows and templates
 - `basher83/assets` - Visual assets and banners
-
-## Common Validation Failures & Fixes
-
-### Markdown Linting Issues
-
-```bash
-# Fix most issues automatically
-task format:markdown
-
-# Manual fixes needed for:
-# - MD003: Change setext headers (===) to ATX headers (#)
-# - MD047: Add single trailing newline to files
-```
-
-### Security Validation
-
-```bash
-# Run security checks
-task security
-
-# Install missing security tools
-pip install detect-secrets
-# gitleaks optional: brew install gitleaks (macOS) / apt install gitleaks (Ubuntu)
-```
-
-### Tree Updates
-
-```bash
-# Update all documentation trees
-task update-trees
-
-# Tree markers in files:
-<!-- TREE-START -->
-<!-- TREE-END -->
-```
-
-## Development Workflow
-
-### For Documentation Changes
-
-1. `task format:markdown` - Auto-fix formatting
-2. `task lint:markdown` - Check for remaining issues  
-3. `task update-trees` - Update directory trees if structure changed
-4. `task pre-commit` - Full validation
-5. Commit changes
-
-### For New Content
-
-1. Choose appropriate directory based on philosophy (see mission-control/information-architecture.md)
-2. Use kebab-case naming
-3. Add required headers with date badges
-4. Run validation pipeline
-5. Add cross-references to related content
-
-## Emergency Commands
-
-If builds fail:
-
-```bash
-# Clean and restart
-task clean
-task install:tools
-
-# Reset to known good state
-git checkout -- .markdownlint.json Taskfile.yml
-task format:markdown
-```
-
-**Trust these instructions - only search/explore if information is incomplete or incorrect. This repository has been comprehensively documented to minimize agent exploration time.**
