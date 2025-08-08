@@ -32,7 +32,7 @@ task format:markdown
 
 ## 📁 Repository Overview
 
-This is a living documentation system with 61+ markdown files organized in a **space-themed hierarchy**. The repository follows the [Information Architecture Philosophy](./mission-control/information-architecture.md) with five core directories:
+This is a living documentation system with 61+ markdown files organized in a **space-themed hierarchy**. The repository follows the [Information Architecture Philosophy](../mission-control/information-architecture.md) with five core directories:
 
 | Directory | Purpose | Content Type | When to Use |
 |-----------|---------|--------------|-------------|
@@ -184,7 +184,7 @@ This documentation hub references implementation repositories:
 - **Start simple**: Use the Quick Start commands, then dive deeper as needed
 - **Format first**: Always run `task format:markdown` before making changes - it prevents most issues
 - **Check as you go**: Run `task lint:markdown` frequently during development
-- **When in doubt**: The [Information Architecture Philosophy](./mission-control/information-architecture.md) explains the "why" behind the organization
+- **When in doubt**: The [Information Architecture Philosophy](../mission-control/information-architecture.md) explains the "why" behind the organization
 - **Emergency escape**: If something breaks, the troubleshooting guide has you covered
 
 This repository is designed to be self-documenting and self-maintaining. These instructions should be sufficient for productive work without extensive exploration.
