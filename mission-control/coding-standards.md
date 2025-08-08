@@ -3,7 +3,8 @@
 
 This document defines the coding standards for all my personal Python projects. Adhering to these standards ensures code quality, security, and maintainability.
 
-[OPTIMIZE] this doc is python-specific, but should be genaric. Specific standards should be in `mission-control/project-templates`
+# [OPTIMIZE] this doc is python-specific, but should be genaric. Specific standards should be in `mission-control/project-templates`
+
 ---
 
 ## 1. Core Environment & Dependency Management
