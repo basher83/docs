@@ -24,33 +24,7 @@ It follows my [space-themed organization](./mission-control/repo-naming-conventi
 
 <!-- TREE-START -->
 ```plaintext
-.
-|-- flight-manuals
-|   |-- automation-scripts
-|   |   |-- documentation
-|   |   |-- proxmox-backup-server
-|   |   `-- proxmox-virtual-environment
-|   |-- gitops
-|   |   |-- templates
-|   |   `-- workflows
-|   |-- network-security
-|   `-- proxmox-guides
-|-- maintenance-logs
-|-- mission-control
-|   |-- boilerplate
-|   |   |-- gitignore-templates
-|   |   |-- license-templates
-|   |   `-- readme-templates
-|   |-- github-configs
-|   |   `-- integration-configs
-|   |-- github-templates
-|   |   `-- ISSUE_TEMPLATE
-|   `-- project-templates
-|-- scripts
-|-- space-dictionary
-`-- star-charts
 
-25 directories
 ```
 <!-- TREE-END -->
 
