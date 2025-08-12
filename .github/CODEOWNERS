@@ -1,15 +1,8 @@
 # This file defines code ownership for automated review assignments
 # More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
-# Global ownership - all files default to these reviewers
+# --- Global Ownership (default) ---
 * @basher83
 
-# Documentation
-/README.md @basher83
-/docs/ @basher83
-
-# GitHub configuration
-/.github/ @basher83
-
-# Build and CI/CD
-/.github/workflows/ @basher83
+# --- Protect This File ---
+/.github/CODEOWNERS @basher83
