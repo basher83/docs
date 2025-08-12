@@ -1,5 +1,6 @@
 # 🏷️ GitHub Labels Configuration
-# Space-themed label system for consistent project management
+# Solo Developer Label System - Migration Safe Version
+# Combines existing labels with new solo-dev optimizations
 
 # === MISSION STATUS LABELS ===
 mission-status:
@@ -13,7 +14,7 @@ mission-status:
     
   - name: "🛰️ in-orbit"
     color: "fbca04"
-    description: "Currently being worked on by the team"
+    description: "Currently being worked on"
     
   - name: "🌟 mission-complete"
     color: "0e8a16"
@@ -77,6 +78,7 @@ type:
 
 # === EFFORT LABELS ===
 effort:
+  # Keeping existing effort labels
   - name: "🥾 effort-small"
     color: "c2e0c6"
     description: "Quick fix - less than 2 hours of work"
@@ -92,8 +94,43 @@ effort:
   - name: "🏔️ effort-epic"
     color: "d4c5f9"
     description: "Major undertaking - more than 3 days of work"
+  
+  # Adding new quick effort label
+  - name: "⚡ effort-quick"
+    color: "d1ecf1"
+    description: "Very quick fix - less than 1 hour of work"
 
-# === TEAM LABELS ===
+# === TECHNOLOGY LABELS (NEW) ===
+technology:
+  - name: "🐍 python"
+    color: "3776ab"
+    description: "Python development and scripts"
+    
+  - name: "🏗️ terraform"
+    color: "623ce4"
+    description: "Infrastructure as Code with Terraform"
+    
+  - name: "🤖 ansible"
+    color: "ee0000"
+    description: "Configuration management and automation"
+    
+  - name: "🔌 mcp-server"
+    color: "0366d6"
+    description: "Model Context Protocol server development"
+    
+  - name: "🛡️ policy"
+    color: "b60205"
+    description: "Infrastructure and security policy as code"
+    
+  - name: "☁️ cloud"
+    color: "0052cc"
+    description: "Cloud platform and services"
+    
+  - name: "🐚 shell"
+    color: "89e051"
+    description: "Shell scripts and bash automation"
+
+# === TEAM LABELS (KEEPING FOR NOW) ===
 team:
   - name: "👨‍🚀 crew-backend"
     color: "0052cc"
@@ -119,8 +156,9 @@ team:
     color: "b60205"
     description: "Security and compliance team"
 
-# === WORKFLOW LABELS ===
+# === WORKFLOW LABELS (ENHANCED) ===
 workflow:
+  # Existing workflow labels
   - name: "🔍 needs-triage"
     color: "fbca04"
     description: "Requires initial review and categorization"
@@ -148,6 +186,27 @@ workflow:
   - name: "❌ invalid"
     color: "e4e669"
     description: "Issue is not valid or actionable"
+  
+  # New solo workflow labels
+  - name: "🧠 thinking"
+    color: "f9d0c4"
+    description: "Researching and planning approach"
+    
+  - name: "⚡ quick-win"
+    color: "34d058"
+    description: "Simple task that can be completed quickly"
+    
+  - name: "🔍 research-needed"
+    color: "fff3cd"
+    description: "Requires investigation before implementation"
+    
+  - name: "📝 draft"
+    color: "d4c5f9"
+    description: "Work in progress - not ready for review"
+    
+  - name: "💭 idea"
+    color: "e99695"
+    description: "Future enhancement idea to consider"
 
 # === AUTOMATION LABELS ===
 automation:
@@ -188,6 +247,67 @@ status:
   - name: "🕰️ stale"
     color: "fef2c0"
     description: "No recent activity - may be closed"
+  
+  # New status labels
+  - name: "👀 needs-testing"
+    color: "17a2b8"
+    description: "Implementation complete, needs testing"
+    
+  - name: "✅ ready-to-deploy"
+    color: "28a745"
+    description: "Tested and ready for deployment"
+
+# === INFRASTRUCTURE SCOPE (NEW) ===
+infra-scope:
+  - name: "🏗️ infrastructure"
+    color: "623ce4"
+    description: "Infrastructure provisioning and management"
+    
+  - name: "📋 policy-engine"
+    color: "b60205"
+    description: "OPA/Rego policy development and testing"
+    
+  - name: "🔐 secrets-mgmt"
+    color: "d73a4a"
+    description: "Secrets management and SOPS configuration"
+    
+  - name: "🔄 automation"
+    color: "0052cc"
+    description: "Workflow and process automation"
+    
+  - name: "🌐 networking"
+    color: "5319e7"
+    description: "Network configuration and security"
+    
+  - name: "💾 backup-restore"
+    color: "fbca04"
+    description: "Data backup and disaster recovery"
+
+# === PYTHON DEVELOPMENT (NEW) ===
+python:
+  - name: "🧪 testing"
+    color: "0e8a16"
+    description: "Unit tests, integration tests, and test automation"
+    
+  - name: "📦 packaging"
+    color: "0366d6"
+    description: "Python packaging, pyproject.toml, dependencies"
+    
+  - name: "🔍 linting"
+    color: "5319e7"
+    description: "Code quality, formatting, and static analysis"
+    
+  - name: "🎯 typing"
+    color: "0052cc"
+    description: "Type hints and mypy improvements"
+    
+  - name: "⚙️ async"
+    color: "fbca04"
+    description: "Asynchronous programming and async/await"
+    
+  - name: "🔌 cli"
+    color: "6f42c1"
+    description: "Command-line interface development"
 
 # === SPECIAL LABELS ===
 special:
@@ -217,6 +337,7 @@ special:
 
 # === ENVIRONMENT LABELS ===
 environment:
+  # Keeping existing environments
   - name: "🌍 production"
     color: "d73a4a"
     description: "Production environment issue"
@@ -232,6 +353,15 @@ environment:
   - name: "🧪 testing"
     color: "0075ca"
     description: "Testing environment issue"
+  
+  # Adding new solo-friendly environments
+  - name: "🏠 local"
+    color: "6f42c1"
+    description: "Local development environment"
+    
+  - name: "🏃 demo"
+    color: "17a2b8"
+    description: "Demo or proof-of-concept environment"
 
 # === PLATFORM LABELS ===
 platform:
@@ -250,6 +380,15 @@ platform:
   - name: "⚙️ api"
     color: "d73a4a"
     description: "API related changes"
+  
+  # Adding container/server focus
+  - name: "🖥️ server"
+    color: "0052cc"
+    description: "Server-side platform specific"
+    
+  - name: "📱 container"
+    color: "5319e7"
+    description: "Container and Docker related"
 
 # === SCOPE LABELS ===
 scope:
@@ -276,3 +415,29 @@ scope:
   - name: "🔄 ci-cd"
     color: "0075ca"
     description: "Continuous integration and deployment"
+
+# === LEARNING & DOCUMENTATION (NEW) ===
+learning:
+  - name: "📖 tutorial"
+    color: "0075ca"
+    description: "Tutorial or step-by-step guide"
+    
+  - name: "💡 tip"
+    color: "fbca04"
+    description: "Helpful tip or best practice"
+    
+  - name: "🔗 reference"
+    color: "5319e7"
+    description: "Reference documentation or API docs"
+    
+  - name: "📋 template"
+    color: "0052cc"
+    description: "Template or boilerplate code"
+    
+  - name: "🎓 learning"
+    color: "e99695"
+    description: "Learning new technology or concept"
+    
+  - name: "🎉 showcase"
+    color: "a2eeef"
+    description: "Example or demonstration project"
