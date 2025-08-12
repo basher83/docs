@@ -1,15 +1,39 @@
 # This file defines code ownership for automated review assignments
 # More info: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+# Bootstrap: `curl -fsSL https://raw.githubusercontent.com/basher83/docs/main/mission-control/github-configs/CODEOWNERS-template -o .github/CODEOWNERS`
 
-# Global ownership - all files default to these reviewers
+# --- Global Ownership (default) ---
 * @basher83
 
-# Documentation
-/README.md @basher83
-/docs/ @basher83
+# --- Protect This File ---
+/.github/CODEOWNERS @basher83
 
-# GitHub configuration
-/.github/ @basher83
+# --- Common Overrides (uncomment to use) ---
+# /docs/**                @org/docs-team @basher83
+# /README.md              @basher83
 
-# Build and CI/CD
-/.github/workflows/ @basher83
+# / .github/**            @org/platform-team @basher83
+# / .github/workflows/**  @org/devops-team   @basher83
+
+# /infra/**               @org/devops-team   @basher83
+# /terraform/**           @org/devops-team
+# /ansible/**             @org/devops-team
+
+# **/*.py                 @org/python-team
+# **/*.ts                 @org/frontend-team
+# **/*.go                 @org/backend-team
+
+# packages/api/**         @org/backend-team
+# packages/web/**         @org/frontend-team
+# packages/cli/**         @org/platform-team
+
+# /vendor/**              @org/platform-team
+# /dist/**                @org/frontend-team
+
+# /.sops/**               @org/secops @basher83
+# /secrets/**             @org/secops @basher83
+
+# /Makefile               @org/platform-team
+# /.env.example           @org/platform-team
+
+# /*                      @basher83
