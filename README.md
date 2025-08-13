@@ -147,7 +147,7 @@ use codacy mcp to check for issues
 **Automated Quality Features:**
 
 - ⬆️ **Renovate Bot** - Automated dependency updates with security focus
-- 🔧 **Auto-fix Workflows** - Automatic markdown formatting on PRs
+- 🔧 **Auto-fix Workflows** - [autofix.ci integration](./flight-manuals/gitops/github-integrations.md#autofixci-integration) automatic markdown formatting on PRs
 - 🛡️ **Multi-Layer Security** - Pre-commit hooks with gitleaks, detect-secrets, and config validation
 - 🚫 **Secret Prevention** - Blocks API keys and sensitive data at commit time
 - 📊 **Quality Metrics** - Continuous quality monitoring and reporting

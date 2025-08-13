@@ -213,6 +213,159 @@ For specific package managers:
 }
 ```
 
+## autofix.ci Integration
+
+Automated pull request formatting & lint auto-fixing. Complements (not replaces) local pre-commit hooks.
+
+### When To Use
+
+- Reduce contributor friction (external / drive‑by PRs)
+- Enforce consistent formatting without manual review comments
+- Keep PRs small & focused on logical changes, not style churn
+
+### What It Does
+
+1. Watches open PRs
+2. Runs configured fixers (e.g. ruff --fix, markdownlint --fix, prettier, shfmt)
+3. Pushes a bot commit with only auto-fixable changes
+4. Triggers CI re-run
+
+### Installation
+
+1. Visit https://autofix.ci and install the GitHub App
+2. Grant access: select repositories (principle of least privilege)
+3. Open a test PR touching a file handled by a fixer
+4. Wait for the bot to comment / push a commit
+
+### Minimal Configuration
+
+autofix.ci infers tools from existing config files. Ensure these exist:
+
+- `.markdownlint.json` (Markdown)
+- `pyproject.toml` / `ruff.toml` (Ruff)
+- `.prettierrc` if web assets present
+- `.editorconfig` for base whitespace consistency
+
+### Branch Protection Considerations
+
+| Setting | Recommendation |
+|---------|---------------|
+| Require status checks | Enable (checks run after bot commit) |
+| Require linear history | OK (squash merge preserves cleanliness) |
+| Require signed commits | If enforced, bot commits must be exempt or use allowed signing pattern |
+| Allow force pushes | Keep disabled (bot uses normal pushes) |
+
+If required status checks run before & after autofix commit, ensure they are fast to avoid queueing delays.
+
+### Example Workflow Interaction
+
+```text
+Contributor pushes PR → CI (lint fails due to formatting) → autofix.ci fixes & commits → CI passes → reviewer approves
+```
+
+### Example: Python (Ruff + uv + autofix.ci)
+
+Deterministic formatting & lint auto-fix using pinned action SHAs and `uv` to ensure the same Ruff version locally and in CI.
+
+```yaml
+name: autofix.ci
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Pin uv installer action (update SHA quarterly / when needed)
+      - name: Set up uv
+        uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc
+        with:
+          version: "0.4.20"
+
+      # (Optional) Cache the uv tool & virtualenv to speed up runs
+      - name: Cache uv
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-0.4.20
+
+      - name: Ruff lint auto-fix (safe fixes only)
+        run: uv run ruff check --fix-only .
+
+      - name: Ruff format
+        run: uv run ruff format .
+
+      # Add other deterministic fixers here (markdownlint, prettier, shfmt) if desired
+      # - run: uv run markdownlint-cli2 --fix '**/*.md'
+
+      - name: Commit & report fixes
+        uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
+```
+
+#### Notes
+
+- Pin action SHAs (supply chain integrity). Rotate on a schedule.
+- `--fix-only` prevents Ruff from emitting diagnostics that can't be auto-corrected.
+- If you add more tools (e.g. `markdownlint`), ensure configs (.markdownlint.json) are present so output is deterministic.
+- For monorepos, restrict path globs or use a matrix if needed.
+
+#### Variant: Using pre-commit
+
+If you already codify tools in `.pre-commit-config.yaml`, you can run only fix-capable hooks, then invoke the autofix action:
+
+```yaml
+      - name: Install pre-commit
+        run: uv tool install pre-commit==3.7.1
+      - name: Run fix-capable hooks
+        run: pre-commit run --all-files --hook-stage manual || true
+```
+
+Ensure non-deterministic or destructive hooks (e.g. sorting imports differently per version) are pinned.
+
+### Best Practices
+
+- Keep tool versions pinned to avoid diff churn (e.g. pin ruff in pre-commit)
+- Avoid mixing logical changes with pure formatting commits—let the bot own style updates
+- If a formatter produces undesired changes, adjust its config locally and push; the bot will re-run
+- Document in `CONTRIBUTING.md` that minor formatting issues are auto-resolved
+
+### Troubleshooting
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| No bot commit | App not installed / lacks access | Re-install, confirm repo selected |
+| Repeated commits | Non-deterministic tool output | Pin versions, unify line ending rules |
+| Bot cannot push | Branch protection blocks bot user | Allow GitHub App / adjust restrictions |
+| CI still failing | Non-auto-fix issues (types, tests) | Address manually |
+
+### Security Notes
+
+- App has write access—treat like Renovate; review first runs
+- Monitor commit author to ensure only formatting changes occur
+- Quarterly review: verify config drift has not expanded scope unexpectedly
+
+### Deactivation / Rollback
+
+- Temporarily pause by uninstalling the App (no workflow file edits needed)
+- To fully remove: uninstall + update docs removing references
+
+### Cross References
+
+- Standards: see "Automated Formatting (autofix.ci)" in `mission-control/coding-standards.md`
+- Maintenance workflow design: see `flight-manuals/gitops/workflows/maintenance-workflows.md`
+
+> Principle: Automation should make PR review about correctness, not whitespace.
+
 ## CodeCov Integration
 
 ### Setup Process

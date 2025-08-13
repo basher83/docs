@@ -137,6 +137,34 @@ npm run build      # Build for production
 npm run deploy     # Deploy to production
 ```
 
+## ✅ Automated Quality (Optional)
+
+> Remove or trim this section if the project is very small. These automation layers keep PRs focused on logic instead of style.
+
+| Layer | Purpose | Reference |
+|-------|---------|-----------|
+| Pre-commit Hooks | Fast local feedback (lint, format, security) | `.pre-commit-config.yaml` |
+| autofix.ci | Bot applies safe formatting fixes on PRs | docs: [autofix.ci integration](../../../flight-manuals/gitops/github-integrations.md#autofixci-integration) |
+| Renovate | Dependency & action updates | `renovate.json` |
+| Dependabot | Security & ecosystem updates | `.github/dependabot.yml` |
+
+### Enabling (copy/paste checklist)
+
+```text
+[ ] Install pre-commit hooks (pre-commit install)
+[ ] Enable autofix.ci GitHub App for this repo
+[ ] Confirm Renovate config present and bot active
+[ ] (Optional) Add Dependabot config for complementary coverage
+```
+
+### What the Bot Commits Look Like
+
+```
+autofix: apply formatting (ruff, markdownlint)
+```
+
+Formatting-only commits are squash-merged; no manual edits needed unless resolving conflicts.
+
 ## 🔧 Configuration
 
 ### Environment Variables
