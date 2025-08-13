@@ -2,7 +2,8 @@
 
 ## Overview
 
-This directory contains comprehensive documentation for GitHub Actions workflows used across the basher83 ecosystem.
+This directory contains comprehensive documentation for GitHub Actions workflows used across the
+basher83 ecosystem.
 
 ## Structure
 
@@ -15,9 +16,9 @@ This directory contains comprehensive documentation for GitHub Actions workflows
 
 ## Quick Links
 
-* **Implementation Repository**: [`basher83/.github`](https://github.com/basher83/.github)
-* **Workflow Templates**: [`../templates/`](../templates/)
-* **Current Project Workflows**: Individual project `.github/workflows/` directories
+- **Implementation Repository**: [`basher83/.github`](https://github.com/basher83/.github)
+- **Workflow Templates**: [`../templates/`](../templates/)
+- **Current Project Workflows**: Individual project `.github/workflows/` directories
 
 ## Usage Pattern
 
@@ -39,6 +40,6 @@ jobs:
 
 ## Related Documentation
 
-* [GitHub Actions Overview](../actions.md)
-* [Repository Setup Guide](../repo-setup-guide.md)
-* [Project Management](../project-management.md)
+- [GitHub Actions Overview](../actions.md)
+- [Repository Setup Guide](../repo-setup-guide.md)
+- [Project Management](../project-management.md)

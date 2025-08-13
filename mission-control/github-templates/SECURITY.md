@@ -2,18 +2,19 @@
 
 ## 🛡️ Mission Security Statement
 
-Security is paramount to our space mission operations. We take the security of our project and its users seriously and appreciate your help in keeping our systems safe.
+Security is paramount to our space mission operations. We take the security of our project and its
+users seriously and appreciate your help in keeping our systems safe.
 
 ## 🚨 Supported Versions
 
 We actively maintain security updates for the following versions:
 
-| Version | Supported          | Security Updates |
-| ------- | ------------------ | ---------------- |
-| 2.1.x   | ✅ Current         | Full support     |
-| 2.0.x   | ✅ LTS             | Security only    |
-| 1.9.x   | ⚠️ Limited        | Critical only    |
-| < 1.9   | ❌ End of life    | No support       |
+| Version | Supported      | Security Updates |
+| ------- | -------------- | ---------------- |
+| 2.1.x   | ✅ Current     | Full support     |
+| 2.0.x   | ✅ LTS         | Security only    |
+| 1.9.x   | ⚠️ Limited     | Critical only    |
+| < 1.9   | ❌ End of life | No support       |
 
 **Recommendation:** Always use the latest stable version for the best security posture.
 
@@ -21,7 +22,8 @@ We actively maintain security updates for the following versions:
 
 ### 🚨 Critical Security Issues
 
-**DO NOT** report security vulnerabilities through public GitHub issues, discussions, or pull requests.
+**DO NOT** report security vulnerabilities through public GitHub issues, discussions, or pull
+requests.
 
 Instead, please report security vulnerabilities through one of these secure channels:
 
@@ -256,7 +258,7 @@ We recognize security researchers who have helped improve our security:
 - **@researcher2** - XSS vulnerability in admin panel
 - **@researcher3** - SQL injection in reporting module
 
-*Want to be listed here? Help us find and fix security issues!*
+_Want to be listed here? Help us find and fix security issues!_
 
 ## 📞 Contact Information
 
@@ -298,5 +300,5 @@ Security reports may contain sensitive information. We commit to:
 
 **Thank you for helping keep our mission secure!** 🚀🔒
 
-*This security policy is reviewed and updated quarterly.*
+_This security policy is reviewed and updated quarterly._
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-templates%2FSECURITY.md&display_timestamp=committer)

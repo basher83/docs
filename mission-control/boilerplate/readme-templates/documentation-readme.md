@@ -5,17 +5,20 @@
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
 ![Mission Status](https://img.shields.io/badge/Mission-Documenting-blue)
 
-> Comprehensive documentation hub for [Project Name] - your guide to navigating the mission successfully.
+> Comprehensive documentation hub for [Project Name] - your guide to navigating the mission
+> successfully.
 
 ## 🎯 Documentation Mission
 
-This documentation follows our space-themed organization philosophy, providing clear navigation through all aspects of the project. Whether you're a new crew member or an experienced space explorer, you'll find the information you need to succeed.
+This documentation follows our space-themed organization philosophy, providing clear navigation
+through all aspects of the project. Whether you're a new crew member or an experienced space
+explorer, you'll find the information you need to succeed.
 
 ## 🗺️ Mission Navigation
 
 ### 🚀 Mission Control
 
-*Standards, conventions, templates, and governance*
+_Standards, conventions, templates, and governance_
 
 - [Project Standards](mission-control/standards.md)
 - [Code Conventions](mission-control/coding-standards.md)
@@ -24,7 +27,7 @@ This documentation follows our space-themed organization philosophy, providing c
 
 ### 📖 Flight Manuals
 
-*Step-by-step procedures and how-to guides*
+_Step-by-step procedures and how-to guides_
 
 - [Getting Started Guide](flight-manuals/getting-started.md)
 - [Installation Instructions](flight-manuals/installation.md)
@@ -34,7 +37,7 @@ This documentation follows our space-themed organization philosophy, providing c
 
 ### 🗺️ Star Charts
 
-*Architecture diagrams, topology, and visual guides*
+_Architecture diagrams, topology, and visual guides_
 
 - [System Architecture](star-charts/architecture.md)
 - [Database Schema](star-charts/database-schema.md)
@@ -43,7 +46,7 @@ This documentation follows our space-themed organization philosophy, providing c
 
 ### 📋 Maintenance Logs
 
-*Historical records, decisions, and learning paths*
+_Historical records, decisions, and learning paths_
 
 - [Release Notes](maintenance-logs/releases.md)
 - [Decision Log](maintenance-logs/decisions.md)
@@ -52,7 +55,7 @@ This documentation follows our space-themed organization philosophy, providing c
 
 ### 📖 Space Dictionary
 
-*Glossaries, acronyms, and quick references*
+_Glossaries, acronyms, and quick references_
 
 - [Glossary](space-dictionary/glossary.md)
 - [API Reference](space-dictionary/api-reference.md)
@@ -70,7 +73,8 @@ This documentation follows our space-themed organization philosophy, providing c
 
 ### For Experienced Explorers
 
-- 🔍 **Find Something Specific:** Use the search function or check the [Space Dictionary](space-dictionary/)
+- 🔍 **Find Something Specific:** Use the search function or check the
+  [Space Dictionary](space-dictionary/)
 - 🛠️ **Working on Features:** See [Development Guide](flight-manuals/development.md)
 - 📊 **Understanding Architecture:** Review [Star Charts](star-charts/)
 - 🎯 **Following Standards:** Check [Mission Control](mission-control/)
@@ -91,7 +95,7 @@ Step-by-step instructions for specific tasks:
 Learning-oriented lessons for beginners:
 
 - Learning-oriented and gentle
-- Assumes no prior knowledge  
+- Assumes no prior knowledge
 - Gets you started successfully
 - **Example:** "Your first API integration"
 
@@ -248,7 +252,8 @@ npm run docs:test
 
 ### Getting Help
 
-- 📖 **Can't find what you need?** [Open an issue](https://github.com/basher83/[repo-name]/issues/new?template=documentation.yml)
+- 📖 **Can't find what you need?**
+  [Open an issue](https://github.com/basher83/[repo-name]/issues/new?template=documentation.yml)
 - 💬 **Have questions?** [Start a discussion](https://github.com/basher83/[repo-name]/discussions)
 - 📧 **Need immediate help?** Email docs@yourproject.com
 - 🐛 **Found a bug in docs?** Report it in our issue tracker
@@ -294,7 +299,8 @@ npm run docs:test
 
 ### Related Documentation
 
-- **Development Standards:** [Our coding standards repository](https://github.com/basher83/standards)
+- **Development Standards:**
+  [Our coding standards repository](https://github.com/basher83/standards)
 - **Design System:** [UI component documentation](https://design.yourproject.com)
 - **API Specifications:** [OpenAPI definitions](https://api.yourproject.com/docs)
 
@@ -302,7 +308,7 @@ npm run docs:test
 
 **📚 Happy documenting, space explorer!**
 
-*Remember: Good documentation is a love letter to your future self and your fellow crew members.*
+_Remember: Good documentation is a love letter to your future self and your fellow crew members._
 
 **Last Updated:** $(date +%Y-%m-%d)  
 **Next Review:** $(date -d '+3 months' +%Y-%m-%d)  

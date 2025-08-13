@@ -6,7 +6,8 @@ Complete guide for setting up external integrations with GitHub repositories.
 
 ## Overview
 
-This guide covers integration setup for external services that enhance repository functionality and documentation workflows.
+This guide covers integration setup for external services that enhance repository functionality and
+documentation workflows.
 
 ## Shields.io Badges
 
@@ -55,8 +56,7 @@ Space-themed custom badges:
    - Structure documentation for GitBook compatibility
    - Configure GitHub sync
 
-3. **GitBook Configuration File**
-Create `.gitbook.yaml` in repository root:
+3. **GitBook Configuration File** Create `.gitbook.yaml` in repository root:
 
 ```yaml
 root: ./docs
@@ -100,7 +100,7 @@ name: GitBook Sync
 on:
   push:
     branches: [main]
-    paths: ['docs/**']
+    paths: ["docs/**"]
 
 jobs:
   gitbook:
@@ -122,8 +122,7 @@ jobs:
    - Select source: GitHub Actions
    - Choose custom domain if available
 
-2. **Jekyll Configuration**
-Create `_config.yml` for GitHub Pages:
+2. **Jekyll Configuration** Create `_config.yml` for GitHub Pages:
 
 ```yaml
 title: "[Project Name] - Mission Documentation"
@@ -153,7 +152,7 @@ name: Deploy Documentation
 on:
   push:
     branches: [main]
-    paths: ['docs/**']
+    paths: ["docs/**"]
 
 jobs:
   deploy:
@@ -162,7 +161,7 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v3
@@ -215,7 +214,8 @@ For specific package managers:
 
 ## autofix.ci Integration
 
-Automated pull request formatting & lint auto-fixing. Complements (not replaces) local pre-commit hooks.
+Automated pull request formatting & lint auto-fixing. Complements (not replaces) local pre-commit
+hooks.
 
 ### When To Use
 
@@ -248,14 +248,15 @@ autofix.ci infers tools from existing config files. Ensure these exist:
 
 ### Branch Protection Considerations
 
-| Setting | Recommendation |
-|---------|---------------|
-| Require status checks | Enable (checks run after bot commit) |
-| Require linear history | OK (squash merge preserves cleanliness) |
+| Setting                | Recommendation                                                         |
+| ---------------------- | ---------------------------------------------------------------------- |
+| Require status checks  | Enable (checks run after bot commit)                                   |
+| Require linear history | OK (squash merge preserves cleanliness)                                |
 | Require signed commits | If enforced, bot commits must be exempt or use allowed signing pattern |
-| Allow force pushes | Keep disabled (bot uses normal pushes) |
+| Allow force pushes     | Keep disabled (bot uses normal pushes)                                 |
 
-If required status checks run before & after autofix commit, ensure they are fast to avoid queueing delays.
+If required status checks run before & after autofix commit, ensure they are fast to avoid queueing
+delays.
 
 ### Example Workflow Interaction
 
@@ -265,7 +266,8 @@ Contributor pushes PR → CI (lint fails due to formatting) → autofix.ci fixes
 
 ### Example: Python (Ruff + uv + autofix.ci)
 
-Deterministic formatting & lint auto-fix using pinned action SHAs and `uv` to ensure the same Ruff version locally and in CI.
+Deterministic formatting & lint auto-fix using pinned action SHAs and `uv` to ensure the same Ruff
+version locally and in CI.
 
 ```yaml
 name: autofix.ci
@@ -316,21 +318,24 @@ jobs:
 
 - Pin action SHAs (supply chain integrity). Rotate on a schedule.
 - `--fix-only` prevents Ruff from emitting diagnostics that can't be auto-corrected.
-- If you add more tools (e.g. `markdownlint`), ensure configs (.markdownlint.json) are present so output is deterministic.
+- If you add more tools (e.g. `markdownlint`), ensure configs (.markdownlint.json) are present so
+  output is deterministic.
 - For monorepos, restrict path globs or use a matrix if needed.
 
 #### Variant: Using pre-commit
 
-If you already codify tools in `.pre-commit-config.yaml`, you can run only fix-capable hooks, then invoke the autofix action:
+If you already codify tools in `.pre-commit-config.yaml`, you can run only fix-capable hooks, then
+invoke the autofix action:
 
 ```yaml
-      - name: Install pre-commit
-        run: uv tool install pre-commit==3.7.1
-      - name: Run fix-capable hooks
-        run: pre-commit run --all-files --hook-stage manual || true
+- name: Install pre-commit
+  run: uv tool install pre-commit==3.7.1
+- name: Run fix-capable hooks
+  run: pre-commit run --all-files --hook-stage manual || true
 ```
 
-Ensure non-deterministic or destructive hooks (e.g. sorting imports differently per version) are pinned.
+Ensure non-deterministic or destructive hooks (e.g. sorting imports differently per version) are
+pinned.
 
 ### Best Practices
 
@@ -341,12 +346,12 @@ Ensure non-deterministic or destructive hooks (e.g. sorting imports differently 
 
 ### Troubleshooting
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| No bot commit | App not installed / lacks access | Re-install, confirm repo selected |
-| Repeated commits | Non-deterministic tool output | Pin versions, unify line ending rules |
-| Bot cannot push | Branch protection blocks bot user | Allow GitHub App / adjust restrictions |
-| CI still failing | Non-auto-fix issues (types, tests) | Address manually |
+| Symptom          | Cause                              | Fix                                    |
+| ---------------- | ---------------------------------- | -------------------------------------- |
+| No bot commit    | App not installed / lacks access   | Re-install, confirm repo selected      |
+| Repeated commits | Non-deterministic tool output      | Pin versions, unify line ending rules  |
+| Bot cannot push  | Branch protection blocks bot user  | Allow GitHub App / adjust restrictions |
+| CI still failing | Non-auto-fix issues (types, tests) | Address manually                       |
 
 ### Security Notes
 
@@ -394,8 +399,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 ```
 
-3. **Configuration File**
-Add `codecov.yml`:
+3. **Configuration File** Add `codecov.yml`:
 
 ```yaml
 coverage:
@@ -433,7 +437,7 @@ updates:
     commit-message:
       prefix: "🔧"
       include: "scope"
-    
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -452,8 +456,7 @@ updates:
    - Grant repository access
    - Configure settings
 
-2. **Configuration File**
-Add `.all-contributorsrc`:
+2. **Configuration File** Add `.all-contributorsrc`:
 
 ```json
 {
@@ -529,4 +532,5 @@ After setting up integrations:
 
 ---
 
-**Mission Control Reference**: Integration configurations and templates available in `mission-control/github-configs/`
+**Mission Control Reference**: Integration configurations and templates available in
+`mission-control/github-configs/`

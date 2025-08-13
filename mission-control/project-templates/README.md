@@ -1,8 +1,10 @@
 # 🚀 Project Templates: Mission Launch Blueprints
 
-**Philosophy**: *"How do we initialize a successful mission?"*
+**Philosophy**: _"How do we initialize a successful mission?"_
 
-Complete project scaffolding templates that provide structured starting points for new repositories. These blueprints contain everything needed to launch a project with proper architecture, tooling, and governance from day one.
+Complete project scaffolding templates that provide structured starting points for new repositories.
+These blueprints contain everything needed to launch a project with proper architecture, tooling,
+and governance from day one.
 
 ```plaintext
 project-templates/
@@ -35,7 +37,10 @@ project-templates/
 
 ## 🎯 Purpose
 
-Project Templates serves as Mission Control's launch pad - containing complete project architectures that jumpstart development with established patterns, proper tooling, and integrated governance. These are the mission blueprints that ensure every project starts with a solid foundation and follows organizational standards.
+Project Templates serves as Mission Control's launch pad - containing complete project architectures
+that jumpstart development with established patterns, proper tooling, and integrated governance.
+These are the mission blueprints that ensure every project starts with a solid foundation and
+follows organizational standards.
 
 ## 📋 Template Categories
 
@@ -90,11 +95,13 @@ Each template includes:
 
 ## 🔗 Related Documentation
 
-- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance principles
+- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance
+  principles
 - [GitHub Templates](../github-templates/) - Community interaction templates
 - [GitHub Configs](../github-configs/) - Repository automation and technical controls
 - [Boilerplate Files](../boilerplate/) - Universal configuration files
 
 ---
 
-*These templates are prescriptive and authoritative - they define the architectural foundation for consistent project initialization and development workflows.*
+_These templates are prescriptive and authoritative - they define the architectural foundation for
+consistent project initialization and development workflows._

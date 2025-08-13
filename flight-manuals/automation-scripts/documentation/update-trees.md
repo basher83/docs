@@ -45,13 +45,17 @@ This directory contains scripts for maintaining and automating documentation tas
 
 **Example Tree Markers**:
 
-```markdown
+````markdown
 <!-- TREE-START -->
+
 ```plaintext
 [Tree content will be auto-generated here]
 ```
+````
+
 <!-- TREE-END -->
-```
+
+````
 
 ## 🔧 Adding New Files
 
@@ -61,8 +65,9 @@ To add automatic tree updates to a new documentation file:
 2. Edit `update-trees.sh` to include your file:
    ```bash
    update_tree_in_file "path/to/your/file.md" "directory/to/scan" "tree-flags"
-   ```
+````
 
 ## 🤖 Automation
 
-This script is also integrated with GitHub Actions (`.github/workflows/update-doc-trees.yml`) for automatic updates when files change.
+This script is also integrated with GitHub Actions (`.github/workflows/update-doc-trees.yml`) for
+automatic updates when files change.

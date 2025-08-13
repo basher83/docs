@@ -2,7 +2,8 @@
 
 ## 🎯 Goal
 
-Establish a resilient, automated, and verifiable backup plan for Proxmox environments, covering VMs, LXCs, and critical configuration data.
+Establish a resilient, automated, and verifiable backup plan for Proxmox environments, covering VMs,
+LXCs, and critical configuration data.
 
 ---
 

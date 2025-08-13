@@ -20,10 +20,13 @@ All templates use tags that should be searched and replaced in each new reposito
 ### Example
 
 Before:
+
 > Welcome to [PROJECT_NAME]! Please see our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details.
 
 After:
-> Welcome to My Awesome Project! Please see our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for details.
+
+> Welcome to My Awesome Project! Please see our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for
+> details.
 
 ---
 

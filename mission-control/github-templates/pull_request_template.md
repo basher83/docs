@@ -1,24 +1,31 @@
 # 🚀 Mission Pull Request
 
 ## 🎯 Mission Objective
+
 <!-- Describe what this PR accomplishes and why it's needed -->
 
 **Problem:**
+
 <!-- What issue does this solve? Link to related issues. -->
 
 **Solution:**
+
 <!-- How does this PR address the problem? -->
 
 **Closes:** #<!-- issue number -->
 
 ## 🛰️ Mission Changes
+
 <!-- Provide a detailed description of the changes made -->
 
 ### 📦 Type of Change
+
 <!-- Check all that apply -->
+
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
 - [ ] ✨ New feature (non-breaking change which adds functionality)
-- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] 💥 Breaking change (fix or feature that would cause existing functionality to not work as
+      expected)
 - [ ] 📚 Documentation update (changes to documentation only)
 - [ ] 🎨 Style/formatting changes (no functional changes)
 - [ ] 🔧 Refactoring (no functional changes, code improvement)
@@ -28,7 +35,9 @@
 - [ ] 🧹 Chore (maintenance, dependencies, etc.)
 
 ### 🌟 Mission Scope
+
 <!-- Check the areas affected by this change -->
+
 - [ ] Frontend/UI
 - [ ] Backend/API
 - [ ] Database/Data
@@ -39,6 +48,7 @@
 - [ ] Security
 
 ## 🔍 Mission Testing
+
 <!-- Describe how you tested these changes -->
 
 ### ✅ Test Coverage
@@ -51,18 +61,23 @@
 - [ ] Accessibility testing (if applicable)
 
 ### 🧪 Testing Steps
+
 <!-- Provide step-by-step instructions for testing -->
+
 1.
 2.
 3.
 
 ### 📊 Test Results
+
 <!-- Include test output, screenshots, or metrics -->
+
 ```
 Test results here
 ```
 
 ## 🛡️ Mission Safety & Security
+
 <!-- Security and safety considerations -->
 
 ### 🔒 Security Checklist
@@ -74,10 +89,13 @@ Test results here
 - [ ] Dependencies scanned for vulnerabilities
 
 ### ⚠️ Breaking Changes
+
 <!-- If this is a breaking change, describe the impact and migration path -->
+
 **None** / **Details:**
 
 ## 📚 Mission Documentation
+
 <!-- Documentation updates -->
 
 - [ ] Code comments added/updated
@@ -87,6 +105,7 @@ Test results here
 - [ ] Migration guide created (if breaking change)
 
 ## 🌍 Mission Environment
+
 <!-- Environment and compatibility information -->
 
 **Tested on:**
@@ -96,22 +115,29 @@ Test results here
 - [ ] Production (if applicable)
 
 **Browser/OS Compatibility:**
+
 <!-- List browsers and OS versions tested -->
 
 ## 📸 Mission Visual Evidence
+
 <!-- Include screenshots, GIFs, or videos demonstrating the changes -->
 
 **Before:**
+
 <!-- Screenshots or description of current state -->
 
 **After:**
+
 <!-- Screenshots or description of new state -->
 
 ## 🤝 Mission Crew Review
+
 <!-- Information for reviewers -->
 
 ### 🔍 Review Focus Areas
+
 <!-- What should reviewers pay special attention to? -->
+
 - [ ] Code quality and standards
 - [ ] Performance implications
 - [ ] Security considerations
@@ -120,12 +146,15 @@ Test results here
 - [ ] Database schema changes (if applicable)
 
 ### ❓ Questions for Reviewers
+
 <!-- Specific questions or areas where you want feedback -->
+
 1.
 2.
 3.
 
 ## 🚨 Mission Risks & Considerations
+
 <!-- Potential risks, side effects, or considerations -->
 
 ### Potential Risks
@@ -141,6 +170,7 @@ Test results here
 -
 
 ## 🔗 Mission References
+
 <!-- Links to related resources -->
 
 ### Related Issues/PRs
@@ -156,6 +186,7 @@ Test results here
 -
 
 ## 📋 Mission Deployment Checklist
+
 <!-- For deployments -->
 
 ### 🚀 Pre-Launch
@@ -182,6 +213,7 @@ Test results here
 - [ ] User feedback collected (if applicable)
 
 ## 💬 Mission Notes
+
 <!-- Any additional context, concerns, or notes for the team -->
 
 ---

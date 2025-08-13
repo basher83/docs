@@ -1,9 +1,10 @@
-
 # Python Coding Standards
 
-This document defines the coding standards for all my personal Python projects. Adhering to these standards ensures code quality, security, and maintainability.
+This document defines the coding standards for all my personal Python projects. Adhering to these
+standards ensures code quality, security, and maintainability.
 
-> CI Pipelines: Docs Quality (format + lint + action pin verification) • Autofix CI (bot fixes) • Update Doc Trees (structure sync)
+> CI Pipelines: Docs Quality (format + lint + action pin verification) • Autofix CI (bot fixes) •
+> Update Doc Trees (structure sync)
 
 # [TODO] this doc is python-specific, but should be generic. Specific standards should be in `mission-control/project-templates`
 
@@ -11,7 +12,7 @@ This document defines the coding standards for all my personal Python projects. 
 
 ## 1. Core Environment & Dependency Management
 
-- **Tool:** [uv](https://github.com/astral-sh/uv)  
+- **Tool:** [uv](https://github.com/astral-sh/uv)
   - Use uv for creating/managing virtual environments and installing dependencies.
   - All dependencies must be listed in pyproject.toml (and requirements.txt if used).
 
@@ -35,7 +36,8 @@ Configuration:
 
 - Prettier config: `.prettierrc.json` (printWidth 100, proseWrap always)
 - Ignore file: `.prettierignore` (binaries / generated assets)
-- markdownlint config: `.markdownlint.json` (conflicting rules with Prettier disabled: MD007, MD012, MD013, MD029, MD030)
+- markdownlint config: `.markdownlint.json` (conflicting rules with Prettier disabled: MD007, MD012,
+  MD013, MD029, MD030)
 
 CI / Automation Order:
 
@@ -43,28 +45,33 @@ CI / Automation Order:
 2. markdownlint (check & optional --fix)
 3. autofix.ci may re-run these on PRs for contributors without local tooling.
 
-Pre-commit hooks run Prettier before markdownlint to minimize diffs. Never run two full-formatters (e.g. Prettier + mdformat) concurrently.
+Pre-commit hooks run Prettier before markdownlint to minimize diffs. Never run two full-formatters
+(e.g. Prettier + mdformat) concurrently.
 
 ### Automated Formatting (autofix.ci)
 
-Use [autofix.ci](https://autofix.ci) to automatically apply formatting / lint auto-fixes that *can be resolved deterministically by tools* after a PR is opened. This keeps contributor PRs clean and reduces back‑and‑forth on style.
+Use [autofix.ci](https://autofix.ci) to automatically apply formatting / lint auto-fixes that _can
+be resolved deterministically by tools_ after a PR is opened. This keeps contributor PRs clean and
+reduces back‑and‑forth on style.
 
 **Scope / What It Does**
 
-- Runs configured formatters / linters (e.g. ruff --fix, markdownlint --fix, prettier) in a bot commit pushed onto the contributor's PR branch.
+- Runs configured formatters / linters (e.g. ruff --fix, markdownlint --fix, prettier) in a bot
+  commit pushed onto the contributor's PR branch.
 - Only touches files changed in the PR.
 - Adds a bot commit like: `autofix: apply formatting (ruff, markdownlint)`.
 
 **When To Rely On It vs Local Hooks**
 
-| Situation | Prefer Pre-commit | Prefer autofix.ci |
-|-----------|------------------|-------------------|
-| Regular local development | ✅ | |
-| One-off web UI edits | | ✅ |
-| External contributors unfamiliar with tooling | | ✅ |
-| Fast feedback before push | ✅ | |
+| Situation                                     | Prefer Pre-commit | Prefer autofix.ci |
+| --------------------------------------------- | ----------------- | ----------------- |
+| Regular local development                     | ✅                |                   |
+| One-off web UI edits                          |                   | ✅                |
+| External contributors unfamiliar with tooling |                   | ✅                |
+| Fast feedback before push                     | ✅                |                   |
 
-Always keep local pre-commit hooks installed for fastest feedback; autofix.ci is a safety net & convenience layer.
+Always keep local pre-commit hooks installed for fastest feedback; autofix.ci is a safety net &
+convenience layer.
 
 **PR Flow**
 
@@ -75,15 +82,19 @@ Always keep local pre-commit hooks installed for fastest feedback; autofix.ci is
 
 **Adoption Guidelines**
 
-- Do not disable failing formatters locally expecting the bot to fix fundamental issues (e.g. type errors will not be auto-fixed).
+- Do not disable failing formatters locally expecting the bot to fix fundamental issues (e.g. type
+  errors will not be auto-fixed).
 - Avoid manual edits to the bot commit unless resolving a merge conflict—then squash on merge.
-- Keep deterministic tool versions pinned (e.g. ruff version) to avoid drifting output between local and bot runs.
+- Keep deterministic tool versions pinned (e.g. ruff version) to avoid drifting output between local
+  and bot runs.
 
 **Security / Governance**
 
-- The autofix bot requires write permission to PR branches; ensure branch protection allows bot commits (treat as trusted automation like Renovate).
+- The autofix bot requires write permission to PR branches; ensure branch protection allows bot
+  commits (treat as trusted automation like Renovate).
 - Review the first few bot commits when enabling to confirm it only formats.
-- If the bot gets into a reformat loop, lock the PR, adjust configs (.ruff.toml, markdownlint), then re-run.
+- If the bot gets into a reformat loop, lock the PR, adjust configs (.ruff.toml, markdownlint), then
+  re-run.
 
 **Configuration Locations**
 
@@ -91,7 +102,7 @@ Always keep local pre-commit hooks installed for fastest feedback; autofix.ci is
 - Markdown: .markdownlint.json
 - Generic tooling: pre-commit config reused within autofix workflow (if using a custom action)
 
-> Principle: *All style is automated; humans focus on correctness & design.*
+> Principle: _All style is automated; humans focus on correctness & design._
 
 ## 3. Security & Code Quality
 

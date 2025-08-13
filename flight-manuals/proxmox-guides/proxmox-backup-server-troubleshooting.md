@@ -5,7 +5,8 @@
 Two main problems were identified:
 
 1. Severe memory errors causing system instability.
-2. Broken or incomplete UEFI boot configuration (no ESP mount, missing grub-efi-amd64, no fstab entry).
+2. Broken or incomplete UEFI boot configuration (no ESP mount, missing grub-efi-amd64, no fstab
+   entry).
 
 ---
 
@@ -20,7 +21,8 @@ Two main problems were identified:
 
 - Removed one stick of RAM and tested each individually.
 - Identified one stick (Crucial CT8G4DFD8213) as faulty.
-- Kept the known-good stick in slot **DIMM4** (2nd from right), since **DIMM2** didn’t post reliably.
+- Kept the known-good stick in slot **DIMM4** (2nd from right), since **DIMM2** didn’t post
+  reliably.
 - Verified healthy stick with MemTest86+, 0 errors across full pass.
 
 ---

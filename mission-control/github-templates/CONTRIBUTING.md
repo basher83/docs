@@ -1,13 +1,15 @@
 # 🚀 Contributing to the Mission
 
-Welcome, fellow space explorer! We're thrilled that you want to contribute to our mission. This guide will help you navigate the contribution process and ensure your efforts align with our mission objectives.
+Welcome, fellow space explorer! We're thrilled that you want to contribute to our mission. This
+guide will help you navigate the contribution process and ensure your efforts align with our mission
+objectives.
 
 ## 🎯 Mission Values
 
 Our space-themed project operates under these core principles:
 
 - **🌟 Excellence in Execution** - Quality code and documentation
-- **🤝 Collaborative Spirit** - Open communication and mutual respect  
+- **🤝 Collaborative Spirit** - Open communication and mutual respect
 - **🔒 Mission Security** - Safe and secure practices
 - **📚 Knowledge Sharing** - Clear documentation and learning
 - **🚀 Continuous Improvement** - Always evolving and growing
@@ -76,20 +78,21 @@ Look for issues labeled with:
    ```bash
    # Run tests frequently during development
    npm test
-   
+
    # Check test coverage
    npm run coverage
    ```
 
-4. **Commit your changes** using our [commit conventions](../../flight-manuals/gitops/commit-conventions.md):
+4. **Commit your changes** using our
+   [commit conventions](../../flight-manuals/gitops/commit-conventions.md):
 
    ```bash
    git commit -m "🎯 feat(auth): add OAuth 2.0 integration
-   
+
    Implement OAuth 2.0 authentication flow with support for
    multiple providers. Includes token refresh and proper
    error handling.
-   
+
    Closes: #123"
    ```
 
@@ -288,10 +291,12 @@ For significant features:
 
 ## 🎉 Thank You
 
-Your contributions make this project better for everyone. Whether you're fixing a small bug, adding a major feature, or improving documentation, every contribution matters to our mission success.
+Your contributions make this project better for everyone. Whether you're fixing a small bug, adding
+a major feature, or improving documentation, every contribution matters to our mission success.
 
 **Welcome to the crew, space explorer!** 🚀
 
 ---
 
-*For questions about this guide, please open an issue or start a discussion. We're here to help you succeed in your contribution mission!*
+_For questions about this guide, please open an issue or start a discussion. We're here to help you
+succeed in your contribution mission!_

@@ -50,13 +50,27 @@ jobs:
       - name: Ruff fix-only
         run: |
           if [ -f pyproject.toml ] || [ -f ruff.toml ]; then
-            uv run ruff check --fix-only . || true
+            # Use project-managed ruff if config exists (dependency expected in pyproject)
+            if uv run ruff --version >/dev/null 2>&1; then
+              uv run ruff check --fix-only . || true
+            else
+              # Fallback: ephemeral tool install without persisting to project
+              uvx ruff check --fix-only . || true
+            fi
+          else
+            echo "No Python lint config detected; skipping Ruff"
           fi
 
       - name: Ruff format
         run: |
           if [ -f pyproject.toml ] || [ -f ruff.toml ]; then
-            uv run ruff format . || true
+            if uv run ruff --version >/dev/null 2>&1; then
+              uv run ruff format . || true
+            else
+              uvx ruff format . || true
+            fi
+          else
+            echo "No Python lint config detected; skipping Ruff format"
           fi
 
       - name: Prettier write

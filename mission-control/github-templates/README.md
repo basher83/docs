@@ -1,8 +1,10 @@
 # 👥 GitHub Templates: Community Interaction Standards
 
-**Philosophy**: *"How do we welcome and guide our crew?"*
+**Philosophy**: _"How do we welcome and guide our crew?"_
 
-Community-facing templates that define how contributors interact with your repositories. These standardized documents establish clear communication protocols, contribution guidelines, and community standards across all projects.
+Community-facing templates that define how contributors interact with your repositories. These
+standardized documents establish clear communication protocols, contribution guidelines, and
+community standards across all projects.
 
 ```plaintext
 github-templates/
@@ -19,7 +21,10 @@ github-templates/
 
 ## 🎯 Purpose
 
-GitHub Templates serves as Mission Control's communication hub - containing all community-facing documents that guide contributor interactions, establish behavioral expectations, and standardize communication protocols. These are the diplomatic frameworks that ensure productive collaboration across your entire repository ecosystem.
+GitHub Templates serves as Mission Control's communication hub - containing all community-facing
+documents that guide contributor interactions, establish behavioral expectations, and standardize
+communication protocols. These are the diplomatic frameworks that ensure productive collaboration
+across your entire repository ecosystem.
 
 ## 📋 Template Categories
 
@@ -47,10 +52,12 @@ GitHub Templates serves as Mission Control's communication hub - containing all 
 
 ## 🔗 Related Documentation
 
-- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance principles
+- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance
+  principles
 - [GitHub Configs](../github-configs/) - Repository automation and technical controls
 - [Boilerplate Files](../boilerplate/) - Universal configuration files
 
 ---
 
-*These templates are prescriptive and authoritative - they define the social foundation for repository community management and contributor experience.*
+_These templates are prescriptive and authoritative - they define the social foundation for
+repository community management and contributor experience._

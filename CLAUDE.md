@@ -1,16 +1,20 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this
+repository.
 
 ## Repository Purpose
 
-This is a personal documentation hub organized with a space-themed metaphor. It serves as a central knowledge management system containing standards, guides, architecture diagrams, and reference materials for technical projects.
+This is a personal documentation hub organized with a space-themed metaphor. It serves as a central
+knowledge management system containing standards, guides, architecture diagrams, and reference
+materials for technical projects.
 
 ## Directory Organization
 
 The repository follows a strict five-directory space exploration philosophy:
 
-- **`mission-control/`** - Standards, conventions, templates, and governance (prescriptive, copy-paste ready)
+- **`mission-control/`** - Standards, conventions, templates, and governance (prescriptive,
+  copy-paste ready)
 - **`flight-manuals/`** - Step-by-step procedures, how-to guides, troubleshooting (instructional)
 - **`star-charts/`** - Architecture diagrams, network topology, service maps (visual, spatial)
 - **`maintenance-logs/`** - Historical records, learning paths, decision journals (chronological)
@@ -58,6 +62,7 @@ Use this format for consistency:
 
 ```markdown
 # 📐 Document Title
+
 ![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
 ```
 
@@ -66,7 +71,8 @@ Use this format for consistency:
 When referencing other repositories in the basher83 ecosystem, use:
 
 ```markdown
-For more details, see my [Topic Name](https://github.com/basher83/repo-name/blob/main/path/to/file.md).
+For more details, see my
+[Topic Name](https://github.com/basher83/repo-name/blob/main/path/to/file.md).
 ```
 
 ## Key Architecture Files
@@ -77,6 +83,8 @@ For more details, see my [Topic Name](https://github.com/basher83/repo-name/blob
 
 ## Quality Philosophy
 
-"A well-organized documentation system should feel like having an experienced colleague available 24/7 - someone who knows exactly where to find the right information and can explain it clearly."
+"A well-organized documentation system should feel like having an experienced colleague available
+24/7 - someone who knows exactly where to find the right information and can explain it clearly."
 
-All organizational decisions must support this goal of being a living, practical knowledge management system.
+All organizational decisions must support this goal of being a living, practical knowledge
+management system.

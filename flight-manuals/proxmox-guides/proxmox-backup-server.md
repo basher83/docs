@@ -29,7 +29,9 @@ The Proxmox Backup Server is a tool that allows you to backup your data to a rem
 
 ## 🧰 Overview
 
-Proxmox Backup Server (PBS) is an enterprise-grade, open-source solution for backing up and restoring virtual machines (VMs), containers (CTs), and physical hosts. It integrates seamlessly with Proxmox VE and supports deduplication, compression, and authentication out of the box.
+Proxmox Backup Server (PBS) is an enterprise-grade, open-source solution for backing up and
+restoring virtual machines (VMs), containers (CTs), and physical hosts. It integrates seamlessly
+with Proxmox VE and supports deduplication, compression, and authentication out of the box.
 
 ---
 

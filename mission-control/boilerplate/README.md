@@ -1,8 +1,10 @@
 # 🧰 Boilerplate Files: Universal Project Foundations
 
-**Philosophy**: *"What are the essential building blocks for any mission?"*
+**Philosophy**: _"What are the essential building blocks for any mission?"_
 
-Universal configuration files and templates that provide consistent foundations across all projects, regardless of technology stack or platform. These are the fundamental components that every repository needs to operate effectively and maintain quality standards.
+Universal configuration files and templates that provide consistent foundations across all projects,
+regardless of technology stack or platform. These are the fundamental components that every
+repository needs to operate effectively and maintain quality standards.
 
 ```plaintext
 boilerplate/
@@ -23,7 +25,10 @@ boilerplate/
 
 ## 🎯 Purpose
 
-Boilerplate Files serves as Mission Control's foundation depot - containing universal configuration files and templates that establish consistent quality standards across all repositories. These are the essential building blocks that every project needs, regardless of technology stack, framework, or platform.
+Boilerplate Files serves as Mission Control's foundation depot - containing universal configuration
+files and templates that establish consistent quality standards across all repositories. These are
+the essential building blocks that every project needs, regardless of technology stack, framework,
+or platform.
 
 ## 📋 File Categories
 
@@ -79,11 +84,13 @@ Each boilerplate file includes:
 
 ## 🔗 Related Documentation
 
-- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance principles
+- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance
+  principles
 - [GitHub Templates](../github-templates/) - Community interaction templates
 - [GitHub Configs](../github-configs/) - Repository automation and technical controls
 - [Project Templates](../project-templates/) - Complete project scaffolding blueprints
 
 ---
 
-*These files are prescriptive and authoritative - they define the universal foundation for consistent repository quality and operational standards.*
+_These files are prescriptive and authoritative - they define the universal foundation for
+consistent repository quality and operational standards._

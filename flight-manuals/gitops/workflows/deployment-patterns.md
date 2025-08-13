@@ -2,7 +2,8 @@
 
 ## Overview
 
-Common deployment patterns and workflows used across different project types in the basher83 ecosystem.
+Common deployment patterns and workflows used across different project types in the basher83
+ecosystem.
 
 ## Deployment Environments
 
@@ -10,11 +11,11 @@ Common deployment patterns and workflows used across different project types in 
 
 Following the [space-themed naming convention](../../../mission-control/repo-naming-conventions.md):
 
-| Environment | Purpose | Naming Pattern | Approval Required |
-|-------------|---------|----------------|-------------------|
-| **Development** | Feature branches, rapid iteration | `Apollo-*`, `Mercury-*` | No |
-| **Staging** | Pre-production testing | `Saturn-Prime`, `Mars-Alpha` | Review Required |
-| **Production** | Live systems | `Andromeda-Core`, `MilkyWay-Max` | Manual Approval |
+| Environment     | Purpose                           | Naming Pattern                   | Approval Required |
+| --------------- | --------------------------------- | -------------------------------- | ----------------- |
+| **Development** | Feature branches, rapid iteration | `Apollo-*`, `Mercury-*`          | No                |
+| **Staging**     | Pre-production testing            | `Saturn-Prime`, `Mars-Alpha`     | Review Required   |
+| **Production**  | Live systems                      | `Andromeda-Core`, `MilkyWay-Max` | Manual Approval   |
 
 ## Common Patterns
 
@@ -61,9 +62,9 @@ name: Infrastructure Deployment
 on:
   push:
     branches: [main]
-    paths: ['terraform/**']
+    paths: ["terraform/**"]
   pull_request:
-    paths: ['terraform/**']
+    paths: ["terraform/**"]
 
 jobs:
   terraform-plan:
@@ -93,11 +94,11 @@ name: Documentation Update
 on:
   push:
     branches: [main]
-    paths: 
-      - 'docs/**'
-      - '**.md'
+    paths:
+      - "docs/**"
+      - "**.md"
   schedule:
-    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+    - cron: "0 6 * * *" # Daily at 6 AM UTC
 
 jobs:
   update-docs:
@@ -137,7 +138,7 @@ jobs:
     needs: deploy-staging
     if: github.ref == 'refs/heads/main'
     uses: basher83/.github/.github/workflows/deploy-docker.yml@main
-    environment: production  # Requires manual approval
+    environment: production # Requires manual approval
     with:
       environment: production
       image_tag: prod-${{ github.sha }}
@@ -150,9 +151,9 @@ jobs:
 ```yaml
 # In GitHub repository settings
 production:
-  required_reviewers: 
+  required_reviewers:
     - basher83
-  wait_timer: 5  # 5-minute delay
+  wait_timer: 5 # 5-minute delay
   prevent_self_review: true
 
 staging:
@@ -163,32 +164,32 @@ staging:
 
 ### Secret Management
 
-| Secret Type | Scope | Pattern |
-|-------------|-------|---------|
-| Registry Tokens | Repository | `REGISTRY_TOKEN` |
-| API Keys | Organization | `TERRAFORM_TOKEN`, `PROXMOX_TOKEN` |
-| Environment-specific | Environment | `PROD_DB_URL`, `STAGING_API_KEY` |
+| Secret Type          | Scope        | Pattern                            |
+| -------------------- | ------------ | ---------------------------------- |
+| Registry Tokens      | Repository   | `REGISTRY_TOKEN`                   |
+| API Keys             | Organization | `TERRAFORM_TOKEN`, `PROXMOX_TOKEN` |
+| Environment-specific | Environment  | `PROD_DB_URL`, `STAGING_API_KEY`   |
 
 ## Monitoring and Notifications
 
 ### Deployment Status Notifications
 
 ```yaml
-  - name: Notify deployment status
-    if: always()
-    uses: 8398a7/action-slack@v3
-    with:
-      status: ${{ job.status }}
-      channel: '#deployments'
-      webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+- name: Notify deployment status
+  if: always()
+  uses: 8398a7/action-slack@v3
+  with:
+    status: ${{ job.status }}
+    channel: "#deployments"
+    webhook_url: ${{ secrets.SLACK_WEBHOOK }}
 ```
 
 ### Health Checks
 
 ```yaml
-  - name: Post-deployment health check
-    run: |
-      timeout 300 bash -c 'until curl -f ${{ env.HEALTH_CHECK_URL }}; do sleep 5; done'
+- name: Post-deployment health check
+  run: |
+    timeout 300 bash -c 'until curl -f ${{ env.HEALTH_CHECK_URL }}; do sleep 5; done'
 ```
 
 ## Best Practices

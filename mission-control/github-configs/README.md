@@ -1,8 +1,9 @@
 # 🔧 GitHub Configs: Repository Automation & Governance
 
-**Philosophy**: *"Automate the mission-critical systems"*
+**Philosophy**: _"Automate the mission-critical systems"_
 
-Essential GitHub configurations that control repository behavior, automation, and governance workflows. These configurations ensure consistent GitHub functionality across all repositories.
+Essential GitHub configurations that control repository behavior, automation, and governance
+workflows. These configurations ensure consistent GitHub functionality across all repositories.
 
 ```plaintext
 github-configs/
@@ -17,7 +18,10 @@ github-configs/
 
 ## 🎯 Purpose
 
-GitHub Configs serves as Mission Control's automation center - containing all GitHub-specific configurations that control repository behavior, enforce governance policies, and automate workflows. These are the technical control systems that ensure consistent operation across your entire repository ecosystem.
+GitHub Configs serves as Mission Control's automation center - containing all GitHub-specific
+configurations that control repository behavior, enforce governance policies, and automate
+workflows. These are the technical control systems that ensure consistent operation across your
+entire repository ecosystem.
 
 ## 📋 Configuration Categories
 
@@ -42,10 +46,12 @@ GitHub Configs serves as Mission Control's automation center - containing all Gi
 
 ## 🔗 Related Documentation
 
-- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance principles
+- [Information Architecture Philosophy](../information-architecture.md) - Foundational governance
+  principles
 - [GitHub Templates](../github-templates/) - Community interaction templates
 - [Boilerplate Files](../boilerplate/) - Universal configuration files
 
 ---
 
-*These configurations are prescriptive and authoritative - they define the technical foundation for repository governance and automation.*
+_These configurations are prescriptive and authoritative - they define the technical foundation for
+repository governance and automation._

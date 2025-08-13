@@ -2,11 +2,13 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fproject-management.md&display_timestamp=committer)
 
-Comprehensive guide for using GitHub's project management features effectively with space-themed organization.
+Comprehensive guide for using GitHub's project management features effectively with space-themed
+organization.
 
 ## Overview
 
-This guide covers GitHub Issues, Projects, Milestones, and Labels for effective project management using space exploration metaphors.
+This guide covers GitHub Issues, Projects, Milestones, and Labels for effective project management
+using space exploration metaphors.
 
 ## Space-Themed Project Organization
 
@@ -115,25 +117,31 @@ Use space-themed issue templates:
 # 🐛 Mission Anomaly Report
 
 ## 🎯 Mission Context
+
 Brief description of what was supposed to happen.
 
 ## 🚨 Current Behavior
+
 What actually happened.
 
 ## 🛰️ Expected Behavior
+
 What should have happened.
 
 ## 🔍 Investigation Steps
+
 - [ ] Reviewed system logs
 - [ ] Checked configuration
 - [ ] Verified dependencies
 
 ## 📊 Mission Data
+
 - Environment: [production/staging/development]
 - Browser/OS: [if applicable]
 - Version: [application version]
 
 ## 🛠️ Proposed Solution
+
 Suggested approach to resolve the issue.
 ```
 
@@ -143,20 +151,25 @@ Suggested approach to resolve the issue.
 # ✨ Mission Enhancement Request
 
 ## 🎯 Mission Objective
+
 What problem does this solve?
 
 ## 🚀 Proposed Solution
+
 Detailed description of the feature.
 
 ## 🛰️ Mission Requirements
+
 - [ ] Requirement 1
 - [ ] Requirement 2
 - [ ] Requirement 3
 
 ## 📊 Success Metrics
+
 How will we measure success?
 
 ## 🗺️ Implementation Plan
+
 High-level approach to implementation.
 ```
 
@@ -349,7 +362,7 @@ then: move_to("🛰️ In Orbit")
 name: Mission Metrics
 on:
   schedule:
-    - cron: '0 9 * * MON'  # Every Monday at 9 AM
+    - cron: "0 9 * * MON" # Every Monday at 9 AM
 
 jobs:
   metrics:
@@ -429,4 +442,5 @@ jobs:
 
 ---
 
-**Mission Control Reference**: Label definitions and project templates available in `mission-control/github-configs/`
+**Mission Control Reference**: Label definitions and project templates available in
+`mission-control/github-configs/`

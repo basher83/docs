@@ -2,7 +2,10 @@
 
 ## Overview
 
-A dedicated assets repository is utilized to ensure that all assets are stored in a single location. This allows for easy access and management of assets across all projects and eliminates the external dependency on other providers (e.g. Giphy, etc.). This approach leverages GitHub's CDN: Once uploaded to a repo, GitHub serves images via `raw.githubusercontent.com`.
+A dedicated assets repository is utilized to ensure that all assets are stored in a single location.
+This allows for easy access and management of assets across all projects and eliminates the external
+dependency on other providers (e.g. Giphy, etc.). This approach leverages GitHub's CDN: Once
+uploaded to a repo, GitHub serves images via `raw.githubusercontent.com`.
 
 ## Assets
 
@@ -67,7 +70,8 @@ To utilize assets in your projects, follow these steps:
 - Include a README in your assets repo explaining usage rights
 - Use consistent naming conventions for easy reference
 - Consider adding lightweight image optimization to your workflow
-- Use auto updating badges for better visibility ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fassets.md)
+- Use auto updating badges for better visibility
+  ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fassets.md)
 
 ### 4. Benefits of This Approach
 

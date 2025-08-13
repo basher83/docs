@@ -6,7 +6,8 @@
 ![Stars](https://img.shields.io/github/stars/basher83/[repo-name])
 ![Mission Status](https://img.shields.io/badge/Mission-Active-brightgreen)
 
-> Brief project description that captures the essence of your space mission. What problem does this solve? What value does it provide?
+> Brief project description that captures the essence of your space mission. What problem does this
+> solve? What value does it provide?
 
 ## 🎯 Mission Objectives
 
@@ -139,14 +140,15 @@ npm run deploy     # Deploy to production
 
 ## ✅ Automated Quality (Optional)
 
-> Remove or trim this section if the project is very small. These automation layers keep PRs focused on logic instead of style.
+> Remove or trim this section if the project is very small. These automation layers keep PRs focused
+> on logic instead of style.
 
-| Layer | Purpose | Reference |
-|-------|---------|-----------|
-| Pre-commit Hooks | Fast local feedback (lint, format, security) | `.pre-commit-config.yaml` |
-| autofix.ci | Bot applies safe formatting fixes on PRs | docs: [autofix.ci integration](../../../flight-manuals/gitops/github-integrations.md#autofixci-integration) |
-| Renovate | Dependency & action updates | `renovate.json` |
-| Dependabot | Security & ecosystem updates | `.github/dependabot.yml` |
+| Layer            | Purpose                                      | Reference                                                                                                   |
+| ---------------- | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Pre-commit Hooks | Fast local feedback (lint, format, security) | `.pre-commit-config.yaml`                                                                                   |
+| autofix.ci       | Bot applies safe formatting fixes on PRs     | docs: [autofix.ci integration](../../../flight-manuals/gitops/github-integrations.md#autofixci-integration) |
+| Renovate         | Dependency & action updates                  | `renovate.json`                                                                                             |
+| Dependabot       | Security & ecosystem updates                 | `.github/dependabot.yml`                                                                                    |
 
 ### Enabling (copy/paste checklist)
 
@@ -360,7 +362,8 @@ Thanks to all the space explorers who have contributed to this mission!
 ### Recent Activity
 
 - 🚀 Latest Release: [v1.2.0](https://github.com/basher83/[repo-name]/releases/latest)
-- 📊 Total Downloads: ![Download Count](https://img.shields.io/github/downloads/basher83/[repo-name]/total)
+- 📊 Total Downloads:
+  ![Download Count](https://img.shields.io/github/downloads/basher83/[repo-name]/total)
 - ⭐ Stars: ![Stars](https://img.shields.io/github/stars/basher83/[repo-name])
 - 🍴 Forks: ![Forks](https://img.shields.io/github/forks/basher83/[repo-name])
 
@@ -368,8 +371,8 @@ Thanks to all the space explorers who have contributed to this mission!
 
 ### Current Mission Phase: [Phase Name]
 
-- [X] ✅ Completed feature 1
-- [X] ✅ Completed feature 2
+- [x] ✅ Completed feature 1
+- [x] ✅ Completed feature 2
 - [ ] 🚧 In progress feature 3
 - [ ] 📋 Planned feature 4
 
@@ -384,4 +387,5 @@ See our [detailed roadmap](docs/roadmap.md) for more information.
 
 **🌟 Ready for launch? Let's explore the cosmos together!** 🚀
 
-*For more information about our space-themed development approach, check out our [mission control documentation](https://github.com/basher83/docs).*
+_For more information about our space-themed development approach, check out our
+[mission control documentation](https://github.com/basher83/docs)._

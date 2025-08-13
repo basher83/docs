@@ -2,9 +2,12 @@
 
 ## 🧭 Overview
 
-Git does not track empty directories by default. This can be problematic when your project relies on certain folder structures (e.g., for logs, uploads, build artifacts, etc.) that should exist but don't yet contain files.
+Git does not track empty directories by default. This can be problematic when your project relies on
+certain folder structures (e.g., for logs, uploads, build artifacts, etc.) that should exist but
+don't yet contain files.
 
-To address this, we use a convention: adding a file named `.gitkeep` to those directories. This ensures they are versioned in the Git repository without needing placeholder junk files.
+To address this, we use a convention: adding a file named `.gitkeep` to those directories. This
+ensures they are versioned in the Git repository without needing placeholder junk files.
 
 ---
 
@@ -33,19 +36,23 @@ Now `logs/` will be committed, even if it's empty.
 
 ## 🙅 What About `.gitignore`?
 
-`.gitignore` tells Git to ignore **files** inside a directory but won’t make Git track the directory itself if it’s empty. That’s where `.gitkeep` steps in — it keeps the folder _tracked_ without interfering with ignores.
+`.gitignore` tells Git to ignore **files** inside a directory but won’t make Git track the directory
+itself if it’s empty. That’s where `.gitkeep` steps in — it keeps the folder _tracked_ without
+interfering with ignores.
 
 ---
 
 ## 🧼 Convention Note
 
-`.gitkeep` isn’t a Git feature — it's just a naming convention. You could name the file anything, but `.gitkeep` is widely recognized and semantically clear.
+`.gitkeep` isn’t a Git feature — it's just a naming convention. You could name the file anything,
+but `.gitkeep` is widely recognized and semantically clear.
 
 ---
 
 ## ⚙️ Automating `.gitkeep` File Creation
 
-You can auto-generate `.gitkeep` files as part of your project scaffolding or bootstrapping process. This ensures essential empty folders are always present in the repo.
+You can auto-generate `.gitkeep` files as part of your project scaffolding or bootstrapping process.
+This ensures essential empty folders are always present in the repo.
 
 ### 🧪 Example: `init.sh` Snippet
 

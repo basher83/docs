@@ -4,7 +4,8 @@
 
 ## 🎯 Core Philosophy
 
-This document defines the organizational philosophy for the entire `basher83/docs` ecosystem. Every directory, file, and structural decision should align with these principles.
+This document defines the organizational philosophy for the entire `basher83/docs` ecosystem. Every
+directory, file, and structural decision should align with these principles.
 
 ---
 
@@ -32,7 +33,8 @@ All organization follows space exploration metaphors:
 - **Audience**: Future self and collaborators setting up new projects
 - **Update Frequency**: Stable, changes when standards evolve
 
-**Think**: The flight director's handbook - these are the non-negotiable standards that ensure mission success.
+**Think**: The flight director's handbook - these are the non-negotiable standards that ensure
+mission success.
 
 ### 📖 Flight Manuals (`flight-manuals/`)
 
@@ -44,7 +46,8 @@ All organization follows space exploration metaphors:
 - **Audience**: Someone actively working on a task
 - **Update Frequency**: Regular updates as procedures improve
 
-**Think**: The pilot's manual - practical instructions for getting things done safely and effectively.
+**Think**: The pilot's manual - practical instructions for getting things done safely and
+effectively.
 
 ### 🗺️ Star Charts (`star-charts/`)
 
@@ -174,6 +177,7 @@ When adding new content, ask:
 
 ## 🌟 The North Star
 
-**"A well-organized documentation system should feel like having an experienced colleague available 24/7 - someone who knows exactly where to find the right information and can explain it clearly."**
+**"A well-organized documentation system should feel like having an experienced colleague available
+24/7 - someone who knows exactly where to find the right information and can explain it clearly."**
 
 This philosophy ensures that every organizational decision supports this goal.

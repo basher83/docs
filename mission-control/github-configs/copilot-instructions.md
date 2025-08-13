@@ -1,19 +1,26 @@
 [Source](https://docs.github.com/en/copilot/how-tos/custom-instructions/adding-repository-custom-instructions-for-github-copilot?tool=vscode#writing-effective-repository-custom-instructions)
 
-Writing effective repository custom instructions
-The instructions you add to the .github/copilot-instructions.md file should be short, self-contained statements that provide Copilot with relevant information to help it work in this repository. Because the instructions are sent with every chat message, they should be broadly applicable to most requests you will make in the context of the repository.
+Writing effective repository custom instructions The instructions you add to the
+.github/copilot-instructions.md file should be short, self-contained statements that provide Copilot
+with relevant information to help it work in this repository. Because the instructions are sent with
+every chat message, they should be broadly applicable to most requests you will make in the context
+of the repository.
 
-The exact structure you utilize for your instructions file will vary by project and need, but the following guidelines provide a good starting point:
+The exact structure you utilize for your instructions file will vary by project and need, but the
+following guidelines provide a good starting point:
 
-Provide an overview of the project you're working on, including its purpose, goals, and any relevant background information.
-Include the folder structure of the repository, including any important directories or files that are relevant to the project.
-Specify the coding standards and conventions that should be followed, such as naming conventions, formatting rules, and best practices.
-Include any specific tools, libraries, or frameworks that are used in the project, along with any relevant version numbers or configurations.
-The following instructions file is an example of these practices in action:
+Provide an overview of the project you're working on, including its purpose, goals, and any relevant
+background information. Include the folder structure of the repository, including any important
+directories or files that are relevant to the project. Specify the coding standards and conventions
+that should be followed, such as naming conventions, formatting rules, and best practices. Include
+any specific tools, libraries, or frameworks that are used in the project, along with any relevant
+version numbers or configurations. The following instructions file is an example of these practices
+in action:
 
 # Project Overview
 
-This project is a web application that allows users to manage their tasks and to-do lists. It is built using React and Node.js, and uses MongoDB for data storage.
+This project is a web application that allows users to manage their tasks and to-do lists. It is
+built using React and Node.js, and uses MongoDB for data storage.
 
 ## Folder Structure
 
@@ -37,15 +44,16 @@ This project is a web application that allows users to manage their tasks and to
 ## UI guidelines
 
 - A toggle is provided to switch between light and dark mode.
-- Application should have a modern and clean design.
-You should also consider the size and complexity of your repository. The following types of instructions may work for a small repository with only a few contributors, but for a large and diverse repository, these may cause problems:
+- Application should have a modern and clean design. You should also consider the size and
+  complexity of your repository. The following types of instructions may work for a small repository
+  with only a few contributors, but for a large and diverse repository, these may cause problems:
 
-Requests to refer to external resources when formulating a response
-Instructions to answer in a particular style
-Requests to always respond with a certain level of detail
-For example, the following instructions may not have the intended results:
+Requests to refer to external resources when formulating a response Instructions to answer in a
+particular style Requests to always respond with a certain level of detail For example, the
+following instructions may not have the intended results:
 
-Always conform to the coding styles defined in styleguide.md in repo my-org/my-repo when generating code.
+Always conform to the coding styles defined in styleguide.md in repo my-org/my-repo when generating
+code.
 
 Use @terminal when answering questions about Git.
 

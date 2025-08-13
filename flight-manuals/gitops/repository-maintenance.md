@@ -6,7 +6,8 @@ Comprehensive guide for ongoing repository maintenance, monitoring, and optimiza
 
 ## Overview
 
-Regular repository maintenance ensures project health, security, and team productivity. This guide establishes systematic approaches to repository care using space mission metaphors.
+Regular repository maintenance ensures project health, security, and team productivity. This guide
+establishes systematic approaches to repository care using space mission metaphors.
 
 ## Maintenance Schedule
 
@@ -48,43 +49,43 @@ Regular repository maintenance ensures project health, security, and team produc
 name: 🛰️ Daily Orbit Check
 on:
   schedule:
-    - cron: '0 8 * * *'  # 8 AM daily
+    - cron: "0 8 * * *" # 8 AM daily
 
 jobs:
   health-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Repository Health Check
         run: |
           echo "🔍 Mission Status Report - $(date)"
           echo "======================================="
-          
+
           # Check for stale branches
           echo "📊 Stale Branch Analysis:"
           git for-each-ref --format='%(refname:short) %(committerdate)' refs/remotes/origin | 
             awk '$2 < "'$(date -d '30 days ago' '+%Y-%m-%d')'"' | 
             head -10
-          
+
           # Check open issues without labels
           echo "🏷️ Unlabeled Issues:"
           gh issue list --state open --limit 5 --json number,title,labels --jq '.[] | select(.labels | length == 0) | "\(.number): \(.title)"'
-          
+
           # Check PRs without reviewers
           echo "👥 PRs Awaiting Review:"
           gh pr list --state open --json number,title,reviewRequests --jq '.[] | select(.reviewRequests | length == 0) | "\(.number): \(.title)"'
-          
+
           # Check failed workflows
           echo "⚠️ Recent Workflow Failures:"
           gh run list --status failure --limit 5 --json displayTitle,conclusion,createdAt
-      
+
       - name: Send Slack Notification
         if: failure()
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
-          channel: '#mission-control'
+          channel: "#mission-control"
           webhook_url: ${{ secrets.SLACK_WEBHOOK }}
 ```
 
@@ -108,7 +109,7 @@ jobs:
           script: |
             const issue = context.payload.issue;
             const body = issue.body.toLowerCase();
-            
+
             // Auto-assign labels based on content
             if (body.includes('bug') || body.includes('error')) {
               await github.rest.issues.addLabels({
@@ -117,7 +118,7 @@ jobs:
                 labels: ['🐛 bug']
               });
             }
-            
+
             if (body.includes('security') || body.includes('vulnerability')) {
               await github.rest.issues.addLabels({
                 ...context.repo,
@@ -125,7 +126,7 @@ jobs:
                 labels: ['🔒 security', '🔴 priority-high']
               });
             }
-      
+
       - name: Add to project board
         uses: actions/add-to-project@v0.4.0
         with:
@@ -156,7 +157,7 @@ gh issue list --state open --label "🤖 needs-info" \
 while read -r issue; do
   issue_number=$(echo "$issue" | jq -r '.number')
   echo "Marking issue #$issue_number as stale"
-  
+
   gh issue comment $issue_number --body "🛰️ **Mission Update Required**
 
 This issue has been inactive for 30 days. Please provide an update or this issue will be closed in 7 days.
@@ -167,7 +168,7 @@ To keep this issue active:
 - Close if no longer relevant
 
 *This is an automated message from Mission Control*"
-  
+
   gh issue edit $issue_number --add-label "🕰️ stale"
 done < <(cat stale_issues.json | jq -c '.')
 
@@ -196,13 +197,13 @@ echo "📋 PR Review Status Report"
 # PRs waiting for review
 echo "🔍 PRs Awaiting Review:"
 gh pr list --state open --json number,title,author,createdAt \
-  --jq '.[] | select(.reviewRequests | length == 0) | 
+  --jq '.[] | select(.reviewRequests | length == 0) |
        "PR #\(.number): \(.title) by @\(.author.login) (created \(.createdAt | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%Y-%m-%d")))"'
 
 # Long-running PRs
 echo "⏰ Long-running PRs (> 7 days):"
 gh pr list --state open --json number,title,createdAt \
-  --jq '.[] | select(.createdAt < "'$(date -d '7 days ago' -I)'") | 
+  --jq '.[] | select(.createdAt < "'$(date -d '7 days ago' -I)'") |
        "PR #\(.number): \(.title) (age: \(.createdAt | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%Y-%m-%d")))"'
 
 # Draft PRs
@@ -220,55 +221,55 @@ gh pr list --state open --draft --json number,title,author
 name: 🔍 Monthly Dependency Audit
 on:
   schedule:
-    - cron: '0 9 1 * *'  # First day of month at 9 AM
+    - cron: "0 9 1 * *" # First day of month at 9 AM
 
 jobs:
   dependency-audit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Security Audit
         run: |
           echo "🔒 Security Vulnerability Scan"
           npm audit --audit-level moderate
-          
+
           echo "📊 Dependency Analysis"
           npx license-checker --summary
-          
+
           echo "📦 Outdated Packages"
           npm outdated
-      
+
       - name: Generate Dependency Report
         run: |
           cat << 'EOF' > dependency-report.md
           # 📊 Monthly Dependency Report
-          
+
           ## 🔒 Security Status
           $(npm audit --audit-level moderate | tail -n 10)
-          
+
           ## 📦 Outdated Dependencies
           $(npm outdated)
-          
+
           ## 📈 Recommendations
           - Review security vulnerabilities above
           - Plan updates for major version changes
           - Consider alternatives for deprecated packages
-          
+
           ## 🎯 Action Items
           - [ ] Review security findings
           - [ ] Update development dependencies
           - [ ] Test compatibility with new versions
           - [ ] Update documentation if needed
           EOF
-      
+
       - name: Create Issue for Review
         uses: actions/github-script@v6
         with:
           script: |
             const fs = require('fs');
             const report = fs.readFileSync('dependency-report.md', 'utf8');
-            
+
             await github.rest.issues.create({
               ...context.repo,
               title: '📊 Monthly Dependency Review - ' + new Date().toISOString().slice(0, 7),
@@ -291,7 +292,7 @@ git count-objects -vH
 
 # Largest files analysis
 echo "📊 Largest Files:"
-git rev-list --objects --all | 
+git rev-list --objects --all |
   git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
   sed -n 's/^blob //p' |
   sort --numeric-sort --key=2 --reverse |
@@ -346,31 +347,37 @@ grep -r -i "password\|secret\|key\|token" --include="*.js" --include="*.py" --in
 # 🔍 Quarterly Technical Debt Assessment
 
 ## Code Quality Metrics
+
 - [ ] Code complexity analysis
 - [ ] Test coverage review
 - [ ] Documentation completeness
 - [ ] Performance benchmarks
 
 ## Infrastructure Review
+
 - [ ] CI/CD pipeline efficiency
 - [ ] Build time optimization
 - [ ] Resource utilization
 - [ ] Security compliance
 
 ## Process Evaluation
+
 - [ ] Development workflow effectiveness
 - [ ] Code review quality
 - [ ] Issue resolution time
 - [ ] Team satisfaction survey
 
 ## Technology Stack Review
+
 - [ ] Framework/library updates
 - [ ] Tool effectiveness
 - [ ] Alternative solution evaluation
 - [ ] Migration planning
 
 ## Action Items
+
 Based on assessment results:
+
 1. Prioritize technical debt items
 2. Plan refactoring sprints
 3. Update development standards
@@ -446,26 +453,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Security Alert Check
         run: |
           # Check for high-severity vulnerabilities
           npm audit --audit-level high --json > audit.json
-          
+
           if [ -s audit.json ] && [ "$(jq '.metadata.vulnerabilities.high' audit.json)" -gt 0 ]; then
             echo "🚨 HIGH SEVERITY VULNERABILITIES DETECTED"
             jq '.advisories' audit.json
             exit 1
           fi
-      
+
       - name: Notify on Failure
         if: failure()
         uses: 8398a7/action-slack@v3
         with:
           status: failure
-          channel: '#security-alerts'
+          channel: "#security-alerts"
           webhook_url: ${{ secrets.SLACK_WEBHOOK }}
-          text: '🚨 Critical security vulnerabilities detected in ${{ github.repository }}'
+          text: "🚨 Critical security vulnerabilities detected in ${{ github.repository }}"
 ```
 
 ## Automation Scripts
@@ -483,8 +490,8 @@ REPORT_FILE="health-report-$(date +%Y%m%d).md"
 
 cat << EOF > $REPORT_FILE
 # 🛰️ Repository Health Report
-**Repository:** $REPO_NAME  
-**Date:** $(date)  
+**Repository:** $REPO_NAME
+**Date:** $(date)
 **Report Generated By:** Mission Control Automation
 
 ## 📊 Repository Statistics
@@ -545,4 +552,5 @@ chmod +x scripts/health-check.sh
 
 ---
 
-**Mission Control Reference**: Maintenance schedules and automation templates available in `mission-control/github-configs/`
+**Mission Control Reference**: Maintenance schedules and automation templates available in
+`mission-control/github-configs/`

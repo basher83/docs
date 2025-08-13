@@ -6,9 +6,11 @@ Automated health check script for verifying recent VM backups in Proxmox Backup 
 
 ## 📋 The Script
 
-**Script Location:** [`automation-scripts/proxmox-backup-server/pbs-backup-health.sh`](https://github.com/basher83/automation-scripts/blob/main/proxmox-backup-server/pbs-backup-health.sh)
+**Script Location:**
+[`automation-scripts/proxmox-backup-server/pbs-backup-health.sh`](https://github.com/basher83/automation-scripts/blob/main/proxmox-backup-server/pbs-backup-health.sh)
 
-This script checks for recent VM backups in Proxmox Backup Server via REST API. It queries your PBS datastore for the latest snapshots of specified VMs and alerts if no recent backup is found.
+This script checks for recent VM backups in Proxmox Backup Server via REST API. It queries your PBS
+datastore for the latest snapshots of specified VMs and alerts if no recent backup is found.
 
 ## 🚀 Quick Deploy
 
@@ -84,6 +86,5 @@ WantedBy=timers.target
 
 ## 🚨 Troubleshooting
 
-**No output**: Check network connectivity to PBS server
-**Authentication errors**: Verify API token permissions
-**jq command not found**: Install with `sudo apt install jq`
+**No output**: Check network connectivity to PBS server **Authentication errors**: Verify API token
+permissions **jq command not found**: Install with `sudo apt install jq`

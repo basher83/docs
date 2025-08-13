@@ -6,7 +6,8 @@ Comprehensive guide for git commit message standards and automation using space-
 
 ## Overview
 
-Standardized commit messages improve project tracking, automation, and team collaboration. This guide establishes space-themed commit conventions that integrate with GitHub workflows.
+Standardized commit messages improve project tracking, automation, and team collaboration. This
+guide establishes space-themed commit conventions that integrate with GitHub workflows.
 
 ## Commit Message Structure
 
@@ -22,12 +23,10 @@ Standardized commit messages improve project tracking, automation, and team coll
 
 ### Components Explained
 
-**Emoji**: Visual indicator for quick scanning
-**Type**: Category of change (feat, fix, docs, etc.)
-**Scope**: Area of codebase affected (optional)
-**Description**: Brief summary (50 characters or less)
-**Body**: Detailed explanation (optional, 72 characters per line)
-**Footer**: Issue references, breaking changes (optional)
+**Emoji**: Visual indicator for quick scanning **Type**: Category of change (feat, fix, docs, etc.)
+**Scope**: Area of codebase affected (optional) **Description**: Brief summary (50 characters or
+less) **Body**: Detailed explanation (optional, 72 characters per line) **Footer**: Issue
+references, breaking changes (optional)
 
 ## Emoji and Type Mapping
 
@@ -231,11 +230,11 @@ Create `.gitmessage` template file:
 
 ```bash
 # 🚀 Mission Commit Template
-# 
+#
 # <emoji> <type>(<scope>): <description>
-# 
+#
 # <body>
-# 
+#
 # <footer>
 #
 # Types:
@@ -282,8 +281,16 @@ Add to `.vscode/settings.json`:
   "gitlens.codeLens.enabled": true,
   "gitlens.currentLine.enabled": true,
   "conventionalCommits.scopes": [
-    "auth", "api", "ui", "db", "config", "utils",
-    "k8s", "docker", "terraform", "monitoring"
+    "auth",
+    "api",
+    "ui",
+    "db",
+    "config",
+    "utils",
+    "k8s",
+    "docker",
+    "terraform",
+    "monitoring"
   ]
 }
 ```
@@ -307,7 +314,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Validate Commit Messages
         run: |
           # Check each commit in the PR
@@ -330,7 +337,7 @@ name: 📝 Generate Changelog
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   changelog:
@@ -339,20 +346,20 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Generate Changelog
         run: |
           # Extract features and fixes from commit messages
           echo "# 🚀 Mission Log - $(git describe --tags --abbrev=0)" > CHANGELOG_NEW.md
           echo "" >> CHANGELOG_NEW.md
-          
+
           echo "## 🎯 New Features" >> CHANGELOG_NEW.md
           git log --format="- %s" --grep="🎯 feat" $(git describe --tags --abbrev=0 HEAD~1)..HEAD >> CHANGELOG_NEW.md
-          
+
           echo "" >> CHANGELOG_NEW.md
           echo "## 🐛 Bug Fixes" >> CHANGELOG_NEW.md
           git log --format="- %s" --grep="🐛 fix" $(git describe --tags --abbrev=0 HEAD~1)..HEAD >> CHANGELOG_NEW.md
-          
+
           # Prepend to existing changelog
           cat CHANGELOG.md >> CHANGELOG_NEW.md
           mv CHANGELOG_NEW.md CHANGELOG.md
@@ -373,39 +380,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Generate Release Notes
         id: release-notes
         run: |
           # Create comprehensive release notes
           notes=$(cat << 'EOF'
           ## 🚀 Mission Summary
-          
+
           This release includes the following mission objectives:
-          
+
           ### 🎯 New Features
           $(git log --format="- %s" --grep="🎯 feat" ${{ github.event.release.tag_name }}^..HEAD)
-          
+
           ### 🐛 Mission Fixes
           $(git log --format="- %s" --grep="🐛 fix" ${{ github.event.release.tag_name }}^..HEAD)
-          
+
           ### 📚 Documentation Updates
           $(git log --format="- %s" --grep="📚 docs" ${{ github.event.release.tag_name }}^..HEAD)
-          
+
           ### 🔧 System Improvements
           $(git log --format="- %s" --grep="🔧 refactor" ${{ github.event.release.tag_name }}^..HEAD)
-          
+
           ## 🛰️ Mission Control
-          
+
           **Full mission log**: [${{ github.event.release.tag_name }}](${{ github.server_url }}/${{ github.repository }}/compare/${{ github.event.release.tag_name }}^...${{ github.event.release.tag_name }})
-          
+
           **Mission Commander**: @${{ github.actor }}
           **Launch Date**: $(date -u +"%Y-%m-%d %H:%M UTC")
           EOF
           )
-          
+
           echo "notes=$notes" >> $GITHUB_OUTPUT
-      
+
       - name: Update Release
         uses: actions/github-script@v6
         with:
@@ -434,8 +441,7 @@ Closes: #123
 Related: #456
 ```
 
-**Review Comments:**
-Use space-themed language in reviews:
+**Review Comments:** Use space-themed language in reviews:
 
 - "🚀 Ready for launch!" (Approved)
 - "🔍 Navigation check needed" (Needs changes)
@@ -473,7 +479,7 @@ Use space-themed language in reviews:
 
 Implement comprehensive MFA with multiple verification methods:
 - SMS verification for mobile users
-- Email backup codes for account recovery  
+- Email backup codes for account recovery
 - App-based TOTP for enhanced security
 ```
 
@@ -531,4 +537,5 @@ chmod +x .git/hooks/commit-msg
 
 ---
 
-**Mission Control Reference**: Message templates and automation configs available in `mission-control/boilerplate/`
+**Mission Control Reference**: Message templates and automation configs available in
+`mission-control/boilerplate/`

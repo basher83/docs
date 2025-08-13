@@ -2,18 +2,19 @@
 
 ## Overview
 
-Comprehensive GitHub Actions automation strategy for the basher83 ecosystem, providing reusable workflows, templates, and best practices for consistent CI/CD across all projects.
+Comprehensive GitHub Actions automation strategy for the basher83 ecosystem, providing reusable
+workflows, templates, and best practices for consistent CI/CD across all projects.
 
 ## 📁 Organization Structure
 
 This documentation follows a separation of concerns pattern:
 
-| Component | Location | Purpose |
-|-----------|----------|---------|
-| **Documentation** | [`workflows/`](./workflows/) | Comprehensive guides and patterns |
-| **Templates** | [`templates/`](./templates/) | Starting points for new workflows |
-| **Implementation** | [`basher83/.github`](https://github.com/basher83/.github) | Reusable workflow repository |
-| **Project Workflows** | Individual `.github/workflows/` | Project-specific implementations |
+| Component             | Location                                                  | Purpose                           |
+| --------------------- | --------------------------------------------------------- | --------------------------------- |
+| **Documentation**     | [`workflows/`](./workflows/)                              | Comprehensive guides and patterns |
+| **Templates**         | [`templates/`](./templates/)                              | Starting points for new workflows |
+| **Implementation**    | [`basher83/.github`](https://github.com/basher83/.github) | Reusable workflow repository      |
+| **Project Workflows** | Individual `.github/workflows/`                           | Project-specific implementations  |
 
 ## 🔄 Workflow Categories
 

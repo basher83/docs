@@ -212,4 +212,5 @@ After repository setup:
 
 ---
 
-**Mission Control Reference**: See `mission-control/` directory for all templates, boilerplate, and standards referenced in this guide.
+**Mission Control Reference**: See `mission-control/` directory for all templates, boilerplate, and
+standards referenced in this guide.
