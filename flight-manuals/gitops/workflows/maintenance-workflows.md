@@ -112,9 +112,9 @@ Sequence for new PR:
 2. `Docs Quality` re-runs and should pass (pure check).
 3. Future language/security workflows (if added) execute.
 
-Deprecated (pending removal): legacy `markdownlint.yml`, `markdown-autofix.yml`.
+Legacy workflows removed (Aug 2025 cleanup): `markdownlint.yml`, `markdown-autofix.yml`, `quality-checks.yml`.
 
-Rationale: Reduce duplication & drift; single check workflow for Markdown; dedicated fix workflow.
+Rationale: Reduce duplication & drift; single check workflow (Docs Quality) plus dedicated autofix pipeline.
 
 > Recommended required status checks: `Docs Quality` (markdown-quality) and optionally success of `autofix.ci`.
 

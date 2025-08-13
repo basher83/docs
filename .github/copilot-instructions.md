@@ -240,7 +240,7 @@ task pre-commit      # full validation
 - **`Taskfile.yml`** - Build automation (44+ tasks defined)
 - **`.markdownlint.json`** - Markdown linting rules
 - **`.pre-commit-config.yaml`** - Pre-commit hooks with security focus
-- **`.github/workflows/`** - 4 automated workflows
+- **`.github/workflows/`** - 3 automated workflows
 
 ### Required Directory Structure
 
@@ -257,11 +257,11 @@ task pre-commit      # full validation
 
 ### GitHub Workflows (Auto-triggered)
 
-1. **markdownlint.yml** - Validates markdown on PRs/pushes
-2. **update-doc-trees.yml** - Auto-updates tree structures on main branch
-3. **markdown-autofix.yml** - Auto-fixes markdown formatting on PRs
+1. **docs-quality.yml** - Validates markdown formatting & pinned action security checks
+2. **autofix-ci.yml** - Bot applies deterministic formatting fixes (Prettier, markdownlint, Ruff)
+3. **update-doc-trees.yml** - Auto-updates directory tree sections on main branch
 
-> **Security Note**: All GitHub Actions are pinned to commit SHAs for security
+> **Security Note**: All GitHub Actions are pinned to commit SHAs for supply-chain safety
 
 ### Cross-Repository References
 
