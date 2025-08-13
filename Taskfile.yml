@@ -31,8 +31,8 @@ tasks:
   lint:markdown:
     desc: Lint markdown files
     cmds:
-  - npx prettier --check "**/*.md"
-  - markdownlint-cli2 "**/*.md" --config .markdownlint.json
+      - npx prettier --check "**/*.md"
+      - markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json
     sources:
       - "**/*.md"
       - .markdownlint.json
@@ -59,8 +59,8 @@ tasks:
   format:markdown:
     desc: Auto-fix markdown formatting issues
     cmds:
-  - npx prettier --write "**/*.md"
-  - markdownlint-cli2 "**/*.md" --config .markdownlint.json --fix
+      - npx prettier --write "**/*.md"
+      - markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix
     sources:
       - "**/*.md"
       - .markdownlint.json
@@ -70,10 +70,10 @@ tasks:
     cmds:
       - |
         echo "🔧 Running aggressive markdown auto-fix..."
-  # Prettier structural reflow
-  npx prettier --write "**/*.md"
-  # Semantic spacing / heading fixes
-  markdownlint-cli2 "**/*.md" --config .markdownlint.json --fix
+        # Prettier structural reflow
+        npx prettier --write "**/*.md"
+        # Semantic spacing / heading fixes (excluding node_modules)
+        markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix
         echo "✅ Aggressive markdown fixes applied"
     sources:
       - "**/*.md"
