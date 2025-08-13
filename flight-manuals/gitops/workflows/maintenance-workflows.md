@@ -96,13 +96,27 @@ Integrated in pre-commit / CI: detect-secrets, gitleaks, Semgrep security rules,
 
 ---
 
-## 🧪 Validation Order in CI
+## 🧪 Validation Order in CI (Current Topology)
 
-1. Autofix (bot) may push commit
-2. Lint / Format verify (should be clean post-bot)
-3. Type & security checks
-4. Tests & coverage upload
-5. Artifact / docs generation (if any)
+Active workflows after consolidation:
+
+| Workflow | Purpose | Writes? | Key Tools |
+|----------|---------|---------|-----------|
+| `autofix.ci` | Auto-apply deterministic formatting fixes on PRs | Yes (bot commit) | Ruff, Prettier, markdownlint |
+| `Docs Quality` | Enforce formatting + style; verify action pinning | No | Prettier (check), markdownlint, grep security check |
+| `update-doc-trees` | Maintain directory tree sections | Yes (commits tree regen) | custom script |
+
+Sequence for new PR:
+
+1. `autofix.ci` runs (may push `autofix:` commit).
+2. `Docs Quality` re-runs and should pass (pure check).
+3. Future language/security workflows (if added) execute.
+
+Deprecated (pending removal): legacy `markdownlint.yml`, `markdown-autofix.yml`.
+
+Rationale: Reduce duplication & drift; single check workflow for Markdown; dedicated fix workflow.
+
+> Recommended required status checks: `Docs Quality` (markdown-quality) and optionally success of `autofix.ci`.
 
 ---
 

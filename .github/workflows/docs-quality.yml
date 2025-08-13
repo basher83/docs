@@ -1,0 +1,72 @@
+name: Docs Quality
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**/*.md'
+      - '.markdownlint.json'
+      - '.prettierrc.json'
+      - '.prettierignore'
+      - 'package.json'
+      - 'package-lock.json'
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.md'
+      - '.markdownlint.json'
+      - '.prettierrc.json'
+      - '.prettierignore'
+      - 'package.json'
+      - 'package-lock.json'
+
+jobs:
+  markdown-quality:
+    name: Markdown Prettier + Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Cache npm cache
+        uses: actions/cache@638ed79f9dc94c1de1baef91bcab5edaa19451f4 # v4.2.4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-cache-${{ runner.os }}-
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22.18.0'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --no-audit --no-fund
+          else
+            npm install --no-audit --no-fund
+          fi
+
+      - name: Prettier check
+        run: npx prettier --check "**/*.md"
+
+      - name: markdownlint check
+        run: npx markdownlint-cli2 "**/*.md" --config .markdownlint.json
+
+  security-config:
+    name: Actions Pinning Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Verify Actions use SHAs
+        run: |
+          if grep -R "uses: .*@v[0-9]" .github/workflows/; then
+            echo "❌ Unpinned action versions found" && exit 1
+          fi
+          echo "✅ All actions pinned"
