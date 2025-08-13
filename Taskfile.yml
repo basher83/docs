@@ -1,8 +1,8 @@
-version: '3'
+version: "3"
 
 vars:
-  PROJECT_DIR: '{{.PWD}}'
-  SCRIPTS_DIR: '{{.PROJECT_DIR}}/scripts'
+  PROJECT_DIR: "{{.PWD}}"
+  SCRIPTS_DIR: "{{.PROJECT_DIR}}/scripts"
 
 tasks:
   default:
@@ -292,27 +292,27 @@ tasks:
       - |
         echo "📦 Installing recommended tools..."
         tools_to_install=""
-        
+
         if ! command -v markdownlint-cli2 >/dev/null 2>&1; then
           tools_to_install="$tools_to_install markdownlint-cli2"
         fi
-        
+
         if ! command -v shellcheck >/dev/null 2>&1; then
           echo "⚠️  shellcheck not found. Install with: brew install shellcheck"
         fi
-        
+
         if ! command -v gitleaks >/dev/null 2>&1; then
           echo "⚠️  gitleaks not found. Install with: brew install gitleaks"
         fi
-        
+
         if ! command -v detect-secrets >/dev/null 2>&1; then
           echo "⚠️  detect-secrets not found. Install with: pip install detect-secrets"
         fi
-        
+
         if ! command -v markdown-link-check >/dev/null 2>&1; then
           tools_to_install="$tools_to_install markdown-link-check"
         fi
-        
+
         if [ -n "$tools_to_install" ]; then
           echo "Installing npm packages:$tools_to_install"
           npm install -g $tools_to_install
@@ -348,24 +348,24 @@ tasks:
         cat > .git/hooks/pre-commit << 'EOF'
         #!/bin/bash
         echo "🔍 Running enhanced pre-commit checks..."
-        
+
         # Check for staged markdown files
         if git diff --cached --name-only | grep -q "\.md$"; then
           echo "📝 Markdown files detected, running auto-fix..."
           markdownlint-cli2 $(git diff --cached --name-only | grep "\.md$") --config .markdownlint.json --fix
           git add $(git diff --cached --name-only | grep "\.md$")
         fi
-        
+
         # Run full pre-commit suite
         task pre-commit
-        
+
         # Check if any files were modified during checks
         if [[ -n $(git diff --name-only) ]]; then
           echo "⚠️  Files were modified during pre-commit checks"
           echo "   Please review changes and commit again"
           exit 1
         fi
-        
+
         echo "✅ All pre-commit checks passed!"
         EOF
         chmod +x .git/hooks/pre-commit
