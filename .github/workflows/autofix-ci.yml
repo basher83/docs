@@ -1,15 +1,41 @@
 name: autofix.ci
 
 on:
+  # Manual runs still possible
   workflow_dispatch:
-  pull_request:
+  # Auto-run on pushes to any non-protected branch so fixes land before PRs
+  push:
+    branches-ignore: [ main ]
     paths:
       - '**/*.md'
+      - '**/*.mdx'
       - '**/*.py'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.json'
+      - '**/*.toml'
       - 'pyproject.toml'
       - 'ruff.toml'
       - '.markdownlint.json'
       - '.prettierrc.json'
+      - '.prettierignore'
+      - 'package.json'
+      - 'package-lock.json'
+  # Run on PRs targeting main for final polish
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.mdx'
+      - '**/*.py'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.json'
+      - '**/*.toml'
+      - 'pyproject.toml'
+      - 'ruff.toml'
+      - '.markdownlint.json'
+      - '.prettierrc.json'
+      - '.prettierignore'
       - 'package.json'
       - 'package-lock.json'
   workflow_call:
@@ -29,6 +55,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
+      - name: Guard: skip bot re-run
+        if: ${{ github.actor == 'autofix-ci[bot]' }}
+        run: echo "Triggered by autofix bot; exiting to avoid loop" && exit 0
+
+      - name: Cache npm cache
+        uses: actions/cache@638ed79f9dc94c1de1baef91bcab5edaa19451f4 # v4.2.4
+        with:
+          path: ~/.npm
+          key: autofix-npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            autofix-npm-${{ runner.os }}-
+
       - name: Setup uv (Python tools)
         uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc
         with:
@@ -38,6 +76,7 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '22.18.0'
+          cache: 'npm'
 
       - name: Install formatting tooling
         run: |
@@ -75,10 +114,10 @@ jobs:
           fi
 
       - name: Prettier write
-        run: npx prettier --write "**/*.md"
+        run: npx prettier --write "**/*.{md,mdx,yml,yaml,json,toml}" || true
 
       - name: markdownlint fix
-        run: npx markdownlint-cli2 "**/*.md" --config .markdownlint.json --fix || true
+        run: npx markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix || true
 
       - name: autofix commit
         uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
