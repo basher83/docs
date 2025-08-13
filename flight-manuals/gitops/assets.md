@@ -69,8 +69,6 @@ To utilize assets in your projects, follow these steps:
 - Consider adding lightweight image optimization to your workflow
 - Use auto updating badges for better visibility ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fassets.md)
 
-
-
 ### 4. Benefits of This Approach
 
 - Centralized Asset Management: All your visual assets in one place

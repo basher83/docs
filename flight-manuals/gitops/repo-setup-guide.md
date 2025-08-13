@@ -2,7 +2,6 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Frepo-setup-guide.md&display_timestamp=committer)
 
-
 Complete step-by-step workflow for creating new repositories following space-themed standards.
 
 ## Pre-Setup Checklist

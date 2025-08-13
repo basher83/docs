@@ -2,7 +2,6 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Finformation-architecture.md&display_timestamp=committer)
 
-
 ## 🎯 Core Philosophy
 
 This document defines the organizational philosophy for the entire `basher83/docs` ecosystem. Every directory, file, and structural decision should align with these principles.
