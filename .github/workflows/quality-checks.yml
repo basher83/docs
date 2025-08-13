@@ -1,0 +1,10 @@
+name: _REMOVED_ Quality Checks (Replaced by Docs Quality)
+# Superseded by docs-quality.yml
+on:
+	workflow_call:
+jobs:
+	noop:
+		if: false
+		runs-on: ubuntu-latest
+		steps:
+			- run: echo "Deprecated workflow placeholder"

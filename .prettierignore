@@ -1,0 +1,10 @@
+.git/
+node_modules/
+.task/
+.devcontainer/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico

@@ -6,6 +6,13 @@
 [![Profile](https://img.shields.io/badge/GitHub-basher83-181717?style=flat&logo=github)](https://github.com/basher83)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
 
+<!-- CI BADGES: Core automation pipelines -->
+[![Docs Quality](https://github.com/basher83/docs/actions/workflows/docs-quality.yml/badge.svg)](https://github.com/basher83/docs/actions/workflows/docs-quality.yml)
+[![Autofix CI](https://github.com/basher83/docs/actions/workflows/autofix-ci.yml/badge.svg)](https://github.com/basher83/docs/actions/workflows/autofix-ci.yml)
+[![Update Doc Trees](https://github.com/basher83/docs/actions/workflows/update-doc-trees.yml/badge.svg)](https://github.com/basher83/docs/actions/workflows/update-doc-trees.yml)
+
+_Docs Quality = formatting + lint + pinned action verification • Autofix CI = bot-applied deterministic fixes • Update Doc Trees = keeps structure map fresh_
+
 **Central knowledge repository for my projects, homelab, and technical standards**
 
 <img src="https://raw.githubusercontent.com/basher83/assets/main/banners/docs-banner.png" width="600" alt="Documentation Banner">

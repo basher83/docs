@@ -1,0 +1,15 @@
+{
+    "name": "docs",
+    "private": true,
+    "description": "Personal documentation hub formatting tooling",
+    "license": "MIT",
+    "devDependencies": {
+        "markdownlint-cli2": "0.18.1",
+        "prettier": "3.6.2"
+    },
+    "scripts": {
+        "format:md": "prettier --write \"**/*.md\"",
+        "format:md:check": "prettier --check \"**/*.md\"",
+        "lint:md": "markdownlint-cli2 \"**/*.md\" --config .markdownlint.json"
+    }
+}

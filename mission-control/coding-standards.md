@@ -3,6 +3,8 @@
 
 This document defines the coding standards for all my personal Python projects. Adhering to these standards ensures code quality, security, and maintainability.
 
+> CI Pipelines: Docs Quality (format + lint + action pin verification) • Autofix CI (bot fixes) • Update Doc Trees (structure sync)
+
 # [TODO] this doc is python-specific, but should be generic. Specific standards should be in `mission-control/project-templates`
 
 ---
@@ -21,6 +23,27 @@ This document defines the coding standards for all my personal Python projects. 
   - All new code must be type-annotated and pass mypy .
 - **Type Hints Helper:** [Ty](https://ty.solutions/)
   - Use ty to auto-generate or validate type hints as a supplement to mypy.
+
+### Markdown Formatting Standard
+
+For Markdown files the canonical formatting pipeline is:
+
+1. **Prettier** (structural + wrapping) – deterministic reflow & list normalization.
+2. **markdownlint** (semantic / style rules only) – headings, spacing, allowed HTML.
+
+Configuration:
+
+- Prettier config: `.prettierrc.json` (printWidth 100, proseWrap always)
+- Ignore file: `.prettierignore` (binaries / generated assets)
+- markdownlint config: `.markdownlint.json` (conflicting rules with Prettier disabled: MD007, MD012, MD013, MD029, MD030)
+
+CI / Automation Order:
+
+1. Prettier (write or check)
+2. markdownlint (check & optional --fix)
+3. autofix.ci may re-run these on PRs for contributors without local tooling.
+
+Pre-commit hooks run Prettier before markdownlint to minimize diffs. Never run two full-formatters (e.g. Prettier + mdformat) concurrently.
 
 ### Automated Formatting (autofix.ci)
 
