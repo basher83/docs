@@ -1,28 +1,8 @@
 {
   "mcpServers": {
-    "codacy": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "@codacy/codacy-mcp@latest"
-      ],
-      "env": {
-        "CODACY_ACCOUNT_TOKEN": "${CODACY_ACCOUNT_TOKEN}"
-      }
-    },
     "deepwiki": {
       "type": "sse",
       "url": "https://mcp.deepwiki.com/sse"
-    },
-    "docker-mcp": {
-      "type": "stdio",
-      "command": "docker",
-      "args": [
-        "mcp",
-        "gateway",
-        "run"
-      ],
-      "env": {}
     },
     "github": {
       "type": "stdio",
