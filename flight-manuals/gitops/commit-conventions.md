@@ -1,6 +1,6 @@
 # 📝 Commit Conventions Guide
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--09-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fcommit-conventions.md)
 
 Comprehensive guide for git commit message standards and automation using space-themed conventions.
 

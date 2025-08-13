@@ -1,6 +1,6 @@
 # 🚀 [Project Name]
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fboilerplate%2Freadme-templates%2Fproject-readme.md&display_timestamp=committer)
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
 ![Issues](https://img.shields.io/github/issues/basher83/[repo-name])
 ![Stars](https://img.shields.io/github/stars/basher83/[repo-name])

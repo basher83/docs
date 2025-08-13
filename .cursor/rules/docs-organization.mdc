@@ -72,7 +72,7 @@ Every document must be:
 ### Document Headers Should Include:
 ```markdown
 # 📐 Document Title
-![Last Updated](mdc:https:/img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path={ADD_PATH_TO_FILE}&display_timestamp=committer)
 ```
 
 ### Cross-Repository References

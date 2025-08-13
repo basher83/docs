@@ -216,7 +216,7 @@ Reference/glossary? → space-dictionary/
 - **One concept per file** - separate procedural and reference content
 - **Clear hierarchy** - use subdirectories when categories emerge  
 - **Cross-references** - link related content across directories
-- **Date badges** - include in headers: `![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)`
+- **Date badges** - include in headers: `![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path={ADD_PATH_TO_FILE}&display_timestamp=committer)`
 
 ### Content Creation Workflow
 
@@ -260,7 +260,6 @@ task pre-commit      # full validation
 1. **markdownlint.yml** - Validates markdown on PRs/pushes
 2. **update-doc-trees.yml** - Auto-updates tree structures on main branch
 3. **markdown-autofix.yml** - Auto-fixes markdown formatting on PRs
-4. **update-timestamp.yml** - Updates "Last Updated" badges
 
 > **Security Note**: All GitHub Actions are pinned to commit SHAs for security
 

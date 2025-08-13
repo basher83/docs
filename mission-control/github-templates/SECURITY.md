@@ -298,4 +298,5 @@ Security reports may contain sensitive information. We commit to:
 
 **Thank you for helping keep our mission secure!** 🚀🔒
 
-*This security policy is reviewed and updated quarterly. Last updated: 2025-06-09*
+*This security policy is reviewed and updated quarterly.*
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-templates%2FSECURITY.md&display_timestamp=committer)

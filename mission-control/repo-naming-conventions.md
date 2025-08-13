@@ -2,7 +2,7 @@
   
 # 🚀 Space-Themed Naming Convention for Homelab Projects 🌌
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--06-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Frepo-naming-conventions.md&display_timestamp=committer)
 [![GitHub Profile](https://img.shields.io/badge/GitHub-basher83-181717?style=flat&logo=github)](https://github.com/basher83)
 
 </div>

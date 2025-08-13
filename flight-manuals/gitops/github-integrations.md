@@ -1,6 +1,6 @@
 # 🔗 GitHub Integrations Guide
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--09-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fgithub-integrations.md&display_timestamp=committer)
 
 Complete guide for setting up external integrations with GitHub repositories.
 
@@ -15,7 +15,7 @@ This guide covers integration setup for external services that enhance repositor
 Add these badges to README.md headers for consistent project presentation:
 
 ```markdown
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fgithub-integrations.md&display_timestamp=committer)
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
 ![Issues](https://img.shields.io/github/issues/basher83/[repo-name])
 ![Stars](https://img.shields.io/github/stars/basher83/[repo-name])

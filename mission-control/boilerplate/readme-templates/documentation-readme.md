@@ -1,6 +1,6 @@
 # 📚 [Project Name] Documentation
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fboilerplate%2Freadme-templates%2Fdocumentation-readme.md&display_timestamp=committer)
 ![Documentation](https://img.shields.io/badge/Docs-Complete-success)
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
 ![Mission Status](https://img.shields.io/badge/Mission-Documenting-blue)

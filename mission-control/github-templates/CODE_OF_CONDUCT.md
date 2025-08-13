@@ -189,4 +189,4 @@ For answers to common questions about this code of conduct, see the FAQ at
 
 ---
 
-**Last Updated**: August 5, 2025
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-templates%2FCODE_OF_CONDUCT.md&display_timestamp=committer)

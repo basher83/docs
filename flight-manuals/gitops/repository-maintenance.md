@@ -1,6 +1,6 @@
 # 🔧 Repository Maintenance Guide
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--09-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Frepository-maintenance.md&display_timestamp=committer)
 
 Comprehensive guide for ongoing repository maintenance, monitoring, and optimization.
 
@@ -208,34 +208,6 @@ gh pr list --state open --json number,title,createdAt \
 # Draft PRs
 echo "📝 Draft PRs:"
 gh pr list --state open --draft --json number,title,author
-```
-
-### Documentation Currency Check
-
-```bash
-#!/bin/bash
-# Weekly documentation freshness check
-
-echo "📚 Documentation Currency Check"
-
-# Find files with outdated "Last Updated" badges
-find . -name "*.md" -exec grep -l "Last%20Updated" {} \; | while read -r file; do
-  last_updated=$(grep -o 'Last%20Updated-[0-9-]*' "$file" | cut -d'-' -f2-)
-  file_modified=$(date -r "$file" +%Y-%m-%d)
-  
-  if [[ "$last_updated" < "$file_modified" ]]; then
-    echo "📅 Outdated badge in $file: badge shows $last_updated, file modified $file_modified"
-  fi
-done
-
-# Check for broken internal links
-echo "🔗 Checking internal links..."
-find . -name "*.md" -exec grep -H '\[.*\](\..*\.md)' {} \; | while IFS=: read -r file link; do
-  link_path=$(echo "$link" | sed -n 's/.*](\(.*\)).*/\1/p')
-  if [[ ! -f "$(dirname "$file")/$link_path" ]]; then
-    echo "🔗 Broken link in $file: $link_path"
-  fi
-done
 ```
 
 ## Monthly Maintenance Tasks

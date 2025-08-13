@@ -1,6 +1,6 @@
 # 📊 Project Management Guide
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--09-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fgitops%2Fproject-management.md&display_timestamp=committer)
 
 Comprehensive guide for using GitHub's project management features effectively with space-themed organization.
 

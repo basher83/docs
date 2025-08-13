@@ -8,7 +8,7 @@ Space-themed badge collection for consistent project presentation across reposit
 
 ```markdown
 <!-- Last Updated Badge -->
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-configs%2Fintegration-configs%2Fshields-badges.md&display_timestamp=committer)
 
 <!-- License Badge -->
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
@@ -215,7 +215,7 @@ Space-themed badge collection for consistent project presentation across reposit
 ```markdown
 # 🚀 [Project Name]
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-configs%2Fintegration-configs%2Fshields-badges.md&display_timestamp=committer)
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
 ![Issues](https://img.shields.io/github/issues/basher83/[repo-name])
 ![Mission Status](https://img.shields.io/badge/Mission-Active-brightgreen)
@@ -228,7 +228,7 @@ Space-themed badge collection for consistent project presentation across reposit
 ```markdown
 # 📚 [Documentation Title]
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-configs%2Fintegration-configs%2Fshields-badges.md&display_timestamp=committer)
 ![Documentation](https://img.shields.io/badge/Docs-Complete-success)
 ![License](https://img.shields.io/github/license/basher83/[repo-name])
 ![Space Theme](https://img.shields.io/badge/Theme-Space%20Exploration-blue)
@@ -323,7 +323,7 @@ jobs:
 
 ```markdown
 <!-- Current Date -->
-![Last Updated](https://img.shields.io/badge/Last%20Updated-$(date +%Y--%m--%d)-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Fgithub-configs%2Fintegration-configs%2Fshields-badges.md&display_timestamp=committer)
 
 <!-- Commit Count -->
 ![Commits](https://img.shields.io/github/commit-activity/m/basher83/[repo-name])

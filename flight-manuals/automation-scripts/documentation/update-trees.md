@@ -1,6 +1,7 @@
 # 🛠️ Documentation Scripts
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--06--08-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fautomation-scripts%2Fdocumentation%2Fupdate-trees.md)
+
 
 This directory contains scripts for maintaining and automating documentation tasks.
 
