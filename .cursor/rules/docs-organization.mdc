@@ -1,8 +1,8 @@
 ---
-description: 
-globs: *.md
+description: Creating, updating, maintaining documentation
 alwaysApply: false
 ---
+
 # 🚀 Documentation Hub Organization Rules
 
 ## Space-Themed Directory Philosophy
@@ -10,30 +10,35 @@ alwaysApply: false
 This repository follows a strict space exploration metaphor with five core directories, each with distinct purposes:
 
 ### 🎛️ Mission Control ([mission-control/](mdc:mission-control))
+
 - **Purpose**: Central command for standards, templates, and governance
 - **Content**: Standards, conventions, boilerplate templates, rules
 - **Nature**: Prescriptive, authoritative, copy-paste ready
 - **Update Pattern**: Stable, changes only when standards evolve
 
 ### 📖 Flight Manuals ([flight-manuals/](mdc:flight-manuals))
-- **Purpose**: Step-by-step procedures and operational guides  
+
+- **Purpose**: Step-by-step procedures and operational guides
 - **Content**: How-to guides, procedures, troubleshooting, workflows
 - **Nature**: Instructional, procedural, educational
 - **Update Pattern**: Regular updates as procedures improve
 
 ### 🗺️ Star Charts ([star-charts/](mdc:star-charts))
+
 - **Purpose**: Visual maps and architectural understanding
 - **Content**: Network diagrams, service maps, topology, relationships
 - **Nature**: Visual, spatial, interconnected
 - **Update Pattern**: Updated when infrastructure changes
 
 ### 📝 Maintenance Logs ([maintenance-logs/](mdc:maintenance-logs))
+
 - **Purpose**: Historical records, learning paths, decision journals
-- **Content**: Project logs, learning notes, decisions made, retrospectives  
+- **Content**: Project logs, learning notes, decisions made, retrospectives
 - **Nature**: Chronological, reflective, evolutionary
 - **Update Pattern**: Ongoing, as events occur and learning happens
 
 ### 🔤 Space Dictionary ([space-dictionary/](mdc:space-dictionary))
+
 - **Purpose**: Quick reference and terminology lookup
 - **Content**: Glossaries, acronyms, quick references, cheat sheets
 - **Nature**: Alphabetical, searchable, bite-sized
@@ -42,27 +47,32 @@ This repository follows a strict space exploration metaphor with five core direc
 ## File Organization Rules
 
 ### Naming Conventions
+
 - Use kebab-case for all files: `my-file-name.md`
 - Use descriptive, action-oriented names: `setup-proxmox-cluster.md` not `proxmox.md`
 - Every directory must have a `README.md` providing overview and navigation
 - Include creation/update dates in document headers
 
 ### Content Structure Standards
+
 - **One concept per file** - separate procedural and reference content
-- **Clear hierarchy** - use subdirectories when categories emerge  
+- **Clear hierarchy** - use subdirectories when categories emerge
 - **Cross-references** - link related content across directories
 - **Consistent formatting** - follow markdown standards with badges and sections
 
 ### Quality Requirements
+
 Every document must be:
+
 - **Actionable**: Reader knows exactly what to do next
-- **Current**: Information reflects actual state/procedures  
+- **Current**: Information reflects actual state/procedures
 - **Discoverable**: Easy to find through clear navigation
 - **Maintainable**: Updates are straightforward and obvious
 
 ## Content Creation Guidelines
 
 ### Before Adding Content, Ask:
+
 1. Which directory philosophy does this align with?
 2. Is this knowledge (docs repo) or implementation (separate repo)?
 3. Does this follow naming conventions?
@@ -70,13 +80,16 @@ Every document must be:
 5. Will someone else understand this in 6 months?
 
 ### Document Headers Should Include:
+
 ```markdown
 # 📐 Document Title
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path={ADD_PATH_TO_FILE}&display_timestamp=committer)
 ```
 
 ### Cross-Repository References
+
 When referencing other repositories, use format:
+
 ```markdown
 For more details, see my [Topic Name](mdc:https:/github.com/basher83/repo-name/blob/main/path/to/file.md).
 ```
@@ -84,30 +97,35 @@ For more details, see my [Topic Name](mdc:https:/github.com/basher83/repo-name/b
 ## Directory-Specific Rules
 
 ### Mission Control Files
+
 - Must be immediately usable (copy-paste ready)
 - Should define standards, not explain them
 - Include templates and boilerplate code
 - Reference the main [information architecture](mdc:mission-control/information-architecture.md)
 
-### Flight Manual Files  
+### Flight Manual Files
+
 - Must include prerequisites and context
 - Step-by-step instructions with code examples
 - Include troubleshooting sections
 - Cross-reference related procedures
 
 ### Star Charts Files
+
 - Focus on visual representation and relationships
 - Include network diagrams and topology maps
 - Explain how systems interconnect
 - Update when infrastructure changes
 
 ### Maintenance Logs Files
+
 - Chronological organization by date
 - Include decision rationale and context
 - Document lessons learned and retrospectives
 - Track learning paths and progress
 
 ### Space Dictionary Files
+
 - Alphabetical organization
 - Bite-sized, searchable entries
 - Include acronym definitions
