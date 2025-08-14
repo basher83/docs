@@ -17,6 +17,9 @@ status = {missing_tools = "if_other_versions_installed", show_env = false, show_
 "core:node" = "20.19.4"
 "aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:gitleaks/gitleaks" = "8.28.0"
+fd = "latest"
+rg = "latest"
+eza = "latest"
 
 [tasks."setup:pre-commit"]
 description = "Setup and install pre-commit hooks"
@@ -284,3 +287,6 @@ alias = "clean"
 
 [tasks.q]
 alias = "quality"
+
+[env]
+FIRECRAWL_API_KEY = "TEST"

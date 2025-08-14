@@ -218,17 +218,40 @@ use codacy mcp to check for issues
 - 🚫 **Secret Prevention** - Blocks API keys and sensitive data at commit time
 - 📊 **Quality Metrics** - Continuous quality monitoring and reporting
 
-**Security Setup for New Machines:**
+**Secret Management via Infisical:**
+
+Requirements:
+
+- Infisical CLI logged into cloud
+
+Secrets can be loaded several ways, only two are covered here.
 
 ```bash
-# One-command security setup
-task setup:pre-commit
+# Manual load secrets into shell
+export GITHUB_PERSONAL_ACCESS_TOKEN=$(infisical secrets get GITHUB_PERSONAL_ACCESS_TOKEN --path="/API-keys" --plain --silent)
+export FIRECRAWL_API_KEY=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain --silent)
+```
 
-# Verify everything works
-task security
+Via .envrc with validation
 
-# Test with all checks
-task pre-commit
+```bash
+# --- Load secrets from Infisical ---
+# Safety first
+set -euo pipefail
+
+: "${FIRECRAWL_API_KEY:=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain 2>/dev/null || true)}"
+
+# Firecrawl API Key handling
+if [ -z "$FIRECRAWL_API_KEY" ]; then
+  if [ -n "$CI" ]; then
+    echo "❌ FIRECRAWL_API_KEY not available – failing early." >&2
+    exit 1
+  else
+    echo "⚠️  FIRECRAWL_API_KEY could not be retrieved – Firecrawl API operations may fail." >&2
+  fi
+else
+  export FIRECRAWL_API_KEY
+fi
 ```
 
 ---
