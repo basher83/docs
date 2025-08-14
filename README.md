@@ -138,10 +138,9 @@ This repository uses mise to manage developer tooling versions. Quick steps for 
 - Trust the local config if prompted: `mise trust`
 - Install required tools: `mise install` (or `mise install --yes`)
 
-We pin plugin-qualified tools (for example `core:node` and `core:python`) in `.mise.toml` to
-avoid ambiguity. If `mise doctor` reports missing tools, run `mise install` and then `mise doctor`
-again to verify the environment.
-
+We pin plugin-qualified tools (for example `core:node` and `core:python`) in `.mise.toml` to avoid
+ambiguity. If `mise doctor` reports missing tools, run `mise install` and then `mise doctor` again
+to verify the environment.
 
 ### Mise Configuration
 
