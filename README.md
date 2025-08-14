@@ -159,14 +159,15 @@ again to verify the environment.
 
 **Key Tasks:**
 
-- `mise run check` - Run all checks: format, lint, and test (has aliases: `pre-commit`, `q`, `p`)
-- `mise run fmt` - Format Markdown with Prettier (has aliases: `f`, `format`, `prettier`)
-- `mise run lint` - Run all linters (has alias: `l`)
-- `mise run test` - Run all tests (has alias: `t`)
-- `mise run clean` - Clean temporary files (has alias: `c`)
+- `mise run check` - Run all checks: format, lint, and test (aliases: `pre-commit`, `q`, `p`)
+- `mise run fmt` - Format Markdown with Prettier (aliases: `f`, `format`, `prettier`)
+- `mise run lint` - Run all linters (alias: `l`)
+- `mise run test` - Run all tests (alias: `t`)
+- `mise run clean` - Clean temporary files (alias: `c`)
 - `mise run ci` - Verify changes match CI requirements
-- `mise run docs:trees` - Update directory trees (has alias: `update-trees`)
+- `mise run docs:trees` - Update directory trees (alias: `update-trees`)
 - `mise run docs:serve` - Serve documentation locally
+- `mise run docs:search` - Search documentation content interactively
 
 **Quick Aliases:**
 
