@@ -175,7 +175,9 @@ again to verify the environment.
 
 - `mise run setup:npm` - Install Node dependencies
 - `mise run setup:pre-commit` - Setup pre-commit hooks
-- `mise run setup:verify` - Verify setup and tools **Quality & Metrics:**
+- `mise run setup:verify` - Verify setup and tools
+
+**Quality & Metrics:**
 
 - `mise run check` - Comprehensive checks (format, lint, test)
 - `mise run metrics` - Generate quality metrics report
