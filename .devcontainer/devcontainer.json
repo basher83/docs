@@ -10,7 +10,8 @@
   ],
   "remoteEnv": {
     "MISE_DATA_DIR": "/mnt/mise-data",
-    "MISE_EXPERIMENTAL": "1"
+    "MISE_EXPERIMENTAL": "1",
+    "FIRECRAWL_API_KEY": "${localEnv:FIRECRAWL_API_KEY}"
   },
   "customizations": {
     "vscode": {
