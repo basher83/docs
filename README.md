@@ -104,8 +104,7 @@ For more details, see my
 - [🖼️ Assets Repository](https://github.com/basher83/assets)
 - [👨‍💻 Profile README](https://github.com/basher83/basher83)
 - [🏠 ProxmoxMCP Project](https://github.com/basher83/ProxmoxMCP)
-- [📊 Triangulum Observe](https://github.com/basher83/triangulum-observe) - Monitoring and
-  observability solutions
+- [📊 Triangulum Observe](https://github.com/basher83/triangulum-observe) - Monitoring and observability solutions
 
 ## 🛠️ Development
 
@@ -118,10 +117,10 @@ This repository uses [mise](https://mise.jdx.dev/) for tool management and task 
 brew install mise
 
 # Trust the repository configuration
-mise trust
+mise trust --yes
 
 # Install all required tools
-mise install
+mise install --yes
 
 # Run pre-commit checks
 mise run pre-commit
@@ -135,11 +134,11 @@ mise tasks
 This repository uses mise to manage developer tooling versions. Quick steps for contributors:
 
 - Ensure mise is installed and up-to-date: `mise self-update`
-- Trust the local config if prompted: `mise trust`
-- Install required tools: `mise install` (or `mise install --yes`)
+- Trust the local config if prompted: `mise trust --yes`
+- Install required tools: `mise install --yes`
 
 We pin plugin-qualified tools (for example `core:node` and `core:python`) in `.mise.toml` to avoid
-ambiguity. If `mise doctor` reports missing tools, run `mise install` and then `mise doctor` again
+ambiguity. If `mise doctor` reports missing tools, run `mise install --yes` and then `mise doctor` again
 to verify the environment.
 
 ### Mise Configuration
