@@ -26,11 +26,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "[markdown]": {
           "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "python.defaultInterpreterPath": "/home/codespace/.local/share/mise/installs/core-python/3.12.11/bin/python"
+        }
       }
     }
   },
-  "postCreateCommand": "sudo chown -R $(id -u):$(id -g) /mnt/mise-data && mise trust --yes && mise install && mise run setup",
+  "postCreateCommand": "sudo chown -R $(id -u):$(id -g) /mnt/mise-data && mise trust --yes && mise install && eval \"$(mise activate bash)\" && mise run setup",
   "postStartCommand": "mise trust --yes || true"
 }
