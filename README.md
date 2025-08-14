@@ -153,34 +153,35 @@ to verify the environment.
 
 **Key Tasks:**
 
-- `mise run pre-commit` - Run format, lint, and tests (alias for `check`)
-- `mise run fmt` - Format Markdown with Prettier
-- `mise run lint` - Run all linters
-- `mise run test` - Run all tests
+- `mise run check` - Run all checks: format, lint, and test (has aliases: `pre-commit`, `q`, `p`)
+- `mise run fmt` - Format Markdown with Prettier (has aliases: `f`, `format`, `prettier`)
+- `mise run lint` - Run all linters (has alias: `l`)
+- `mise run test` - Run all tests (has alias: `t`)
+- `mise run clean` - Clean temporary files (has alias: `c`)
 - `mise run ci` - Verify changes match CI requirements
-- `mise run docs:trees` - Update directory trees
+- `mise run docs:trees` - Update directory trees (has alias: `update-trees`)
 - `mise run docs:serve` - Serve documentation locally
+
 **Quick Aliases:**
 
-- `mise run f` - Format (alias for fmt)
-- `mise run l` - Lint
-- `mise run p` - Pre-commit
-- `mise run q` - Quality analysis
-- `mise run c` - Clean
+- `mise run f` - Alias for `fmt`
+- `mise run l` - Alias for `lint`
+- `mise run p` - Alias for `check`
+- `mise run q` - Alias for `check`
+- `mise run c` - Alias for `clean`
+- `mise run t` - Alias for `test`
 
 **Setup & Installation:**
 
-- `mise run setup` - Install Node dependencies
+- `mise run setup:npm` - Install Node dependencies
 - `mise run setup:pre-commit` - Setup pre-commit hooks
-- `mise run install:tools` - Install recommended npm tools
-- `mise run git:hooks` - Install enhanced git hooks with auto-fixing
-
+- `mise run setup:verify` - Verify setup and tools
 **Quality & Metrics:**
 
-- `mise run quality` - Comprehensive quality analysis
-- `mise run quality:metrics` - Generate quality metrics report
-- `mise run format` - Auto-fix formatting issues
-- `mise run format-check` - Check formatting without changes
+- `mise run check` - Comprehensive checks (format, lint, test)
+- `mise run metrics` - Generate quality metrics report
+- `mise run fmt` - Auto-fix formatting issues
+- `mise run fmt:check` - Check formatting without changes
 
 ### Shell Activation (Recommended)
 
