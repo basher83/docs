@@ -107,54 +107,81 @@ For more details, see my
 
 ## 🛠️ Development
 
-This repository includes a [Taskfile](https://taskfile.dev/) for common development and maintenance
-tasks:
+This repository uses [mise](https://mise.jdx.dev/) for tool management and task automation.
+
+### Quick Start
 
 ```bash
+# Install mise (if not already installed)
+brew install mise
+
+# Trust the repository configuration
+mise trust
+
+# Install all required tools
+mise install
+
+# Run pre-commit checks
+mise run pre-commit
+
 # Show all available tasks
-task
-
-# Run pre-commit checks (linting, formatting, security)
-task pre-commit
-
-# Run all tests
-task test
-
-# Auto-fix formatting issues
-task format
-
-# Update documentation trees
-task update-trees
-
-# Install git hooks for automatic pre-commit checks
-task git:hooks
+mise tasks
 ```
 
-**Key tasks:**
+### Mise Configuration
 
-- `task pre-commit` - Run before committing changes
-- `task ci` - Verify your changes match CI requirements
-- `task docs` - Update and validate documentation
-- `task install` - Install required development tools
+**Managed Tools:**
 
-**Security & Protection:**
+- `node` (v20) - For documentation tooling and npm packages
+- `shellcheck` - Shell script linting
+- `gitleaks` - Secret detection
+- `python` (v3.12) - For pre-commit and detect-secrets
 
-- `task security` - **🛡️ Comprehensive security validation** (secrets, config, actions)
-- `task security:secrets` - Run gitleaks + detect-secrets scanning
-- `task security:config` - Validate .mcp.json and sensitive file patterns
-- `task setup:pre-commit` - **🔧 One-command setup** for pre-commit hooks
+**Key Tasks:**
 
-**Quality & Formatting:**
+- `mise run pre-commit` - Run format, lint, and update trees
+- `mise run fmt` - Format Markdown with Prettier
+- `mise run lint` - Run all linters
+- `mise run test` - Run all tests
+- `mise run ci` - Verify changes match CI requirements
+- `mise run docs` - Update and validate documentation
 
-- `task quality` - Run comprehensive quality analysis
-- `task format:bulk` - Auto-fix formatting issues across all files
-- `task format:markdown-aggressive` - Advanced markdown auto-fixing
-- `task quality:metrics` - Generate detailed quality metrics
+**Quick Aliases:**
 
-**Git Workflow:**
+- `mise run f` - Format (alias for fmt)
+- `mise run l` - Lint
+- `mise run p` - Pre-commit
+- `mise run q` - Quality analysis
+- `mise run c` - Clean
 
-- `task git:hooks` - Install enhanced pre-commit hooks with auto-fixing
-- `task git:hooks:simple` - Install basic pre-commit hooks
+**Setup & Installation:**
+
+- `mise run setup` - Install Node dependencies
+- `mise run setup:pre-commit` - Setup pre-commit hooks
+- `mise run install:tools` - Install recommended npm tools
+- `mise run git:hooks` - Install enhanced git hooks with auto-fixing
+
+**Quality & Metrics:**
+
+- `mise run quality` - Comprehensive quality analysis
+- `mise run quality:metrics` - Generate quality metrics report
+- `mise run format` - Auto-fix formatting issues
+- `mise run format-check` - Check formatting without changes
+
+### Shell Activation (Recommended)
+
+For automatic tool activation in your shell:
+
+```bash
+# For zsh (add to ~/.zshrc)
+eval "$(mise activate zsh)"
+
+# For bash (add to ~/.bashrc)
+eval "$(mise activate bash)"
+```
+
+If you use shell-level activation, you can remove the `eval "$(mise activate direnv)"` line from
+`.envrc` to avoid double activation.
 
 **Code Quality Analysis:**
 

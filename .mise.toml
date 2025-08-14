@@ -1,0 +1,308 @@
+# mise configuration for docs repository
+# Documentation management and quality automation
+
+[settings]
+experimental = true
+auto_install = true
+not_found_auto_install = true
+jobs = 4
+status = {missing_tools = "if_other_warn", show_env = false, show_tools = false}
+
+[tools]
+# Node.js for documentation tooling
+node = "20"
+
+# Shell linting
+shellcheck = "latest"
+
+# Secret scanning
+gitleaks = "latest"
+
+# Python for pre-commit and detect-secrets
+python = "3.12"
+
+[env]
+PROJECT_DIR = "{{config_root}}"
+SCRIPTS_DIR = "{{config_root}}/scripts"
+
+[tasks.default]
+description = "Show available tasks"
+run = "mise tasks"
+
+# Setup tasks
+[tasks.setup]
+description = "Install Node dev dependencies"
+run = '''
+if [ -f package-lock.json ]; then
+  npm ci
+else
+  npm install
+fi
+'''
+
+[tasks."setup:pre-commit"]
+description = "Setup and install pre-commit hooks"
+run = '''
+set -euo pipefail
+echo "🔧 Setting up pre-commit hooks..."
+if ! command -v pre-commit >/dev/null 2>&1; then
+  pip install pre-commit
+fi
+echo "📦 Installing pre-commit hooks..."
+pre-commit install
+pre-commit install --hook-type commit-msg
+pre-commit install --hook-type pre-push
+echo "🔍 Running initial pre-commit check..."
+pre-commit run --all-files || echo "⚠️  Some checks failed - this is normal for first setup"
+echo "✅ Pre-commit hooks installed successfully!"
+'''
+
+# Formatting & linting (Prettier-first)
+[tasks.fmt]
+description = "Format Markdown with Prettier"
+run = "npm run format:md"
+
+[tasks."fmt:check"]
+description = "Check Markdown formatting (no changes made)"
+run = "npm run format:md:check"
+
+# Pre-commit checks
+[tasks."pre-commit"]
+description = "Run format, lint, and update trees"
+depends = ["fmt", "lint", "update-trees"]
+run = "echo '✅ Pre-commit checks passed!'"
+
+# Linting tasks
+[tasks.lint]
+description = "Run all linters"
+depends = ["lint:markdown", "lint:shell"]
+run = "echo '✅ All linting passed!'"
+
+[tasks."lint:markdown"]
+description = "Lint markdown files"
+run = '''
+npm run format:md:check
+npm run lint:md
+'''
+sources = ["**/*.md", ".markdownlint.json"]
+
+[tasks."lint:shell"]
+description = "Lint shell scripts with shellcheck"
+run = '''
+if command -v shellcheck >/dev/null 2>&1; then
+  find . -name "*.sh" -type f -exec shellcheck {} \;
+else
+  echo "⚠️  shellcheck not installed, skipping shell linting"
+fi
+'''
+sources = ["**/*.sh"]
+
+# Formatting tasks
+[tasks.format]
+description = "Auto-fix formatting issues where possible"
+run = '''
+mise run fmt
+npm run lint:md -- --fix || true
+echo "✅ Formatting complete!"
+'''
+
+[tasks."format-check"]
+description = "Check if files are properly formatted (no changes)"
+alias = "fmt:check"
+
+# Code Quality Analysis
+[tasks.quality]
+description = "Run comprehensive code quality analysis"
+depends = ["lint", "quality:metrics"]
+run = "echo '✅ Quality analysis complete!'"
+
+[tasks."quality:metrics"]
+description = "Generate quality metrics and report"
+run = '''
+echo "📊 Generating quality metrics..."
+echo "📁 Files: $(find . -name "*.md" | wc -l) markdown files"
+echo "📏 Lines: $(find . -name "*.md" -exec wc -l {} \; | awk '{sum+=$1} END {print sum}') total lines"
+echo "🔍 Issues: $(npx markdownlint-cli2 "**/*.md" --config .markdownlint.json 2>&1 | grep -c "MD" || echo "0") markdown issues"
+'''
+
+# Documentation tasks
+[tasks.docs]
+description = "Update documentation"
+depends = ["update-trees", "docs:validate"]
+run = "echo '✅ Documentation updated!'"
+
+[tasks."update-trees"]
+description = "Update directory tree structures in documentation"
+run = "$SCRIPTS_DIR/update-trees.sh"
+sources = ["scripts/update-trees.sh", "**/*.md"]
+
+[tasks."docs:validate"]
+description = "Validate documentation structure and links"
+run = '''
+echo "🔍 Validating documentation structure..."
+# Check that all directories have README.md files
+for dir in mission-control flight-manuals star-charts maintenance-logs space-dictionary; do
+  if [ ! -f "$dir/README.md" ]; then
+    echo "❌ Missing README.md in $dir/"
+    exit 1
+  fi
+done
+echo "✅ Documentation structure validated"
+'''
+
+[tasks."docs:serve"]
+description = "Serve documentation locally (if using a static site generator)"
+run = '''
+if [ -f "package.json" ]; then
+  npm run serve 2>/dev/null || echo "⚠️  No 'serve' script found in package.json"
+else
+  echo "ℹ️  No package.json found. Consider adding a static site generator."
+fi
+'''
+
+# Testing tasks
+[tasks.test]
+description = "Run all tests"
+depends = ["test:links", "test:structure"]
+run = "echo '✅ All tests passed!'"
+
+[tasks."test:links"]
+description = "Test that all internal links work"
+run = '''
+if command -v markdown-link-check >/dev/null 2>&1; then
+  find . -name "*.md" -exec markdown-link-check {} \;
+else
+  echo "⚠️  markdown-link-check not installed, skipping link validation"
+  echo "   Install with: npm install -g markdown-link-check"
+fi
+'''
+
+[tasks."test:structure"]
+description = "Test repository structure follows conventions"
+run = '''
+echo "🔍 Testing repository structure..."
+# Check required directories exist
+for dir in mission-control flight-manuals star-charts maintenance-logs space-dictionary; do
+  if [ ! -d "$dir" ]; then
+    echo "❌ Required directory missing: $dir/"
+    exit 1
+  fi
+done
+echo "✅ Repository structure test passed"
+'''
+
+# Utility tasks
+[tasks.clean]
+description = "Clean temporary files and caches"
+run = '''
+find . -name ".DS_Store" -delete 2>/dev/null || true
+find . -name "*.tmp" -delete 2>/dev/null || true
+find . -name "*~" -delete 2>/dev/null || true
+echo "✅ Cleaned temporary files"
+'''
+
+[tasks.install]
+description = "Install required tools"
+depends = ["install:tools"]
+run = "echo '✅ Installation complete!'"
+
+[tasks."install:tools"]
+description = "Install recommended tools for this project"
+run = '''
+echo "📦 Installing recommended tools..."
+tools_to_install=""
+
+if ! command -v markdownlint-cli2 >/dev/null 2>&1; then
+  tools_to_install="$tools_to_install markdownlint-cli2"
+fi
+
+if ! command -v shellcheck >/dev/null 2>&1; then
+  echo "⚠️  shellcheck not found. mise will auto-install it."
+fi
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "⚠️  gitleaks not found. mise will auto-install it."
+fi
+
+if ! command -v detect-secrets >/dev/null 2>&1; then
+  echo "⚠️  detect-secrets not found. Install with: pip install detect-secrets"
+fi
+
+if ! command -v markdown-link-check >/dev/null 2>&1; then
+  tools_to_install="$tools_to_install markdown-link-check"
+fi
+
+if [ -n "$tools_to_install" ]; then
+  echo "Installing npm packages:$tools_to_install"
+  npm install -g $tools_to_install
+else
+  echo "✅ All npm tools already installed"
+fi
+'''
+
+# Git helpers
+[tasks."git:hooks"]
+description = "Install enhanced git hooks for pre-commit checks"
+run = '''
+mkdir -p .git/hooks
+cat > .git/hooks/pre-commit << 'EOF'
+#!/bin/bash
+echo "🔍 Running enhanced pre-commit checks..."
+
+# Check for staged markdown files
+if git diff --cached --name-only | grep -q "\.md$"; then
+  echo "📝 Markdown files detected, running auto-fix..."
+  markdownlint-cli2 $(git diff --cached --name-only | grep "\.md$") --config .markdownlint.json --fix
+  git add $(git diff --cached --name-only | grep "\.md$")
+fi
+
+# Run full pre-commit suite
+mise run pre-commit
+
+# Check if any files were modified during checks
+if [[ -n $(git diff --name-only) ]]; then
+  echo "⚠️  Files were modified during pre-commit checks"
+  echo "   Please review changes and commit again"
+  exit 1
+fi
+
+echo "✅ All pre-commit checks passed!"
+EOF
+chmod +x .git/hooks/pre-commit
+echo "✅ Enhanced git pre-commit hook installed"
+'''
+
+[tasks."git:hooks:simple"]
+description = "Install simple git hooks (basic pre-commit checks)"
+run = '''
+mkdir -p .git/hooks
+cat > .git/hooks/pre-commit << 'EOF'
+#!/bin/bash
+echo "🔍 Running pre-commit checks..."
+mise run pre-commit
+EOF
+chmod +x .git/hooks/pre-commit
+echo "✅ Basic git pre-commit hook installed"
+'''
+
+# CI/CD helpers
+[tasks.ci]
+description = "Run the same checks as CI (for local verification)"
+depends = ["fmt:check", "lint"]
+run = "echo '✅ CI checks passed locally!'"
+
+# Shorthand aliases for common tasks
+[tasks.f]
+alias = "fmt"
+
+[tasks.l]
+alias = "lint"
+
+[tasks.p]
+alias = "pre-commit"
+
+[tasks.c]
+alias = "clean"
+
+[tasks.q]
+alias = "quality"
