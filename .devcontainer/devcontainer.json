@@ -16,7 +16,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "hverlin.mise-vscode",
+        "jdxcode.mise-vscode",
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "timonwong.shellcheck"
