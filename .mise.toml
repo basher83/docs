@@ -6,39 +6,17 @@ experimental = true
 auto_install = true
 not_found_auto_install = true
 jobs = 4
-status = {missing_tools = "if_other_warn", show_env = false, show_tools = false}
+status = {missing_tools = "if_other_versions_installed", show_env = false, show_tools = false}
+# Allowed values for status.missing_tools: use the documented variant
+# (example: "if_other_versions_installed"). Avoid arbitrary strings
+# to prevent parse errors that cause mise to panic.
 
 [tools]
-# Node.js for documentation tooling
-node = "20"
-
-# Shell linting
-shellcheck = "latest"
-
-# Secret scanning
-gitleaks = "latest"
-
-# Python for pre-commit and detect-secrets
-python = "3.12"
-
-[env]
-PROJECT_DIR = "{{config_root}}"
-SCRIPTS_DIR = "{{config_root}}/scripts"
-
-[tasks.default]
-description = "Show available tasks"
-run = "mise tasks"
-
-# Setup tasks
-[tasks.setup]
-description = "Install Node dev dependencies"
-run = '''
-if [ -f package-lock.json ]; then
-  npm ci
-else
-  npm install
-fi
-'''
+# Explicit plugin-qualified tool versions (preferred)
+"core:python" = "3.12.11"
+"core:node" = "20.19.4"
+"aqua:koalaman/shellcheck" = "0.11.0"
+"aqua:gitleaks/gitleaks" = "8.28.0"
 
 [tasks."setup:pre-commit"]
 description = "Setup and install pre-commit hooks"
