@@ -147,9 +147,15 @@ again to verify the environment.
 **Managed Tools:**
 
 - `node` (v20) - For documentation tooling and npm packages
+- `python` (v3.12) - For pre-commit and detect-secrets
 - `shellcheck` - Shell script linting
 - `gitleaks` - Secret detection
-- `python` (v3.12) - For pre-commit and detect-secrets
+- `fd` (latest) - Fast file finder used by tasks
+- `ripgrep (rg)` (latest) - Fast code/document search used by tasks
+- `eza` (latest) - Enhanced ls alternative
+- `prettier` (latest) - Markdown formatting
+- `markdownlint-cli2` (latest) - Markdown linting
+- `markdown-link-check` (latest) - Markdown link validation
 
 **Key Tasks:**
 
