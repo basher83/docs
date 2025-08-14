@@ -49,8 +49,8 @@ run = "./scripts/setup.sh"
 [tasks."setup:npm"]
 description = "Install local npm dependencies"
 run = "npm install"
-outputs = ["node_modules/.package-lock.json"]
-
+sources = ["package.json", "package-lock.json"]
+outputs = ["node_modules"]
 [tasks."setup:pre-commit"]
 description = "Setup pre-commit framework"
 run = '''
