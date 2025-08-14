@@ -17,7 +17,7 @@ The core repositories and their roles:
 | [`basher83/.github`](https://github.com/basher83/.github)                       | Shared GitHub configuration & reusable workflows                    | Workflow templates, issue/PR templates, security pinning |
 | [`basher83/triangulum-observe`](https://github.com/basher83/triangulum-observe) | Monitoring and observability solutions                              | Metrics, logs, traces, alerting, visualization           |
 
-Additional (future or optional) satellites could include: infrastructure as code repos,
+Additional (future or optional) satellites could include infrastructure-as-code repositories,
 service-specific codebases, and experiment sandboxes—each intentionally kept out of this
 documentation hub to preserve separation of concerns.
 
