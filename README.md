@@ -153,13 +153,13 @@ to verify the environment.
 
 **Key Tasks:**
 
-- `mise run pre-commit` - Run format, lint, and update trees
+- `mise run pre-commit` - Run format, lint, and tests (alias for `check`)
 - `mise run fmt` - Format Markdown with Prettier
 - `mise run lint` - Run all linters
 - `mise run test` - Run all tests
 - `mise run ci` - Verify changes match CI requirements
-- `mise run docs` - Update and validate documentation
-
+- `mise run docs:trees` - Update directory trees
+- `mise run docs:serve` - Serve documentation locally
 **Quick Aliases:**
 
 - `mise run f` - Format (alias for fmt)
