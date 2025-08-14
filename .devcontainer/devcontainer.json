@@ -30,6 +30,6 @@
       }
     }
   },
-  "postCreateCommand": "sudo chown -R vscode:vscode /mnt/mise-data && mise trust && mise install && mise run setup",
-  "postStartCommand": "mise trust"
+  "postCreateCommand": "sudo chown -R $(id -u):$(id -g) /mnt/mise-data && mise trust --yes && mise install && mise run setup",
+  "postStartCommand": "mise trust --yes || true"
 }
