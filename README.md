@@ -223,15 +223,39 @@ Requirements:
 
 - Infisical CLI logged into cloud
 
-Secrets can be loaded several ways, only two are covered here.
+⚠️ **Security Warning**: Never export secrets directly in your shell as they can leak to:
+
+- Shell history files (~/.bash_history, ~/.zsh_history)
+- Process lists visible to other users (ps aux)
+- Log files and debugging output
+
+### Recommended: Use Infisical's Ephemeral Run
+
+The safest approach is to inject secrets only when needed:
 
 ```bash
-# Manual load secrets into shell
-export GITHUB_PERSONAL_ACCESS_TOKEN=$(infisical secrets get GITHUB_PERSONAL_ACCESS_TOKEN --path="/API-keys" --plain --silent)
-export FIRECRAWL_API_KEY=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain --silent)
+# Run commands with secrets injected ephemerally
+infisical run --path="/API-keys" -- npm run deploy
+infisical run --path="/API-keys" -- mise run test:integration
 ```
 
-Via .envrc with validation
+### If You Must Export to Shell
+
+If you absolutely need secrets in your shell environment, disable history first:
+
+```bash
+# Method 1: Temporarily disable history
+set +o history  # Turn off history recording
+export GITHUB_PERSONAL_ACCESS_TOKEN=$(infisical secrets get GITHUB_PERSONAL_ACCESS_TOKEN --path="/API-keys" --plain --silent)
+export FIRECRAWL_API_KEY=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain --silent)
+set -o history  # Re-enable history recording
+
+# Method 2: Use space prefix (requires HISTCONTROL=ignorespace)
+ export GITHUB_PERSONAL_ACCESS_TOKEN=$(infisical secrets get GITHUB_PERSONAL_ACCESS_TOKEN --path="/API-keys" --plain --silent)
+#^ Note the leading space - won't be saved to history if HISTCONTROL=ignorespace is set
+```
+
+### Via .envrc with validation
 
 ```bash
 # --- Load secrets from Infisical ---
