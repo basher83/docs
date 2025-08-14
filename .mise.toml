@@ -28,7 +28,6 @@ eza = "latest"
 [env]
 # Set environment variables used by tasks
 SCRIPTS_DIR = "./scripts"
-FIRECRAWL_API_KEY = "TEST"
 
 # ============================================================================
 # CORE TASKS - Primary developer actions
@@ -188,8 +187,6 @@ description = "Update directory trees in documentation"
 alias = "update-trees"
 run = "./scripts/update-trees.sh"
 sources = ["scripts/update-trees.sh", "**/README.md"]
-outputs = ["README.md"]
-
 [tasks."docs:serve"]
 description = "Serve documentation locally"
 run = '''
@@ -231,6 +228,7 @@ echo "👀 Watching for changes (Ctrl+C to stop)..."
 npx nodemon --watch '**/*.md' --watch '.markdownlint.json' --watch '.prettierrc.json' \
   --ext md --exec 'mise run check || true'
 '''
+tools = { "npm:nodemon" = "latest" }
 
 [tasks.find]
 description = "Find files by pattern"
