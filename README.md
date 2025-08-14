@@ -104,7 +104,8 @@ For more details, see my
 - [🖼️ Assets Repository](https://github.com/basher83/assets)
 - [👨‍💻 Profile README](https://github.com/basher83/basher83)
 - [🏠 ProxmoxMCP Project](https://github.com/basher83/ProxmoxMCP)
-- [📊 Triangulum Observe](https://github.com/basher83/triangulum-observe) - Monitoring and observability solutions
+- [📊 Triangulum Observe](https://github.com/basher83/triangulum-observe) - Monitoring and
+  observability solutions
 
 ## 🛠️ Development
 
@@ -138,8 +139,8 @@ This repository uses mise to manage developer tooling versions. Quick steps for 
 - Install required tools: `mise install --yes`
 
 We pin plugin-qualified tools (for example `core:node` and `core:python`) in `.mise.toml` to avoid
-ambiguity. If `mise doctor` reports missing tools, run `mise install --yes` and then `mise doctor` again
-to verify the environment.
+ambiguity. If `mise doctor` reports missing tools, run `mise install --yes` and then `mise doctor`
+again to verify the environment.
 
 ### Mise Configuration
 
@@ -174,8 +175,7 @@ to verify the environment.
 
 - `mise run setup:npm` - Install Node dependencies
 - `mise run setup:pre-commit` - Setup pre-commit hooks
-- `mise run setup:verify` - Verify setup and tools
-**Quality & Metrics:**
+- `mise run setup:verify` - Verify setup and tools **Quality & Metrics:**
 
 - `mise run check` - Comprehensive checks (format, lint, test)
 - `mise run metrics` - Generate quality metrics report
