@@ -2,7 +2,7 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
     // Only install mise - it will handle all other tools
-    "ghcr.io/jdx/mise/devcontainer-feature/mise:latest": {}
+    "ghcr.io/jdx/mise/devcontainer-feature/mise:1": {}
   },
   "mounts": [
     // Persist mise's installed tools across container rebuilds
