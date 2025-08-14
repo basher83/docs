@@ -104,6 +104,8 @@ For more details, see my
 - [🖼️ Assets Repository](https://github.com/basher83/assets)
 - [👨‍💻 Profile README](https://github.com/basher83/basher83)
 - [🏠 ProxmoxMCP Project](https://github.com/basher83/ProxmoxMCP)
+- [📊 Triangulum Observe](https://github.com/basher83/triangulum-observe) - Monitoring and
+  observability solutions
 
 ## 🛠️ Development
 
