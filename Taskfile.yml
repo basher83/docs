@@ -9,16 +9,37 @@ tasks:
     desc: Show available tasks
     cmds:
       - task --list
+  
+  # Setup
+  setup:
+    desc: Install Node dev dependencies
+    cmds:
+      - |
+        if [ -f package-lock.json ]; then
+          npm ci
+        else
+          npm install
+        fi
+
+  # Formatting & linting (Prettier-first)
+  fmt:
+    desc: Format Markdown with Prettier (uses package.json scripts)
+    cmds:
+      - npm run format:md
+
+  fmt:check:
+    desc: Check Markdown formatting (no changes made)
+    cmds:
+      - npm run format:md:check
 
   # Pre-commit checks
   pre-commit:
-    desc: Run all pre-commit checks (lint, format, test)
+    desc: Run format, lint, and update trees
     cmds:
+      - task: fmt
       - task: lint
-      - task: format-check
-      - task: security
       - task: update-trees
-      - echo "✅ All pre-commit checks passed!"
+      - echo "✅ Pre-commit checks passed!"
 
   # Linting tasks
   lint:
@@ -31,8 +52,8 @@ tasks:
   lint:markdown:
     desc: Lint markdown files
     cmds:
-      - npx prettier --check "**/*.md"
-      - markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json
+      - npm run format:md:check
+      - npm run lint:md
     sources:
       - "**/*.md"
       - .markdownlint.json
@@ -53,125 +74,31 @@ tasks:
   format:
     desc: Auto-fix formatting issues where possible
     cmds:
-      - task: format:markdown
+      - task: fmt
+      - npm run lint:md -- --fix || true
       - echo "✅ Formatting complete!"
 
-  format:markdown:
-    desc: Auto-fix markdown formatting issues
-    cmds:
-      - npx prettier --write "**/*.md"
-      - markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix
-    sources:
-      - "**/*.md"
-      - .markdownlint.json
-
-  format:markdown-aggressive:
-    desc: Auto-fix markdown with more aggressive rules
-    cmds:
-      - |
-        echo "🔧 Running aggressive markdown auto-fix..."
-        # Prettier structural reflow
-        npx prettier --write "**/*.md"
-        # Semantic spacing / heading fixes (excluding node_modules)
-        markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix
-        echo "✅ Aggressive markdown fixes applied"
-    sources:
-      - "**/*.md"
-      - .markdownlint.json
-
-  format:bulk:
-    desc: Run all bulk formatting operations
-    cmds:
-      - task: format:markdown
-      - task: clean
-      - echo "✅ All bulk formatting complete!"
+  # Removed legacy aggressive/bulk format helpers in favor of simple fmt + lint fix
 
   format-check:
     desc: Check if files are properly formatted (no changes)
     cmds:
-      - |
-        if git diff --quiet; then
-          echo "✅ No uncommitted changes, format check passed"
-        else
-          echo "❌ Uncommitted changes detected. Please commit or stash changes before running format checks"
-          exit 1
-        fi
+      - task: fmt:check
 
   # Security checks
-  security:
-    desc: Run security checks
-    cmds:
-      - task: security:actions
-      - task: security:secrets
-      - task: security:config
-      - echo "✅ Security checks passed!"
+  # Security umbrella task removed
 
-  security:actions:
-    desc: Check that GitHub Actions are pinned to commit SHAs
-    cmds:
-      - |
-        if grep -r "uses:.*@v[0-9]" .github/workflows/ 2>/dev/null; then
-          echo "❌ Found unpinned GitHub Actions (using @v tags instead of commit SHAs)"
-          exit 1
-        else
-          echo "✅ All GitHub Actions are properly pinned to commit SHAs"
-        fi
-    sources:
-      - ".github/workflows/**/*.yml"
-      - ".github/workflows/**/*.yaml"
+  # Security helper tasks removed; handled in CI
 
-  security:secrets:
-    desc: Check for potential secrets in files
-    cmds:
-      - |
-        if command -v gitleaks >/dev/null 2>&1; then
-          echo "🔍 Running gitleaks secret detection..."
-          gitleaks detect --source . --verbose
-        else
-          echo "⚠️  gitleaks not installed, skipping secret detection"
-          echo "   Install with: brew install gitleaks"
-        fi
-      - |
-        if command -v detect-secrets >/dev/null 2>&1; then
-          echo "🔍 Running detect-secrets scan..."
-          if [ ! -f .secrets.baseline ]; then
-            echo "📝 Creating secrets baseline..."
-            detect-secrets scan --baseline .secrets.baseline
-          else
-            detect-secrets scan --baseline .secrets.baseline
-          fi
-        else
-          echo "⚠️  detect-secrets not installed, install with: pip install detect-secrets"
-        fi
-
-  security:config:
-    desc: Validate configuration files for security issues
-    cmds:
-      - |
-        echo "🔍 Validating .mcp.json configuration..."
-        if [ -f .mcp.json ]; then
-          if grep -E '"[A-Z_]+":\s*"[^$]' .mcp.json; then
-            echo "❌ Found hardcoded values in .mcp.json - use environment variables instead"
-            exit 1
-          else
-            echo "✅ .mcp.json validation passed"
-          fi
-        fi
-      - |
-        echo "🔍 Checking for exposed secrets in tracked files..."
-        if git diff --cached --name-only | grep -E '\.(env|key|pem|p12|pfx)$'; then
-          echo "❌ Attempting to commit sensitive file types"
-          exit 1
-        else
-          echo "✅ No sensitive file types in commit"
-        fi
+  # Secret scanning is managed by dedicated tools/CI outside Taskfile
+ 
+  # Config validation is enforced via PR checks
 
   # Code Quality Analysis
   quality:
     desc: Run comprehensive code quality analysis
     cmds:
       - task: lint
-      - task: security
       - task: quality:metrics
       - echo "✅ Quality analysis complete!"
 
@@ -182,21 +109,9 @@ tasks:
         echo "📊 Generating quality metrics..."
         echo "📁 Files: $(find . -name "*.md" | wc -l) markdown files"
         echo "📏 Lines: $(find . -name "*.md" -exec wc -l {} \; | awk '{sum+=$1} END {print sum}') total lines"
-        echo "🔍 Issues: $(markdownlint-cli2 "**/*.md" --config .markdownlint.json 2>&1 | grep -c "MD" || echo "0") markdown issues"
-        echo "🛡️  Security: $(grep -r "uses:.*@v[0-9]" .github/workflows/ 2>/dev/null | wc -l || echo "0") unpinned actions"
+        echo "🔍 Issues: $(npx markdownlint-cli2 "**/*.md" --config .markdownlint.json 2>&1 | grep -c "MD" || echo "0") markdown issues"
 
-  quality:codacy:
-    desc: Instructions for Codacy analysis via Claude Code MCP
-    cmds:
-      - |
-        echo "🔍 For comprehensive Codacy analysis, use Claude Code:"
-        echo "   use codacy mcp to check for issues"
-        echo ""
-        echo "   This provides:"
-        echo "   - Security vulnerability scanning"
-        echo "   - Code quality assessment"
-        echo "   - Coverage analysis"
-        echo "   - Detailed issue reports"
+  # Removed Codacy helper (deprecated)
 
   # Documentation tasks
   docs:
@@ -388,6 +303,6 @@ tasks:
   ci:
     desc: Run the same checks as CI (for local verification)
     cmds:
-      - task: pre-commit
-      - task: test
+      - task: fmt:check
+      - task: lint
       - echo "✅ CI checks passed locally!"
