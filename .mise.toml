@@ -80,15 +80,15 @@ echo "✅ Setup verified!"
 [tasks.fmt]
 description = "Format all markdown files with Prettier"
 alias = ["f", "format", "prettier"]
-run = "prettier --write '**/*.md'"
-sources = ["**/*.md", ".prettierrc.json"]
+run = "prettier --write '**/*.md' --ignore-path .prettierignore"
+sources = ["**/*.md", ".prettierrc.json", ".prettierignore"]
 tools = {"npm:prettier" = "latest"}
 
 [tasks."fmt:check"]
 description = "Check formatting without changes"
 alias = ["format-check", "prettier:check"]
-run = "prettier --check '**/*.md'"
-sources = ["**/*.md", ".prettierrc.json"]
+run = "prettier --check '**/*.md' --ignore-path .prettierignore"
+sources = ["**/*.md", ".prettierrc.json", ".prettierignore"]
 tools = {"npm:prettier" = "latest"}
 
 # ============================================================================
@@ -102,7 +102,7 @@ depends = ["lint:md", "lint:shell", "lint:secrets"]
 
 [tasks."lint:md"]
 description = "Lint markdown files"
-run = "markdownlint-cli2 '**/*.md' --config .markdownlint.json"
+run = "markdownlint-cli2 '**/*.md' '!node_modules' '!.mise-data' '!.mise-cache' --config .markdownlint.json"
 sources = ["**/*.md", ".markdownlint.json"]
 tools = {"npm:markdownlint-cli2" = "latest"}
 
@@ -123,8 +123,8 @@ tools = {"aqua:gitleaks/gitleaks" = "8.28.0"}
 [tasks."lint:fix"]
 description = "Auto-fix linting issues"
 run = '''
-markdownlint-cli2 '**/*.md' --config .markdownlint.json --fix
-prettier --write '**/*.md'
+markdownlint-cli2 '**/*.md' '!node_modules' '!.mise-data' '!.mise-cache' --config .markdownlint.json --fix
+prettier --write '**/*.md' --ignore-path .prettierignore
 '''
 tools = {"npm:markdownlint-cli2" = "latest", "npm:prettier" = "latest"}
 

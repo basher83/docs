@@ -109,7 +109,7 @@ jobs:
         run: mise run fmt || true
 
       - name: markdownlint fix
-        run: mise x -- markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix || true
+        run: mise x -- markdownlint-cli2 "**/*.md" "!node_modules" "!.mise-data" "!.mise-cache" --config .markdownlint.json --fix || true
 
       - name: autofix commit
         uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
