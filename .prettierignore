@@ -8,3 +8,5 @@ node_modules/
 *.gif
 *.svg
 *.ico
+ai_docs/
+.claude/

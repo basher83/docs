@@ -8,19 +8,23 @@ This document outlines the core GitHub repositories that are essential for my te
 
 The core repositories and their roles:
 
-| Repository | Purpose | Key Focus Areas |
-| ---------- | ------- | --------------- |
-| [`basher83/basher83`](https://github.com/basher83/basher83) | Special profile repository that renders on your GitHub profile page | Personal branding, at-a-glance status, entrypoint links |
-| [`basher83/docs`](https://github.com/basher83/docs) | Central knowledge hub (standards, procedures, architecture) | Information architecture, automation docs, consistency |
-| [`basher83/assets`](https://github.com/basher83/assets) | Shared visual/media assets (banners, logos, octocats) | Reusable branding & imagery |
-| [`basher83/automation-scripts`](https://github.com/basher83/automation-scripts) | Implementation scripts and operational tooling | Scripting, task automation, platform ops |
-| [`basher83/.github`](https://github.com/basher83/.github) | Shared GitHub configuration & reusable workflows | Workflow templates, issue/PR templates, security pinning |
+| Repository                                                                      | Purpose                                                             | Key Focus Areas                                          |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------- |
+| [`basher83/basher83`](https://github.com/basher83/basher83)                     | Special profile repository that renders on your GitHub profile page | Personal branding, at-a-glance status, entrypoint links  |
+| [`basher83/docs`](https://github.com/basher83/docs)                             | Central knowledge hub (standards, procedures, architecture)         | Information architecture, automation docs, consistency   |
+| [`basher83/assets`](https://github.com/basher83/assets)                         | Shared visual/media assets (banners, logos, octocats)               | Reusable branding & imagery                              |
+| [`basher83/automation-scripts`](https://github.com/basher83/automation-scripts) | Implementation scripts and operational tooling                      | Scripting, task automation, platform ops                 |
+| [`basher83/.github`](https://github.com/basher83/.github)                       | Shared GitHub configuration & reusable workflows                    | Workflow templates, issue/PR templates, security pinning |
+| [`basher83/triangulum-observe`](https://github.com/basher83/triangulum-observe) | Monitoring and observability solutions                              | Metrics, logs, traces, alerting, visualization           |
 
-Additional (future or optional) satellites could include: infrastructure as code repos, service-specific codebases, and experiment sandboxes—each intentionally kept out of this documentation hub to preserve separation of concerns.
+Additional (future or optional) satellites could include infrastructure-as-code repositories,
+service-specific codebases, and experiment sandboxes—each intentionally kept out of this
+documentation hub to preserve separation of concerns.
 
 ### 1. `basher83/basher83/`
 
-This is the special GitHub profile repository (matching your username) whose `README.md` is rendered at https://github.com/basher83. It should:
+This is the special GitHub profile repository (matching your username) whose `README.md` is rendered
+at https://github.com/basher83. It should:
 
 - Provide a concise personal elevator pitch
 - Surface key badges (build status, coverage, security, tooling)

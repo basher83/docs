@@ -128,57 +128,107 @@ For more details, see my
 - [🖼️ Assets Repository](https://github.com/basher83/assets)
 - [👨‍💻 Profile README](https://github.com/basher83/basher83)
 - [🏠 ProxmoxMCP Project](https://github.com/basher83/ProxmoxMCP)
+- [📊 Triangulum Observe](https://github.com/basher83/triangulum-observe) - Monitoring and
+  observability solutions
 
 ## 🛠️ Development
 
-This repository includes a [Taskfile](https://taskfile.dev/) for common development and maintenance
-tasks:
+This repository uses [mise](https://mise.jdx.dev/) for tool management and task automation.
+
+### Quick Start
 
 ```bash
+# Install mise (if not already installed)
+brew install mise
+
+# Trust the repository configuration
+mise trust --yes
+
+# Install all required tools
+mise install --yes
+
+# Run pre-commit checks
+mise run pre-commit
+
 # Show all available tasks
-task
-
-# Run pre-commit checks (linting, formatting, security)
-task pre-commit
-
-# Run all tests
-task test
-
-# Auto-fix formatting issues
-task format
-
-# Update documentation trees
-task update-trees
-
-# Install git hooks for automatic pre-commit checks
-task git:hooks
+mise tasks
 ```
 
-**Key tasks:**
+### Mise: contributor quick steps
 
-- `task pre-commit` - Run before committing changes
-- `task ci` - Verify your changes match CI requirements
-- `task docs` - Update and validate documentation
-- `task install` - Install required development tools
+This repository uses mise to manage developer tooling versions. Quick steps for contributors:
 
-**Security & Protection:**
+- Ensure mise is installed and up-to-date: `mise self-update`
+- Trust the local config if prompted: `mise trust --yes`
+- Install required tools: `mise install --yes`
 
-- `task security` - **🛡️ Comprehensive security validation** (secrets, config, actions)
-- `task security:secrets` - Run gitleaks + detect-secrets scanning
-- `task security:config` - Validate .mcp.json and sensitive file patterns
-- `task setup:pre-commit` - **🔧 One-command setup** for pre-commit hooks
+We pin plugin-qualified tools (for example `core:node` and `core:python`) in `.mise.toml` to avoid
+ambiguity. If `mise doctor` reports missing tools, run `mise install --yes` and then `mise doctor`
+again to verify the environment.
 
-**Quality & Formatting:**
+### Mise Configuration
 
-- `task quality` - Run comprehensive quality analysis
-- `task format:bulk` - Auto-fix formatting issues across all files
-- `task format:markdown-aggressive` - Advanced markdown auto-fixing
-- `task quality:metrics` - Generate detailed quality metrics
+**Managed Tools:**
 
-**Git Workflow:**
+- `node` (v20) - For documentation tooling and npm packages
+- `python` (v3.12) - For pre-commit and detect-secrets
+- `shellcheck` - Shell script linting
+- `gitleaks` - Secret detection
+- `fd` (latest) - Fast file finder used by tasks
+- `ripgrep (rg)` (latest) - Fast code/document search used by tasks
+- `eza` (latest) - Enhanced ls alternative
+- `prettier` (latest) - Markdown formatting
+- `markdownlint-cli2` (latest) - Markdown linting
+- `markdown-link-check` (latest) - Markdown link validation
 
-- `task git:hooks` - Install enhanced pre-commit hooks with auto-fixing
-- `task git:hooks:simple` - Install basic pre-commit hooks
+**Key Tasks:**
+
+- `mise run check` - Run all checks: format, lint, and test (aliases: `pre-commit`, `q`, `p`)
+- `mise run fmt` - Format Markdown with Prettier (aliases: `f`, `format`, `prettier`)
+- `mise run lint` - Run all linters (alias: `l`)
+- `mise run test` - Run all tests (alias: `t`)
+- `mise run clean` - Clean temporary files (alias: `c`)
+- `mise run ci` - Verify changes match CI requirements
+- `mise run docs:trees` - Update directory trees (alias: `update-trees`)
+- `mise run docs:serve` - Serve documentation locally
+- `mise run docs:search` - Search documentation content interactively
+
+**Quick Aliases:**
+
+- `mise run f` - Alias for `fmt`
+- `mise run l` - Alias for `lint`
+- `mise run p` - Alias for `check`
+- `mise run q` - Alias for `check`
+- `mise run c` - Alias for `clean`
+- `mise run t` - Alias for `test`
+
+**Setup & Installation:**
+
+- `mise run setup:npm` - Install Node dependencies
+- `mise run setup:pre-commit` - Setup pre-commit hooks
+- `mise run setup:verify` - Verify setup and tools
+
+**Quality & Metrics:**
+
+- `mise run check` - Comprehensive checks (format, lint, test)
+- `mise run metrics` - Generate quality metrics report
+- `mise run fmt` - Auto-fix formatting issues
+- `mise run fmt:check` - Check formatting without changes
+
+### Shell Activation (Recommended)
+
+For automatic tool activation in your shell:
+
+```bash
+# For zsh (add to ~/.zshrc)
+eval "$(mise activate zsh)"
+
+# For bash (add to ~/.bashrc)
+eval "$(mise activate bash)"
+```
+
+If you use shell-level activation, you can remove the `eval "$(mise activate direnv)"` line from
+`.envrc` to avoid double activation.
 
 **Code Quality Analysis:**
 
@@ -200,17 +250,64 @@ use codacy mcp to check for issues
 - 🚫 **Secret Prevention** - Blocks API keys and sensitive data at commit time
 - 📊 **Quality Metrics** - Continuous quality monitoring and reporting
 
-**Security Setup for New Machines:**
+**Secret Management via Infisical:**
+
+Requirements:
+
+- Infisical CLI logged into cloud
+
+⚠️ **Security Warning**: Never export secrets directly in your shell as they can leak to:
+
+- Shell history files (~/.bash_history, ~/.zsh_history)
+- Process lists visible to other users (ps aux)
+- Log files and debugging output
+
+### Recommended: Use Infisical's Ephemeral Run
+
+The safest approach is to inject secrets only when needed:
 
 ```bash
-# One-command security setup
-task setup:pre-commit
+# Run commands with secrets injected ephemerally
+infisical run --path="/API-keys" -- npm run deploy
+infisical run --path="/API-keys" -- mise run test:integration
+```
 
-# Verify everything works
-task security
+### If You Must Export to Shell
 
-# Test with all checks
-task pre-commit
+If you absolutely need secrets in your shell environment, disable history first:
+
+```bash
+# Method 1: Temporarily disable history
+set +o history  # Turn off history recording
+export GITHUB_PERSONAL_ACCESS_TOKEN=$(infisical secrets get GITHUB_PERSONAL_ACCESS_TOKEN --path="/API-keys" --plain --silent)
+export FIRECRAWL_API_KEY=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain --silent)
+set -o history  # Re-enable history recording
+
+# Method 2: Use space prefix (requires HISTCONTROL=ignorespace)
+ export GITHUB_PERSONAL_ACCESS_TOKEN=$(infisical secrets get GITHUB_PERSONAL_ACCESS_TOKEN --path="/API-keys" --plain --silent)
+#^ Note the leading space - won't be saved to history if HISTCONTROL=ignorespace is set
+```
+
+### Via .envrc with validation
+
+```bash
+# --- Load secrets from Infisical ---
+# Safety first
+set -euo pipefail
+
+: "${FIRECRAWL_API_KEY:=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain 2>/dev/null || true)}"
+
+# Firecrawl API Key handling
+if [ -z "$FIRECRAWL_API_KEY" ]; then
+  if [ -n "$CI" ]; then
+    echo "❌ FIRECRAWL_API_KEY not available – failing early." >&2
+    exit 1
+  else
+    echo "⚠️  FIRECRAWL_API_KEY could not be retrieved – Firecrawl API operations may fail." >&2
+  fi
+else
+  export FIRECRAWL_API_KEY
+fi
 ```
 
 ---

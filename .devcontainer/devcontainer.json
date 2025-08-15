@@ -1,11 +1,35 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers-extra/features/go-task:1": {},
-    "ghcr.io/devcontainers-extra/features/ripgrep:1": {},
-    "ghcr.io/devcontainers-extra/features/fd:1": {},
-    "ghcr.io/devcontainers-extra/features/markdownlint-cli2:1": {},
-    "ghcr.io/jsburckhardt/devcontainer-features/uv:1": {},
-    "ghcr.io/devcontainers-extra/features/direnv:1": {}
-  }
+    // Only install mise - it will handle all other tools
+    "ghcr.io/jdx/mise/devcontainer-feature/mise:1": {}
+  },
+  "mounts": [
+    // Persist mise's installed tools across container rebuilds
+    "source=mise-data-volume,target=/mnt/mise-data,type=volume"
+  ],
+  "remoteEnv": {
+    "MISE_DATA_DIR": "/mnt/mise-data",
+    "MISE_EXPERIMENTAL": "1",
+    "FIRECRAWL_API_KEY": "${localEnv:FIRECRAWL_API_KEY}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "jdxcode.mise-vscode",
+        "DavidAnson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "timonwong.shellcheck"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[markdown]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      }
+    }
+  },
+  "postCreateCommand": "sudo chown -R $(id -u):$(id -g) /mnt/mise-data && mise trust --yes && mise install && eval \"$(mise activate bash)\" && mise run setup",
+  "postStartCommand": "mise trust --yes || true"
 }

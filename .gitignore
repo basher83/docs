@@ -14,8 +14,9 @@ _book
 *.epub
 *.mobi
 *.pdf
-
+.vscode/
 docs.code-workspace
+ai_docs/
 
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
@@ -54,3 +55,4 @@ ssh-keys/
 *confidential*
 
 .mcp.json
+.vscode/settings.json
