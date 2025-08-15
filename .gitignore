@@ -36,10 +36,11 @@ api-keys.*
 # Configuration with secrets
 .env*
 !.env.example
+.envrc
+!.envrc.example
 secrets/
 config/secrets/
 *.secrets.*
-.envrc
 
 # SSH and certificates
 *_rsa

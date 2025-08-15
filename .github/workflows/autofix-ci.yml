@@ -61,7 +61,12 @@ jobs:
 
       - name: Install mise
         run: |
-          curl -fsSL https://mise.run | sh
+          # Install specific mise version for reproducibility and security
+          MISE_VERSION="2025.1.38"
+          curl -fsSL https://github.com/jdx/mise/releases/download/v${MISE_VERSION}/mise-v${MISE_VERSION}-linux-x64.tar.gz | tar -xzC /tmp
+          mkdir -p ~/.local/bin
+          mv /tmp/mise ~/.local/bin/mise
+          chmod +x ~/.local/bin/mise
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Cache mise tools
