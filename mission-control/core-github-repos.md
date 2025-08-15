@@ -37,7 +37,6 @@ No tree is embedded here because its structure is typically minimal and changes 
 ### 2. `basher83/docs/`
 
 <!-- DOCS-TREE-START -->
-
 ```plaintext
 .
 |-- CLAUDE.md
@@ -150,7 +149,6 @@ No tree is embedded here because its structure is typically minimal and changes 
 
 25 directories, 83 files
 ```
-
 <!-- DOCS-TREE-END -->
 
 ### 3. `basher83/assets/`
