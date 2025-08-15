@@ -48,6 +48,8 @@ jobs:
 
       - name: Setup mise environment
         run: |
+          # Ensure mise directories exist
+          mkdir -p ~/.local/share/mise/installs/{node,python}
           mise trust --yes
           mise install --yes
 
