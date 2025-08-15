@@ -58,3 +58,7 @@ ssh-keys/
 
 .mcp.json
 .vscode/settings.json
+
+# mise temporary directories (CI)
+.mise-data/
+.mise-cache/
