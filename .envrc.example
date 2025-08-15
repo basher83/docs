@@ -1,0 +1,22 @@
+# Example .envrc file for local development
+# Copy this to .envrc and update with your actual values
+# The .envrc file is gitignored to prevent committing secrets
+
+# === Mise activation (optional if using shell activation) ===
+# Uncomment if you want project-specific mise activation
+# eval "$(mise activate direnv)"
+
+# === API Keys (obtain from Infisical or your secret manager) ===
+# export FIRECRAWL_API_KEY="your-api-key-here"
+# export GITHUB_PERSONAL_ACCESS_TOKEN="your-token-here"
+
+# === Development Environment Variables ===
+# export NODE_ENV="development"
+# export LOG_LEVEL="debug"
+
+# === Custom Project Settings ===
+# export DOCS_AUTO_UPDATE="true"
+# export PRETTIER_CHECK_STRICT="false"
+
+# Note: For production secrets, use Infisical:
+# export FIRECRAWL_API_KEY=$(infisical secrets get FIRECRAWL_API_KEY --path="/API-keys" --plain --silent)

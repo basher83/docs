@@ -10,3 +10,5 @@ node_modules/
 *.ico
 ai_docs/
 .claude/
+.mise-data/
+.mise-cache/
