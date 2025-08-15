@@ -43,7 +43,6 @@ No tree is embedded here because its structure is typically minimal and changes 
 |-- LICENSE
 |-- README.md
 |-- SUMMARY.md
-|-- Taskfile.yml
 |-- flight-manuals
 |   |-- README.md
 |   |-- automation-scripts
@@ -138,6 +137,7 @@ No tree is embedded here because its structure is typically minimal and changes 
 |-- package.json
 |-- renovate.json
 |-- scripts
+|   |-- setup.sh
 |   `-- update-trees.sh
 |-- space-dictionary
 |   |-- README.md
