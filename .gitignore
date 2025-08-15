@@ -39,6 +39,7 @@ api-keys.*
 secrets/
 config/secrets/
 *.secrets.*
+.envrc
 
 # SSH and certificates
 *_rsa

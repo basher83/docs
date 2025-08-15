@@ -19,8 +19,8 @@ on:
       - '.markdownlint.json'
       - '.prettierrc.json'
       - '.prettierignore'
-      - 'package.json'
-      - 'package-lock.json'
+      - '.mise.toml'
+      - '.github/workflows/autofix-ci.yml'
   # Run on PRs targeting main for final polish
   pull_request:
     paths:
@@ -36,8 +36,8 @@ on:
       - '.markdownlint.json'
       - '.prettierrc.json'
       - '.prettierignore'
-      - 'package.json'
-      - 'package-lock.json'
+      - '.mise.toml'
+      - '.github/workflows/autofix-ci.yml'
   workflow_call:
 
 permissions:
@@ -59,33 +59,30 @@ jobs:
         if: ${{ github.actor == 'autofix-ci[bot]' || github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' || (github.actor == 'github-actions[bot]' && github.event_name == 'push' && contains(github.event.head_commit.message, 'autofix')) }}
         run: echo "Detected automation bot (${GITHUB_ACTOR}) loop scenario; exiting early." && exit 0
 
-      - name: Cache npm cache
+      - name: Install mise
+        run: |
+          curl -fsSL https://mise.run | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Cache mise tools
         uses: actions/cache@638ed79f9dc94c1de1baef91bcab5edaa19451f4 # v4.2.4
         with:
-          path: ~/.npm
-          key: autofix-npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          path: |
+            ~/.local/share/mise
+            ~/.cache/mise
+          key: autofix-mise-${{ runner.os }}-${{ hashFiles('.mise.toml') }}
           restore-keys: |
-            autofix-npm-${{ runner.os }}-
+            autofix-mise-${{ runner.os }}-
+
+      - name: Setup mise environment
+        run: |
+          mise trust --yes
+          mise install --yes
 
       - name: Setup uv (Python tools)
         uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc
         with:
           version: "0.4.20"
-
-      - name: Setup Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: '22.18.0'
-          cache: 'npm'
-
-      - name: Install formatting tooling
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --no-audit --no-fund
-          else
-            npm install --no-audit --no-fund
-          fi
-          npx prettier --version >/dev/null 2>&1 || npm install -g prettier markdownlint-cli2
 
       - name: Ruff fix-only
         run: |
@@ -114,10 +111,10 @@ jobs:
           fi
 
       - name: Prettier write
-        run: npx prettier --write "**/*.{md,mdx,yml,yaml,json,toml}" || true
+        run: mise run fmt || true
 
       - name: markdownlint fix
-        run: npx markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix || true
+        run: mise x -- markdownlint-cli2 "**/*.md" "!node_modules" --config .markdownlint.json --fix || true
 
       - name: autofix commit
         uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
