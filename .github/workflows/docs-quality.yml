@@ -35,6 +35,9 @@ jobs:
         run: |
           echo "MISE_DATA_DIR=${{ github.workspace }}/.mise-data" >> $GITHUB_ENV
           echo "MISE_CACHE_DIR=${{ github.workspace }}/.mise-cache" >> $GITHUB_ENV
+          # Create directories to avoid "No such file or directory" errors
+          mkdir -p ${{ github.workspace }}/.mise-data/installs/{node,python}
+          mkdir -p ${{ github.workspace }}/.mise-cache
 
       - name: Setup mise
         uses: jdx/mise-action@d6e32c1796099e0f1f3ac741c220a8b7eae9e5dd # v2.1.0
