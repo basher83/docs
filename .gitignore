@@ -16,6 +16,7 @@ _book
 *.pdf
 .vscode/
 docs.code-workspace
+ai_docs/
 
 #Ignore cursor AI rules
 .cursor/rules/codacy.mdc
