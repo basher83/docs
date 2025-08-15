@@ -54,3 +54,4 @@ ssh-keys/
 *confidential*
 
 .mcp.json
+.vscode/settings.json
