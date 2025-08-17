@@ -7,8 +7,8 @@
 # eval "$(mise activate direnv)"
 
 # === API Keys (obtain from Infisical or your secret manager) ===
-# export FIRECRAWL_API_KEY="your-api-key-here"
-# export GITHUB_PERSONAL_ACCESS_TOKEN="your-token-here"
+# export FIRECRAWL_API_KEY="your-api-key-here" # pragma: allowlist secret
+# export GITHUB_PERSONAL_ACCESS_TOKEN="your-token-here" # pragma: allowlist secret
 
 # === Development Environment Variables ===
 # export NODE_ENV="development"

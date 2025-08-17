@@ -6,7 +6,7 @@ experimental = true
 auto_install = true
 not_found_auto_install = true
 jobs = 4
-status = {missing_tools = "if_other_versions_installed", show_env = false, show_tools = false}
+status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
 
 [tools]
 # Language runtimes
@@ -17,7 +17,7 @@ status = {missing_tools = "if_other_versions_installed", show_env = false, show_
 "aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:gitleaks/gitleaks" = "8.28.0"
 fd = "latest"
-rg = "latest"  # ripgrep
+rg = "latest"                         # ripgrep
 eza = "latest"
 
 # Additional tools for documentation
@@ -82,14 +82,14 @@ description = "Format all markdown files with Prettier"
 alias = ["f", "format", "prettier"]
 run = "prettier --write '**/*.md' --ignore-path .prettierignore"
 sources = ["**/*.md", ".prettierrc.json", ".prettierignore"]
-tools = {"npm:prettier" = "latest"}
+tools = { "npm:prettier" = "latest" }
 
 [tasks."fmt:check"]
 description = "Check formatting without changes"
 alias = ["format-check", "prettier:check"]
 run = "prettier --check '**/*.md' --ignore-path .prettierignore"
 sources = ["**/*.md", ".prettierrc.json", ".prettierignore"]
-tools = {"npm:prettier" = "latest"}
+tools = { "npm:prettier" = "latest" }
 
 # ============================================================================
 # LINTING - Code quality checks
@@ -104,13 +104,13 @@ depends = ["lint:md", "lint:shell", "lint:secrets"]
 description = "Lint markdown files"
 run = "markdownlint-cli2 '**/*.md' '!node_modules' '!.mise-data' '!.mise-cache' --config .markdownlint.json"
 sources = ["**/*.md", ".markdownlint.json"]
-tools = {"npm:markdownlint-cli2" = "latest"}
+tools = { "npm:markdownlint-cli2" = "latest" }
 
 [tasks."lint:shell"]
 description = "Lint shell scripts"
 run = "fd -e sh -x shellcheck {}"
 sources = ["**/*.sh"]
-tools = {"aqua:koalaman/shellcheck" = "0.11.0", "fd" = "latest"}
+tools = { "aqua:koalaman/shellcheck" = "0.11.0", "fd" = "latest" }
 
 [tasks."lint:secrets"]
 description = "Check for secrets"
@@ -118,7 +118,7 @@ run = '''
 gitleaks detect --no-git --verbose
 detect-secrets scan --baseline .secrets.baseline 2>/dev/null || true
 '''
-tools = {"aqua:gitleaks/gitleaks" = "8.28.0"}
+tools = { "aqua:gitleaks/gitleaks" = "8.28.0" }
 
 [tasks."lint:fix"]
 description = "Auto-fix linting issues"
@@ -126,7 +126,7 @@ run = '''
 markdownlint-cli2 '**/*.md' '!node_modules' '!.mise-data' '!.mise-cache' --config .markdownlint.json --fix
 prettier --write '**/*.md' --ignore-path .prettierignore
 '''
-tools = {"npm:markdownlint-cli2" = "latest", "npm:prettier" = "latest"}
+tools = { "npm:markdownlint-cli2" = "latest", "npm:prettier" = "latest" }
 
 # ============================================================================
 # QUALITY - Comprehensive checks
@@ -152,7 +152,7 @@ echo "🔗 Internal links: $(rg '\[.*\]\(.*\)' -t md --count-matches | awk -F: '
 issues=$(markdownlint-cli2 '**/*.md' --config .markdownlint.json 2>&1 | grep -c '^[^:]*\.md:' || echo "0")
 echo "⚠️  Lint issues: $issues"
 '''
-tools = {"fd" = "latest", "rg" = "latest", "npm:markdownlint-cli2" = "latest"}
+tools = { "fd" = "latest", "rg" = "latest", "npm:markdownlint-cli2" = "latest" }
 
 # ============================================================================
 # TESTING - Validation tasks
@@ -176,7 +176,7 @@ echo "✅ Structure valid"
 [tasks."test:links"]
 description = "Check for broken links"
 run = "fd -e md -x markdown-link-check {}"
-tools = {"fd" = "latest", "npm:markdown-link-check" = "latest"}
+tools = { "fd" = "latest", "npm:markdown-link-check" = "latest" }
 
 # ============================================================================
 # DOCUMENTATION - Maintenance tasks
@@ -204,7 +204,7 @@ echo "Enter search term: "
 read term
 rg "$term" -t md --heading --line-number
 '''
-tools = {"rg" = "latest"}
+tools = { "rg" = "latest" }
 
 # ============================================================================
 # UTILITY - Helper tasks
@@ -219,7 +219,7 @@ fd -H -I -t f -e tmp -x rm {}
 fd -H -I -t f -g '*~' -x rm {}
 rm -rf .mise/cache 2>/dev/null || true
 '''
-tools = {"fd" = "latest"}
+tools = { "fd" = "latest" }
 
 [tasks.watch]
 description = "Watch files and run checks on change"
@@ -237,8 +237,13 @@ echo "Enter file pattern (e.g., '*.md', 'README*'): "
 read pattern
 fd "$pattern"
 '''
-tools = {"fd" = "latest"}
+tools = { "fd" = "latest" }
 
 # Task aliases for common workflows
 [tasks.p]
-alias = "check"  # p for pre-commit
+alias = "check" # p for pre-commit
+
+# Hooks demo
+[hooks]
+enter = "echo 'Welcome to the docs repository!'"
+leave = "echo 'Goodbye!'"
