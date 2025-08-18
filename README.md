@@ -35,7 +35,6 @@ based on the principles defined in the
 ## 📚 Documentation Structure
 
 <!-- TREE-START -->
-
 ```plaintext
 .
 |-- flight-manuals
@@ -65,7 +64,6 @@ based on the principles defined in the
 
 25 directories
 ```
-
 <!-- TREE-END -->
 
 | Category                                   | Description             | Contents                                                      |
