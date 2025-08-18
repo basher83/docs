@@ -277,6 +277,13 @@ For secrets, use Infisical integration instead of hardcoding.
 ### GitHub Actions
 
 ```yaml
+# IMPORTANT: Workaround for mise-action with core plugins
+# The directories must be created before mise-action runs
+- name: Pre-create mise directories
+  run: |
+    mkdir -p $HOME/.local/share/mise/installs/python
+    mkdir -p $HOME/.local/share/mise/installs/node
+
 - name: Setup mise
   uses: jdx/mise-action@v2
   with:
@@ -287,6 +294,10 @@ For secrets, use Infisical integration instead of hardcoding.
 - name: Run checks
   run: mise run ci
 ```
+
+**Note**: The directory pre-creation step is a workaround for an issue where mise-action fails to
+create symlinks for core plugins (node and python). This affects both GitHub Actions and act (local
+testing).
 
 ### Local CI Testing
 
@@ -325,6 +336,23 @@ mise run act
    mise tasks     # List all available tasks
    mise task info <task>  # Get task details
    ```
+
+5. **GitHub Actions / act: `.mise.backend` symlink error**:
+
+   Error:
+   `failed write: ~/.local/share/mise/installs/node/.mise.backend - No such file or directory`
+
+   Solution: Pre-create the directories before running mise-action:
+
+   ```yaml
+   - name: Pre-create mise directories
+     run: |
+       mkdir -p $HOME/.local/share/mise/installs/python
+       mkdir -p $HOME/.local/share/mise/installs/node
+   ```
+
+   This issue occurs when mise-action tries to create symlinks for core plugins (node, python) but
+   the parent directories don't exist in the container environment.
 
 ### Debug Mode
 
