@@ -27,6 +27,24 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y tree
 
+      - name: Setup Node.js
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: '20'
+
+      - name: Install Prettier
+        run: npm install -g prettier@latest
+
+      - name: Copy Prettier config
+        run: |
+          # Ensure Prettier uses the same config as the rest of the project
+          if [ -f .prettierrc.json ]; then
+            echo "Found .prettierrc.json"
+          fi
+          if [ -f .prettierignore ]; then
+            echo "Found .prettierignore"
+          fi
+
       - name: Update documentation trees
         run: |
           # Function to update tree in a file
@@ -95,6 +113,12 @@ jobs:
           update_tree "README.md" "." "-L 3 -d -I '.git|node_modules|.DS_Store|.github|.cursor' --charset ascii" "TREE"
           
           # Add more files as needed
+
+      - name: Format with Prettier
+        run: |
+          echo "Running Prettier to format markdown files..."
+          prettier --write '**/*.md' --ignore-path .prettierignore || true
+          echo "Formatting complete"
 
       - name: Commit changes
         run: |
