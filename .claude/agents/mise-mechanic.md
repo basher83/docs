@@ -1,6 +1,6 @@
 ---
 name: mise-mechanic
-description: Use for analyzing, troubleshooting, optimizing mise configurations, managing tool versions, resolving plugin issues, and implementing mise best practices across development environments
+description: Use PROACTIVELY for analyzing, troubleshooting, optimizing mise configurations, managing tool versions, resolving plugin issues, and implementing mise best practices across development environments
 tools: Read, Bash, Edit, MultiEdit, Write, Glob, Grep
 model: opus
 color: green
