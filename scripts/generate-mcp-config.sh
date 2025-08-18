@@ -42,7 +42,7 @@ if [ -f "$OUTPUT_FILE" ]; then
     else
         print_warning "$OUTPUT_FILE already exists!"
         echo "Do you want to overwrite it? (y/n)"
-        read -p "> " confirm
+        read -rp "> " confirm
         if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
             print_info "Cancelled. Existing $OUTPUT_FILE was not modified."
             exit 0
@@ -69,8 +69,7 @@ fi
 # Check if authenticated with Infisical by trying to list secrets
 if ! infisical secrets &> /dev/null; then
     print_warning "Not authenticated with Infisical. Please log in..."
-    infisical login
-    if [ $? -ne 0 ]; then
+    if ! infisical login; then
         print_error "Failed to authenticate with Infisical"
         exit 1
     fi
@@ -95,10 +94,10 @@ print_info "Fetching secrets from Infisical (environment: $INFISICAL_ENV)..."
 (
     # Export API keys from specific path
     print_info "Fetching API keys from /API-keys path..."
-    eval "$(infisical export --format=dotenv-export --env=$INFISICAL_ENV --path="/API-keys" 2>/dev/null)" || {
+    eval "$(infisical export --format=dotenv-export --env="$INFISICAL_ENV" --path="/API-keys" 2>/dev/null)" || {
         print_warning "Failed to fetch secrets from /API-keys path"
         echo "Trying without path restriction..."
-        eval "$(infisical export --format=dotenv-export --env=$INFISICAL_ENV 2>/dev/null)" || {
+        eval "$(infisical export --format=dotenv-export --env="$INFISICAL_ENV" 2>/dev/null)" || {
             print_error "Failed to fetch secrets from Infisical"
             echo "Make sure you have access to the project and environment"
             exit 1
