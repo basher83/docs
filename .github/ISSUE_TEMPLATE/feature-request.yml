@@ -1,0 +1,245 @@
+name: ✨ Documentation Enhancement Request
+description: Propose new documentation, guides, or improvements to existing content
+title: "✨ [Brief description of the documentation enhancement]"
+labels: ["✨ enhancement", "🔍 needs-triage", "📚 documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Documentation Mission Enhancement Proposal
+        
+        Help us expand our documentation capabilities! Your requests drive improvement and expansion of our knowledge base.
+        
+        **Before submitting:** Please search existing issues and discussions to see if this has been proposed before.
+
+  - type: input
+    id: mission-objective
+    attributes:
+      label: 🎯 Documentation Objective
+      description: What documentation gap does this fill? What problem does it solve?
+      placeholder: "We need a comprehensive guide for setting up Kubernetes on Proxmox, as many users struggle with this integration..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-content
+    attributes:
+      label: 🚀 Proposed Documentation
+      description: Describe what documentation should be created or improved
+      placeholder: |
+        I propose adding a comprehensive Kubernetes on Proxmox guide that includes:
+        
+        1. **Prerequisites and Planning**
+           - Hardware requirements
+           - Network architecture planning
+           - Storage considerations
+        
+        2. **Step-by-Step Setup Guide**
+           - Creating VMs for control plane and workers
+           - Installing Kubernetes using kubeadm
+           - Configuring CNI (Calico/Flannel)
+           - Setting up LoadBalancer with MetalLB
+        
+        3. **Integration Points**
+           - Using Proxmox CSI for persistent volumes
+           - Backup strategies
+           - Monitoring setup
+        
+        4. **Troubleshooting Section**
+           - Common issues and solutions
+           - Performance optimization
+    validations:
+      required: true
+
+  - type: dropdown
+    id: documentation-type
+    attributes:
+      label: 🛰️ Documentation Category
+      description: What type of documentation is this?
+      options:
+        - Step-by-step guide (flight-manuals/)
+        - Architecture diagram (star-charts/)
+        - Standards/templates (mission-control/)
+        - Reference material (space-dictionary/)
+        - Historical/decision record (maintenance-logs/)
+        - Cross-category content
+        - Repository documentation (README, etc.)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: target-audience
+    attributes:
+      label: 👥 Target Audience
+      description: Who would primarily benefit from this documentation?
+      options:
+        - Beginners/newcomers
+        - Intermediate users
+        - Advanced users
+        - System administrators
+        - Developers
+        - DevOps engineers
+        - All skill levels
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-cases
+    attributes:
+      label: 📖 Use Cases
+      description: Provide specific scenarios where this documentation would be valuable
+      placeholder: |
+        **Use Case 1: Homelab Kubernetes**
+        As a homelab enthusiast, I want to run Kubernetes on my Proxmox server
+        so that I can learn container orchestration without cloud costs.
+        
+        **Use Case 2: Development Environment**
+        As a developer, I need a local Kubernetes cluster on Proxmox
+        for testing applications before cloud deployment.
+        
+        **Use Case 3: Small Business Infrastructure**
+        As a small business IT admin, I want to deploy production workloads
+        on Kubernetes using existing Proxmox infrastructure.
+    validations:
+      required: true
+
+  - type: textarea
+    id: existing-gaps
+    attributes:
+      label: 🕳️ Current Documentation Gaps
+      description: What's missing from our current documentation?
+      placeholder: |
+        Currently we have:
+        - Basic Proxmox setup guides
+        - Separate Kubernetes concepts in space-dictionary
+        
+        Missing:
+        - Integration between Proxmox and Kubernetes
+        - Network architecture for this setup
+        - Storage integration guidance
+        - Production-ready configurations
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 🚨 Documentation Priority
+      description: How important is this documentation to users?
+      options:
+        - 🔴 Critical - Blocking many users
+        - 🟡 High - Frequently requested/needed
+        - 🟢 Medium - Would be helpful for some users
+        - 🔵 Low - Nice to have
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: ⚙️ Estimated Documentation Complexity
+      description: How complex would this documentation be to create?
+      options:
+        - 🟢 Simple - Basic guide or reference
+        - 🟡 Moderate - Detailed guide with examples
+        - 🟠 Complex - Multiple interconnected documents
+        - 🔴 Epic - Major documentation initiative
+        - 🤷 Unknown - Not sure about scope
+
+  - type: textarea
+    id: prerequisites
+    attributes:
+      label: 📦 Prerequisites and Dependencies
+      description: What existing documentation or knowledge is required?
+      placeholder: |
+        Prerequisites:
+        - Basic Proxmox knowledge (covered in existing guides)
+        - Understanding of container concepts
+        - Basic networking knowledge
+        
+        Related documentation that should exist:
+        - Proxmox networking guide
+        - Container basics in space-dictionary
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: 📊 Success Metrics
+      description: How will we know this documentation is successful?
+      placeholder: |
+        Success indicators:
+        - Users can successfully deploy Kubernetes on Proxmox following the guide
+        - Reduced support questions about this topic
+        - Clear navigation from related documents
+        - Positive feedback from community
+        - Guide remains accurate for at least 6 months
+
+  - type: textarea
+    id: outline
+    attributes:
+      label: 🗺️ Proposed Document Structure
+      description: Provide a rough outline of the documentation structure
+      placeholder: |
+        ```
+        flight-manuals/kubernetes/
+        ├── README.md (overview and navigation)
+        ├── proxmox-k8s-setup.md (main setup guide)
+        ├── network-architecture.md (networking details)
+        ├── storage-integration.md (CSI and volumes)
+        ├── troubleshooting.md (common issues)
+        └── production-checklist.md (hardening guide)
+        
+        star-charts/kubernetes/
+        ├── proxmox-k8s-architecture.mmd (Mermaid diagram)
+        └── network-topology.svg (network layout)
+        ```
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 🔗 External References
+      description: |
+        Include any external documentation, tutorials, or resources that could help
+        in creating this documentation.
+      placeholder: |
+        Useful references:
+        - [Kubernetes Official Docs](https://kubernetes.io/docs/)
+        - [Proxmox Wiki](https://pve.proxmox.com/wiki/)
+        - [Example blog post](https://example.com/k8s-proxmox)
+        - Related GitHub repos with similar setups
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: 🤝 Contribution Interest
+      description: Are you interested in contributing to this documentation?
+      options:
+        - label: I would like to contribute to writing this documentation
+        - label: I can provide technical review
+        - label: I can test the documentation for accuracy
+        - label: I can provide diagrams or visual content
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 🚀 Pre-Launch Checklist
+      description: Confirm you've completed these steps
+      options:
+        - label: I have searched existing issues and discussions for similar requests
+        - label: I have checked if this documentation already exists
+        - label: I have considered where this fits in our directory structure
+        - label: I understand the space-themed organization philosophy
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 🌟 Additional Context
+      description: |
+        Anything else that would help us understand and prioritize this documentation?
+        Include any community feedback, common questions, or pain points.
+      placeholder: |
+        Additional context:
+        - This is frequently asked about in Proxmox forums
+        - Many users struggle with the networking aspect
+        - Would complement our existing Docker guides
+        - Could become a series with other orchestration platforms

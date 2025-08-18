@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🤝 Community Discussions
+    url: https://github.com/basher83/docs/discussions
+    about: Join the community discussion for questions, ideas, and general documentation chat
+  - name: 🔒 Security Issues
+    url: https://github.com/basher83/docs/security/advisories
+    about: Report security vulnerabilities privately through GitHub Security Advisories
+  - name: 💬 Documentation Questions
+    url: https://github.com/basher83/docs/discussions/categories/q-a
+    about: Get help finding or understanding documentation
+  - name: 💡 Documentation Ideas
+    url: https://github.com/basher83/docs/discussions/categories/ideas
+    about: Share ideas for improving the documentation structure or content

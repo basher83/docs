@@ -1,0 +1,157 @@
+name: 🐛 Documentation Anomaly Report
+description: Report an issue with documentation (broken links, incorrect information, missing content)
+title: "🐛 [Brief description of the documentation issue]"
+labels: ["🐛 bug", "🔍 needs-triage", "📚 documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🚀 Documentation Mission Control - Anomaly Report
+        
+        Thanks for taking the time to report this documentation issue! Your report helps us maintain accurate and useful documentation.
+        
+        **Before reporting:** Please search existing issues to avoid duplicates.
+
+  - type: input
+    id: documentation-location
+    attributes:
+      label: 📍 Documentation Location
+      description: Which document or section contains the issue?
+      placeholder: "flight-manuals/docker/container-networking.md"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: 🔎 Issue Type
+      description: What kind of documentation issue is this?
+      options:
+        - Incorrect information
+        - Broken link
+        - Missing information
+        - Outdated content
+        - Unclear instructions
+        - Formatting problem
+        - Code example error
+        - Diagram issue
+        - Navigation problem
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: 🚨 Current Documentation Issue
+      description: What is wrong with the current documentation? Be specific.
+      placeholder: |
+        The Docker networking guide states that bridge networks use 172.17.0.0/16 by default,
+        but Docker actually uses 172.17.0.0/24. This causes confusion when planning network
+        architecture.
+        
+        Additionally, the example command is missing the --network flag.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-content
+    attributes:
+      label: 🛰️ Expected Documentation
+      description: What should the documentation say instead?
+      placeholder: |
+        The guide should correctly state that Docker bridge networks use 172.17.0.0/24
+        by default, and the example should include:
+        ```bash
+        docker run --network bridge --name mycontainer nginx
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-sections
+    attributes:
+      label: 🔗 Related Documentation
+      description: Are there other documents that reference this information?
+      placeholder: |
+        - star-charts/docker/network-architecture.md also references this
+        - flight-manuals/docker/docker-compose-networking.md might need updating
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: 🚨 Impact Level
+      description: How severely does this documentation issue affect users?
+      options:
+        - 🔴 Critical - Completely incorrect, could cause serious problems
+        - 🟡 High - Significantly misleading or missing crucial information
+        - 🟢 Medium - Confusing but workarounds exist
+        - 🔵 Low - Minor issue, cosmetic or small clarification needed
+    validations:
+      required: true
+
+  - type: dropdown
+    id: directory
+    attributes:
+      label: 🗺️ Affected Directory
+      description: Which documentation directory is primarily affected?
+      options:
+        - mission-control/ (standards, templates)
+        - flight-manuals/ (procedures, guides)
+        - star-charts/ (diagrams, architecture)
+        - maintenance-logs/ (historical, decisions)
+        - space-dictionary/ (glossaries, references)
+        - Repository root (README, etc.)
+        - Multiple directories
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: 🔍 Steps to Find Issue
+      description: How can someone else find this documentation problem?
+      placeholder: |
+        1. Navigate to flight-manuals/docker/
+        2. Open container-networking.md
+        3. Scroll to "Default Bridge Network" section
+        4. Note the incorrect subnet mask in the example
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 🛸 Additional Context
+      description: |
+        Any other context, screenshots, or information about this documentation issue?
+        - When did you notice this became incorrect?
+        - Are there external references that conflict?
+        - Do you have authoritative sources for the correct information?
+      placeholder: |
+        Docker's official documentation at https://docs.docker.com/network/bridge/
+        confirms the correct default subnet.
+        
+        This may have changed in Docker version 20.x
+
+  - type: checkboxes
+    id: verification
+    attributes:
+      label: 🔍 Pre-Flight Checks
+      description: Please confirm you've completed these steps
+      options:
+        - label: I have searched existing issues for duplicates
+        - label: I have verified this is actually incorrect/problematic
+        - label: I have checked if this affects multiple documents
+        - label: I have provided specific location information
+
+  - type: textarea
+    id: proposed-fix
+    attributes:
+      label: 🛰️ Proposed Fix (Optional)
+      description: If you'd like to contribute a fix, describe your approach
+      placeholder: |
+        I can submit a PR to:
+        1. Correct the subnet mask in all affected documents
+        2. Update the code examples
+        3. Add a note about version differences if applicable
