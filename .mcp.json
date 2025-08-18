@@ -28,7 +28,7 @@
         "mcp"
       ],
       "env": {
-        "MISE_EXPERIMENTAL": "$MISE_EXPERIMENTAL"
+        "MISE_EXPERIMENTAL": "1"
       }
     }
   }
