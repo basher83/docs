@@ -62,3 +62,4 @@ ssh-keys/
 # mise temporary directories (CI)
 .mise-data/
 .mise-cache/
+.mcp.json.backup
