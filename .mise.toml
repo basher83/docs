@@ -19,11 +19,17 @@ status = { missing_tools = "if_other_versions_installed", show_env = false, show
 fd = "latest"
 rg = "latest"                         # ripgrep
 eza = "latest"
+jq = "latest"                          # JSON processor
 
 # Additional tools for documentation
 "npm:markdownlint-cli2" = "latest"
 "npm:prettier" = "latest"
 "npm:markdown-link-check" = "latest"
+"npm:markdown-magic" = "latest"
+"npm:tree-node-cli" = "latest"
+
+# Run CI checks locally
+act = "0.2.80"
 
 [env]
 # Set environment variables used by tasks
@@ -39,7 +45,7 @@ run = "mise tasks"
 
 [tasks.setup]
 description = "Complete project setup for new contributors"
-depends = ["setup:npm", "setup:pre-commit", "setup:verify"]
+depends = ["setup:npm", "setup:pre-commit", "setup:act-symlink", "setup:verify"]
 
 [tasks."setup:quick"]
 description = "Quick setup script for new contributors"
@@ -60,6 +66,42 @@ pre-commit install --hook-type pre-push
 '''
 outputs = [".git/hooks/pre-commit", ".git/hooks/pre-push"]
 
+[tasks."setup:act-symlink"]
+description = "Ensure act is symlinked for VS Code extension"
+run = '''
+# Check if act is installed via mise
+if command -v act >/dev/null 2>&1; then
+  ACT_PATH=$(which act)
+  SYMLINK_PATH="/usr/local/bin/act"
+  
+  # Check if symlink already exists and points to correct location
+  if [ -L "$SYMLINK_PATH" ] && [ "$(readlink -f $SYMLINK_PATH)" = "$(readlink -f $ACT_PATH)" ]; then
+    echo "✅ Act symlink already configured correctly"
+  else
+    echo "🔧 Creating symlink for act..."
+    sudo ln -sf "$ACT_PATH" "$SYMLINK_PATH"
+    echo "✅ Act symlinked to $SYMLINK_PATH"
+  fi
+  
+  # Verify it works
+  if $SYMLINK_PATH --version >/dev/null 2>&1; then
+    echo "✅ Act is accessible system-wide (version: $($SYMLINK_PATH --version))"
+  else
+    echo "❌ Failed to create working symlink" && exit 1
+  fi
+else
+  echo "⚠️  Act not installed, skipping symlink setup"
+fi
+'''
+tools = { "act" = "0.2.80" }
+
+[tasks."setup:mcp"]
+description = "Generate .mcp.json from template using Infisical secrets"
+run = "./scripts/generate-mcp-config.sh"
+sources = ["mcp.json.template", "scripts/generate-mcp-config.sh", ".infisical.json"]
+outputs = [".mcp.json"]
+tools = { "jq" = "latest" }
+
 [tasks."setup:verify"]
 description = "Verify setup is complete"
 run = '''
@@ -70,6 +112,7 @@ command -v prettier >/dev/null || (echo "❌ prettier missing" && exit 1)
 command -v markdownlint-cli2 >/dev/null || (echo "❌ markdownlint missing" && exit 1)
 command -v fd >/dev/null || (echo "❌ fd missing" && exit 1)
 command -v rg >/dev/null || (echo "❌ ripgrep missing" && exit 1)
+[ -L /usr/local/bin/act ] && /usr/local/bin/act --version >/dev/null 2>&1 || echo "⚠️  Act symlink not configured (VS Code extension may not work)"
 echo "✅ Setup verified!"
 '''
 
@@ -185,8 +228,9 @@ tools = { "fd" = "latest", "npm:markdown-link-check" = "latest" }
 [tasks."docs:trees"]
 description = "Update directory trees in documentation"
 alias = "update-trees"
-run = "./scripts/update-trees.sh"
-sources = ["scripts/update-trees.sh", "**/README.md"]
+run = "md-magic README.md mission-control/core-github-repos.md --config ./markdown.config.js"
+sources = ["markdown.config.js", "**/README.md"]
+tools = { "npm:markdown-magic" = "latest", "npm:tree-node-cli" = "latest" }
 [tasks."docs:serve"]
 description = "Serve documentation locally"
 run = '''
@@ -209,6 +253,60 @@ tools = { "rg" = "latest" }
 # ============================================================================
 # UTILITY - Helper tasks
 # ============================================================================
+
+[tasks.mcp]
+description = "MCP configuration management"
+alias = "m"
+tools = { "jq" = "latest" }
+run = '''
+echo "🔧 MCP Configuration Management"
+echo "================================"
+if [ -f ".mcp.json" ]; then
+  echo "✅ .mcp.json exists"
+  echo ""
+  echo "Available actions:"
+  echo "  1) Regenerate from template (overwrites current)"
+  echo "  2) Validate JSON syntax"
+  echo "  3) Show current servers"
+  echo "  4) Exit"
+  echo ""
+  read -p "Choose action [1-4]: " choice
+  case $choice in
+    1) mise run setup:mcp ;;
+    2) jq empty .mcp.json && echo "✅ Valid JSON" || echo "❌ Invalid JSON" ;;
+    3) jq '.mcpServers | keys[]' .mcp.json 2>/dev/null || echo "❌ Unable to parse servers" ;;
+    4) echo "Exiting..." ;;
+    *) echo "Invalid choice" ;;
+  esac
+else
+  echo "❌ .mcp.json not found"
+  echo ""
+  if [ -f "mcp.json.template" ]; then
+    echo "Template found. Generate config? (y/n)"
+    read -p "> " confirm
+    [ "$confirm" = "y" ] && mise run setup:mcp
+  else
+    echo "No template found. Please create mcp.json.template first."
+  fi
+fi
+'''
+
+[tasks."mcp:clean"]
+description = "Remove generated MCP configuration"
+run = '''
+if [ -f ".mcp.json" ]; then
+  echo "⚠️  This will delete .mcp.json (can be regenerated from template)"
+  read -p "Continue? (y/n): " confirm
+  if [ "$confirm" = "y" ]; then
+    rm -f .mcp.json
+    echo "✅ .mcp.json removed"
+  else
+    echo "Cancelled"
+  fi
+else
+  echo "No .mcp.json file to remove"
+fi
+'''
 
 [tasks.clean]
 description = "Clean temporary files"
