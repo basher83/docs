@@ -146,7 +146,31 @@ mkdir -p {src,tests,docs,.github/workflows}
 2. Set up issue/PR templates
 3. Configure notification preferences
 
-## Step 7: Final Verification
+## Step 7: Development Environment Setup
+
+### Mise Configuration
+
+For consistent development environments across contributors:
+
+1. Copy mise configuration from docs repository:
+
+   ```bash
+   cp ../docs/.mise.toml .
+   ```
+
+2. Customize for project needs (see [Mise Setup Guide](../development-environment/mise-setup.md))
+
+3. Add to README quick start section
+
+### MCP Configuration
+
+For AI-assisted development:
+
+1. Create `mcp.json.template` with placeholders
+2. Setup Infisical integration for secrets
+3. See [MCP Configuration](../development-environment/mise-setup.md#mcp-configuration)
+
+## Step 8: Final Verification
 
 ### Repository Health Check
 

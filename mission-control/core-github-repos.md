@@ -36,122 +36,60 @@ No tree is embedded here because its structure is typically minimal and changes 
 
 ### 2. `basher83/docs/`
 
-<!-- DOCS-TREE-START -->
+<!-- doc-gen fileTree src="." -->
 
-```plaintext
-.
-|-- CLAUDE.md
-|-- LICENSE
-|-- README.md
-|-- SUMMARY.md
-|-- flight-manuals
-|   |-- README.md
-|   |-- automation-scripts
-|   |   |-- README.md
-|   |   |-- documentation
-|   |   |   `-- update-trees.md
-|   |   |-- proxmox-backup-server
-|   |   |   |-- README.md
-|   |   |   `-- pbs-backup-health.md
-|   |   `-- proxmox-virtual-environment
-|   |       `-- README.md
-|   |-- gitops
-|   |   |-- README.md
-|   |   |-- actions.md
-|   |   |-- assets.md
-|   |   |-- commit-conventions.md
-|   |   |-- github-integrations.md
-|   |   |-- gitignore.md
-|   |   |-- gitkeep.md
-|   |   |-- gitmessage.md
-|   |   |-- project-management.md
-|   |   |-- repo-setup-guide.md
-|   |   |-- repository-maintenance.md
-|   |   |-- templates
-|   |   |   |-- docker-workflow.yml
-|   |   |   `-- terraform-workflow.yml
-|   |   `-- workflows
-|   |       |-- README.md
-|   |       |-- deployment-patterns.md
-|   |       |-- maintenance-workflows.md
-|   |       |-- reusable-workflows.md
-|   |       `-- security-workflows.md
-|   |-- network-security
-|   |   `-- README.md
-|   `-- proxmox-guides
-|       |-- README.md
-|       |-- backup-strategy.md
-|       |-- proxmox-backup-server-troubleshooting.md
-|       `-- proxmox-backup-server.md
-|-- maintenance-logs
-|   |-- README.md
-|   `-- learning-paths.md
-|-- mission-control
-|   |-- README.md
-|   |-- boilerplate
-|   |   |-- README.md
-|   |   |-- gitignore-templates
-|   |   |   |-- docker.gitignore
-|   |   |   |-- nodejs.gitignore
-|   |   |   |-- python.gitignore
-|   |   |   `-- terraform.gitignore
-|   |   |-- gitmessage-template
-|   |   |-- license-templates
-|   |   |   |-- APACHE-2.0.LICENSE
-|   |   |   `-- MIT.LICENSE
-|   |   `-- readme-templates
-|   |       |-- documentation-readme.md
-|   |       `-- project-readme.md
-|   |-- boilerplate.md
-|   |-- coding-standards.md
-|   |-- core-github-repos.md
-|   |-- github-configs
-|   |   |-- CODEOWNERS-template
-|   |   |-- README.md
-|   |   |-- copilot-instructions.md
-|   |   |-- integration-configs
-|   |   |   |-- dependabot.yml
-|   |   |   |-- renovate-config.json
-|   |   |   `-- shields-badges.md
-|   |   |-- label-definitions.yml
-|   |   |-- learning-project-template.md
-|   |   |-- major-feature-template.md
-|   |   `-- milestone-templates.md
-|   |-- github-configs.md
-|   |-- github-templates
-|   |   |-- CODE_OF_CONDUCT.md
-|   |   |-- CONTRIBUTING.md
-|   |   |-- ISSUE_TEMPLATE
-|   |   |   |-- bug-report.yml
-|   |   |   |-- config.yml
-|   |   |   |-- documentation.yml
-|   |   |   `-- feature-request.yml
-|   |   |-- README.md
-|   |   |-- SECURITY.md
-|   |   `-- pull_request_template.md
-|   |-- github-templates.md
-|   |-- information-architecture.md
-|   |-- project-templates
-|   |   `-- README.md
-|   `-- repo-naming-conventions.md
-|-- package-lock.json
-|-- package.json
-|-- renovate.json
-|-- scripts
-|   |-- setup.sh
-|   `-- update-trees.sh
-|-- space-dictionary
-|   |-- README.md
-|   `-- tech-acronyms.md
-`-- star-charts
-    |-- README.md
-    |-- homelab-topology.md
-    `-- service-maps.md
-
-25 directories, 83 files
+```
+└── mission-control/
+    ├── boilerplate/
+    │   ├── gitignore-templates/
+    │   │   ├── docker.gitignore
+    │   │   ├── nodejs.gitignore
+    │   │   ├── python.gitignore
+    │   │   └── terraform.gitignore
+    │   ├── license-templates/
+    │   │   ├── APACHE-2.0.LICENSE
+    │   │   └── MIT.LICENSE
+    │   ├── readme-templates/
+    │   │   ├── documentation-readme.md
+    │   │   └── project-readme.md
+    │   ├── gitmessage-template
+    │   └── README.md
+    ├── github-configs/
+    │   ├── integration-configs/
+    │   │   ├── dependabot.yml
+    │   │   ├── renovate-config.json
+    │   │   └── shields-badges.md
+    │   ├── CODEOWNERS-template
+    │   ├── copilot-instructions.md
+    │   ├── label-definitions.yml
+    │   ├── learning-project-template.md
+    │   ├── major-feature-template.md
+    │   ├── milestone-templates.md
+    │   └── README.md
+    ├── github-templates/
+    │   ├── ISSUE_TEMPLATE/
+    │   │   ├── bug-report.yml
+    │   │   ├── config.yml
+    │   │   ├── documentation.yml
+    │   │   └── feature-request.yml
+    │   ├── CODE_OF_CONDUCT.md
+    │   ├── CONTRIBUTING.md
+    │   ├── pull_request_template.md
+    │   ├── README.md
+    │   └── SECURITY.md
+    ├── project-templates/
+    │   └── README.md
+    ├── boilerplate.md
+    ├── coding-standards.md
+    ├── core-github-repos.md
+    ├── github-configs.md
+    ├── github-templates.md
+    ├── information-architecture.md
+    ├── README.md
+    └── repo-naming-conventions.md
 ```
 
-<!-- DOCS-TREE-END -->
+<!-- end-doc-gen -->
 
 ### 3. `basher83/assets/`
 

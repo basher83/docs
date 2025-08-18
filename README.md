@@ -34,39 +34,49 @@ based on the principles defined in the
 
 ## 📚 Documentation Structure
 
-<!-- TREE-START -->
+<!-- doc-gen fileTree src="." maxDepth=3 includeFiles=false -->
 
-```plaintext
-.
-|-- flight-manuals
-|   |-- automation-scripts
-|   |   |-- documentation
-|   |   |-- proxmox-backup-server
-|   |   `-- proxmox-virtual-environment
-|   |-- gitops
-|   |   |-- templates
-|   |   `-- workflows
-|   |-- network-security
-|   `-- proxmox-guides
-|-- maintenance-logs
-|-- mission-control
-|   |-- boilerplate
-|   |   |-- gitignore-templates
-|   |   |-- license-templates
-|   |   `-- readme-templates
-|   |-- github-configs
-|   |   `-- integration-configs
-|   |-- github-templates
-|   |   `-- ISSUE_TEMPLATE
-|   `-- project-templates
-|-- scripts
-|-- space-dictionary
-`-- star-charts
-
-25 directories
+```
+└── docs/
+    ├── ai_docs/
+    ├── flight-manuals/
+    │   ├── automation-scripts/
+    │   │   ├── documentation/
+    │   │   │   ...
+    │   │   ├── proxmox-backup-server/
+    │   │   │   ...
+    │   │   └── proxmox-virtual-environment/
+    │   │       ...
+    │   ├── development-environment/
+    │   ├── gitops/
+    │   │   ├── templates/
+    │   │   │   ...
+    │   │   └── workflows/
+    │   │       ...
+    │   ├── network-security/
+    │   └── proxmox-guides/
+    ├── maintenance-logs/
+    ├── mission-control/
+    │   ├── boilerplate/
+    │   │   ├── gitignore-templates/
+    │   │   │   ...
+    │   │   ├── license-templates/
+    │   │   │   ...
+    │   │   └── readme-templates/
+    │   │       ...
+    │   ├── github-configs/
+    │   │   └── integration-configs/
+    │   │       ...
+    │   ├── github-templates/
+    │   │   └── ISSUE_TEMPLATE/
+    │   │       ...
+    │   └── project-templates/
+    ├── scripts/
+    ├── space-dictionary/
+    └── star-charts/
 ```
 
-<!-- TREE-END -->
+<!-- end-doc-gen -->
 
 | Category                                   | Description             | Contents                                                      |
 | ------------------------------------------ | ----------------------- | ------------------------------------------------------------- |
@@ -143,94 +153,28 @@ This repository uses [mise](https://mise.jdx.dev/) for tool management and task 
 # Install mise (if not already installed)
 brew install mise
 
-# Trust the repository configuration
+# Setup repository
 mise trust --yes
-
-# Install all required tools
 mise install --yes
+mise run setup
 
-# Run pre-commit checks
-mise run pre-commit
+# Run quality checks
+mise run check
 
 # Show all available tasks
 mise tasks
 ```
 
-### Mise: contributor quick steps
+### Key Commands
 
-This repository uses mise to manage developer tooling versions. Quick steps for contributors:
+- `mise run check` (or `q`) - Run all quality checks
+- `mise run fmt` (or `f`) - Format Markdown files
+- `mise run lint` (or `l`) - Run linters
+- `mise run test` (or `t`) - Run tests
+- `mise run mcp` - Manage MCP configuration
 
-- Ensure mise is installed and up-to-date: `mise self-update`
-- Trust the local config if prompted: `mise trust --yes`
-- Install required tools: `mise install --yes`
-
-We pin plugin-qualified tools (for example `core:node` and `core:python`) in `.mise.toml` to avoid
-ambiguity. If `mise doctor` reports missing tools, run `mise install --yes` and then `mise doctor`
-again to verify the environment.
-
-### Mise Configuration
-
-**Managed Tools:**
-
-- `node` (v20) - For documentation tooling and npm packages
-- `python` (v3.12) - For pre-commit and detect-secrets
-- `shellcheck` - Shell script linting
-- `gitleaks` - Secret detection
-- `fd` (latest) - Fast file finder used by tasks
-- `ripgrep (rg)` (latest) - Fast code/document search used by tasks
-- `eza` (latest) - Enhanced ls alternative
-- `prettier` (latest) - Markdown formatting
-- `markdownlint-cli2` (latest) - Markdown linting
-- `markdown-link-check` (latest) - Markdown link validation
-
-**Key Tasks:**
-
-- `mise run check` - Run all checks: format, lint, and test (aliases: `pre-commit`, `q`, `p`)
-- `mise run fmt` - Format Markdown with Prettier (aliases: `f`, `format`, `prettier`)
-- `mise run lint` - Run all linters (alias: `l`)
-- `mise run test` - Run all tests (alias: `t`)
-- `mise run clean` - Clean temporary files (alias: `c`)
-- `mise run ci` - Verify changes match CI requirements
-- `mise run docs:trees` - Update directory trees (alias: `update-trees`)
-- `mise run docs:serve` - Serve documentation locally
-- `mise run docs:search` - Search documentation content interactively
-
-**Quick Aliases:**
-
-- `mise run f` - Alias for `fmt`
-- `mise run l` - Alias for `lint`
-- `mise run p` - Alias for `check`
-- `mise run q` - Alias for `check`
-- `mise run c` - Alias for `clean`
-- `mise run t` - Alias for `test`
-
-**Setup & Installation:**
-
-- `mise run setup:npm` - Install Node dependencies
-- `mise run setup:pre-commit` - Setup pre-commit hooks
-- `mise run setup:verify` - Verify setup and tools
-
-**Quality & Metrics:**
-
-- `mise run check` - Comprehensive checks (format, lint, test)
-- `mise run metrics` - Generate quality metrics report
-- `mise run fmt` - Auto-fix formatting issues
-- `mise run fmt:check` - Check formatting without changes
-
-### Shell Activation (Recommended)
-
-For automatic tool activation in your shell:
-
-```bash
-# For zsh (add to ~/.zshrc)
-eval "$(mise activate zsh)"
-
-# For bash (add to ~/.bashrc)
-eval "$(mise activate bash)"
-```
-
-If you use shell-level activation, you can remove the `eval "$(mise activate direnv)"` line from
-`.envrc` to avoid double activation.
+📚 **For comprehensive mise documentation, see
+[Development Environment Guide](./flight-manuals/development-environment/mise-setup.md)**
 
 **Code Quality Analysis:**
 
