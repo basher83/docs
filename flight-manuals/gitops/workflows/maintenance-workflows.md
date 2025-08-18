@@ -93,11 +93,11 @@ vulnerability scanning (Safety / OSV).
 
 ## 🧹 Repository Hygiene Tasks
 
-| Task                   | Mechanism                            | Frequency           |
-| ---------------------- | ------------------------------------ | ------------------- |
-| Update directory trees | `scripts/update-trees.sh` / workflow | On structure change |
-| Badge freshness        | Manual spot check or CI link check   | Monthly             |
-| Stale branch pruning   | Manual / scheduled script            | Monthly             |
+| Task                   | Mechanism                          | Frequency           |
+| ---------------------- | ---------------------------------- | ------------------- |
+| Update directory trees | `mise run docs:trees` / workflow   | On structure change |
+| Badge freshness        | Manual spot check or CI link check | Monthly             |
+| Stale branch pruning   | Manual / scheduled script          | Monthly             |
 
 ---
 
@@ -109,7 +109,7 @@ Active workflows after consolidation:
 | ------------------ | ------------------------------------------------- | ------------------------ | --------------------------------------------------- |
 | `autofix.ci`       | Auto-apply deterministic formatting fixes on PRs  | Yes (bot commit)         | Ruff, Prettier, markdownlint                        |
 | `Docs Quality`     | Enforce formatting + style; verify action pinning | No                       | Prettier (check), markdownlint, grep security check |
-| `update-doc-trees` | Maintain directory tree sections                  | Yes (commits tree regen) | custom script                                       |
+| `update-doc-trees` | Maintain directory tree sections                  | Yes (commits tree regen) | markdown-magic with fileTree transform              |
 
 Sequence for new PR:
 

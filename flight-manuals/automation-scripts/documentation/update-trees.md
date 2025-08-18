@@ -2,72 +2,82 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals%2Fautomation-scripts%2Fdocumentation%2Fupdate-trees.md)
 
-This directory contains scripts for maintaining and automating documentation tasks.
+This directory contains scripts and configurations for maintaining and automating documentation
+tasks.
 
-## 📄 Available Scripts
+## 📄 Tree Generation with Markdown Magic
 
-### [update-trees.sh](https://github.com/basher83/automation-scripts/blob/main/documentation/update-trees.sh)
-
-**Purpose**: Automatically updates directory tree structures in documentation files.
+**Purpose**: Automatically generates and updates directory tree structures in documentation files
+using `markdown-magic`.
 
 **Usage**:
 
 ```bash
-./scripts/update-trees.sh
+# Run via mise task
+mise run docs:trees
+
+# Or directly with markdown-magic
+md-magic README.md mission-control/core-github-repos.md --config ./markdown.config.js
 ```
 
 **Features**:
 
-- Scans for tree markers (`<!-- TREE-START -->` and `<!-- TREE-END -->`) in documentation files
-- Generates fresh directory trees using the `tree` command
-- Updates content between markers while preserving surrounding content
-- Supports multiple marker types (e.g., `DOCS-TREE-START/END`)
-- Provides colored output for better readability
+- Uses `fileTree` transform from markdown-magic for reliable tree generation
+- Configurable depth, file inclusion, and exclusion patterns
+- Maintains consistent formatting across all documentation
+- Integrates with GitHub Actions for automatic updates
+- Falls back to `tree-node-cli` when system `tree` is unavailable
 
 **Currently Updates**:
 
 - `mission-control/core-github-repos.md` - Repository overview trees
 - `README.md` - Main documentation structure
 
-**Requirements**:
+**Configuration**:
 
-- `tree` command must be installed
-  - Ubuntu/Debian: `sudo apt-get install tree`
-  - MacOS: `brew install tree`
+The tree generation is configured in `markdown.config.js` with the following options:
 
-**How It Works**:
-
-1. Checks for the `tree` command availability
-2. Looks for files with tree markers
-3. Generates new tree output with specified filters
-4. Replaces content between markers
-5. Preserves all other file content
+- `src` - Source directory to scan
+- `maxDepth` - Maximum depth to traverse (default: 3)
+- `includeFiles` - Whether to include files or just directories
+- `exclude` - Patterns to exclude from the tree
 
 **Example Tree Markers**:
 
-````markdown
-<!-- TREE-START -->
-
-```plaintext
-[Tree content will be auto-generated here]
+```markdown
+<!-- doc-gen fileTree src="." maxDepth=3 includeFiles=false -->
+<!-- end-doc-gen -->
 ```
-````
-
-<!-- TREE-END -->
-
-````
 
 ## 🔧 Adding New Files
 
 To add automatic tree updates to a new documentation file:
 
-1. Add tree markers to your file where you want the tree to appear
-2. Edit `update-trees.sh` to include your file:
-   ```bash
-   update_tree_in_file "path/to/your/file.md" "directory/to/scan" "tree-flags"
-````
+1. Add markdown-magic markers to your file:
+
+   ```markdown
+   <!-- doc-gen fileTree src="./path/to/scan" maxDepth=2 -->
+   <!-- end-doc-gen -->
+   ```
+
+2. Add the file to the mise task in `.mise.toml`:
+
+   ```toml
+   [tasks."docs:trees"]
+   run = "md-magic README.md mission-control/core-github-repos.md your-file.md --config ./markdown.config.js"
+   ```
 
 ## 🤖 Automation
 
-This script is also integrated with GitHub Actions (`.github/workflows/update-doc-trees.yml`) for
+This functionality is integrated with GitHub Actions (`.github/workflows/update-doc-trees.yml`) for
 automatic updates when files change.
+
+## Migration from Bash Script
+
+Previously, tree generation used a custom bash script (`update-trees.sh`). The migration to
+markdown-magic provides:
+
+- Better cross-platform compatibility
+- More reliable tree generation
+- Easier configuration and maintenance
+- Integration with the broader markdown toolchain
