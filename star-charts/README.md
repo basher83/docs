@@ -71,3 +71,29 @@ For immediate navigation to key infrastructure components:
 - **Monitoring Stack**: See [Service Maps](./service-maps.md#monitoring--observability)
 - **Backup Architecture**: See [Homelab Topology](./homelab-topology.md#backup-infrastructure)
 - **Network Zones**: See [Homelab Topology](./homelab-topology.md#network-segmentation)
+
+## 🔗 Related Projects
+
+These repositories contain the infrastructure and tools mapped in these charts:
+
+### Infrastructure & Automation
+
+- [terraform-homelab](https://github.com/basher83/terraform-homelab) - Infrastructure as Code for
+  homelab environment
+- [andromeda-orchestration](https://github.com/basher83/andromeda-orchestration) - Ansible
+  automation for infrastructure
+- [triangulum-observe](https://github.com/basher83/triangulum-observe) - Monitoring and
+  observability solutions
+- [automation-scripts](https://github.com/basher83/automation-scripts) - Operational tooling and
+  scripts
+
+### Proxmox Ecosystem
+
+- [ProxmoxMCP](https://github.com/basher83/ProxmoxMCP) - MCP server for Proxmox management
+- [Proxmox-OpenAPI](https://github.com/basher83/Proxmox-OpenAPI) - OpenAPI specifications for
+  Proxmox
+
+### Core Infrastructure
+
+- [.github](https://github.com/basher83/.github) - Shared GitHub configuration and reusable
+  workflows

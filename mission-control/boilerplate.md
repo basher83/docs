@@ -123,6 +123,16 @@ git config commit.template .gitmessage
 - [Coding Standards](./coding-standards.md) - Language-specific conventions
 - [Repository Setup Guide](../flight-manuals/gitops/repo-setup-guide.md) - Complete setup procedures
 
+## 🔗 Related Projects
+
+These repositories demonstrate the templates and standards in action:
+
+- [.github](https://github.com/basher83/.github) - Organization-wide GitHub templates and workflows
+- [automation-scripts](https://github.com/basher83/automation-scripts) - Example of standardized
+  repository structure
+- [ProxmoxMCP](https://github.com/basher83/ProxmoxMCP) - Demonstrates Python project structure and
+  standards
+
 ## 📊 Template Coverage
 
 Current template coverage by technology:

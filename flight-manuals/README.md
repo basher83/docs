@@ -42,3 +42,31 @@ Most commonly used guides:
 1. [Mise Development Setup](./development-environment/mise-setup.md)
 2. [Repository Setup](./gitops/repo-setup-guide.md)
 3. [Proxmox Backup Server](./proxmox-guides/proxmox-backup-server.md)
+
+## 🔗 Related Projects
+
+These repositories contain implementations and tools referenced in these manuals:
+
+### Infrastructure & Automation
+
+- [automation-scripts](https://github.com/basher83/automation-scripts) - Implementation scripts and
+  operational tooling
+- [terraform-homelab](https://github.com/basher83/terraform-homelab) - Infrastructure as Code for
+  homelab
+- [andromeda-orchestration](https://github.com/basher83/andromeda-orchestration) - Ansible
+  automation for infrastructure
+- [triangulum-observe](https://github.com/basher83/triangulum-observe) - Monitoring and
+  observability solutions
+
+### MCP Servers
+
+- [ProxmoxMCP](https://github.com/basher83/ProxmoxMCP) - MCP server for Proxmox management
+- [Zammad-MCP](https://github.com/basher83/Zammad-MCP) - MCP server for Zammad ticketing integration
+- [Proxmox-OpenAPI](https://github.com/basher83/Proxmox-OpenAPI) - OpenAPI specifications for
+  Proxmox
+
+### Core Infrastructure
+
+- [.github](https://github.com/basher83/.github) - Shared GitHub configuration and reusable
+  workflows
+- [basher83](https://github.com/basher83/basher83) - GitHub profile repository
