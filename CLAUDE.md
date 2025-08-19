@@ -88,3 +88,5 @@ For more details, see my
 
 All organizational decisions must support this goal of being a living, practical knowledge
 management system.
+
+- Always close out a github issue in the commit message when working on issues
