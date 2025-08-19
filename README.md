@@ -38,7 +38,6 @@ based on the principles defined in the
 
 ```
 └── docs/
-    ├── ai_docs/
     ├── flight-manuals/
     │   ├── automation-scripts/
     │   │   ├── documentation/
