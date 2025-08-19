@@ -23,6 +23,14 @@ deterministic fixes • Update Doc Trees = keeps structure map fresh_
 
 ---
 
+## 🧭 Quick Nav
+
+[📏 Mission Control](./mission-control/) • [📖 Flight Manuals](./flight-manuals/) •
+[🗺️ Star Charts](./star-charts/) • [📝 Maintenance Logs](./maintenance-logs/) •
+[🔤 Space Dictionary](./space-dictionary/)
+
+---
+
 ## 🔭 Overview
 
 This repository serves as my personal knowledge management system, containing documentation, guides,
