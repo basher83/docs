@@ -14,6 +14,8 @@ within my infrastructure.
 - **Proxmox VE** - Virtual environment orchestration
 - **Proxmox Backup Server** - Backup and recovery solutions
 - **ProxmoxMCP** - Model Context Protocol integration
+- **[Andromeda Orchestration](https://github.com/basher83/andromeda-orchestration)** - Ansible
+  automation for homelab infrastructure management with NetBox integration
 
 ### 📊 Monitoring & Observability
 
