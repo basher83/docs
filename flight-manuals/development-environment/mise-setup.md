@@ -1,6 +1,6 @@
 # 🛠️ Mise Development Environment Management
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--08--18-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals/development-environment/mise-setup.md&display_timestamp=committer)
 
 Complete guide for using [mise](https://mise.jdx.dev/) to manage development tools, dependencies,
 and task automation in this repository.
