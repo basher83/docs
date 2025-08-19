@@ -1,6 +1,6 @@
 # 🛠️ Development Environment
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--08--18-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals/development-environment/README.md&display_timestamp=committer)
 
 Guides for setting up and managing development environments, tools, and workflows.
 

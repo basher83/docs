@@ -1,6 +1,6 @@
 # 📖 Flight Manuals
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--08--18-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=flight-manuals/README.md&display_timestamp=committer)
 
 Step-by-step procedures, how-to guides, and troubleshooting documentation for technical tasks.
 

@@ -63,7 +63,7 @@ Use this format for consistency:
 ```markdown
 # 📐 Document Title
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-YYYY--MM--DD-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=path/to/file.md&display_timestamp=committer)
 ```
 
 ## Cross-Repository References

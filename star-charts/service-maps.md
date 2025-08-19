@@ -1,6 +1,6 @@
 # 🗺️ Service Maps
 
-![Last Updated](https://img.shields.io/badge/Last%20Updated-2025--01--14-success)
+![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=star-charts/service-maps.md&display_timestamp=committer)
 
 ## Overview
 
