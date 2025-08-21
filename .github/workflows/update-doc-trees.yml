@@ -1,15 +1,16 @@
 name: Update Documentation Trees
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "mission-control/**"
-      - "flight-manuals/**"
-      - "star-charts/**"
-      - "maintenance-logs/**"
-      - "space-dictionary/**"
+  schedule:
+    # Run every Monday at 6 AM UTC
+    - cron: '0 6 * * 1'
   workflow_dispatch:
+    inputs:
+      create_pr:
+        description: 'Create PR instead of direct commit'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   update-trees:
@@ -56,10 +57,13 @@ jobs:
             exit 0
           fi
           git commit -m "🤖 Auto-update documentation trees"
-          echo "Changes committed; will create PR in next step"
+
+      - name: Push directly to main
+        if: ${{ github.event.inputs.create_pr != 'true' }}
+        run: git push
 
       - name: Create Pull Request
-        if: ${{ success() }}
+        if: ${{ github.event.inputs.create_pr == 'true' }}
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:
           commit-message: "🤖 Auto-update documentation trees"
