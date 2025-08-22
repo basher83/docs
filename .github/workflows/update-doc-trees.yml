@@ -9,8 +9,12 @@ on:
       create_pr:
         description: 'Create PR instead of direct commit'
         required: false
-        default: 'false'
+        default: false
         type: boolean
+
+concurrency:
+  group: update-doc-trees-${{ github.ref || 'scheduled' }}
+  cancel-in-progress: true
 
 jobs:
   update-trees:
@@ -22,6 +26,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
 
       # Workaround: create directories that mise expects for core plugins
       - name: Pre-create mise directories  
@@ -48,6 +54,7 @@ jobs:
           echo "Formatting complete"
 
       - name: Commit changes
+        if: ${{ !inputs.create_pr }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -59,11 +66,19 @@ jobs:
           git commit -m "🤖 Auto-update documentation trees"
 
       - name: Push directly to main
-        if: ${{ github.event.inputs.create_pr != 'true' }}
-        run: git push
+        if: ${{ !inputs.create_pr }}
+        run: |
+          git fetch origin main
+          # Rebase local commit(s) atop the latest main to avoid non-fast-forward errors
+          git rebase origin/main || {
+            echo "Rebase failed; aborting to avoid force-push"
+            git rebase --abort
+            exit 1
+          }
+          git push origin HEAD:main
 
       - name: Create Pull Request
-        if: ${{ github.event.inputs.create_pr == 'true' }}
+        if: ${{ inputs.create_pr }}
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:
           commit-message: "🤖 Auto-update documentation trees"
