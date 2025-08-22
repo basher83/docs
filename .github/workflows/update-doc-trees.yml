@@ -13,7 +13,7 @@ on:
         type: boolean
 
 concurrency:
-  group: update-doc-trees-${{ github.ref || 'scheduled' }}
+  group: update-doc-trees-${{ github.workflow }}-${{ github.ref || 'scheduled' }}
   cancel-in-progress: true
 
 jobs:
@@ -54,7 +54,7 @@ jobs:
           echo "Formatting complete"
 
       - name: Commit changes
-        if: ${{ !inputs.create_pr }}
+        if: ${{ inputs.create_pr != true }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -66,9 +66,15 @@ jobs:
           git commit -m "🤖 Auto-update documentation trees"
 
       - name: Push directly to main
-        if: ${{ !inputs.create_pr }}
+        if: ${{ inputs.create_pr != true }}
         run: |
           git fetch origin main
+          # Skip if there are no local commits ahead of origin/main
+          AHEAD=$(git rev-list --count HEAD ^origin/main || echo 0)
+          if [ "$AHEAD" -eq 0 ]; then
+            echo "No local commits to push; branch is up-to-date with origin/main"
+            exit 0
+          fi
           # Rebase local commit(s) atop the latest main to avoid non-fast-forward errors
           git rebase origin/main || {
             echo "Rebase failed; aborting to avoid force-push"
@@ -78,7 +84,7 @@ jobs:
           git push origin HEAD:main
 
       - name: Create Pull Request
-        if: ${{ inputs.create_pr }}
+        if: ${{ inputs.create_pr == true }}
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:
           commit-message: "🤖 Auto-update documentation trees"
