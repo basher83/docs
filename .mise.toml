@@ -10,8 +10,8 @@ status = { missing_tools = "if_other_versions_installed", show_env = false, show
 
 [tools]
 # Language runtimes
-"core:python" = "3.12.11"
-"core:node" = "20.19.4"
+"core:python" = "3.13.7"
+"core:node" = "22.18.0"
 
 # ALL CLI tools managed by mise (not devcontainer)
 "aqua:koalaman/shellcheck" = "0.11.0"
