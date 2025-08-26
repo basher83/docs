@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed:*)",
+      "Bash(gh api:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh run list:*)",
+      "Bash(mise ls:*)",
+      "Bash(mise tasks:*)",
+      "Bash(mise env:*)",
+      "Bash(env)",
+      "Bash(mise outdated:*)",
+      "Bash(time mise env:*)",
+      "Bash(mise plugins:*)",
+      "Bash(mise run:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "mcp__github__list_issues",
+      "mcp__github__get_pull_request",
+      "mcp__github__get_pull_request_status"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "deepwiki",
+    "github",
+    "mise"
+  ]
+}
