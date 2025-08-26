@@ -27,6 +27,7 @@ jq = "latest"                          # JSON processor
 act = "0.2.80"
 markdownlint-cli2 = "0.14.0"
 prettier = "3.6.2"
+claude-code = "latest"
 
 
 

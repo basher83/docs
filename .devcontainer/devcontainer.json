@@ -2,8 +2,13 @@
   "name": "mise",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/devcontainers-extra/features/mise:1": {}
+    "ghcr.io/devcontainers-extra/features/mise:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": true,
+      "installDockerBuildx": true
+    }
   },
+  "runArgs": ["--privileged"],
   "customizations": {
     "vscode": {
       "extensions": [

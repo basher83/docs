@@ -5,12 +5,6 @@ on:
     # Run every Monday at 6 AM UTC
     - cron: '0 6 * * 1'
   workflow_dispatch:
-    inputs:
-      create_pr:
-        description: 'Create PR instead of direct commit'
-        required: false
-        default: false
-        type: boolean
 
 concurrency:
   group: update-doc-trees-${{ github.workflow }}-${{ github.ref || 'scheduled' }}
@@ -30,7 +24,7 @@ jobs:
           fetch-depth: 0
 
       # Workaround: create directories that mise expects for core plugins
-      - name: Pre-create mise directories  
+      - name: Pre-create mise directories
         run: |
           mkdir -p $HOME/.local/share/mise/installs/python
           mkdir -p $HOME/.local/share/mise/installs/node
@@ -66,37 +60,26 @@ jobs:
           fi
 
       - name: Commit changes
-        if: ${{ inputs.create_pr != true && steps.diff.outputs.changed == 'true' }}
+        if: steps.diff.outputs.changed == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git commit -m "🤖 Auto-update documentation trees"
+          git commit -m "🤖 Auto-update documentation trees" || echo "No changes to commit"
 
-      - name: Push directly to main
-        if: ${{ inputs.create_pr != true && steps.diff.outputs.changed == 'true' }}
+      - name: Push to persistent docs-auto-update branch
+        if: steps.diff.outputs.changed == 'true'
         run: |
-          git fetch origin main
-          # Skip if there are no local commits ahead of origin/main
-          AHEAD=$(git rev-list --count HEAD ^origin/main || echo 0)
-          if [ "$AHEAD" -eq 0 ]; then
-            echo "No local commits to push; branch is up-to-date with origin/main"
-            exit 0
-          fi
-          # Rebase local commit(s) atop the latest main to avoid non-fast-forward errors
-          git rebase origin/main || {
-            echo "Rebase failed; aborting to avoid force-push"
-            git rebase --abort
-            exit 1
-          }
-          git push origin HEAD:main
+          git fetch origin docs-auto-update || true
+          git checkout -B docs-auto-update
+          git push -u origin docs-auto-update --force
 
-      - name: Create Pull Request
-        if: ${{ inputs.create_pr == true && steps.diff.outputs.changed == 'true' }}
+      - name: Create or update PR from docs-auto-update to main
+        if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:
           commit-message: "🤖 Auto-update documentation trees"
-          branch: auto/update-doc-trees-${{ github.run_id }}
-          delete-branch: true
+          branch: docs-auto-update
+          delete-branch: false
           title: "🤖 Auto-update documentation trees"
           body: |
             Automated update of documentation trees using markdown-magic via mise.
