@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 0
 
@@ -30,7 +30,7 @@ jobs:
           mkdir -p $HOME/.local/share/mise/installs/node
 
       - name: Setup mise
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@5ac50f778e26fac95da98d50503682459e86d566 # v3.2.0
         with:
           install: true
           cache: true
@@ -75,7 +75,7 @@ jobs:
 
       - name: Create or update PR from docs-auto-update to main
         if: steps.diff.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
         with:
           commit-message: "🤖 Auto-update documentation trees"
           branch: docs-auto-update
