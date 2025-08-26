@@ -1,18 +1,13 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:3",
+  "name": "mise",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/jdx/mise/devcontainer-feature/mise:1": {}
-  },
-  "mounts": [
-    "source=mise-data-volume,target=/mnt/mise-data,type=volume"
-  ],
-  "remoteEnv": {
-    "MISE_DATA_DIR": "/mnt/mise-data"
+    "ghcr.io/devcontainers-extra/features/mise:1": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "jdxcode.mise-vscode",
+        "hverlin.mise-vscode",
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "timonwong.shellcheck"
@@ -26,6 +21,6 @@
       }
     }
   },
-  "postCreateCommand": "sudo chown -R $(id -u):$(id -g) /mnt/mise-data && mise trust --yes && mise install && eval \"$(mise activate bash)\" && mise run setup",
-  "postStartCommand": "mise trust --yes || true"
+  "mounts": [],
+  "containerEnv": {}
 }
