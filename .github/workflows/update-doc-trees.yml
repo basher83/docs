@@ -71,7 +71,7 @@ jobs:
         run: |
           git fetch origin docs-auto-update || true
           git checkout -B docs-auto-update
-          git push origin docs-auto-update --force
+          git push -u origin docs-auto-update --force
 
       - name: Create or update PR from docs-auto-update to main
         if: steps.diff.outputs.changed == 'true'
