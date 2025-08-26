@@ -29,6 +29,7 @@
   "enabledMcpjsonServers": [
     "deepwiki",
     "github",
-    "mise"
+    "mise",
+    "firecrawl"
   ]
 }
