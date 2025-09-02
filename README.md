@@ -4,7 +4,7 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=README.md&display_timestamp=author&style=plastic&logo=github)
 [![Profile](https://img.shields.io/badge/GitHub-basher83-181717?style=plastic&logo=github)](https://github.com/basher83)
-![GitHub License](https://img.shields.io/github/license/basher83/docs?style=plastic)
+[![GitHub License](https://img.shields.io/github/license/basher83/docs?style=plastic)](./LICENSE)
 
 <!-- CI BADGES: Core automation pipelines -->
 
