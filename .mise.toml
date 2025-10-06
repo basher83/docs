@@ -24,7 +24,7 @@ jq = "latest"                          # JSON processor
 "npm:tree-node-cli" = "latest"
 
 # Run CI checks locally
-act = "0.2.81"
+act = "0.2.82"
 markdownlint-cli2 = "0.18.1"
 prettier = "3.6.2"
 claude-code = "latest"
