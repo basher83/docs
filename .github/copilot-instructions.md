@@ -1,12 +1,14 @@
 # GitHub Copilot Coding Agent Instructions for basher83/docs
 
-**Repository Type**: Personal documentation hub and knowledge management system\
-**Primary Language**: Markdown (~80 files) with shell scripts and YAML workflows\
-**Build System**: mise (polyglot tool manager) - see `.mise.toml`\
-**Organization**: Space-themed directory structure
+| Property         | Value                                                      |
+| ---------------- | ---------------------------------------------------------- |
+| Repository Type  | Personal documentation hub and knowledge management system |
+| Primary Language | Markdown (~80 files) with shell scripts and YAML workflows |
+| Build System     | mise (polyglot tool manager) - see `.mise.toml`            |
+| Organization     | Space-themed directory structure                           |
 
-> **IMPORTANT**: Trust these instructions. Only search/explore if information is incomplete or
-> incorrect.
+> **Note**: These instructions are validated and reliable. Perform additional exploration only if
+> information is incomplete or produces errors.
 
 ## Quick Start (Validated Commands)
 

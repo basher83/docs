@@ -198,10 +198,6 @@ preferences.
   ```
   ````
 
-  ```
-
-  ```
-
 - Include a language when possible (for syntax highlighting).
 
 ### Inline HTML
