@@ -39,10 +39,6 @@ SCRIPTS_DIR = "./scripts"
 # CORE TASKS - Primary developer actions
 # ============================================================================
 
-[tasks.default]
-description = "Show available tasks"
-run = "mise tasks"
-
 [tasks.setup]
 description = "Complete project setup for new contributors"
 depends = ["setup:npm", "setup:pre-commit", "setup:act-symlink", "setup:verify"]
@@ -121,6 +117,7 @@ echo "✅ Setup verified!"
 # FORMATTING - Code style consistency
 # ============================================================================
 
+# Formatting - Prettier
 [tasks.fmt]
 description = "Format all markdown files with Prettier"
 alias = ["f", "format", "prettier"]
@@ -144,25 +141,18 @@ description = "Run all linters"
 alias = "l"
 depends = ["lint:md", "lint:shell", "lint:secrets"]
 
-[tasks."lint:md"]
-description = "Lint markdown files"
-run = "markdownlint-cli2 '**/*.md' '!node_modules' '!.mise-data' '!.mise-cache' --config .markdownlint.json"
-sources = ["**/*.md", ".markdownlint.json"]
-tools = { "npm:markdownlint-cli2" = "latest" }
-
 [tasks."lint:shell"]
 description = "Lint shell scripts"
 run = "fd -e sh -x shellcheck {}"
 sources = ["**/*.sh"]
 tools = { "aqua:koalaman/shellcheck" = "0.11.0", "fd" = "latest" }
 
-[tasks."lint:secrets"]
-description = "Check for secrets"
-run = '''
-gitleaks detect --no-git --verbose
-detect-secrets scan --baseline .secrets.baseline 2>/dev/null || true
-'''
-tools = { "aqua:gitleaks/gitleaks" = "8.28.0" }
+# Linting - markdownlint-cli2
+[tasks."lint:md"]
+description = "Lint markdown files"
+run = "markdownlint-cli2 '**/*.md' '!node_modules' '!.mise-data' '!.mise-cache' --config .markdownlint.json"
+sources = ["**/*.md", ".markdownlint.json"]
+tools = { "npm:markdownlint-cli2" = "latest" }
 
 [tasks."lint:fix"]
 description = "Auto-fix linting issues"
@@ -223,232 +213,6 @@ run = "fd -e md -x markdown-link-check {}"
 tools = { "fd" = "latest", "npm:markdown-link-check" = "latest" }
 
 # ============================================================================
-# AGENT VALIDATION - Claude sub-agent quality checks
-# ============================================================================
-
-[tasks."agents:validate"]
-description = "Validate all agent YAML frontmatter"
-run = '''
-#!/usr/bin/env bash
-echo "🤖 Validating Claude sub-agents frontmatter..."
-errors=0
-for agent in .claude/agents/*.md; do
-  if [ ! -f "$agent" ]; then continue; fi
-  name=$(basename "$agent" .md)
-  printf "  %-20s " "$name:"
-  
-  # Check required fields
-  if ! grep -q "^name: " "$agent"; then
-    echo "❌ Missing name field"; errors=$((errors + 1))
-  elif ! grep -q "^description: " "$agent"; then
-    echo "❌ Missing description"; errors=$((errors + 1))
-  elif ! grep -q "^tools: " "$agent"; then
-    echo "❌ Missing tools"; errors=$((errors + 1))
-  else
-    echo "✅"
-  fi
-done
-
-[ $errors -eq 0 ] && echo "✅ All agents valid!" || echo "❌ Found $errors errors"
-exit $errors
-'''
-
-[tasks."agents:check-tools"]
-description = "Verify all tools listed in agents are valid Claude tools"
-run = '''
-#!/usr/bin/env bash
-VALID_TOOLS="TodoWrite Read Write Edit MultiEdit Bash Glob Grep LS Task WebFetch WebSearch BashOutput KillBash NotebookEdit"
-
-echo "🔧 Checking agent tools..."
-for agent in .claude/agents/*.md; do
-  if [ ! -f "$agent" ]; then continue; fi
-  name=$(basename "$agent" .md)
-  echo "  $name:"
-  tools=$(grep "^tools: " "$agent" | sed 's/tools: //')
-  
-  # Parse comma-separated tools
-  echo "$tools" | tr ',' '\n' | while read tool; do
-    tool=$(echo "$tool" | xargs) # trim whitespace
-    if ! echo " $VALID_TOOLS " | grep -q " $tool "; then
-      echo "    ⚠️  Unknown tool: $tool"
-    fi
-  done
-done
-'''
-
-[tasks."agents:check-descriptions"]
-description = "Ensure agent descriptions follow best practices"
-run = '''
-#!/usr/bin/env bash
-echo "📝 Checking agent descriptions..."
-for agent in .claude/agents/*.md; do
-  if [ ! -f "$agent" ]; then continue; fi
-  name=$(basename "$agent" .md)
-  desc=$(grep "^description: " "$agent" | sed 's/description: //')
-  
-  echo ""
-  echo "Agent: $name"
-  
-  # Check for proactive keywords
-  if echo "$desc" | grep -qE "PROACTIVELY|proactively"; then
-    echo "  ✅ Has proactive keyword"
-  else
-    echo "  ℹ️  Consider adding PROACTIVELY for automatic delegation"
-  fi
-  
-  # Check description length
-  length=$(echo -n "$desc" | wc -c)
-  if [ $length -lt 50 ]; then
-    echo "  ⚠️  Description too short ($length chars)"
-  elif [ $length -gt 300 ]; then
-    echo "  ⚠️  Description too long ($length chars)"
-  else
-    echo "  ✅ Description length good ($length chars)"
-  fi
-  
-  # Check for action verbs
-  if echo "$desc" | grep -qE "^(Use|Specialist|Expert|Handles|Manages)"; then
-    echo "  ✅ Starts with action word"
-  else
-    echo "  ℹ️  Consider starting with action verb"
-  fi
-done
-'''
-
-[tasks."agents:check-structure"]
-description = "Validate agent markdown structure and sections"
-run = '''
-echo "📋 Validating agent structure..."
-REQUIRED_SECTIONS="Purpose Instructions"
-
-for agent in .claude/agents/*.md; do
-  if [ ! -f "$agent" ]; then continue; fi
-  name=$(basename "$agent" .md)
-  echo ""
-  echo "Agent: $name"
-  
-  for section in $REQUIRED_SECTIONS; do
-    if grep -q "^# $section" "$agent" || grep -q "^## $section" "$agent"; then
-      echo "  ✅ Has $section section"
-    else
-      echo "  ❌ Missing $section section"
-    fi
-  done
-  
-  # Check for examples
-  if grep -q '```' "$agent"; then
-    echo "  ✅ Contains code examples"
-  else
-    echo "  ⚠️  No code examples found"
-  fi
-  
-  # Check for report format
-  if grep -q "Report" "$agent" || grep -q "Output" "$agent"; then
-    echo "  ✅ Has report format section"
-  else
-    echo "  ⚠️  No report format defined"
-  fi
-done
-'''
-
-[tasks."agents:list"]
-description = "List all agents with their capabilities"
-alias = ["agents", "list-agents"]
-run = '''
-#!/usr/bin/env bash
-echo "📊 Claude Sub-Agents Inventory"
-echo "=============================="
-echo ""
-
-total=0
-for agent in .claude/agents/*.md; do
-  if [ -f "$agent" ]; then
-    name=$(grep "^name: " "$agent" | sed 's/name: //')
-    desc=$(grep "^description: " "$agent" | sed 's/description: //' | cut -c1-60)
-    tools=$(grep "^tools: " "$agent" | sed 's/tools: //' | cut -c1-40)
-    
-    total=$((total + 1))
-    printf "[%d] %-20s\n" $total "$name"
-    printf "    📝 %s...\n" "$desc"
-    printf "    🔧 %s...\n" "$tools"
-    echo ""
-  fi
-done
-
-echo "Total agents: $total"
-'''
-
-[tasks."agents:check-deps"]
-description = "Check if agents have circular dependencies or missing tools"
-run = '''
-echo "🔄 Checking agent dependencies..."
-
-# Check if any agent calls Task tool (which could call other agents)
-for agent in .claude/agents/*.md; do
-  if [ ! -f "$agent" ]; then continue; fi
-  name=$(basename "$agent" .md)
-  if grep -q "Task" "$agent"; then
-    echo "  ℹ️  $name can invoke other agents (uses Task tool)"
-    
-    # Look for subagent references
-    grep -i "subagent\|agent-" "$agent" | grep -v "^#" | head -3 | while read line; do
-      echo "      → Reference: $(echo $line | cut -c1-60)..."
-    done
-  fi
-done
-'''
-
-[tasks."agents:test"]
-description = "Interactive agent testing prompt generator"
-run = '''
-echo "🧪 Agent Test Prompt Generator"
-echo "=============================="
-echo ""
-
-agents=()
-for agent in .claude/agents/*.md; do
-  if [ -f "$agent" ]; then
-    agents+=("$(basename "$agent" .md)")
-  fi
-done
-
-echo "Available agents:"
-for i in "${!agents[@]}"; do
-  echo "  $((i+1)). ${agents[$i]}"
-done
-
-echo ""
-read -p "Select agent number: " selection
-index=$((selection-1))
-
-if [ $index -ge 0 ] && [ $index -lt ${#agents[@]} ]; then
-  agent_name="${agents[$index]}"
-  agent_file=".claude/agents/${agent_name}.md"
-  
-  desc=$(grep "^description: " "$agent_file" | sed 's/description: //')
-  
-  echo ""
-  echo "Test prompt for $agent_name:"
-  echo "----------------------"
-  echo "@agent-$agent_name please analyze the current repository and provide recommendations"
-  echo ""
-  echo "Description: $desc"
-else
-  echo "Invalid selection"
-fi
-'''
-
-[tasks."agents:validate-all"]
-description = "Run all agent validation checks"
-depends = [
-  "agents:validate",
-  "agents:check-tools", 
-  "agents:check-descriptions",
-  "agents:check-structure"
-]
-alias = ["agents:check", "validate-agents"]
-
-# ============================================================================
 # DOCUMENTATION - Maintenance tasks
 # ============================================================================
 
@@ -467,106 +231,6 @@ else
   echo "ℹ️  No serve script configured"
 fi
 '''
-
-[tasks."docs:search"]
-description = "Search documentation content"
-run = '''
-echo "Enter search term: "
-read term
-rg "$term" -t md --heading --line-number
-'''
-tools = { "rg" = "latest" }
-
-# ============================================================================
-# UTILITY - Helper tasks
-# ============================================================================
-
-[tasks.mcp]
-description = "MCP configuration management"
-alias = "m"
-tools = { "jq" = "latest" }
-run = '''
-echo "🔧 MCP Configuration Management"
-echo "================================"
-if [ -f ".mcp.json" ]; then
-  echo "✅ .mcp.json exists"
-  echo ""
-  echo "Available actions:"
-  echo "  1) Regenerate from template (overwrites current)"
-  echo "  2) Validate JSON syntax"
-  echo "  3) Show current servers"
-  echo "  4) Exit"
-  echo ""
-  read -p "Choose action [1-4]: " choice
-  case $choice in
-    1) mise run setup:mcp ;;
-    2) jq empty .mcp.json && echo "✅ Valid JSON" || echo "❌ Invalid JSON" ;;
-    3) jq '.mcpServers | keys[]' .mcp.json 2>/dev/null || echo "❌ Unable to parse servers" ;;
-    4) echo "Exiting..." ;;
-    *) echo "Invalid choice" ;;
-  esac
-else
-  echo "❌ .mcp.json not found"
-  echo ""
-  if [ -f "mcp.json.template" ]; then
-    echo "Template found. Generate config? (y/n)"
-    read -p "> " confirm
-    [ "$confirm" = "y" ] && mise run setup:mcp
-  else
-    echo "No template found. Please create mcp.json.template first."
-  fi
-fi
-'''
-
-[tasks."mcp:clean"]
-description = "Remove generated MCP configuration"
-run = '''
-if [ -f ".mcp.json" ]; then
-  echo "⚠️  This will delete .mcp.json (can be regenerated from template)"
-  read -p "Continue? (y/n): " confirm
-  if [ "$confirm" = "y" ]; then
-    rm -f .mcp.json
-    echo "✅ .mcp.json removed"
-  else
-    echo "Cancelled"
-  fi
-else
-  echo "No .mcp.json file to remove"
-fi
-'''
-
-[tasks.clean]
-description = "Clean temporary files"
-alias = "c"
-run = '''
-fd -H -I -t f -e DS_Store -x rm {}
-fd -H -I -t f -e tmp -x rm {}
-fd -H -I -t f -g '*~' -x rm {}
-rm -rf .mise/cache 2>/dev/null || true
-'''
-tools = { "fd" = "latest" }
-
-[tasks.watch]
-description = "Watch files and run checks on change"
-run = '''
-echo "👀 Watching for changes (Ctrl+C to stop)..."
-npx nodemon --watch '**/*.md' --watch '.markdownlint.json' --watch '.prettierrc.json' \
-  --ext md --exec 'mise run check || true'
-'''
-tools = { "npm:nodemon" = "latest" }
-
-[tasks.find]
-description = "Find files by pattern"
-run = '''
-echo "Enter file pattern (e.g., '*.md', 'README*'): "
-read pattern
-fd "$pattern"
-'''
-tools = { "fd" = "latest" }
-
-# Task aliases for common workflows
-[tasks.p]
-alias = "check" # p for pre-commit
 
 # Hooks demo
 [hooks]
