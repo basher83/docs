@@ -1,30 +1,44 @@
 {
   "default": true,
+
+  // Let Prettier handle wrapping; don't fight it
   "MD013": false,
+
+  // List indentation – relax, let Prettier decide
   "MD007": false,
+
+  // Consecutive blank lines – allow some flexibility in docs
   "MD012": false,
+
+  // Blank lines around headings: 1 above and below
   "MD022": {
     "lines_above": 1,
     "lines_below": 1
   },
+
+  // Duplicate headings and top-level headings – relaxed for docs
   "MD024": false,
   "MD025": false,
+
+  // Ordered list style, spaces – don't over-constrain
   "MD029": false,
   "MD030": false,
+
+  // Spacing around lists – keep on for structural sanity
   "MD032": true,
+
+  // Allow some inline HTML elements commonly used in docs
   "MD033": {
-    "allowed_elements": [
-      "img",
-      "br",
-      "details",
-      "summary",
-      "div"
-    ]
+    "allowed_elements": ["img", "br", "details", "summary", "div"]
   },
+
+  // Autolinks, emphasis, fenced code languages, first heading, images – relaxed
   "MD034": false,
   "MD036": false,
   "MD040": false,
   "MD041": false,
   "MD045": false,
+
+  // Trailing blank lines at end of file – keep tidy
   "MD047": true
 }
