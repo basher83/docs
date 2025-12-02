@@ -146,7 +146,8 @@ This is a **working knowledge base**, not a book publication. The tools are ther
 
 ## Practical Conventions
 
-These are guidelines that fall naturally out of Prettier + markdownlint, plus a few repo-specific preferences.
+These are guidelines that fall naturally out of Prettier + markdownlint, plus a few repo-specific
+preferences.
 
 ### Headings
 
@@ -191,10 +192,14 @@ These are guidelines that fall naturally out of Prettier + markdownlint, plus a 
 
 - Always use fenced code blocks:
 
-  ```markdown
+  ````markdown
   ```bash
   mise run fmt
   ```
+  ````
+
+  ```
+
   ```
 
 - Include a language when possible (for syntax highlighting).
@@ -209,7 +214,8 @@ Allowed HTML elements (per `.markdownlint.json`):
 - `summary`
 - `div`
 
-Use these when Markdown alone isn’t expressive enough (e.g. details/summary toggles). Avoid heavy HTML layout inside docs.
+Use these when Markdown alone isn’t expressive enough (e.g. details/summary toggles). Avoid heavy
+HTML layout inside docs.
 
 ---
 
@@ -258,7 +264,6 @@ If a rule is consistently noisy and not helpful, consider tuning `.markdownlint.
 ## CI / Automation Expectations
 
 - Any CI pipeline using this repo should:
-
   - Run `mise run fmt:check` (or equivalent Prettier check).
   - Run `mise run lint:md` (or full `mise run check` for comprehensive checks).
 
@@ -277,7 +282,6 @@ If a rule is consistently noisy and not helpful, consider tuning `.markdownlint.
 If you want to change Markdown style rules:
 
 1. **Decide whether it’s formatting or structure**:
-
    - Formatting → Prettier (`.prettierrc.json`).
    - Structure / rules → markdownlint (`.markdownlint.json`).
 
@@ -301,7 +305,8 @@ If you want to change Markdown style rules:
 - **Auto-fix Markdown lint + format**: `mise run lint:fix`
 - **Full quality pipeline**: `mise run check` (alias: `mise run p`)
 
-- Prettier config: [`.prettierrc.json`](../../.prettierrc.json)  
+- Prettier config: [`.prettierrc.json`](../../.prettierrc.json)
 - markdownlint config: [`.markdownlint.json`](../../.markdownlint.json)
 
-These two tools, with these configs, are the only sources of truth for Markdown style in `basher83/docs`.
+These two tools, with these configs, are the only sources of truth for Markdown style in
+`basher83/docs`.
