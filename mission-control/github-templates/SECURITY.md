@@ -9,12 +9,12 @@ users seriously and appreciate your help in keeping our systems safe.
 
 We actively maintain security updates for the following versions:
 
-| Version | Supported      | Security Updates |
-| ------- | -------------- | ---------------- |
-| 2.1.x   | ✅ Current     | Full support     |
-| 2.0.x   | ✅ LTS         | Security only    |
-| 1.9.x   | ⚠️ Limited     | Critical only    |
-| < 1.9   | ❌ End of life | No support       |
+| Version | Supported   | Security Updates |
+| ------- | ----------- | ---------------- |
+| 2.1.x   | Current     | Full support     |
+| 2.0.x   | LTS         | Security only    |
+| 1.9.x   | Limited     | Critical only    |
+| < 1.9   | End of life | No support       |
 
 **Recommendation:** Always use the latest stable version for the best security posture.
 

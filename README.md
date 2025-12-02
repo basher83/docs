@@ -86,13 +86,13 @@ based on the principles defined in the
 
 <!-- end-doc-gen -->
 
-| Category                                   | Description             | Contents                                                      |
-| ------------------------------------------ | ----------------------- | ------------------------------------------------------------- |
-| [📏 Mission Control](./mission-control/)   | Standards & guidelines  | Naming conventions, coding practices, project templates       |
-| [🗺️ Star Charts](./star-charts/)           | Architecture & diagrams | Network topology, service maps, infrastructure layouts        |
-| [📖 Flight Manuals](./flight-manuals/)     | How-to guides           | Setup procedures, automation tips, Git usage, troubleshooting |
-| [📝 Maintenance Logs](./maintenance-logs/) | Project journals        | Learning paths, project notes, decisions made                 |
-| [🔤 Space Dictionary](./space-dictionary/) | Reference materials     | Glossaries, acronyms, quick references                        |
+| Category                                | Description             | Contents                                                      |
+| --------------------------------------- | ----------------------- | ------------------------------------------------------------- |
+| [Mission Control](./mission-control/)   | Standards & guidelines  | Naming conventions, coding practices, project templates       |
+| [Star Charts](./star-charts/)           | Architecture & diagrams | Network topology, service maps, infrastructure layouts        |
+| [Flight Manuals](./flight-manuals/)     | How-to guides           | Setup procedures, automation tips, Git usage, troubleshooting |
+| [Maintenance Logs](./maintenance-logs/) | Project journals        | Learning paths, project notes, decisions made                 |
+| [Space Dictionary](./space-dictionary/) | Reference materials     | Glossaries, acronyms, quick references                        |
 
 ## 🔍 Quick Navigation
 

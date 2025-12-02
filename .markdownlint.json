@@ -40,8 +40,5 @@
   "MD045": false,
 
   // Trailing blank lines at end of file – keep tidy
-  "MD047": true,
-
-  // Table column style – disabled as Prettier handles table formatting
-  "MD060": false
+  "MD047": true
 }
