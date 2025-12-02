@@ -1,53 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":pinAllExceptPeerDependencies"],
-  "schedule": ["before 6am on monday"],
-  "timezone": "America/New_York",
-  "labels": ["dependencies", "automated"],
-  "assignees": ["basher83"],
-  "reviewers": ["basher83"],
-  "packageRules": [
-    {
-      "description": "GitHub Actions - pin to commit SHA and auto-merge patch updates",
-      "matchManagers": ["github-actions"],
-      "pinDigests": true,
-      "automerge": true,
-      "automergeType": "pr",
-      "matchUpdateTypes": ["patch", "pin"]
-    },
-    {
-      "description": "npm packages - group and auto-merge patch updates",
-      "matchManagers": ["npm"],
-      "groupName": "npm dependencies",
-      "automerge": true,
-      "automergeType": "pr",
-      "matchUpdateTypes": ["patch"]
-    },
-    {
-      "description": "Security updates - high priority, auto-merge",
-      "vulnerabilityAlerts": {
-        "enabled": true
-      },
-      "automerge": true,
-      "automergeType": "pr",
-      "labels": ["security", "dependencies", "automated"],
-      "reviewersFromCodeOwners": true,
-      "matchPackageNames": ["*"]
-    },
-    {
-      "description": "Major updates - require manual review",
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "labels": ["major-update", "dependencies"],
-      "reviewersFromCodeOwners": true
-    }
-  ],
-  "prConcurrentLimit": 5,
-  "prHourlyLimit": 2,
-  "commitMessagePrefix": "⬆️",
-  "commitMessageAction": "Update",
-  "commitMessageTopic": "{{depName}}",
-  "branchPrefix": "renovate/",
-  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
-  "platformAutomerge": true
+  "extends": [
+    "local>basher83/renovate-config"
+  ]
 }
