@@ -1,0 +1,13 @@
+name: Sync Labels (shared)
+
+on:
+  # Run manually from the Actions tab
+  workflow_dispatch:
+  # Optional: keep labels fresh automatically
+  schedule:
+    - cron: '0 0 * * 1' # 00:00 on Monday
+
+jobs:
+  sync-labels:
+    uses: basher83/.github/.github/workflows/sync-labels.yml@main
+    # No inputs: uses the default label_definitions_url from the shared workflow
