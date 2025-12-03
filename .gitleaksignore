@@ -1,8 +1,0 @@
-# GitLeaks ignore file
-# Ignores specific fingerprints that are safe in this context
-
-# Historical commit with hardcoded token (already revoked)
-d09a8e6cd625d807715a633eb70f4dcf02315e81:.mcp.json:generic-api-key:10
-
-# Ignore baseline hashed_secret field
-:.secrets.baseline:generic-api-key:134

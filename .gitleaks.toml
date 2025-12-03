@@ -1,8 +1,0 @@
-[[allowlists]]
-description = "Allowlist generated files and caches"
-paths = [
-    "^\\.secrets\\.baseline$",
-    "^node_modules/",
-    "^\\.mise-data/",
-    "^\\.mise-cache/",
-]
