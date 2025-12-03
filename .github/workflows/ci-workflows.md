@@ -46,7 +46,7 @@ See [`.mise.toml`](../../.mise.toml) for full details.
 
 ## Workflow: `Docs Quality`
 
-**File:** [`.github/workflows/docs-quality.yml`](../../.github/workflows/docs-quality.yml)  
+**File:** [`.github/workflows/docs-quality.yml`](../../.github/workflows/docs-quality.yml)
 **Purpose:** Read-only quality gate for Markdown and action pinning.
 
 ### Triggers
@@ -137,8 +137,8 @@ mise run p
 
 ## Workflow: `autofix.ci`
 
-**File:** [`.github/workflows/autofix-ci.yml`](../../.github/workflows/autofix-ci.yml)  
-**Purpose:** Automatically fix style issues (Python + Markdown) and push commits via autofix.ci.
+**File:** [`.github/workflows/autofix-ci.yml`](../../.github/workflows/autofix-ci.yml) **Purpose:**
+Automatically fix style issues (Python + Markdown) and push commits via autofix.ci.
 
 ### Triggers
 
@@ -238,7 +238,7 @@ For Python:
 
 ## Workflow: `Update Documentation Trees`
 
-**File:** [`.github/workflows/update-doc-trees.yml`](../../.github/workflows/update-doc-trees.yml)  
+**File:** [`.github/workflows/update-doc-trees.yml`](../../.github/workflows/update-doc-trees.yml)
 **Purpose:** Automatically refresh directory trees in docs and open/update a PR.
 
 ### Triggers

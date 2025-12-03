@@ -4,7 +4,7 @@
     "description": "Personal documentation hub formatting tooling",
     "license": "MIT",
     "devDependencies": {
-        "markdownlint-cli2": "0.18.1",
+        "markdownlint-cli2": "0.19.1",
         "prettier": "3.6.2"
     },
     "scripts": {

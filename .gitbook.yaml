@@ -15,7 +15,7 @@ plugins:
   - search-plus
   - sharing
   - fontsettings
-  
+
 # PDF options
 pdf:
   pageNumbers: true

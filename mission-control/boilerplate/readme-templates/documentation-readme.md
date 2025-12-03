@@ -310,6 +310,5 @@ npm run docs:test
 
 _Remember: Good documentation is a love letter to your future self and your fellow crew members._
 
-**Last Updated:** $(date +%Y-%m-%d)  
-**Next Review:** $(date -d '+3 months' +%Y-%m-%d)  
-**Maintained By:** Documentation Team 🚀
+**Last Updated:** $(date +%Y-%m-%d) **Next Review:** $(date -d '+3 months' +%Y-%m-%d) **Maintained
+By:** Documentation Team 🚀

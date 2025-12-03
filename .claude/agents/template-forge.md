@@ -107,10 +107,10 @@ export const {{endpointName}} = async (
   try {
     // TODO: Add request validation
     const { /* destructure params */ } = req.body;
-    
+
     // TODO: Implement business logic
     const result = await processRequest(/* params */);
-    
+
     res.status(200).json({
       success: true,
       data: result,

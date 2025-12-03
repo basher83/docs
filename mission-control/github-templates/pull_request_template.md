@@ -218,6 +218,6 @@ Test results here
 
 ---
 
-**Mission Commander:** @<!-- your username -->  
-**Mission Duration:** <!-- time spent on this work -->  
-**Mission Status:** Ready for Review 🚀
+**Mission Commander:** @<!-- your username --> **Mission Duration:**
+
+<!-- time spent on this work --> **Mission Status:** Ready for Review 🚀
