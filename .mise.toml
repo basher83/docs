@@ -20,8 +20,10 @@ jq = "latest"                          # JSON processor
 "npm:markdown-link-check" = "latest"
 "npm:markdown-magic" = "latest"
 "npm:tree-node-cli" = "latest"
+
+# Run CI checks locally
+act = "0.2.83"
 prek = "0.2.13"
-act = "0.2.82"
 markdownlint-cli2 = "0.18.1"
 prettier = "3.6.2"
 
