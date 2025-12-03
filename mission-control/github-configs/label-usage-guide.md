@@ -72,9 +72,8 @@ Represents the lifecycle of the issue.
   - Fully completed and verified.
   - Use this when the issue is truly finished.
 
-**Typical flow:**  
-`backlog → in-progress → in-review → ready-to-merge → done`  
-If stuck at any point: move to `blocked`.
+**Typical flow:** `backlog → in-progress → in-review → ready-to-merge → done` If stuck at any point:
+move to `blocked`.
 
 ---
 
@@ -146,8 +145,8 @@ Use these when you care about planning your week or selecting tasks based on ava
 
 ## Area Labels (`area:*`)
 
-Represents the technical or conceptual area of the work.  
-Use these sparingly—only when you actually care to filter by them.
+Represents the technical or conceptual area of the work. Use these sparingly—only when you actually
+care to filter by them.
 
 - `area:infra`
   - Infrastructure, networking, IaC, automation around infra.

@@ -1,9 +1,9 @@
 # GitHub Copilot Instructions for basher83/docs
 
-**Repository Type**: Personal documentation hub and knowledge management system  
-**Primary Language**: Markdown with shell scripts and YAML workflows  
-**Build System**: Task-based automation (Taskfile.yml)  
-**Organization**: Space-themed directory structure with strict architectural principles
+**Repository Type**: Personal documentation hub and knowledge management system **Primary
+Language**: Markdown with shell scripts and YAML workflows **Build System**: Task-based automation
+(Taskfile.yml) **Organization**: Space-themed directory structure with strict architectural
+principles
 
 ## 🚀 Quick Start
 

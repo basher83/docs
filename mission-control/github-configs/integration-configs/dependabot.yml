@@ -280,11 +280,11 @@ updates:
     open-pull-requests-limit: 2
 
 # === DEPENDABOT CONFIGURATION NOTES ===
-# 
+#
 # 🚀 Mission Schedule:
 # - Monday:    NPM packages and GitHub Actions
 # - Tuesday:   Docker and Python dependencies
-# - Wednesday: PHP and Rust dependencies  
+# - Wednesday: PHP and Rust dependencies
 # - Thursday:  Java/Maven and Gradle dependencies
 # - Friday:    Go modules and Terraform
 # - Saturday:  Git submodules

@@ -37,4 +37,3 @@ echo "  mise run f        # Format"
 echo "  mise run l        # Lint"
 echo "  mise run q        # Quality check"
 echo "  mise run t        # Test"
-

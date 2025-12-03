@@ -1,42 +1,9 @@
+minimum_prek_version: "0.2.0"
+# Global Configuration
+fail_fast: true
+default_stages: [pre-commit]
+
 repos:
-  # Security: Secret Detection
-  - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.27.2
-    hooks:
-      - id: gitleaks
-        name: Detect secrets with gitleaks
-        description: Scan for secrets using gitleaks
-        args: ["--redact"]
-        stages: [pre-commit, pre-push]
-
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.5.0
-    hooks:
-      - id: detect-secrets
-        name: Detect secrets with detect-secrets
-        description: Scan for secrets using detect-secrets
-        args: ["--baseline", ".secrets.baseline"]
-        stages: [pre-commit]
-
-  # Configuration Validation
-  - repo: local
-    hooks:
-      - id: validate-mcp-config
-        name: Validate .mcp.json configuration
-        description: Ensure .mcp.json only contains environment variable references
-        entry: bash
-        language: system
-        files: '^\.mcp\.json$'
-        args:
-          - -c
-          - |
-            if grep -E '"[A-Z_]+":\s*"[^$]' .mcp.json; then
-              echo "❌ Found hardcoded values in .mcp.json - use environment variables instead"
-              exit 1
-            fi
-            echo "✅ .mcp.json validation passed"
-
-  # File Security Checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
@@ -49,6 +16,8 @@ repos:
       - id: check-json
       - id: detect-private-key
       - id: forbid-new-submodules
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
 
   - repo: local
     hooks:
@@ -61,35 +30,14 @@ repos:
         additional_dependencies: ["prettier@3.6.2"]
 
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.13.0
+    rev: v0.18.0
     hooks:
       - id: markdownlint-cli2
         name: markdownlint (post-prettier)
         args: ["--config", ".markdownlint.json"]
         files: "\\.md$"
 
-  # Additional security validation
-  - repo: local
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
     hooks:
-      - id: validate-no-secrets-in-commits
-        name: Validate no secrets in staged files
-        description: Final check for any secrets in files being committed
-        entry: bash
-        language: system
-        args:
-          - -c
-          - |
-            echo "🔍 Final security validation..."
-            # The main secret detection is handled by gitleaks and detect-secrets above
-            # This is just a final validation that our .mcp.json is correct
-            if [ -f .mcp.json ] && git diff --cached --name-only | grep -q ".mcp.json"; then
-              if grep -E '"[A-Z_]+":\s*"[^$]' .mcp.json; then
-                echo "❌ Found hardcoded values in .mcp.json - use environment variables instead"
-                exit 1
-              fi
-            fi
-            echo "✅ Final security validation passed"
-
-# Global Configuration
-fail_fast: true
-default_stages: [pre-commit]
+      - id: shellcheck
