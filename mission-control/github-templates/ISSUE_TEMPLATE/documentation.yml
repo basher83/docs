@@ -9,9 +9,9 @@ body:
     attributes:
       value: |
         ## 📚 Mission Documentation Enhancement
-        
+
         Help us improve our mission documentation! Clear, accurate documentation is essential for mission success.
-        
+
         **Documentation Types:**
         - User guides and tutorials
         - API documentation
@@ -88,13 +88,13 @@ body:
         For corrections, provide the accurate information.
       placeholder: |
         Proposed content structure:
-        
+
         ## OAuth 2.0 Authentication
         1. Register your application
         2. Redirect users to authorization endpoint
         3. Handle the callback with authorization code
         4. Exchange code for access token
-        
+
         Example code:
         ```javascript
         const response = await fetch('/oauth/token', {
@@ -166,7 +166,7 @@ body:
         - Stripe's API documentation for authentication flow
         - GitHub's OAuth documentation with clear examples
         - Include screenshots of the current OAuth consent screen
-        
+
         [Attach any helpful screenshots or diagrams]
 
   - type: input

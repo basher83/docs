@@ -9,9 +9,9 @@ body:
     attributes:
       value: |
         ## 🚀 Documentation Mission Control - Anomaly Report
-        
+
         Thanks for taking the time to report this documentation issue! Your report helps us maintain accurate and useful documentation.
-        
+
         **Before reporting:** Please search existing issues to avoid duplicates.
 
   - type: input
@@ -51,7 +51,7 @@ body:
         The Docker networking guide states that bridge networks use 172.17.0.0/16 by default,
         but Docker actually uses 172.17.0.0/24. This causes confusion when planning network
         architecture.
-        
+
         Additionally, the example command is missing the --network flag.
     validations:
       required: true
@@ -131,7 +131,7 @@ body:
       placeholder: |
         Docker's official documentation at https://docs.docker.com/network/bridge/
         confirms the correct default subnet.
-        
+
         This may have changed in Docker version 20.x
 
   - type: checkboxes

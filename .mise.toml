@@ -10,11 +10,9 @@ status = { missing_tools = "if_other_versions_installed", show_env = false, show
 
 [tools]
 node = "24.10.0"
-python = "3.14.0"
 
 # ALL CLI tools managed by mise (not devcontainer)
 "aqua:koalaman/shellcheck" = "0.11.0"
-"aqua:gitleaks/gitleaks" = "8.28.0"
 fd = "latest"
 rg = "latest"                         # ripgrep
 eza = "latest"
@@ -22,8 +20,7 @@ jq = "latest"                          # JSON processor
 "npm:markdown-link-check" = "latest"
 "npm:markdown-magic" = "latest"
 "npm:tree-node-cli" = "latest"
-
-# Run CI checks locally
+prek = "0.2.13"
 act = "0.2.82"
 markdownlint-cli2 = "0.18.1"
 prettier = "3.6.2"
@@ -50,15 +47,13 @@ run = "npm install"
 sources = ["package.json", "package-lock.json"]
 outputs = ["node_modules"]
 
-[tasks."setup:pre-commit"]
-description = "Setup pre-commit framework"
-run = '''
-pip install --quiet pre-commit detect-secrets
-pre-commit install --install-hooks
-pre-commit install --hook-type commit-msg
-pre-commit install --hook-type pre-push
-'''
-outputs = [".git/hooks/pre-commit", ".git/hooks/pre-push"]
+[tasks.hooks-install]
+description = "Install prek and infisical hooks"
+run = "prek install -f && infisical scan install --pre-commit-hook"
+
+[tasks.pre-commit-run]
+description = "Run prek hooks"
+run = "prek run --all-files"
 
 [tasks."setup:act-symlink"]
 description = "Ensure act is symlinked for VS Code extension"
@@ -67,7 +62,7 @@ run = '''
 if command -v act >/dev/null 2>&1; then
   ACT_PATH=$(which act)
   SYMLINK_PATH="/usr/local/bin/act"
-  
+
   # Check if symlink already exists and points to correct location
   if [ -L "$SYMLINK_PATH" ] && [ "$(readlink -f $SYMLINK_PATH)" = "$(readlink -f $ACT_PATH)" ]; then
     echo "✅ Act symlink already configured correctly"
@@ -76,7 +71,7 @@ if command -v act >/dev/null 2>&1; then
     sudo ln -sf "$ACT_PATH" "$SYMLINK_PATH"
     echo "✅ Act symlinked to $SYMLINK_PATH"
   fi
-  
+
   # Verify it works
   if $SYMLINK_PATH --version >/dev/null 2>&1; then
     echo "✅ Act is accessible system-wide (version: $($SYMLINK_PATH --version))"

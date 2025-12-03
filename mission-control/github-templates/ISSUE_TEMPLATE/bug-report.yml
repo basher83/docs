@@ -9,9 +9,9 @@ body:
     attributes:
       value: |
         ## 🚀 Mission Control Bug Report
-        
+
         Thanks for taking the time to report this anomaly! Your report helps us maintain mission integrity.
-        
+
         **Before reporting:** Please search existing issues to avoid duplicates.
 
   - type: input

@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 # 🚀 Mission Control: Personal Documentation Hub 📚
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=README.md&display_timestamp=author&style=plastic&logo=github)

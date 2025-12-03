@@ -46,7 +46,7 @@ See [`.mise.toml`](../../.mise.toml) for full details.
 
 ## Workflow: `Docs Quality`
 
-**File:** [`.github/workflows/docs-quality.yml`](../../.github/workflows/docs-quality.yml)  
+**File:** [`.github/workflows/docs-quality.yml`](../../.github/workflows/docs-quality.yml)
 **Purpose:** Read-only quality gate for Markdown and action pinning.
 
 ### Triggers
@@ -55,23 +55,23 @@ See [`.mise.toml`](../../.mise.toml) for full details.
 on:
   workflow_dispatch:
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - '**/*.md'
-      - '.markdownlint.json'
-      - '.prettierrc.json'
-      - '.prettierignore'
-      - '.mise.toml'
-      - '.github/workflows/docs-quality.yml'
+      - "**/*.md"
+      - ".markdownlint.json"
+      - ".prettierrc.json"
+      - ".prettierignore"
+      - ".mise.toml"
+      - ".github/workflows/docs-quality.yml"
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - '**/*.md'
-      - '.markdownlint.json'
-      - '.prettierrc.json'
-      - '.prettierignore'
-      - '.mise.toml'
-      - '.github/workflows/docs-quality.yml'
+      - "**/*.md"
+      - ".markdownlint.json"
+      - ".prettierrc.json"
+      - ".prettierignore"
+      - ".mise.toml"
+      - ".github/workflows/docs-quality.yml"
 ```
 
 Runs on:
@@ -137,8 +137,8 @@ mise run p
 
 ## Workflow: `autofix.ci`
 
-**File:** [`.github/workflows/autofix-ci.yml`](../../.github/workflows/autofix-ci.yml)  
-**Purpose:** Automatically fix style issues (Python + Markdown) and push commits via autofix.ci.
+**File:** [`.github/workflows/autofix-ci.yml`](../../.github/workflows/autofix-ci.yml) **Purpose:**
+Automatically fix style issues (Python + Markdown) and push commits via autofix.ci.
 
 ### Triggers
 
@@ -147,40 +147,40 @@ on:
   workflow_dispatch:
 
   push:
-    branches-ignore: [ main ]
+    branches-ignore: [main]
     paths:
-      - '**/*.md'
-      - '**/*.mdx'
-      - '**/*.py'
-      - '**/*.yml'
-      - '**/*.yaml'
-      - '**/*.json'
-      - '**/*.toml'
-      - 'pyproject.toml'
-      - 'ruff.toml'
-      - '.markdownlint.json'
-      - '.prettierrc.json'
-      - '.prettierignore'
-      - '.mise.toml'
-      - '.github/workflows/autofix-ci.yml'
+      - "**/*.md"
+      - "**/*.mdx"
+      - "**/*.py"
+      - "**/*.yml"
+      - "**/*.yaml"
+      - "**/*.json"
+      - "**/*.toml"
+      - "pyproject.toml"
+      - "ruff.toml"
+      - ".markdownlint.json"
+      - ".prettierrc.json"
+      - ".prettierignore"
+      - ".mise.toml"
+      - ".github/workflows/autofix-ci.yml"
 
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - '**/*.md'
-      - '**/*.mdx'
-      - '**/*.py'
-      - '**/*.yml'
-      - '**/*.yaml'
-      - '**/*.json'
-      - '**/*.toml'
-      - 'pyproject.toml'
-      - 'ruff.toml'
-      - '.markdownlint.json'
-      - '.prettierrc.json'
-      - '.prettierignore'
-      - '.mise.toml'
-      - '.github/workflows/autofix-ci.yml'
+      - "**/*.md"
+      - "**/*.mdx"
+      - "**/*.py"
+      - "**/*.yml"
+      - "**/*.yaml"
+      - "**/*.json"
+      - "**/*.toml"
+      - "pyproject.toml"
+      - "ruff.toml"
+      - ".markdownlint.json"
+      - ".prettierrc.json"
+      - ".prettierignore"
+      - ".mise.toml"
+      - ".github/workflows/autofix-ci.yml"
 
   workflow_call:
 ```
@@ -238,7 +238,7 @@ For Python:
 
 ## Workflow: `Update Documentation Trees`
 
-**File:** [`.github/workflows/update-doc-trees.yml`](../../.github/workflows/update-doc-trees.yml)  
+**File:** [`.github/workflows/update-doc-trees.yml`](../../.github/workflows/update-doc-trees.yml)
 **Purpose:** Automatically refresh directory trees in docs and open/update a PR.
 
 ### Triggers
@@ -246,7 +246,7 @@ For Python:
 ```yaml
 on:
   schedule:
-    - cron: '0 6 * * 1' # Every Monday at 06:00 UTC
+    - cron: "0 6 * * 1" # Every Monday at 06:00 UTC
   workflow_dispatch:
 ```
 
@@ -266,7 +266,8 @@ Runs:
    mise run fmt
    ```
 
-   - `docs:trees` runs `markdown-magic` with your custom DIRTREE transform to update directory trees in Markdown files.
+   - `docs:trees` runs `markdown-magic` with your custom DIRTREE transform to update directory trees
+     in Markdown files.
    - `fmt` formats all Markdown with Prettier.
 
 4. Detect changes:
@@ -274,7 +275,8 @@ Runs:
    - If changes:
      - Commit with message `"🤖 Auto-update documentation trees"`.
      - Push to `docs-auto-update` branch (force-update).
-     - Create or update a PR from `docs-auto-update` → `main` using `peter-evans/create-pull-request`.
+     - Create or update a PR from `docs-auto-update` → `main` using
+       `peter-evans/create-pull-request`.
 
 ### What it changes
 
@@ -296,11 +298,11 @@ You can then commit and push manually instead of waiting for the scheduled workf
 
 ## Summary Table
 
-| Workflow               | File                                            | Triggers                               | Modifies files? | Key tasks / tools                       |
-|------------------------|-------------------------------------------------|----------------------------------------|------------------|-----------------------------------------|
-| Docs Quality           | `.github/workflows/docs-quality.yml`           | PR to `main`, push to `main`, manual   | No               | `mise run fmt:check`, `mise run lint:md` |
-| autofix.ci             | `.github/workflows/autofix-ci.yml`             | Non-main pushes, PRs, manual           | Yes              | Ruff (optional), `fmt`, markdownlint `--fix`, autofix-ci |
-| Update Documentation Trees | `.github/workflows/update-doc-trees.yml` | Weekly schedule, manual                | Yes (via PR)     | `docs:trees`, `fmt`, create-pull-request |
+| Workflow                   | File                                     | Triggers                             | Modifies files? | Key tasks / tools                                        |
+| -------------------------- | ---------------------------------------- | ------------------------------------ | --------------- | -------------------------------------------------------- |
+| Docs Quality               | `.github/workflows/docs-quality.yml`     | PR to `main`, push to `main`, manual | No              | `mise run fmt:check`, `mise run lint:md`                 |
+| autofix.ci                 | `.github/workflows/autofix-ci.yml`       | Non-main pushes, PRs, manual         | Yes             | Ruff (optional), `fmt`, markdownlint `--fix`, autofix-ci |
+| Update Documentation Trees | `.github/workflows/update-doc-trees.yml` | Weekly schedule, manual              | Yes (via PR)    | `docs:trees`, `fmt`, create-pull-request                 |
 
 ---
 
@@ -327,4 +329,5 @@ You can then commit and push manually instead of waiting for the scheduled workf
   mise run fmt
   ```
 
-By keeping all logic in `.mise.toml` and using these three workflows, CI stays predictable, maintainable, and closely aligned with your day-to-day development workflow.
+By keeping all logic in `.mise.toml` and using these three workflows, CI stays predictable,
+maintainable, and closely aligned with your day-to-day development workflow.

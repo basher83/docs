@@ -37,6 +37,6 @@ Provide a structured summary with:
 
 - **PR #$ARGUMENTS Overview**: Title, author, target branch, current status
 - **Changes**: Files modified, additions/deletions, change patterns
-- **Review Status**: Approvals, requested changes, unresolved comments  
+- **Review Status**: Approvals, requested changes, unresolved comments
 - **CI Status**: Pass/fail status, specific errors if any
 - **Next Actions**: Clear recommendations for what needs attention

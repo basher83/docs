@@ -120,14 +120,14 @@ print_info "Fetching secrets from Infisical (environment: $INFISICAL_ENV)..."
     else
         # Fallback to sed for basic variable replacement
         cp "$TEMPLATE_FILE" "$OUTPUT_FILE.tmp"
-        
+
         # Replace common secret placeholders
         for var in GITHUB_PERSONAL_ACCESS_TOKEN ANTHROPIC_API_KEY OPENAI_API_KEY FIRECRAWL_API_KEY; do
             if [ -n "${!var:-}" ]; then
                 sed -i "s|\${$var}|${!var}|g" "$OUTPUT_FILE.tmp"
             fi
         done
-        
+
         mv "$OUTPUT_FILE.tmp" "$OUTPUT_FILE"
     fi
 )

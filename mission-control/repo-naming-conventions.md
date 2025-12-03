@@ -1,5 +1,5 @@
 <div align="center">
-  
+
 # 🚀 Space-Themed Naming Convention for Homelab Projects 🌌
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/basher83/docs?path=mission-control%2Frepo-naming-conventions.md&display_timestamp=committer)
@@ -95,7 +95,7 @@ environments that are stable, expansive, and essential.
 ---
 
 <div align="center">
-  
+
 <img width="500" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHFsbmJrZm45NGdxZWs1ZXZneG1mYWo3MjFuNXc5bnJtYnFjNnl1aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT9IgzoKnwFNmISR8I/giphy.gif">
 
 ## 📝 Summary
