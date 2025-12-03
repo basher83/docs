@@ -13,14 +13,16 @@ This guide explains how to use those labels effectively as a solo developer.
 ## Core Principles
 
 - **Keep it simple.** Labels should speed you up, not become a second job.
-- **Use labels you actually filter by.** If you never click a label in the GitHub UI, you probably don't need it.
+- **Use labels you actually filter by.** If you never click a label in the GitHub UI, you probably
+  don't need it.
 - **One label per “dimension” when possible:**
   - Status (where it is in the lifecycle)
   - Priority (how important/urgent)
   - Type (what kind of work)
   - Optional: Effort, Area, Env, Bot, Special
 
-You do *not* need to perfectly label every issue. Use labels where they help you find or sort work later.
+You do _not_ need to perfectly label every issue. Use labels where they help you find or sort work
+later.
 
 ---
 
@@ -45,33 +47,33 @@ Optionally, add:
 
 Represents the lifecycle of the issue.
 
-- `status:backlog`  
+- `status:backlog`
   - Default “idea” or “someday” bucket.
   - Use when you first create an issue and haven’t started it yet.
 
-- `status:in-progress`  
+- `status:in-progress`
   - You’re actively working on it.
   - Set this when you pick the issue up.
 
-- `status:blocked`  
-  - You *want* to work on it, but something is in the way (waiting on hardware, another task, a decision, etc.).
+- `status:blocked`
+  - You _want_ to work on it, but something is in the way (waiting on hardware, another task, a
+    decision, etc.).
   - Move issues here instead of leaving them stuck in `in-progress`.
 
-- `status:in-review`  
+- `status:in-review`
   - Work is done, and you’re reviewing/testing it (often corresponds to an open PR).
   - As a solo dev, this can also mean “needs my own testing later.”
 
-- `status:ready-to-merge`  
+- `status:ready-to-merge`
   - Implementation + testing complete; you just need to merge the PR or apply changes.
   - Acts as a short “finalization” lane.
 
-- `status:done`  
+- `status:done`
   - Fully completed and verified.
   - Use this when the issue is truly finished.
 
-**Typical flow:**  
-`backlog → in-progress → in-review → ready-to-merge → done`  
-If stuck at any point: move to `blocked`.
+**Typical flow:** `backlog → in-progress → in-review → ready-to-merge → done` If stuck at any point:
+move to `blocked`.
 
 ---
 
@@ -79,14 +81,15 @@ If stuck at any point: move to `blocked`.
 
 Represents how important or time-sensitive the issue is.
 
-- `priority:high`  
+- `priority:high`
   - Must be addressed soon; high impact or unblocks other work.
-- `priority:medium`  
+- `priority:medium`
   - Important, but not as urgent. Default for “real work” if you want a priority.
-- `priority:low`  
+- `priority:low`
   - Nice to have, low impact, or purely exploratory.
 
-You don’t need a priority on every issue. Often only a few `high` issues and some `medium` are enough to keep yourself focused.
+You don’t need a priority on every issue. Often only a few `high` issues and some `medium` are
+enough to keep yourself focused.
 
 ---
 
@@ -94,26 +97,26 @@ You don’t need a priority on every issue. Often only a few `high` issues and s
 
 Represents what kind of work the issue is.
 
-- `type:bug`  
+- `type:bug`
   - Something is broken or behaving incorrectly.
 
-- `type:feature`  
+- `type:feature`
   - New functionality or a significant enhancement.
 
-- `type:docs`  
+- `type:docs`
   - Documentation, notes, or content (often lives in `basher83/docs`).
 
-- `type:chore`  
+- `type:chore`
   - Maintenance tasks:
     - Refactoring
     - Tooling changes
     - Dependency cleanup
     - Minor improvements that don’t change visible behavior
 
-- `type:security`  
+- `type:security`
   - Security-related changes (hardening, secrets handling, policies, patching vulnerabilities).
 
-- `type:performance`  
+- `type:performance`
   - Work aimed at performance or efficiency improvements.
 
 Every issue should generally have **exactly one** `type:*` label.
@@ -124,15 +127,15 @@ Every issue should generally have **exactly one** `type:*` label.
 
 Optional, but useful for planning and grabbing quick wins.
 
-- `effort:small`  
+- `effort:small`
   - Less than 2 hours.
   - Great candidates for “quick work sessions” or when you want momentum.
 
-- `effort:medium`  
+- `effort:medium`
   - 2–8 hours.
   - A typical day’s worth of focused work or split over a couple of sessions.
 
-- `effort:large`  
+- `effort:large`
   - More than a day.
   - Often worth breaking into smaller issues when possible.
 
@@ -142,34 +145,35 @@ Use these when you care about planning your week or selecting tasks based on ava
 
 ## Area Labels (`area:*`)
 
-Represents the technical or conceptual area of the work.  
-Use these sparingly—only when you actually care to filter by them.
+Represents the technical or conceptual area of the work. Use these sparingly—only when you actually
+care to filter by them.
 
-- `area:infra`  
+- `area:infra`
   - Infrastructure, networking, IaC, automation around infra.
 
-- `area:cloud`  
+- `area:cloud`
   - Cloud platform work (cloud providers, managed services, etc.).
 
-- `area:python`  
+- `area:python`
   - Python code: scripts, applications, tooling.
 
-- `area:shell`  
+- `area:shell`
   - Shell scripts, bash automation, CLI glue.
 
-- `area:ci-cd`  
+- `area:ci-cd`
   - GitHub Actions, pipelines, build/test automation.
 
-- `area:web`  
+- `area:web`
   - APIs, web services, or UI‐related work.
 
-- `area:security`  
+- `area:security`
   - Security, policies, access control, hardening.
 
-- `area:docs`  
+- `area:docs`
   - Knowledge management, documentation, and content structure.
 
-You can assign more than one `area:*` if the issue really touches multiple domains (e.g. `area:infra` + `area:ci-cd`).
+You can assign more than one `area:*` if the issue really touches multiple domains (e.g.
+`area:infra` + `area:ci-cd`).
 
 ---
 
@@ -177,13 +181,13 @@ You can assign more than one `area:*` if the issue really touches multiple domai
 
 Use these when an issue is environment-specific.
 
-- `env:prod`  
+- `env:prod`
   - Issues impacting production or “real” workloads.
 
-- `env:staging`  
+- `env:staging`
   - Issues seen in a staging / test cluster that mirrors production.
 
-- `env:dev`  
+- `env:dev`
   - Development or local environment (including your homelab dev setups).
 
 If an issue is environment-agnostic (e.g., pure code cleanup), you can omit `env:*`.
@@ -194,10 +198,10 @@ If an issue is environment-agnostic (e.g., pure code cleanup), you can omit `env
 
 Typically applied automatically.
 
-- `bot:renovate`  
+- `bot:renovate`
   - Created or updated by Renovate (dependency upgrades).
 
-- `bot:dependabot`  
+- `bot:dependabot`
   - Created or updated by Dependabot (security updates, dependency alerts).
 
 You generally don’t need to apply these manually.
@@ -208,18 +212,18 @@ You generally don’t need to apply these manually.
 
 Special-purpose labels with specific meaning.
 
-- `breaking-change`  
+- `breaking-change`
   - Changes that break backward compatibility:
     - API changes
     - Config format changes
     - Infrastructure changes that require migration
 
-- `dependencies`  
+- `dependencies`
   - Work that primarily touches dependencies:
     - Upgrade libraries/packages
     - Add/remove dependencies
 
-- `experimental`  
+- `experimental`
   - Prototypes or experiments:
     - May be thrown away or heavily changed
     - Helps you later to identify “spikes” or experimental work
@@ -287,4 +291,5 @@ Labels:
 - Prefer **reusing existing labels** before introducing new ones.
 - Keep this guide updated when you make structural changes to the label set.
 
-The goal is not to be perfectly categorized—it’s to help you pick the right work quickly and see what matters at a glance.
+The goal is not to be perfectly categorized—it’s to help you pick the right work quickly and see
+what matters at a glance.

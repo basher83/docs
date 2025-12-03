@@ -145,6 +145,6 @@
 
 ---
 
-**Mission Commander:** @<!-- your username -->  
-**Documentation Category:** <!-- e.g., procedures, architecture, standards -->  
-**Mission Status:** Ready for Review 🚀
+**Mission Commander:** @<!-- your username --> **Documentation Category:**
+
+<!-- e.g., procedures, architecture, standards --> **Mission Status:** Ready for Review 🚀

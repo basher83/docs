@@ -7,12 +7,12 @@ name: Terraform Infrastructure
 on:
   push:
     branches: [main]
-    paths: 
+    paths:
       - 'terraform/**'
       - '**.tf'
   pull_request:
     branches: [main]
-    paths: 
+    paths:
       - 'terraform/**'
       - '**.tf'
 
@@ -48,7 +48,7 @@ jobs:
         env:
           # TODO: Add backend configuration secrets if needed
           # TF_VAR_backend_key: ${{ secrets.BACKEND_KEY }}
-          
+
       - name: Terraform Validate
         run: terraform validate
 

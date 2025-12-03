@@ -27,17 +27,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
-      - name: Set mise environment variables
+      - name: Set mise environment
         run: |
           echo "MISE_DATA_DIR=${{ github.workspace }}/.mise-data" >> $GITHUB_ENV
           echo "MISE_CACHE_DIR=${{ github.workspace }}/.mise-cache" >> $GITHUB_ENV
-          # Create directories to avoid "No such file or directory" errors
-          mkdir -p ${{ github.workspace }}/.mise-data/installs/{node,python}
-          mkdir -p ${{ github.workspace }}/.mise-cache
+          mkdir -p "${{ github.workspace }}/.mise-data/installs/node"
+          mkdir -p "${{ github.workspace }}/.mise-data/installs/python"
+          mkdir -p "${{ github.workspace }}/.mise-cache"
 
       - name: Setup mise
         uses: jdx/mise-action@e3d7b8d67a7958d1207f6ed871e83b1ea780e7b0 # v3.3.1
@@ -57,9 +58,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+
       - name: Verify Actions use SHAs
         run: |
           if grep -R "uses: .*@v[0-9]" .github/workflows/; then

@@ -64,8 +64,8 @@ jobs:
 
           # Check for stale branches
           echo "📊 Stale Branch Analysis:"
-          git for-each-ref --format='%(refname:short) %(committerdate)' refs/remotes/origin | 
-            awk '$2 < "'$(date -d '30 days ago' '+%Y-%m-%d')'"' | 
+          git for-each-ref --format='%(refname:short) %(committerdate)' refs/remotes/origin |
+            awk '$2 < "'$(date -d '30 days ago' '+%Y-%m-%d')'"' |
             head -10
 
           # Check open issues without labels

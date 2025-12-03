@@ -9,9 +9,9 @@ body:
     attributes:
       value: |
         ## 🚀 Documentation Mission Enhancement Proposal
-        
+
         Help us expand our documentation capabilities! Your requests drive improvement and expansion of our knowledge base.
-        
+
         **Before submitting:** Please search existing issues and discussions to see if this has been proposed before.
 
   - type: input
@@ -30,23 +30,23 @@ body:
       description: Describe what documentation should be created or improved
       placeholder: |
         I propose adding a comprehensive Kubernetes on Proxmox guide that includes:
-        
+
         1. **Prerequisites and Planning**
            - Hardware requirements
            - Network architecture planning
            - Storage considerations
-        
+
         2. **Step-by-Step Setup Guide**
            - Creating VMs for control plane and workers
            - Installing Kubernetes using kubeadm
            - Configuring CNI (Calico/Flannel)
            - Setting up LoadBalancer with MetalLB
-        
+
         3. **Integration Points**
            - Using Proxmox CSI for persistent volumes
            - Backup strategies
            - Monitoring setup
-        
+
         4. **Troubleshooting Section**
            - Common issues and solutions
            - Performance optimization
@@ -94,11 +94,11 @@ body:
         **Use Case 1: Homelab Kubernetes**
         As a homelab enthusiast, I want to run Kubernetes on my Proxmox server
         so that I can learn container orchestration without cloud costs.
-        
+
         **Use Case 2: Development Environment**
         As a developer, I need a local Kubernetes cluster on Proxmox
         for testing applications before cloud deployment.
-        
+
         **Use Case 3: Small Business Infrastructure**
         As a small business IT admin, I want to deploy production workloads
         on Kubernetes using existing Proxmox infrastructure.
@@ -114,7 +114,7 @@ body:
         Currently we have:
         - Basic Proxmox setup guides
         - Separate Kubernetes concepts in space-dictionary
-        
+
         Missing:
         - Integration between Proxmox and Kubernetes
         - Network architecture for this setup
@@ -156,7 +156,7 @@ body:
         - Basic Proxmox knowledge (covered in existing guides)
         - Understanding of container concepts
         - Basic networking knowledge
-        
+
         Related documentation that should exist:
         - Proxmox networking guide
         - Container basics in space-dictionary
@@ -188,7 +188,7 @@ body:
         ├── storage-integration.md (CSI and volumes)
         ├── troubleshooting.md (common issues)
         └── production-checklist.md (hardening guide)
-        
+
         star-charts/kubernetes/
         ├── proxmox-k8s-architecture.mmd (Mermaid diagram)
         └── network-topology.svg (network layout)
