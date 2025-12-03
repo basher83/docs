@@ -45,7 +45,7 @@ const customTransforms = {
   TREE: (content, options, config) => {
     const filePath = config.originalPath;
     const relativeFile = path.relative(process.cwd(), filePath);
-    
+
     // Get configuration for this file
     const treeConfig = treeConfigs[relativeFile] || {
       path: options.path || '.',
@@ -64,7 +64,7 @@ const customTransforms = {
 
       // Execute tree command
       const treeOutput = execSync(treeCmd, { encoding: 'utf8' });
-      
+
       // Wrap in markdown code block
       return '```plaintext\n' + treeOutput + '```';
     } catch (error) {
@@ -72,7 +72,7 @@ const customTransforms = {
       return '```plaintext\n[Tree generation failed]\n```';
     }
   },
-  
+
   // Support for DOCS-TREE markers in core-github-repos.md
   'DOCS-TREE': (content, options, config) => {
     try {
@@ -124,7 +124,7 @@ async function updateTrees() {
     }
 
     log.info(`📄 Processing: ${file}`);
-    
+
     const config = {
       transforms: customTransforms,
       globbyOptions: {

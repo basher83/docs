@@ -8,13 +8,13 @@ module.exports = {
     /* Custom transform for directory trees */
     DIRTREE: (content, options = {}) => {
       const { execSync } = require('child_process');
-      
+
       // Parse options - markdown-magic passes them directly from attributes
       const dir = options.dir || '.';
       const depth = options.depth || '';
       const onlyDirs = options.onlyDirs === 'true';
       const ignore = options.ignore || '.git|node_modules|.DS_Store';
-      
+
       try {
         // Build command - check for tree availability
         let cmd;
@@ -35,7 +35,7 @@ module.exports = {
             throw new Error('No tree command available');
           }
         }
-        
+
         // Build full command
         let fullCmd = `${cmd} ${dir}`;
         if (depth) fullCmd += ` -L ${depth}`;
@@ -45,10 +45,10 @@ module.exports = {
         if (cmd.includes('/usr/bin/tree')) {
           fullCmd += ' --charset ascii';
         }
-        
+
         // Execute and capture output
         const output = execSync(fullCmd, { encoding: 'utf8' });
-        
+
         // Return wrapped in code block
         return '```\n' + output + '```';
       } catch (error) {
@@ -57,7 +57,7 @@ module.exports = {
       }
     }
   },
-  
+
   // Glob patterns for files to process
   globbyOptions: {
     gitignore: true

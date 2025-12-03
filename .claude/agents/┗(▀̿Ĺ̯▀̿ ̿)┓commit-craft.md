@@ -69,14 +69,14 @@ When invoked, you must follow these steps:
      ```bash
      git commit -m "$(cat <<'EOF'
      type(scope): subject line
-     
+
      - Detailed bullet point
      - Another change detail
-     
+
      Fixes #123
-     
+
      🤖 Generated with [Claude Code](https://claude.ai/code)
-     
+
      Co-Authored-By: Claude <noreply@anthropic.com>
      EOF
      )"

@@ -1,9 +1,10 @@
 name: autofix.ci
 
 on:
-  # Manual runs still possible
+  # Manual runs
   workflow_dispatch:
-  # Auto-run on pushes to any non-protected branch so fixes land before PRs
+
+  # Auto-run on pushes to any non-main branch
   push:
     branches-ignore: [ main ]
     paths:
@@ -21,8 +22,10 @@ on:
       - '.prettierignore'
       - '.mise.toml'
       - '.github/workflows/autofix-ci.yml'
-  # Run on PRs targeting main for final polish
+
+  # Optionally run on PRs targeting main for final polish
   pull_request:
+    branches: [ main ]
     paths:
       - '**/*.md'
       - '**/*.mdx'
@@ -38,6 +41,7 @@ on:
       - '.prettierignore'
       - '.mise.toml'
       - '.github/workflows/autofix-ci.yml'
+
   workflow_call:
 
 permissions:
@@ -51,21 +55,24 @@ concurrency:
 jobs:
   autofix:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
 
       - name: Skip if bot re-run
-        if: ${{ github.actor == 'autofix-ci[bot]' || github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' || (github.actor == 'github-actions[bot]' && github.event_name == 'push' && contains(github.event.head_commit.message, 'autofix')) }}
-        run: echo "Detected automation bot (${GITHUB_ACTOR}) loop scenario; exiting early." && exit 0
+        if: ${{ github.actor == 'autofix-ci[bot]' || github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' }}
+        run: |
+          echo "Detected automation bot (${GITHUB_ACTOR}) loop scenario; exiting early."
+          exit 0
 
-      - name: Set mise environment variables
+      - name: Set mise environment
         run: |
           echo "MISE_DATA_DIR=${{ github.workspace }}/.mise-data" >> $GITHUB_ENV
           echo "MISE_CACHE_DIR=${{ github.workspace }}/.mise-cache" >> $GITHUB_ENV
-          # Create directories to avoid "No such file or directory" errors
-          mkdir -p ${{ github.workspace }}/.mise-data/installs/{node,python}
-          mkdir -p ${{ github.workspace }}/.mise-cache
+          mkdir -p "${{ github.workspace }}/.mise-data/installs/node"
+          mkdir -p "${{ github.workspace }}/.mise-data/installs/python"
+          mkdir -p "${{ github.workspace }}/.mise-cache"
 
       - name: Setup mise
         uses: jdx/mise-action@e3d7b8d67a7958d1207f6ed871e83b1ea780e7b0 # v3.3.1
@@ -82,11 +89,10 @@ jobs:
       - name: Ruff fix-only
         run: |
           if [ -f pyproject.toml ] || [ -f ruff.toml ]; then
-            # Use project-managed ruff if config exists (dependency expected in pyproject)
+            echo "Running Ruff fix-only..."
             if uv run ruff --version >/dev/null 2>&1; then
               uv run ruff check --fix-only . || true
             else
-              # Fallback: ephemeral tool install without persisting to project
               uvx ruff check --fix-only . || true
             fi
           else
@@ -96,6 +102,7 @@ jobs:
       - name: Ruff format
         run: |
           if [ -f pyproject.toml ] || [ -f ruff.toml ]; then
+            echo "Running Ruff format..."
             if uv run ruff --version >/dev/null 2>&1; then
               uv run ruff format . || true
             else
@@ -105,10 +112,10 @@ jobs:
             echo "No Python lint config detected; skipping Ruff format"
           fi
 
-      - name: Prettier write
+      - name: Prettier write (Markdown formatting)
         run: mise run fmt || true
 
-      - name: markdownlint fix
+      - name: markdownlint fix (Markdown lint auto-fix)
         run: mise x -- markdownlint-cli2 "**/*.md" "!node_modules" "!.mise-data" "!.mise-cache" --config .markdownlint.json --fix || true
 
       - name: autofix commit

@@ -9,9 +9,9 @@ body:
     attributes:
       value: |
         ## 🚀 Mission Enhancement Proposal
-        
+
         Help us expand our mission capabilities! Your feature requests drive innovation and improvement.
-        
+
         **Before submitting:** Please search existing issues and discussions to see if this has been proposed before.
 
   - type: input
@@ -34,7 +34,7 @@ body:
         2. Backs up to multiple cloud providers
         3. Sends notification when complete
         4. Allows for easy restoration of data
-        
+
         The interface could include a simple toggle in settings and options for backup frequency.
     validations:
       required: true
@@ -84,7 +84,7 @@ body:
         **As a** busy administrator
         **I want** automated daily backups
         **So that** I don't have to remember to manually backup data and risk losing important information
-        
+
         **As a** compliance officer
         **I want** backup verification reports
         **So that** I can demonstrate data protection compliance to auditors
@@ -139,7 +139,7 @@ body:
         Current workarounds:
         - Manual daily exports (time-consuming and error-prone)
         - Third-party backup tools (require separate accounts and setup)
-        
+
         Alternative approaches:
         - Integration with existing backup services
         - Simple export feature with scheduling
@@ -183,7 +183,7 @@ body:
         - Google Drive's automatic backup
         - Dropbox's file sync functionality
         - Time Machine's automated scheduling
-        
+
         [Attach any mockups or wireframes here]
 
   - type: checkboxes

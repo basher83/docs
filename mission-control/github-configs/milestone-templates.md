@@ -7,8 +7,7 @@ Infrastructure as Code, documentation, and automation.
 
 ### 🧠 Phase 1: Research & Architecture
 
-**Duration:** 1-2 weeks  
-**Focus:** Learning, Planning, and Design
+**Duration:** 1-2 weeks **Focus:** Learning, Planning, and Design
 
 **Objectives:**
 
@@ -41,8 +40,7 @@ Infrastructure as Code, documentation, and automation.
 
 ### 🛠️ Phase 2: Foundation Building
 
-**Duration:** 1-3 weeks  
-**Focus:** Core Infrastructure and Scaffolding
+**Duration:** 1-3 weeks **Focus:** Core Infrastructure and Scaffolding
 
 **Objectives:**
 
@@ -75,8 +73,7 @@ Infrastructure as Code, documentation, and automation.
 
 ### 🚀 Phase 3: Core Development
 
-**Duration:** 2-4 weeks  
-**Focus:** Feature Implementation and Automation
+**Duration:** 2-4 weeks **Focus:** Feature Implementation and Automation
 
 **Objectives:**
 
@@ -109,8 +106,7 @@ Infrastructure as Code, documentation, and automation.
 
 ### 🌟 Phase 4: Polish & Production
 
-**Duration:** 1-2 weeks  
-**Focus:** Refinement and Deployment
+**Duration:** 1-2 weeks **Focus:** Refinement and Deployment
 
 **Objectives:**
 
@@ -143,8 +139,7 @@ Infrastructure as Code, documentation, and automation.
 
 ### 🛰️ Phase 5: Maintenance & Evolution
 
-**Duration:** Ongoing  
-**Focus:** Updates, Improvements, and Learning
+**Duration:** Ongoing **Focus:** Updates, Improvements, and Learning
 
 **Objectives:**
 
