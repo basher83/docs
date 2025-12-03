@@ -9,11 +9,11 @@ repository and its users seriously and appreciate your help in keeping our syste
 
 As a continuously updated documentation repository, we maintain security for:
 
-| Version     | Supported    | Security Updates  |
-| ----------- | ------------ | ----------------- |
-| main        | ✅ Current   | Full support      |
-| PR branches | ⚠️ Limited   | During review     |
-| Forks       | ❌ Community | No direct support |
+| Version     | Supported | Security Updates  |
+| ----------- | --------- | ----------------- |
+| main        | Current   | Full support      |
+| PR branches | Limited   | During review     |
+| Forks       | Community | No direct support |
 
 **Recommendation:** Always use the latest main branch for the most secure and up-to-date
 documentation.

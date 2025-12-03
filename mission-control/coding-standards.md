@@ -65,10 +65,10 @@ reduces back‑and‑forth on style.
 
 | Situation                                     | Prefer Pre-commit | Prefer autofix.ci |
 | --------------------------------------------- | ----------------- | ----------------- |
-| Regular local development                     | ✅                |                   |
-| One-off web UI edits                          |                   | ✅                |
-| External contributors unfamiliar with tooling |                   | ✅                |
-| Fast feedback before push                     | ✅                |                   |
+| Regular local development                     | Yes               |                   |
+| One-off web UI edits                          |                   | Yes               |
+| External contributors unfamiliar with tooling |                   | Yes               |
+| Fast feedback before push                     | Yes               |                   |
 
 Always keep local pre-commit hooks installed for fastest feedback; autofix.ci is a safety net &
 convenience layer.

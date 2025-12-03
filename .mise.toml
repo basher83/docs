@@ -22,6 +22,7 @@ jq = "latest"                          # JSON processor
 "npm:tree-node-cli" = "latest"
 
 # Run CI checks locally
+
 act = "0.2.83"
 prek = "0.2.13"
 markdownlint-cli2 = "0.19.1"

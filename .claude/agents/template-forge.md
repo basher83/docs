@@ -311,10 +311,10 @@ Provide your template generation results in this format:
 
 ### Customization Guide
 
-| Variable | Purpose | Default | Example |
-|----------|---------|---------|----------|
-| `{{PROJECT_NAME}}` | Project identifier | my-app | awesome-store |
-| `{{PORT}}` | Server port | 3000 | 8080 |
+| Variable           | Purpose             | Default                   | Example       |
+| ------------------ | ------------------- | ------------------------- | ------------- |
+| `{{PROJECT_NAME}}` | Project identifier  | my-app                    | awesome-store |
+| `{{PORT}}`         | Server port         | 3000                      | 8080          |
 | `{{DATABASE_URL}}` | Database connection | postgresql://localhost/db | mongodb://... |
 
 ### Quick Start
