@@ -9,7 +9,7 @@ jobs = 4
 status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
 
 [tools]
-node = "24.10.0"
+node = "24.12.0"
 
 # ALL CLI tools managed by mise (not devcontainer)
 "aqua:koalaman/shellcheck" = "0.11.0"
