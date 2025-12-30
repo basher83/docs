@@ -84,7 +84,7 @@ jobs:
       - name: Setup uv (Python tools)
         uses: astral-sh/setup-uv@2630c86ac3d3892ec220898a1b2cd3c39c219041
         with:
-          version: "0.9.20"
+          version: "0.9.21"
 
       - name: Ruff fix-only
         run: |
