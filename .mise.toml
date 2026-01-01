@@ -23,7 +23,7 @@ jq = "latest"                          # JSON processor
 
 # Run CI checks locally
 
-act = "0.2.83"
+act = "0.2.84"
 prek = "0.2.13"
 markdownlint-cli2 = "0.20.0"
 prettier = "3.6.2"
