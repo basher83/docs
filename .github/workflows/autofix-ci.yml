@@ -58,7 +58,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Skip if bot re-run
         if: ${{ github.actor == 'autofix-ci[bot]' || github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' }}
@@ -83,9 +83,9 @@ jobs:
           cache: true
 
       - name: Setup uv (Python tools)
-        uses: astral-sh/setup-uv@9cfd02964306b527feff5fee75acfd028cce4260
+        uses: astral-sh/setup-uv@14eede1834c1e02d069cd925692dd1fd2373e30e
         with:
-          version: "0.9.26"
+          version: "0.10.1"
 
       - name: Ruff fix-only
         run: |
@@ -120,4 +120,4 @@ jobs:
         run: mise x -- markdownlint-cli2 "**/*.md" "!node_modules" "!.mise-data" "!.mise-cache" --config .markdownlint.json --fix || true
 
       - name: autofix commit
-        uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
+        uses: autofix-ci/action@7a166d7532b277f34e16238930461bf77f9d7ed8
