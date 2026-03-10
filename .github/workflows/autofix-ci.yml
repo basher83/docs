@@ -83,7 +83,7 @@ jobs:
           cache: true
 
       - name: Setup uv (Python tools)
-        uses: astral-sh/setup-uv@fe3617d6e9d89d9b2ddd353e1b3c5d20d20c896f
+        uses: astral-sh/setup-uv@0f6ec07aafe46cff7a322c837e5ba37d95c82b00
         with:
           version: "0.10.9"
 
