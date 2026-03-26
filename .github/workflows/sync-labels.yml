@@ -12,5 +12,5 @@ on:
 
 jobs:
   sync-labels:
-    uses: basher83/.github/.github/workflows/sync-labels.yml@main
+    uses: basher83/.github/.github/workflows/sync-labels.yml@65c877a48b386dab342d04a30e83f00ddda56fb6 # main
     # No inputs: uses the default label_definitions_url from the shared workflow
