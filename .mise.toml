@@ -9,7 +9,7 @@ jobs = 4
 status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
 
 [tools]
-node = "24.14.1"
+node = "24.15.0"
 
 # ALL CLI tools managed by mise (not devcontainer)
 "aqua:koalaman/shellcheck" = "0.11.0"
@@ -26,7 +26,7 @@ jq = "latest"                          # JSON processor
 act = "0.2.87"
 prek = "0.2.13"
 markdownlint-cli2 = "0.22.0"
-prettier = "3.8.2"
+prettier = "3.8.3"
 
 [env]
 # Set environment variables used by tasks
