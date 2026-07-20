@@ -9,7 +9,7 @@ jobs = 4
 status = { missing_tools = "if_other_versions_installed", show_env = false, show_tools = false }
 
 [tools]
-node = "24.15.0"
+node = "24.18.0"
 
 # ALL CLI tools managed by mise (not devcontainer)
 "aqua:koalaman/shellcheck" = "0.11.0"
@@ -23,10 +23,10 @@ jq = "latest"                          # JSON processor
 
 # Run CI checks locally
 
-act = "0.2.87"
-prek = "0.2.13"
-markdownlint-cli2 = "0.22.1"
-prettier = "3.8.3"
+act = "0.2.89"
+prek = "0.4.10"
+markdownlint-cli2 = "0.23.1"
+prettier = "3.9.5"
 
 [env]
 # Set environment variables used by tasks
@@ -85,7 +85,7 @@ else
   echo "⚠️  Act not installed, skipping symlink setup"
 fi
 '''
-tools = { "act" = "0.2.80" }
+tools = { "act" = "0.2.89" }
 
 [tasks."setup:mcp"]
 description = "Generate .mcp.json from template using Infisical secrets"
