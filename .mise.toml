@@ -26,7 +26,7 @@ jq = "latest"                          # JSON processor
 act = "0.2.89"
 prek = "0.4.10"
 markdownlint-cli2 = "0.23.1"
-prettier = "3.9.5"
+prettier = "3.9.6"
 
 [env]
 # Set environment variables used by tasks
