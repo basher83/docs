@@ -5,7 +5,7 @@
     "license": "MIT",
     "devDependencies": {
         "markdownlint-cli2": "0.23.1",
-        "prettier": "3.9.5"
+        "prettier": "3.9.6"
     },
     "scripts": {
         "format:md": "prettier --write \"**/*.md\"",
